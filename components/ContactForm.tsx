@@ -17,12 +17,12 @@ export function ContactForm() {
   }
 
   return (
-    <form className="rounded-[24px] bg-white p-5 text-ink md:p-7" onSubmit={handleSubmit}>
+    <form className="rounded-lg bg-white p-5 text-ink md:p-7" onSubmit={handleSubmit}>
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="block">
           <span className="text-sm font-bold">Imię</span>
           <input
-            className="mt-2 w-full rounded-2xl border border-line px-4 py-4 outline-none transition focus:border-gold"
+            className="mt-2 w-full rounded-lg border border-line px-4 py-4 outline-none transition focus:border-gold"
             type="text"
             name="name"
             placeholder="Jan"
@@ -35,7 +35,7 @@ export function ContactForm() {
         <label className="block">
           <span className="text-sm font-bold">Telefon</span>
           <input
-            className="mt-2 w-full rounded-2xl border border-line px-4 py-4 outline-none transition focus:border-gold"
+            className="mt-2 w-full rounded-lg border border-line px-4 py-4 outline-none transition focus:border-gold"
             type="tel"
             name="phone"
             placeholder="+48 000 000 000"
@@ -47,7 +47,7 @@ export function ContactForm() {
         </label>
       </div>
       <button
-        className="mt-5 w-full rounded-xl bg-gold px-6 py-4 font-extrabold text-white transition hover:bg-gold-dark"
+        className="mt-5 flex h-12 w-full items-center justify-center rounded-lg bg-gold px-6 text-base font-medium leading-none text-white transition hover:bg-gold-dark"
         type="submit"
         aria-label="Zostaw kontakt"
       >

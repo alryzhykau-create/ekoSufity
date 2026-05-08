@@ -1,10 +1,49 @@
 import type { Metadata } from "next";
+import { CookieBanner } from "@/components/CookieBanner";
+import { LocalBusinessJsonLd } from "@/components/SeoJsonLd";
+import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "EkoSufity | Sufity napinane Wrocław",
-  description:
-    "Sufity napinane we Wrocławiu i okolicach do 100 km. Bezpłatny pomiar, szybki montaż i uczciwa wycena.",
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
+  keywords: [
+    "sufity napinane Wrocław",
+    "montaż sufitów napinanych",
+    "sufit napinany cena",
+    "sufit napinany LED",
+    "bezpłatny pomiar sufitu",
+  ],
+  authors: [{ name: siteConfig.name }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: siteConfig.locale,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    title: siteConfig.title,
+    description: siteConfig.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -14,7 +53,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl">
-      <body>{children}</body>
+      <body>
+        <LocalBusinessJsonLd />
+        {children}
+        <CookieBanner />
+      </body>
     </html>
   );
 }

@@ -1,14 +1,10 @@
 "use client";
 
+import type { BasicFAQItem } from "@/lib/faq";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 
-type FAQItem = {
-  question: string;
-  answer: string;
-};
-
-export function FAQAccordion({ items }: { items: FAQItem[] }) {
+export function FAQAccordion({ items }: { items: BasicFAQItem[] }) {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
@@ -17,13 +13,13 @@ export function FAQAccordion({ items }: { items: FAQItem[] }) {
         const isOpen = openIndex === index;
 
         return (
-          <div key={item.question} className="overflow-hidden rounded-3xl border border-line bg-white">
+          <div key={item.question} className="overflow-hidden rounded-lg border border-line bg-white">
             <button
-              className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left font-extrabold text-ink transition hover:bg-porcelain/70 md:px-7"
+              className="flex min-h-14 w-full items-center justify-between gap-4 px-5 py-4 text-left text-base font-medium leading-6 text-ink transition hover:bg-porcelain/70 md:px-7"
               type="button"
               onClick={() => setOpenIndex(isOpen ? -1 : index)}
               aria-expanded={isOpen}
-              aria-label={item.question}
+              aria-controls={`faq-answer-${index}`}
             >
               {item.question}
               <ChevronDown
@@ -32,7 +28,7 @@ export function FAQAccordion({ items }: { items: FAQItem[] }) {
               />
             </button>
             {isOpen ? (
-              <div className="px-5 pb-6 text-muted md:px-7">
+              <div id={`faq-answer-${index}`} className="px-5 pb-6 text-muted md:px-7">
                 <p className="max-w-3xl leading-7">{item.answer}</p>
               </div>
             ) : null}
