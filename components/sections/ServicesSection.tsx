@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getStaticPageContent } from "@/lib/content";
 import { Clock3, Ruler, ShieldCheck, Wrench } from "lucide-react";
 
@@ -62,14 +63,13 @@ export function ServicesSection() {
             <div className="grid lg:grid-cols-[0.52fr_0.48fr]">
               <div className="grid border-b border-line/70 p-3 lg:grid-cols-[248px_1fr] lg:border-b-0 lg:border-r">
                 <div className="overflow-hidden rounded-lg">
-                  <img
+                  <Image
                     className="aspect-square w-full rounded-lg object-cover object-center"
                     src={alexImage}
-                    alt="Alex, specjalista od sufitów napinanych"
-                    loading="lazy"
-                    decoding="async"
+                    alt="Specjalista EkoSufity omawiający projekt sufitu napinanego"
                     width={900}
                     height={900}
+                    sizes="(min-width: 1024px) 248px, 100vw"
                   />
                 </div>
 
@@ -112,14 +112,13 @@ export function ServicesSection() {
                 </div>
 
                 <div className="relative flex items-center justify-center overflow-hidden px-5 py-5 lg:px-6">
-                  <img
+                  <Image
                     className="aspect-square w-full max-w-[250px] object-contain opacity-95 mix-blend-multiply"
                     src="/images/wroclaw-radius-map.jpg"
-                    alt="Mapa Wrocławia i promienia dojazdu 100 km"
-                    loading="lazy"
-                    decoding="async"
+                    alt="Mapa obszaru działania EkoSufity we Wrocławiu i okolicach do 100 km"
                     width={420}
                     height={420}
+                    sizes="250px"
                   />
                 </div>
               </div>

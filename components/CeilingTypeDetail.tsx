@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { CardGrid } from "@/components/CardGrid";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -5,7 +6,7 @@ import { CTASection } from "@/components/sections/CTASection";
 import { FAQSection } from "@/components/sections/FAQSection";
 import type { CeilingType } from "@/lib/ceilingTypes";
 import { getFAQItemsByCategory } from "@/lib/faq";
-import { ArrowRight, BadgeCheck, Check, Hammer, Image, Lightbulb, MapPin, MessageCircle, WalletCards } from "lucide-react";
+import { ArrowRight, BadgeCheck, Check, Hammer, Image as ImageIcon, Lightbulb, MapPin, MessageCircle, WalletCards } from "lucide-react";
 
 const exampleProjects = [
   ["Wrocław, Krzyki", "18 m² | montaż 1 dzień"],
@@ -52,14 +53,13 @@ export function CeilingTypeDetail({ type }: { type: CeilingType }) {
             </div>
           </div>
           <div className="overflow-hidden rounded-lg bg-white shadow-card">
-            <img
+            <Image
               className="h-[360px] w-full object-cover md:h-[420px]"
               src={type.image}
-              alt={type.name}
+              alt={`${type.name} - przykładowy efekt sufitu napinanego`}
               width={1200}
               height={840}
-              loading="eager"
-              decoding="async"
+              sizes="(min-width: 1024px) 55vw, 100vw"
             />
           </div>
         </div>
@@ -152,17 +152,16 @@ export function CeilingTypeDetail({ type }: { type: CeilingType }) {
           <CardGrid className="mt-10" columns={3}>
             {exampleProjects.map(([location, meta]) => (
               <article key={location} className="overflow-hidden rounded-lg bg-white shadow-card">
-                <img
+                <Image
                   className="h-52 w-full object-cover"
                   src={type.image}
-                  alt={`${type.name} - ${location}`}
-                  loading="lazy"
-                  decoding="async"
+                  alt={`${type.name} - inspiracja dla podobnego wnętrza, ${location}`}
                   width={900}
                   height={520}
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                 />
                 <div className="p-6">
-                  <Image className="h-8 w-8 text-gold-dark" aria-hidden="true" />
+                  <ImageIcon className="h-8 w-8 text-gold-dark" aria-hidden="true" />
                   <h2 className="mt-4 text-xl font-extrabold text-ink">{location}</h2>
                   <p className="mt-2 font-bold text-muted">{meta}</p>
                 </div>

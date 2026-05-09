@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { LightingItem } from "@/lib/lighting";
 import { ArrowRight, Lightbulb, MessageCircle } from "lucide-react";
 
@@ -8,14 +9,13 @@ export function LightingCard({ item }: { item: LightingItem }) {
 
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-lg bg-white shadow-card">
-      <img
+      <Image
         className="h-48 w-full object-cover"
         src={item.image}
-        alt={item.name}
-        loading="lazy"
-        decoding="async"
+        alt={`${item.name} w suficie napinanym - przykładowy efekt oświetlenia`}
         width={900}
         height={520}
+        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
       />
       <div className="flex flex-1 flex-col p-6">
         <div className="flex items-center justify-between gap-4">

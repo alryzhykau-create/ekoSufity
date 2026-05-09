@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useMemo, useState } from "react";
 import { ArrowRight, Clock3, MapPin, Ruler, SlidersHorizontal } from "lucide-react";
 import {
@@ -50,14 +51,13 @@ function ProjectCard({ project }: { project: GalleryProject }) {
   return (
     <article className="overflow-hidden rounded-lg bg-white shadow-card">
       <div className="aspect-[4/3] overflow-hidden bg-porcelain">
-        <img
+        <Image
           className="h-full w-full object-cover transition duration-500 hover:scale-[1.03]"
           src={project.image}
-          alt={project.title}
-          loading="lazy"
-          decoding="async"
+          alt={`${project.title} - przykładowy efekt w pomieszczeniu typu ${project.roomLabel.toLowerCase()}`}
           width={900}
           height={675}
+          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
         />
       </div>
       <div className="p-5">

@@ -13,7 +13,7 @@ import { createPageMetadata } from "@/lib/metadata";
 import { ArrowRight, BadgeCheck, Cable, Check, Lightbulb, MessageCircle, WalletCards } from "lucide-react";
 
 export const metadata = createPageMetadata({
-  title: "Oświetlenie do sufitów napinanych | LED, punkty, szyny magnetyczne | EkoSufity",
+  title: "Oświetlenie sufitów napinanych | LED i szyny | EkoSufity",
   description:
     "Zobacz opcje oświetlenia do sufitów napinanych: linie LED, punkty świetlne, taśmy LED, szyny magnetyczne, oprawy wpuszczane i podświetlenie obwodowe.",
   path: "/rozwiazania/oswietlenie",

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { CardGrid } from "@/components/CardGrid";
 import { SectionHeading } from "@/components/SectionHeading";
 import { CTASection } from "@/components/sections/CTASection";
@@ -45,14 +46,13 @@ export function LightingDetail({ item }: { item: LightingItem }) {
             </div>
           </div>
           <div className="overflow-hidden rounded-lg bg-white shadow-card">
-            <img
+            <Image
               className="h-[360px] w-full object-cover md:h-[420px]"
               src={item.image}
-              alt={item.name}
+              alt={`${item.name} w suficie napinanym - przykładowy efekt oświetlenia`}
               width={1200}
               height={840}
-              loading="eager"
-              decoding="async"
+              sizes="(min-width: 1024px) 55vw, 100vw"
             />
           </div>
         </div>

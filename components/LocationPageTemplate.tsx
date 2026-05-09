@@ -82,15 +82,26 @@ export function LocationPageTemplate({ location }: { location: LocationItem }) {
           <SectionHeading
             eyebrow="Lokalny opis"
             title={`Montaż sufitów napinanych: ${location.name}`}
-            description={`Projektujemy i montujemy sufity napinane w lokalizacji ${location.name} i okolicach. Wykonujemy sufity matowe, satynowe, błyszczące, z oświetleniem LED, profilami i rozwiązaniami technicznymi.`}
+            description={location.localDescription[0]}
           />
-          <div className="grid gap-4 sm:grid-cols-2">
-            {location.localBenefits.map((benefit) => (
-              <article key={benefit} className="rounded-lg bg-white p-5 shadow-card">
-                <Check className="h-7 w-7 text-gold-dark" aria-hidden="true" />
-                <p className="mt-4 font-bold leading-7 text-ink">{benefit}</p>
-              </article>
-            ))}
+          <div className="space-y-5">
+            <div className="rounded-lg bg-white p-6 shadow-card md:p-8">
+              <div className="space-y-4">
+                {location.localDescription.slice(1).map((paragraph) => (
+                  <p key={paragraph} className="leading-7 text-muted">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {location.localBenefits.map((benefit) => (
+                <article key={benefit} className="rounded-lg bg-white p-5 shadow-card">
+                  <Check className="h-7 w-7 text-gold-dark" aria-hidden="true" />
+                  <p className="mt-4 font-bold leading-7 text-ink">{benefit}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -199,13 +210,9 @@ export function LocationPageTemplate({ location }: { location: LocationItem }) {
       <section className="section-pad">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading
-            eyebrow="Realizacje"
-            title={`Realizacje: ${location.name} i okolice`}
-            description={
-              localProjects.length > 0
-                ? "Poniżej znajdziesz przykłady z tej lokalizacji."
-                : "Nie każda lokalizacja ma jeszcze osobny zestaw zdjęć, dlatego pokazujemy reprezentatywne przykłady z aktualnej galerii."
-            }
+            eyebrow="Inspiracje"
+            title="Przykładowe inspiracje dla podobnych wnętrz"
+            description="Poniżej pokazujemy przykłady układów, materiałów i oświetlenia z galerii. Nie traktuj ich jako potwierdzonych realizacji w tej konkretnej lokalizacji, jeśli nie zostało to wyraźnie opisane."
           />
           <div className="mt-10">
             <GalleryGrid projects={projects} showFilters={false} />
@@ -215,7 +222,7 @@ export function LocationPageTemplate({ location }: { location: LocationItem }) {
             href="/realizacje"
           >
             <Image size={18} aria-hidden="true" />
-            Zobacz wszystkie realizacje
+            Zobacz wszystkie przykłady
           </a>
         </div>
       </section>

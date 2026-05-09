@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { CalendarCheck, Clock3 } from "lucide-react";
 import { getStaticPageContent } from "@/lib/content";
 
@@ -47,14 +48,14 @@ export function HeroSection() {
       <div className="pointer-events-none absolute inset-x-0 top-0 hidden h-[620px] lg:block">
         <div className="relative mx-auto h-full max-w-7xl px-8">
           <div className="absolute -top-20 bottom-0 left-[40%] right-0 overflow-hidden rounded-bl-[42px]">
-            <img
+            <Image
               className="h-full w-full object-cover object-[center_24%]"
               src={heroImage}
-              alt="Nowoczesny salon z sufitem napinanym i linią LED"
+              alt="Matowy sufit napinany z linią LED w salonie we Wrocławiu"
               width={1400}
               height={900}
-              loading="eager"
-              decoding="async"
+              priority
+              sizes="(min-width: 1024px) 60vw, 100vw"
             />
             <div className="absolute inset-0 bg-[linear-gradient(90deg,#FFFEFD_0%,rgba(255,254,253,0.95)_7%,rgba(255,254,253,0.52)_15%,rgba(255,254,253,0)_26%)]" />
             <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[#fbfaf7]/55 to-transparent" />
@@ -80,12 +81,10 @@ export function HeroSection() {
             {heroFeatures.map(({ label, imageSrc }) => (
               <div key={label} className="flex items-center gap-3">
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-gold/30 bg-white text-gold-dark">
-                  <img
+                  <Image
                     className="h-8 w-8 object-contain"
                     src={imageSrc}
                     alt=""
-                    loading="eager"
-                    decoding="async"
                     width={96}
                     height={96}
                     aria-hidden="true"
@@ -110,14 +109,14 @@ export function HeroSection() {
         <div className="relative lg:hidden">
           <div className="absolute -left-14 top-16 hidden h-72 w-72 rounded-full bg-white/70 blur-3xl lg:block" />
           <div className="relative overflow-hidden rounded-lg bg-white shadow-soft">
-            <img
+            <Image
               className="h-[400px] w-full object-cover md:h-[500px]"
               src={heroImage}
-              alt="Nowoczesny salon z sufitem napinanym i linią LED"
+              alt="Matowy sufit napinany z linią LED w salonie we Wrocławiu"
               width={1400}
               height={900}
-              loading="eager"
-              decoding="async"
+              priority
+              sizes="100vw"
             />
             <div className="absolute bottom-5 left-5 inline-flex max-w-[calc(100%-2.5rem)] rounded-lg bg-[rgba(17,24,39,0.22)] px-5 py-3.5 text-[15px] font-semibold leading-[1.35] text-white shadow-[0_12px_34px_rgba(0,0,0,0.12)] backdrop-blur-[18px]">
               Wrocław, sufit matowy + linia LED, montaż 1 dzień

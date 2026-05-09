@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 const projects = [
@@ -50,14 +51,13 @@ export function GallerySection() {
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {projects.map((project) => (
             <article key={project.location} className="overflow-hidden rounded-lg bg-white shadow-card">
-              <img
+              <Image
                 className="h-56 w-full object-cover"
                 src={project.image}
-                alt={project.title}
-                loading="lazy"
-                decoding="async"
+                alt={`${project.title} - przykładowy efekt sufitu napinanego`}
                 width={900}
                 height={560}
+                sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
               />
               <div className="p-5">
                 <h3 className="font-extrabold">{project.location}</h3>

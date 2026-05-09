@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { CeilingType } from "@/lib/ceilingTypes";
 import { ArrowRight, MessageCircle } from "lucide-react";
 
@@ -8,14 +9,13 @@ export function CeilingTypeCard({ type }: { type: CeilingType }) {
 
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-lg bg-white shadow-card">
-      <img
+      <Image
         className="h-52 w-full object-cover"
         src={type.image}
-        alt={type.name}
-        loading="lazy"
-        decoding="async"
+        alt={`${type.name} - przykładowy efekt sufitu napinanego`}
         width={900}
         height={520}
+        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
       />
       <div className="flex flex-1 flex-col p-6">
         <p className="text-sm font-extrabold uppercase tracking-[0.12em] text-gold-dark">
