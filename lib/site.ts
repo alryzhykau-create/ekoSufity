@@ -1,10 +1,13 @@
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "https://ekosufity.pl";
+
 export const siteConfig = {
   name: "EkoSufity",
   domain: "ekosufity.pl",
-  url: "https://ekosufity.pl",
+  url: siteUrl,
   title: "Sufity napinane Wrocław | EkoSufity",
   description:
     "Sufity napinane we Wrocławiu i okolicach do 100 km. Bezpłatny pomiar, szybki montaż bez kurzu i uczciwa wycena.",
+  defaultImage: "/images/wroclaw-radius-map.jpg",
   phone: "+48 791 085 385",
   phoneHref: "tel:+48791085385",
   whatsappHref:
@@ -14,5 +17,8 @@ export const siteConfig = {
   postalCode: "53-611",
   city: "Wrocław",
   country: "PL",
+  openingHours: "Mo-Fr 09:00-20:00",
+  areaServed: "Wrocław i okolice do 100 km",
+  priceRange: "od 120 zł/m²",
   locale: "pl_PL",
 };

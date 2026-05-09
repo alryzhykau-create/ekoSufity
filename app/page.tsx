@@ -18,6 +18,16 @@ import { ProcessSection } from "@/components/sections/ProcessSection";
 import { ReviewsSection } from "@/components/sections/ReviewsSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { SolutionsSection } from "@/components/sections/SolutionsSection";
+import { getStaticPageContent } from "@/lib/content";
+import { createPageMetadata } from "@/lib/metadata";
+
+const pageContent = getStaticPageContent("/");
+
+export const metadata = createPageMetadata({
+  title: pageContent.seoTitle,
+  description: pageContent.seoDescription,
+  path: pageContent.path,
+});
 
 export default function HomePage() {
   return (

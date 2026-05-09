@@ -5,6 +5,7 @@ import { LocationPageTemplate } from "@/components/LocationPageTemplate";
 import { MobileBottomBar, PhoneButton, WhatsAppButton } from "@/components/FloatingActions";
 import { Footer } from "@/components/sections/Footer";
 import { getLocationBySlug, locations } from "@/lib/locations";
+import { createPageMetadata } from "@/lib/metadata";
 
 type LocationPageProps = {
   params: Promise<{
@@ -24,17 +25,11 @@ export async function generateMetadata({ params }: LocationPageProps): Promise<M
     return {};
   }
 
-  return {
-    title: { absolute: location.seoTitle },
+  return createPageMetadata({
+    title: location.seoTitle,
     description: location.seoDescription,
-    alternates: {
-      canonical: `/lokalizacje/${location.slug}`,
-    },
-    openGraph: {
-      title: location.seoTitle,
-      description: location.seoDescription,
-    },
-  };
+    path: `/lokalizacje/${location.slug}`,
+  });
 }
 
 export default async function LocationPage({ params }: LocationPageProps) {

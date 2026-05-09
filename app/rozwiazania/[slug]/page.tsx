@@ -15,8 +15,9 @@ import { FAQSection } from "@/components/sections/FAQSection";
 import { Footer } from "@/components/sections/Footer";
 import { getFAQItemsByCategory } from "@/lib/faq";
 import { lightingItems } from "@/lib/lighting";
+import { createPageMetadata } from "@/lib/metadata";
 import { getRelatedSolutions, getSolutionBySlug, solutionItems } from "@/lib/solutions";
-import { ArrowRight, BadgeCheck, Check, MessageCircle, PanelsTopLeft } from "lucide-react";
+import { ArrowRight, BadgeCheck, Check, MessageCircle, PanelsTopLeft, WalletCards } from "lucide-react";
 
 type SolutionPageProps = {
   params: Promise<{
@@ -53,18 +54,12 @@ export async function generateMetadata({ params }: SolutionPageProps): Promise<M
     return {};
   }
 
-  return {
-    title: { absolute: solution.seoTitle },
+  return createPageMetadata({
+    title: solution.seoTitle,
     description: solution.seoDescription,
-    alternates: {
-      canonical: `/rozwiazania/${solution.slug}`,
-    },
-    openGraph: {
-      title: solution.seoTitle,
-      description: solution.seoDescription,
-      images: [solution.image],
-    },
-  };
+    path: `/rozwiazania/${solution.slug}`,
+    image: solution.image,
+  });
 }
 
 export default async function SolutionPage({ params }: SolutionPageProps) {
@@ -216,6 +211,37 @@ export default async function SolutionPage({ params }: SolutionPageProps) {
             </div>
           </section>
         ) : null}
+
+        <section className="section-pad">
+          <div className="mx-auto max-w-7xl px-5 lg:px-8">
+            <div className="grid gap-8 rounded-lg bg-white p-6 shadow-card md:p-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+              <div>
+                <WalletCards className="h-12 w-12 text-gold-dark" aria-hidden="true" />
+                <h2 className="mt-6 text-3xl font-extrabold leading-tight text-ink md:text-5xl">
+                  Orientacyjna cena
+                </h2>
+                <p className="mt-5 text-lg leading-8 text-muted">
+                  Dla tego rozwiązania: <strong className="text-ink">{solution.priceLabel}</strong>. Końcowa
+                  wycena zależy od zakresu prac, długości profili, liczby punktów, dostępu serwisowego i warunków
+                  montażu.
+                </p>
+              </div>
+              <div className="rounded-lg bg-porcelain p-6">
+                <p className="text-sm font-extrabold uppercase tracking-[0.12em] text-gold-dark">
+                  Pomiar i wycena
+                </p>
+                <p className="mt-4 leading-7 text-muted">
+                  Najlepiej sprawdzić rozwiązanie podczas bezpłatnego pomiaru. Wtedy weryfikujemy instalacje,
+                  profile, wysokość i możliwe kolizje techniczne.
+                </p>
+                <a className="mt-6 inline-flex items-center gap-2 font-bold text-gold-dark transition hover:text-ink" href="/ceny">
+                  Przejdź do cennika
+                  <ArrowRight size={17} aria-hidden="true" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <section className="section-pad bg-white/45">
           <div className="mx-auto grid max-w-7xl gap-8 px-5 lg:grid-cols-2 lg:px-8">

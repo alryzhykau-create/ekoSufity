@@ -124,7 +124,7 @@ export function GalleryGrid({ projects = galleryProjects, showFilters = true }: 
               <SlidersHorizontal size={20} aria-hidden="true" />
             </span>
             <div>
-              <h2 className="text-lg font-extrabold text-ink">Filtry realizacji</h2>
+              <h2 className="text-lg font-extrabold text-ink">Filtry przykładów</h2>
               <p className="mt-1 text-sm leading-6 text-muted">
                 Zawęź przykłady według rodzaju sufitu, światła i pomieszczenia.
               </p>
@@ -171,7 +171,7 @@ export function GalleryGrid({ projects = galleryProjects, showFilters = true }: 
         </div>
       ) : (
         <div className="rounded-lg bg-white p-8 text-center shadow-card">
-          <h2 className="text-2xl font-extrabold text-ink">Brak realizacji dla wybranych filtrów</h2>
+          <h2 className="text-2xl font-extrabold text-ink">Brak przykładów dla wybranych filtrów</h2>
           <p className="mx-auto mt-3 max-w-xl leading-7 text-muted">
             Zmień jeden z filtrów albo napisz do nas. Przygotujemy przykłady i wycenę pod Twoje wnętrze.
           </p>

@@ -146,8 +146,8 @@ export function CeilingTypeDetail({ type }: { type: CeilingType }) {
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading
             eyebrow="Realizacje"
-            title="Przykładowe realizacje"
-            description="Docelowo w tym miejscu warto dodać prawdziwe zdjęcia realizacji dla konkretnego rodzaju sufitu. Na razie pokazujemy neutralny placeholder z lokalizacjami."
+            title="Przykładowe inspiracje"
+            description="To neutralne przykłady układów i lokalizacji. Docelowo warto podmienić je na prawdziwe zdjęcia realizacji dla konkretnego rodzaju sufitu."
           />
           <CardGrid className="mt-10" columns={3}>
             {exampleProjects.map(([location, meta]) => (

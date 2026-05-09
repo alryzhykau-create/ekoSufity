@@ -6,6 +6,7 @@ import { LightingDetail } from "@/components/LightingDetail";
 import { MobileBottomBar, PhoneButton, WhatsAppButton } from "@/components/FloatingActions";
 import { Footer } from "@/components/sections/Footer";
 import { getLightingBySlug, lightingItems } from "@/lib/lighting";
+import { createPageMetadata } from "@/lib/metadata";
 
 type LightingPageProps = {
   params: Promise<{
@@ -25,18 +26,12 @@ export async function generateMetadata({ params }: LightingPageProps): Promise<M
     return {};
   }
 
-  return {
-    title: { absolute: item.seoTitle },
+  return createPageMetadata({
+    title: item.seoTitle,
     description: item.seoDescription,
-    alternates: {
-      canonical: `/rozwiazania/oswietlenie/${item.slug}`,
-    },
-    openGraph: {
-      title: item.seoTitle,
-      description: item.seoDescription,
-      images: [item.image],
-    },
-  };
+    path: `/rozwiazania/oswietlenie/${item.slug}`,
+    image: item.image,
+  });
 }
 
 export default async function LightingPage({ params }: LightingPageProps) {

@@ -1,30 +1,22 @@
-import { Clock3, MapPin, Ruler, ShieldCheck, Wrench } from "lucide-react";
+import { getStaticPageContent } from "@/lib/content";
+import { Clock3, Ruler, ShieldCheck, Wrench } from "lucide-react";
 
 const alexImage =
   "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fm=webp&fit=crop&w=900&q=85";
+const homeContent = getStaticPageContent("/");
+type HomeSection = {
+  eyebrow?: string;
+  h2?: string;
+  lead?: string;
+  items?: { title: string; text: string }[];
+};
+const [benefitsSection, alexSection, areaSection] = homeContent.sections as HomeSection[];
+const benefitIcons = [Ruler, Clock3, Wrench, ShieldCheck];
 
-const benefits = [
-  {
-    title: "Bezpłatny pomiar",
-    text: "Przyjeżdżamy na miejsce, wykonujemy pomiar i doradzamy najlepsze rozwiązanie.",
-    icon: Ruler,
-  },
-  {
-    title: "Montaż w 1 dzień",
-    text: "90% standardowych realizacji wykonujemy w ciągu jednego dnia.",
-    icon: Clock3,
-  },
-  {
-    title: "Bez kurzu i remontu",
-    text: "Montaż bez szpachlowania, malowania i bałaganu. Czysto, szybko i wygodnie.",
-    icon: Wrench,
-  },
-  {
-    title: "Gwarancja jakości",
-    text: "Stosujemy sprawdzone materiały i dajemy pisemną gwarancję na nasze usługi.",
-    icon: ShieldCheck,
-  },
-];
+const benefits = benefitsSection.items?.map((item, index) => ({
+  ...item,
+  icon: benefitIcons[index] ?? ShieldCheck,
+})) ?? [];
 
 export function ServicesSection() {
   return (
@@ -83,15 +75,13 @@ export function ServicesSection() {
 
                 <div className="flex h-full flex-col justify-center px-6 py-4 lg:px-8 lg:py-5">
                   <p className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-muted">
-                    Kto odpowiada za jakość?
+                    {alexSection.eyebrow}
                   </p>
                   <h2 className="mt-3 text-[1.55rem] font-extrabold leading-[1.14] text-ink md:text-[1.65rem]">
-                    Nazywam się Alex i zajmuję się sufitami napinanymi.
+                    {alexSection.h2}
                   </h2>
                   <p className="mt-5 text-[13px] leading-6 text-muted">
-                    Osobiście nadzoruję realizacje, pomagam dobrać najlepsze rozwiązanie i dbam
-                    o każdy detal wykonania. Dla mnie najważniejszy jest efekt końcowy i
-                    zadowolenie klienta.
+                    {alexSection.lead}
                   </p>
                   <div className="mt-5">
                     <p className="text-[2.7rem] italic leading-none text-gold-dark [font-family:'Snell_Roundhand',cursive]">
@@ -107,14 +97,10 @@ export function ServicesSection() {
               <div className="grid lg:grid-cols-[0.96fr_1.04fr]">
                 <div className="flex h-full flex-col justify-center border-b border-line/70 px-7 py-6 lg:border-b-0 lg:px-9 lg:py-7">
                   <p className="text-[13px] font-extrabold uppercase leading-5 tracking-[0.08em] text-ink">
-                    Działamy we Wrocławiu i w promieniu do 100 km
+                    {areaSection.h2}
                   </p>
                   <p className="mt-5 text-[13px] leading-6 text-muted">
-                    Obsługujemy Wrocław oraz okoliczne miasta: Legnica, Wałbrzych, Świdnica,
-                    Oława, Oleśnica, Lubin, Brzeg, Dzierżoniów i inne.
-                  </p>
-                  <p className="mt-3 text-[13px] font-bold leading-6 text-ink">
-                    Dojazd do 100 km - bez dodatkowych kosztów.
+                    {areaSection.lead}
                   </p>
                   <a
                     className="mt-7 inline-flex h-11 w-full max-w-[220px] items-center justify-center rounded-lg border border-charcoal/20 bg-white px-6 text-[13px] font-semibold leading-none text-ink transition hover:border-gold hover:text-gold-dark"

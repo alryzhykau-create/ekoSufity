@@ -7,27 +7,24 @@ import { SolutionCard } from "@/components/SolutionCard";
 import { CTASection } from "@/components/sections/CTASection";
 import { FAQSection, type FAQItem } from "@/components/sections/FAQSection";
 import { Footer } from "@/components/sections/Footer";
+import { getStaticPageContent, mapContentFAQItems } from "@/lib/content";
 import { getFAQItemsByCategory } from "@/lib/faq";
 import { createPageMetadata } from "@/lib/metadata";
 import { solutionItems } from "@/lib/solutions";
 import { ArrowRight, BadgeCheck, Check, Lightbulb, MessageCircle, PanelsTopLeft, Wrench } from "lucide-react";
 
+const pageContent = getStaticPageContent("/rozwiazania");
+
 export const metadata = createPageMetadata({
-  title: "Rozwiązania do sufitów napinanych | Oświetlenie, profile, wentylacja | EkoSufity",
-  description:
-    "Zobacz rozwiązania do sufitów napinanych: oświetlenie LED, profile, połączenia, wentylację, luki rewizyjne, ukryte karnisze i konstrukcje wielopoziomowe.",
-  path: "/rozwiazania",
+  title: pageContent.seoTitle,
+  description: pageContent.seoDescription,
+  path: pageContent.path,
 });
 
 const faqItems: FAQItem[] = [
-  ...getFAQItemsByCategory("oswietlenie").slice(1, 3),
-  ...getFAQItemsByCategory("profile-i-konstrukcje").slice(0, 3),
+  ...mapContentFAQItems(pageContent.faq),
+  ...getFAQItemsByCategory("profile-i-konstrukcje").slice(0, 2),
   ...getFAQItemsByCategory("wentylacja").slice(0, 1),
-  {
-    question: "Czy rozwiązania techniczne trzeba wybrać przed pomiarem?",
-    answer:
-      "Nie musisz znać wszystkich detali, ale warto powiedzieć, czy planujesz LED, wentylację, ukryty karnisz, szyny lub dostęp serwisowy. To wpływa na konstrukcję i wycenę.",
-  },
 ];
 
 const popularSolutions = [
@@ -53,21 +50,19 @@ export default function SolutionsPage() {
     <>
       <Header />
       <main className="overflow-hidden pb-24 md:pb-0">
-        <PageBreadcrumbs current="Rozwiązania" />
+        <PageBreadcrumbs current="Rozwiązania" href="/rozwiazania" />
 
         <section className="pb-14 pt-10">
           <div className="mx-auto grid max-w-7xl gap-8 px-5 lg:grid-cols-[1fr_0.85fr] lg:items-center lg:px-8">
             <div>
               <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-gold-dark">
-                Rozwiązania
+                {pageContent.eyebrow}
               </p>
               <h1 className="mt-4 text-4xl font-extrabold leading-tight text-ink md:text-6xl">
-                Rozwiązania do sufitów napinanych
+                {pageContent.h1}
               </h1>
               <p className="mt-6 max-w-3xl text-lg leading-8 text-muted">
-                Dobry sufit napinany to nie tylko membrana. Ważne są oświetlenie LED,
-                profile, połączenia, wentylacja, luki rewizyjne, ukryte karnisze i konstrukcje
-                dopasowane do wnętrza.
+                {pageContent.lead}
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a className="inline-flex h-12 items-center justify-center rounded-lg bg-charcoal px-6 text-base font-medium leading-none text-white transition hover:bg-black" href="/ceny">

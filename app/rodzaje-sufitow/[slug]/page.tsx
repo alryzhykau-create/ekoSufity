@@ -6,6 +6,7 @@ import { Header } from "@/components/Header";
 import { MobileBottomBar, PhoneButton, WhatsAppButton } from "@/components/FloatingActions";
 import { Footer } from "@/components/sections/Footer";
 import { ceilingTypes, getCeilingTypeBySlug } from "@/lib/ceilingTypes";
+import { createPageMetadata } from "@/lib/metadata";
 
 type CeilingTypePageProps = {
   params: Promise<{
@@ -25,18 +26,12 @@ export async function generateMetadata({ params }: CeilingTypePageProps): Promis
     return {};
   }
 
-  return {
-    title: { absolute: type.seoTitle },
+  return createPageMetadata({
+    title: type.seoTitle,
     description: type.seoDescription,
-    alternates: {
-      canonical: `/rodzaje-sufitow/${type.slug}`,
-    },
-    openGraph: {
-      title: type.seoTitle,
-      description: type.seoDescription,
-      images: [type.image],
-    },
-  };
+    path: `/rodzaje-sufitow/${type.slug}`,
+    image: type.image,
+  });
 }
 
 export default async function CeilingTypePage({ params }: CeilingTypePageProps) {

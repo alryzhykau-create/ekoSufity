@@ -7,20 +7,22 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { CTASection } from "@/components/sections/CTASection";
 import { FAQSection, type FAQItem } from "@/components/sections/FAQSection";
 import { Footer } from "@/components/sections/Footer";
-import { getFAQItemsByCategory } from "@/lib/faq";
+import { getStaticPageContent, mapContentFAQItems } from "@/lib/content";
 import { createPageMetadata } from "@/lib/metadata";
 import { BadgeCheck, Calculator, Check, Layers3, Lightbulb, Ruler, WalletCards } from "lucide-react";
 
+const pageContent = getStaticPageContent("/ceny");
+
 export const metadata = createPageMetadata({
-  title: "Ceny sufitów napinanych Wrocław | Kalkulator wyceny | EkoSufity",
-  description:
-    "Sprawdź orientacyjne ceny sufitów napinanych we Wrocławiu i okolicach. Skorzystaj z kalkulatora, zobacz przykładowe ceny i dowiedz się, od czego zależy koszt sufitu napinanego.",
-  path: "/ceny",
+  title: pageContent.seoTitle,
+  description: pageContent.seoDescription,
+  path: pageContent.path,
 });
 
 const priceRows = [
-  ["Sufit napinany MSD Premium", "od 120 zł/m²"],
-  ["Sufit napinany Bauf", "od 140 zł/m²"],
+  ["Sufit matowy / MSD Premium", "od 120 zł/m²"],
+  ["Sufit satynowy / Bauf", "od 140 zł/m²"],
+  ["Sufit błyszczący", "od 150 zł/m²"],
   ["Sufit napinany Teqtum", "od 170 zł/m²"],
   ["Sufit z efektem cienia", "od 150 zł/m²"],
   ["Sufit z oświetleniem LED", "wycena indywidualna"],
@@ -81,16 +83,7 @@ const seoBlocks = [
 ];
 
 const pricingFaq: FAQItem[] = [
-  ...getFAQItemsByCategory("cena-i-wycena"),
-  {
-    question: "Czy cena z kalkulatora jest ostateczna?",
-    answer:
-      "Nie. Kalkulator pokazuje orientacyjny zakres. Dokładną wycenę przygotowujemy po bezpłatnym pomiarze i sprawdzeniu warunków montażu.",
-  },
-  {
-    question: "Czy można zamówić sam sufit bez oświetlenia?",
-    answer: "Tak. Wykonujemy proste sufity matowe, satynowe i błyszczące bez dodatkowego oświetlenia.",
-  },
+  ...mapContentFAQItems(pageContent.faq),
 ];
 
 export default function PricesPage() {
@@ -98,20 +91,19 @@ export default function PricesPage() {
     <>
       <Header />
       <main className="overflow-hidden pb-24 md:pb-0">
-        <PageBreadcrumbs current="Ceny" />
+        <PageBreadcrumbs current="Ceny" href="/ceny" />
 
         <section className="pb-12 pt-10">
           <div className="mx-auto grid max-w-7xl gap-8 px-5 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:px-8">
             <div>
               <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-gold-dark">
-                Cennik
+                {pageContent.eyebrow}
               </p>
               <h1 className="mt-4 text-4xl font-extrabold leading-tight text-ink md:text-6xl">
-                Cennik sufitów napinanych we Wrocławiu
+                {pageContent.h1}
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">
-                Sprawdź orientacyjne ceny, policz zakres kosztu i zamów bezpłatny pomiar.
-                Kalkulator pokazuje przedział ceny, a dokładną kwotę potwierdzamy po obejrzeniu pomieszczenia.
+                {pageContent.lead}
               </p>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                 <a className="inline-flex h-12 items-center justify-center rounded-lg bg-charcoal px-6 text-base font-medium leading-none text-white transition hover:bg-black" href="#calculator">

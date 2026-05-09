@@ -50,13 +50,13 @@ export function Breadcrumbs({
   );
 }
 
-export function PageBreadcrumbs({ current }: { current: string }) {
+export function PageBreadcrumbs({ current, href = "#" }: { current: string; href?: string }) {
   return (
     <Breadcrumbs
       visible
       items={[
         { label: "Strona główna", href: "/" },
-        { label: current, href: "#" },
+        { label: current, href },
       ]}
     />
   );

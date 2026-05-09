@@ -5,14 +5,16 @@ import { MobileBottomBar, PhoneButton, WhatsAppButton } from "@/components/Float
 import { FAQJsonLd } from "@/components/SeoJsonLd";
 import { CTASection } from "@/components/sections/CTASection";
 import { Footer } from "@/components/sections/Footer";
+import { getStaticPageContent } from "@/lib/content";
 import { allFAQItems, faqCategories } from "@/lib/faq";
 import { createPageMetadata } from "@/lib/metadata";
 
+const pageContent = getStaticPageContent("/faq");
+
 export const metadata = createPageMetadata({
-  title: "FAQ — sufity napinane | Pytania i odpowiedzi | EkoSufity",
-  description:
-    "Najczęstsze pytania o sufity napinane: ceny, montaż, oświetlenie, profile, wentylacja, luki rewizyjne, pielęgnacja, gwarancja i lokalizacje.",
-  path: "/faq",
+  title: pageContent.seoTitle,
+  description: pageContent.seoDescription,
+  path: pageContent.path,
 });
 
 const relatedLinks = [
@@ -44,13 +46,12 @@ export default function FAQPage() {
         <section className="pb-12 pt-10">
           <div className="mx-auto max-w-7xl px-5 lg:px-8">
             <div className="mx-auto max-w-3xl text-center">
-              <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-gold-dark">FAQ</p>
+              <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-gold-dark">{pageContent.eyebrow}</p>
               <h1 className="mt-4 text-4xl font-extrabold leading-tight text-ink md:text-6xl">
-                FAQ — sufity napinane
+                {pageContent.h1}
               </h1>
               <p className="mt-5 text-base leading-7 text-muted md:text-lg md:leading-8">
-                Zebraliśmy najczęstsze pytania dotyczące sufitów napinanych, cen, montażu,
-                oświetlenia, profili, wentylacji, luków rewizyjnych i realizacji we Wrocławiu oraz okolicach.
+                {pageContent.lead}
               </p>
               <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
                 <a className="inline-flex h-12 items-center justify-center rounded-lg bg-charcoal px-6 text-base font-medium leading-none text-white transition hover:bg-black" href="/ceny">

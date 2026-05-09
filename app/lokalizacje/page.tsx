@@ -6,33 +6,21 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { CTASection } from "@/components/sections/CTASection";
 import { FAQSection, type FAQItem } from "@/components/sections/FAQSection";
 import { Footer } from "@/components/sections/Footer";
+import { getStaticPageContent, mapContentFAQItems } from "@/lib/content";
 import { locations } from "@/lib/locations";
 import { createPageMetadata } from "@/lib/metadata";
 import { ArrowRight, BadgeCheck, Check, MapPinned, MessageCircle, Route, WalletCards } from "lucide-react";
 
+const pageContent = getStaticPageContent("/lokalizacje");
+
 export const metadata = createPageMetadata({
-  title: "Sufity napinane Wrocław i okolice | Lokalizacje | EkoSufity",
-  description:
-    "Montujemy sufity napinane we Wrocławiu i miejscowościach w promieniu do około 100 km. Zobacz obsługiwane lokalizacje i zapytaj o wycenę.",
-  path: "/lokalizacje",
+  title: pageContent.seoTitle,
+  description: pageContent.seoDescription,
+  path: pageContent.path,
 });
 
 const faqItems: FAQItem[] = [
-  {
-    question: "W jakim obszarze działacie?",
-    answer:
-      "Obsługujemy Wrocław i miejscowości w promieniu do około 100 km. Dalsze lokalizacje wyceniamy indywidualnie.",
-  },
-  {
-    question: "Czy dojeżdżacie na pomiar poza Wrocław?",
-    answer:
-      "Tak. Pomiar poza Wrocławiem umawiamy po krótkiej rozmowie o lokalizacji, metrażu i planowanym zakresie prac.",
-  },
-  {
-    question: "Czy lokalizacja wpływa na cenę?",
-    answer:
-      "Może wpływać na logistykę, ale podstawą wyceny pozostaje metraż, rodzaj sufitu, profile, oświetlenie i szczegóły montażu.",
-  },
+  ...mapContentFAQItems(pageContent.faq),
   {
     question: "Co jeśli mojej miejscowości nie ma na liście?",
     answer:
@@ -63,21 +51,19 @@ export default function LocationsPage() {
     <>
       <Header />
       <main className="overflow-hidden pb-24 md:pb-0">
-        <PageBreadcrumbs current="Lokalizacje" />
+        <PageBreadcrumbs current="Lokalizacje" href="/lokalizacje" />
 
         <section className="pb-14 pt-10">
           <div className="mx-auto grid max-w-7xl gap-8 px-5 lg:grid-cols-[1fr_0.85fr] lg:items-center lg:px-8">
             <div>
               <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-gold-dark">
-                Lokalizacje
+                {pageContent.eyebrow}
               </p>
               <h1 className="mt-4 text-4xl font-extrabold leading-tight text-ink md:text-6xl">
-                Sufity napinane we Wrocławiu i okolicach
+                {pageContent.h1}
               </h1>
               <p className="mt-6 max-w-3xl text-lg leading-8 text-muted">
-                Montujemy sufity napinane we Wrocławiu oraz w miejscowościach w promieniu
-                do około 100 km. Wykonujemy pomiar, doradzamy rodzaj sufitu, oświetlenie,
-                profile i rozwiązania techniczne dopasowane do konkretnego wnętrza.
+                {pageContent.lead}
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a className="inline-flex h-12 items-center justify-center rounded-lg bg-charcoal px-6 text-base font-medium leading-none text-white transition hover:bg-black" href="#lista-lokalizacji">

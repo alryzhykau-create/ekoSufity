@@ -7,17 +7,19 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { CTASection } from "@/components/sections/CTASection";
 import { FAQSection, type FAQItem } from "@/components/sections/FAQSection";
 import { Footer } from "@/components/sections/Footer";
+import { getStaticPageContent, mapContentFAQItems } from "@/lib/content";
 import { getFAQItemsByCategory } from "@/lib/faq";
 import { locations } from "@/lib/locations";
 import { createPageMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site";
 import { Clock3, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 
+const pageContent = getStaticPageContent("/kontakt");
+
 export const metadata = createPageMetadata({
-  title: "Kontakt",
-  description:
-    "Skontaktuj się z EkoSufity. Bezpłatny pomiar sufitów napinanych we Wrocławiu i okolicach do 100 km.",
-  path: "/kontakt",
+  title: pageContent.seoTitle,
+  description: pageContent.seoDescription,
+  path: pageContent.path,
 });
 
 const contactCards = [
@@ -30,21 +32,8 @@ const contactCards = [
 const serviceAreas = locations.map((location) => location.name);
 
 const contactFaq: FAQItem[] = [
+  ...mapContentFAQItems(pageContent.faq),
   ...getFAQItemsByCategory("cena-i-wycena").slice(1, 3),
-  {
-    question: "Jak szybko oddzwaniacie?",
-    answer: "W godzinach pracy zwykle oddzwaniamy w ciągu 15 minut.",
-  },
-  {
-    question: "Czy mogę wysłać zdjęcia pomieszczenia?",
-    answer:
-      "Tak. Najwygodniej wysłać zdjęcia przez WhatsApp razem z metrażem i lokalizacją.",
-  },
-  {
-    question: "Jakie informacje przygotować przed rozmową?",
-    answer:
-      "Wystarczy orientacyjny metraż, miejscowość, rodzaj pomieszczenia i informacja, czy planujesz oświetlenie.",
-  },
 ];
 
 export default function ContactPage() {
@@ -52,20 +41,19 @@ export default function ContactPage() {
     <>
       <Header />
       <main id="kontakt" className="overflow-hidden pb-24 md:pb-0">
-        <PageBreadcrumbs current="Kontakt" />
+        <PageBreadcrumbs current="Kontakt" href="/kontakt" />
 
         <section className="pb-12 pt-10">
           <div className="mx-auto grid max-w-7xl gap-8 px-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:px-8">
             <div>
               <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-gold-dark">
-                Kontakt
+                {pageContent.eyebrow}
               </p>
               <h1 className="mt-4 text-4xl font-extrabold leading-tight text-ink md:text-6xl">
-                Umów bezpłatny pomiar sufitu
+                {pageContent.h1}
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">
-                Napisz, zadzwoń albo wyślij formularz. Doradzimy rozwiązanie, potwierdzimy
-                termin i przygotujemy dokładną wycenę po pomiarze.
+                {pageContent.lead}
               </p>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                 <a

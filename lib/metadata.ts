@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site";
 
+function resolveImage(image?: string) {
+  return image ?? siteConfig.defaultImage;
+}
+
 export function createPageMetadata({
   title,
   description,
@@ -15,6 +19,8 @@ export function createPageMetadata({
   noIndex?: boolean;
 }): Metadata {
   const resolvedTitle = title.includes(siteConfig.name) ? { absolute: title } : title;
+  const ogImage = resolveImage(image);
+  const url = `${siteConfig.url}${path}`;
 
   return {
     title: resolvedTitle,
@@ -25,11 +31,24 @@ export function createPageMetadata({
     openGraph: {
       type: "website",
       locale: siteConfig.locale,
-      url: `${siteConfig.url}${path}`,
+      url,
       siteName: siteConfig.name,
       title,
       description,
-      images: image ? [image] : undefined,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [ogImage],
     },
     robots: noIndex
       ? {

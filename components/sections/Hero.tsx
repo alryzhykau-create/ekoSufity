@@ -1,13 +1,22 @@
 import { CalendarCheck, Clock3 } from "lucide-react";
+import { getStaticPageContent } from "@/lib/content";
 
 const heroImage =
   "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fm=webp&fit=crop&w=1400&q=85";
+const homeContent = getStaticPageContent("/");
+const heroBadges = homeContent.badges ?? [
+  "Dojazd do 100 km gratis",
+  "Montaż w 1 dzień",
+  "Bez kurzu i remontu",
+  "Ceny od 120 zł/m²",
+];
+const heroCtas = homeContent.ctas ?? ["Umów bezpłatny pomiar", "Zobacz ceny"];
 
 const heroFeatures = [
-  { lines: ["Dojazd do", "100 km gratis"], imageSrc: "/images/dojazd-100km-gratis-icon.png" },
-  { lines: ["Montaż", "w 1 dzień"], imageSrc: "/images/montaz-1-dzien-icon.png" },
-  { lines: ["Bez kurzu", "i remontu"], imageSrc: "/images/bez-kurzu-i-remontu-icon.png" },
-  { lines: ["Ceny od", "120 zł/m²"], imageSrc: "/images/ceny-od-icon.png" },
+  { label: heroBadges[0], imageSrc: "/images/dojazd-100km-gratis-icon.png" },
+  { label: heroBadges[1], imageSrc: "/images/montaz-1-dzien-icon.png" },
+  { label: heroBadges[2], imageSrc: "/images/bez-kurzu-i-remontu-icon.png" },
+  { label: heroBadges[3], imageSrc: "/images/ceny-od-icon.png" },
 ];
 
 function CtaButtons() {
@@ -19,14 +28,14 @@ function CtaButtons() {
         aria-label="Umów bezpłatny pomiar"
       >
         <CalendarCheck size={20} aria-hidden="true" />
-        Umów bezpłatny pomiar
+        {heroCtas[0]}
       </a>
       <a
         className="inline-flex h-12 items-center justify-center rounded-lg border border-charcoal/20 bg-white px-5 text-base font-medium leading-none text-ink transition hover:border-gold hover:text-gold-dark"
         href="#cennik"
         aria-label="Zobacz ceny"
       >
-        Zobacz ceny
+        {heroCtas[1]}
       </a>
     </div>
   );
@@ -64,13 +73,12 @@ export function HeroSection() {
             <span className="block text-gold-dark">i okolicach do 100 km</span>
           </h1>
           <p className="max-w-[560px] [font-family:Inter,ui-sans-serif,system-ui,sans-serif] text-[16px] leading-[24px] text-[#333333] lg:max-w-[700px]">
-            <span className="block">Bezpłatny pomiar, uczciwa wycena i montaż bez kurzu.</span>
-            <span className="block">Większość realizacji wykonujemy w ciągu 1 dnia.</span>
+            {homeContent.lead}
           </p>
 
           <div className="grid max-w-[560px] grid-cols-2 gap-4 [font-family:Inter,ui-sans-serif,system-ui,sans-serif] text-[12px] font-semibold leading-[16px] sm:grid-cols-4 lg:max-w-[940px] lg:gap-x-8">
-            {heroFeatures.map(({ lines, imageSrc }) => (
-              <div key={lines.join(" ")} className="flex items-center gap-3">
+            {heroFeatures.map(({ label, imageSrc }) => (
+              <div key={label} className="flex items-center gap-3">
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-gold/30 bg-white text-gold-dark">
                   <img
                     className="h-8 w-8 object-contain"
@@ -84,11 +92,7 @@ export function HeroSection() {
                   />
                 </span>
                 <span className="leading-[16px]">
-                  {lines.map((line) => (
-                    <span key={line} className="block lg:whitespace-nowrap">
-                      {line}
-                    </span>
-                  ))}
+                  {label}
                 </span>
               </div>
             ))}
@@ -98,7 +102,7 @@ export function HeroSection() {
             <CtaButtons />
             <p className="flex items-center gap-2 [font-family:Inter,ui-sans-serif,system-ui,sans-serif] text-[12px] font-semibold leading-none text-[#B47A3C]">
               <Clock3 size={16} className="text-[#B47A3C]" aria-hidden="true" />
-              Oddzwonimy w ciągu 15 minut.
+              {homeContent.microcopy}
             </p>
           </div>
         </div>

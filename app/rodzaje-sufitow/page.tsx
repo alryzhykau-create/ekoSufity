@@ -8,29 +8,20 @@ import { CTASection } from "@/components/sections/CTASection";
 import { FAQSection, type FAQItem } from "@/components/sections/FAQSection";
 import { Footer } from "@/components/sections/Footer";
 import { ceilingTypes } from "@/lib/ceilingTypes";
-import { getFAQItemsByCategory } from "@/lib/faq";
+import { getStaticPageContent, mapContentFAQItems } from "@/lib/content";
 import { createPageMetadata } from "@/lib/metadata";
 import { ArrowRight, Check, Home, Lightbulb, MessageCircle, Store, WalletCards } from "lucide-react";
 
+const pageContent = getStaticPageContent("/rodzaje-sufitow");
+
 export const metadata = createPageMetadata({
-  title: "Rodzaje sufitów napinanych | Matowe, satynowe, błyszczące, LED | EkoSufity",
-  description:
-    "Poznaj rodzaje sufitów napinanych: matowe, satynowe, błyszczące, z oświetleniem, z nadrukiem, translucent, wielopoziomowe i z ukrytym karniszem.",
-  path: "/rodzaje-sufitow",
+  title: pageContent.seoTitle,
+  description: pageContent.seoDescription,
+  path: pageContent.path,
 });
 
 const faqItems: FAQItem[] = [
-  ...getFAQItemsByCategory("rodzaje-sufitow"),
-  {
-    question: "Który sufit napinany jest najbardziej uniwersalny?",
-    answer:
-      "Najbardziej uniwersalny jest sufit matowy. Pasuje do większości mieszkań i domów, nie odbija mocno światła i wygląda spokojnie.",
-  },
-  {
-    question: "Czy rodzaj sufitu wpływa na cenę?",
-    answer:
-      "Tak. Proste sufity matowe zwykle są tańsze niż sufity translucent, z nadrukiem, gwiaździste niebo lub konstrukcje wielopoziomowe.",
-  },
+  ...mapContentFAQItems(pageContent.faq),
 ];
 
 const comparisonRows = [
@@ -65,21 +56,19 @@ export default function CeilingTypesPage() {
     <>
       <Header />
       <main className="overflow-hidden pb-24 md:pb-0">
-        <PageBreadcrumbs current="Rodzaje sufitów" />
+        <PageBreadcrumbs current="Rodzaje sufitów" href="/rodzaje-sufitow" />
 
         <section className="pb-14 pt-10">
           <div className="mx-auto grid max-w-7xl gap-8 px-5 lg:grid-cols-[1fr_0.85fr] lg:items-center lg:px-8">
             <div>
               <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-gold-dark">
-                Rodzaje sufitów
+                {pageContent.eyebrow}
               </p>
               <h1 className="mt-4 text-4xl font-extrabold leading-tight text-ink md:text-6xl">
-                Rodzaje sufitów napinanych
+                {pageContent.h1}
               </h1>
               <p className="mt-6 max-w-3xl text-lg leading-8 text-muted">
-                Sufit napinany można dopasować do stylu wnętrza, oświetlenia i efektu,
-                jaki chcesz uzyskać. Zobacz najpopularniejsze rodzaje sufitów i wybierz
-                rozwiązanie do mieszkania, domu lub lokalu usługowego.
+                {pageContent.lead}
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a className="inline-flex h-12 items-center justify-center rounded-lg bg-charcoal px-6 text-base font-medium leading-none text-white transition hover:bg-black" href="/ceny">

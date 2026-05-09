@@ -13,6 +13,7 @@ export type SolutionItem = {
   applications: string[];
   benefits: string[];
   planning: string[];
+  priceLabel: string;
   image: string;
   related: string[];
   seoTitle: string;
@@ -43,28 +44,29 @@ export const solutionItems: SolutionItem[] = [
     h1: "Oświetlenie do sufitów napinanych",
     shortDescription: "LED, punkty, szyny i podświetlenie zaplanowane razem z sufitem.",
     description:
-      "Oświetlenie w suficie napinanym warto zaplanować przed montażem. Dzięki temu linie LED, punkty, taśmy, szyny magnetyczne i podświetlenie obwodowe tworzą spójny układ.",
+      "Oświetlenie w suficie napinanym trzeba zaplanować przed montażem membrany. Dzięki temu linie LED, taśmy LED, punkty świetlne, szyny magnetyczne, oprawy wpuszczane i podświetlenie obwodowe tworzą spójny, serwisowalny układ.",
     applications: ["salon", "kuchnia", "łazienka", "korytarz", "lokal usługowy"],
-    benefits: ["spójny projekt światła", "czysty montaż", "praktyczne strefy", "nowoczesny efekt"],
-    planning: ["zasilanie", "barwa i moc światła", "sterowanie", "dostęp do zasilaczy"],
+    benefits: ["spójny projekt światła", "czysty montaż", "praktyczne strefy", "nowoczesny efekt", "łatwiejszy serwis"],
+    planning: ["zasilanie", "barwa i moc światła", "sterowanie", "dostęp do zasilaczy", "kolizje z wentylacją i konstrukcją"],
+    priceLabel: "wycena indywidualna",
     image: `https://images.unsplash.com/photo-1618220179428-22790b461013?${imageBase}`,
     related: ["profile", "poziomy-i-konstrukcje", "luki-rewizyjne"],
     seoTitle: "Oświetlenie do sufitów napinanych Wrocław | EkoSufity",
     seoDescription:
-      "Oświetlenie w sufitach napinanych: linie LED, taśmy LED, punkty świetlne, szyny magnetyczne i podświetlenie obwodowe.",
+      "Oświetlenie w sufitach napinanych: linie LED, taśmy LED, punkty świetlne, szyny magnetyczne, oprawy wpuszczane i podświetlenie obwodowe.",
     ctaText: "Zapytaj o oświetlenie",
     detailSections: [
       {
         eyebrow: "Opis rozwiązania",
         title: "Jak działa oświetlenie w suficie napinanym?",
         description:
-          "Źródła światła, profile i zasilacze planujemy przed naciągnięciem membrany. Pozwala to uniknąć przypadkowych przewodów i uzyskać czysty efekt.",
+          "Źródła światła, profile, przewody i zasilacze planujemy przed naciągnięciem membrany. Pozwala to uniknąć przypadkowych przewodów, kolizji z oprawami i problemów z dostępem po montażu.",
       },
       {
         eyebrow: "Co trzeba zaplanować",
         title: "Elektryka, sterowanie i dostęp serwisowy",
         description:
-          "Przed montażem warto ustalić liczbę punktów, przebieg linii LED, barwę światła, sposób sterowania oraz dostęp do zasilaczy.",
+          "Przed montażem warto ustalić liczbę punktów, przebieg linii LED, barwę światła, sposób sterowania, miejsce zasilaczy oraz luk rewizyjny albo inny dostęp serwisowy.",
       },
     ],
     faq: [
@@ -75,6 +77,10 @@ export const solutionItems: SolutionItem[] = [
       {
         question: "Czy można połączyć kilka typów światła?",
         answer: "Tak. Często łączymy linie LED, punkty i podświetlenie obwodowe.",
+      },
+      {
+        question: "Czy zasilacze LED muszą być dostępne?",
+        answer: "Tak. Zasilacze i sterowniki powinny mieć dostęp serwisowy, dlatego planujemy je przed montażem sufitu.",
       },
     ],
     items: lightingItems.map((item) => ({
@@ -88,22 +94,23 @@ export const solutionItems: SolutionItem[] = [
     h1: "Profile i połączenia do sufitów napinanych",
     shortDescription: "Profile ścienne, sufitowe, LED, cieniowe i przejścia między materiałami.",
     description:
-      "Profile decydują o sposobie montażu, krawędziach, połączeniach ze ścianą, cieniach, LED i detalach przy płytkach, szafach oraz karniszach.",
-    applications: ["każdy sufit napinany", "wnęki", "karnisze", "linie LED", "połączenia z zabudową"],
-    benefits: ["stabilny montaż", "estetyczne krawędzie", "możliwość efektów LED", "dopasowanie do wnętrza"],
-    planning: ["rodzaj ścian", "wysokość sufitu", "miejsca LED", "połączenia z meblami i zabudową"],
+      "Profile decydują o sposobie montażu, krawędziach i połączeniach sufitu ze ścianą, szafami, płytkami, wnękami oraz karniszem. Dobieramy profile standardowe, shadow, LED i karniszowe do konkretnego wnętrza.",
+    applications: ["każdy sufit napinany", "wnęki", "ukryte karnisze", "linie LED", "połączenia z zabudową"],
+    benefits: ["stabilny montaż", "estetyczne krawędzie", "możliwość efektów LED", "czyste połączenia z zabudową", "dopasowanie do wnętrza"],
+    planning: ["rodzaj ścian", "wysokość sufitu", "miejsca LED", "połączenia z meblami i zabudową", "płytki, wnęki i okna"],
+    priceLabel: "zależnie od typu profilu i długości",
     image: `https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?${imageBase}`,
     related: ["oswietlenie", "poziomy-i-konstrukcje", "luki-rewizyjne"],
     seoTitle: "Profile do sufitów napinanych | Połączenia, cienie, LED | EkoSufity",
     seoDescription:
-      "Zobacz profile i połączenia do sufitów napinanych: profile ścienne, sufitowe, szczelinowe, cieniowe, LED, ukryte karnisze i przejścia między poziomami.",
+      "Profile do sufitów napinanych: standardowe, shadow, LED, do ukrytego karnisza oraz połączenia przy ścianach, szafach, płytkach i wnękach.",
     ctaText: "Zapytaj o profile",
     detailSections: [
       {
         eyebrow: "Dlaczego profile są ważne",
         title: "Profil decyduje o krawędzi i trwałości sufitu",
         description:
-          "Dobór profilu wpływa na wysokość montażu, estetykę przy ścianie, możliwość wykonania cienia, LED, ukrytego karnisza i połączeń z zabudową.",
+          "Dobór profilu wpływa na wysokość montażu, estetykę przy ścianie, możliwość wykonania cienia, linii LED, ukrytego karnisza i połączeń z zabudową.",
       },
       {
         eyebrow: "Rodzaje połączeń",
@@ -133,6 +140,10 @@ export const solutionItems: SolutionItem[] = [
         question: "Czy profile wpływają na cenę?",
         answer: "Tak. Profile specjalne, cieniowe, LED i elementy pod kilka poziomów są droższe niż standardowe rozwiązania.",
       },
+      {
+        question: "Czy profil można dobrać przy szafie lub płytkach?",
+        answer: "Tak. Takie połączenia trzeba jednak przewidzieć przed montażem, żeby krawędź była stabilna i estetyczna.",
+      },
     ],
     items: profileItems,
     extraItems: profileConnectionItems,
@@ -143,15 +154,16 @@ export const solutionItems: SolutionItem[] = [
     h1: "Wentylacja w suficie napinanym",
     shortDescription: "Kratki, ukryta wentylacja i dostęp do kanałów wentylacyjnych.",
     description:
-      "Wentylację w suficie napinanym można wykonać estetycznie, jeśli kratki, kanały i kolizje ze światłem zostaną zaplanowane przed montażem.",
+      "Wentylację w suficie napinanym można wykonać estetycznie, jeśli kratki, kanały, przepływ powietrza i kolizje ze światłem zostaną zaplanowane przed montażem. Szczególnie ważne jest to w łazienkach i kuchniach.",
     applications: ["łazienka", "kuchnia", "pomieszczenia techniczne", "lokale usługowe", "biura"],
-    benefits: ["zachowany przepływ powietrza", "estetyczne kratki", "integracja z instalacją", "bez przypadkowych otworów"],
-    planning: ["lokalizację kanałów", "typ kratek", "dostęp serwisowy", "kolizje z oświetleniem"],
+    benefits: ["zachowany przepływ powietrza", "estetyczne kratki", "integracja z instalacją", "bez przypadkowych otworów", "lepsza praca w wilgotnych pomieszczeniach"],
+    planning: ["lokalizację kanałów", "typ kratek", "dostęp serwisowy", "kolizje z oświetleniem", "przepływ powietrza w łazience i kuchni"],
+    priceLabel: "wycena indywidualna",
     image: `https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?${imageBase}`,
     related: ["luki-rewizyjne", "profile", "oswietlenie"],
     seoTitle: "Wentylacja w suficie napinanym | Kratki, ukryta wentylacja | EkoSufity",
     seoDescription:
-      "Zobacz, jak można wykonać wentylację w suficie napinanym: klasyczne kratki, ukryta wentylacja, kratki magnetyczne i dostęp do kanałów wentylacyjnych.",
+      "Wentylacja w suficie napinanym: kratki wentylacyjne, przepływ powietrza, łazienki, kuchnie i estetyczne wkomponowanie wentylacji.",
     ctaText: "Zapytaj o wentylację",
     detailSections: [
       {
@@ -182,6 +194,10 @@ export const solutionItems: SolutionItem[] = [
         question: "Czy wentylację trzeba zgłosić przed wyceną?",
         answer: "Tak. Informacja o kratkach, kanałach i rekuperacji pomaga przygotować realną wycenę oraz uniknąć kolizji z oświetleniem.",
       },
+      {
+        question: "Czy kratka wentylacyjna może wyglądać estetycznie?",
+        answer: "Tak. Dobieramy miejsce i typ kratki tak, aby zachować przepływ powietrza i spokojny wygląd sufitu.",
+      },
     ],
     items: ventilationItems,
   },
@@ -191,15 +207,16 @@ export const solutionItems: SolutionItem[] = [
     h1: "Luki rewizyjne i dostęp techniczny w suficie napinanym",
     shortDescription: "Dostęp do poddasza, wentylacji, elektryki, dachu i zasilaczy LED.",
     description:
-      "Luki rewizyjne i dostęp techniczny wykonujemy po indywidualnym uzgodnieniu projektu i możliwości montażowych. To ważne przy instalacjach ukrytych nad sufitem.",
+      "Luki rewizyjne i dostęp techniczny planujemy wtedy, gdy nad sufitem znajdują się zasilacze LED, sterowniki, wentylacja, instalacje albo wejście na poddasze. To pozwala serwisować elementy bez demontażu całego sufitu.",
     applications: ["poddasze", "zasilacze LED", "wentylacja", "instalacja elektryczna", "dostęp serwisowy"],
-    benefits: ["łatwiejszy serwis", "mniej ryzyka przy awarii", "estetyczny dostęp", "lepsze planowanie instalacji"],
-    planning: ["co musi być dostępne", "rozmiar luku", "miejsce montażu", "sposób maskowania"],
+    benefits: ["łatwiejszy serwis", "mniej ryzyka przy awarii", "estetyczny dostęp", "lepsze planowanie instalacji", "bezpieczny dostęp do zasilaczy"],
+    planning: ["co musi być dostępne", "rozmiar luku", "miejsce montażu", "sposób maskowania", "częstotliwość przyszłego serwisu"],
+    priceLabel: "wycena indywidualna",
     image: `https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?${imageBase}`,
     related: ["oswietlenie", "wentylacja", "profile"],
     seoTitle: "Luki rewizyjne w suficie napinanym | Dostęp techniczny | EkoSufity",
     seoDescription:
-      "Wykonujemy luki rewizyjne i dostęp techniczny w sufitach napinanych: dostęp do poddasza, dachu, wentylacji, instalacji elektrycznej i zasilaczy LED.",
+      "Luki rewizyjne w suficie napinanym: dostęp do zasilaczy LED, instalacji, wentylacji, poddasza i klapy serwisowe planowane przed montażem.",
     ctaText: "Zapytaj o luk rewizyjny",
     detailSections: [
       {
@@ -230,6 +247,10 @@ export const solutionItems: SolutionItem[] = [
         question: "Czy luk rewizyjny będzie widoczny?",
         answer: "Może być dyskretny, ale jego wygląd zależy od miejsca, rozmiaru i funkcji.",
       },
+      {
+        question: "Czy luk rewizyjny można dodać później?",
+        answer: "Najbezpieczniej zaplanować go przed montażem. Późniejsze zmiany są trudniejsze i zależą od konstrukcji sufitu.",
+      },
     ],
     items: revisionHatchItems,
   },
@@ -239,15 +260,16 @@ export const solutionItems: SolutionItem[] = [
     h1: "Poziomy i konstrukcje w sufitach napinanych",
     shortDescription: "Sufity wielopoziomowe, nisze LED, ukryte karnisze i nietypowe obejścia.",
     description:
-      "Konstrukcje pozwalają wykonać sufity jednopoziomowe i wielopoziomowe, przejścia między poziomami, nisze LED, ukryte karnisze oraz obejścia rur i szaf.",
+      "Poziomy i konstrukcje pozwalają wykonać obniżenia, sufity wielopoziomowe, podziały stref, nisze LED, ukryte karnisze oraz obejścia rur i szaf. To rozwiązanie wymaga dokładnego planu technicznego przed montażem.",
     applications: ["salon z kuchnią", "apartament", "lokal usługowy", "wnęki", "ukryte karnisze"],
-    benefits: ["architektoniczny efekt", "podział stref", "ukrycie instalacji", "więcej możliwości oświetlenia"],
-    planning: ["wysokość pomieszczenia", "przebieg instalacji", "konstrukcję pod LED", "połączenia z zabudową"],
+    benefits: ["architektoniczny efekt", "podział stref", "ukrycie instalacji", "więcej możliwości oświetlenia", "czyste połączenie z karniszem i LED"],
+    planning: ["wysokość pomieszczenia", "przebieg instalacji", "konstrukcję pod LED", "połączenia z zabudową", "obniżenia i przejścia między poziomami"],
+    priceLabel: "wycena indywidualna",
     image: `https://images.unsplash.com/photo-1604014237800-1c9102c219da?${imageBase}`,
     related: ["profile", "oswietlenie", "luki-rewizyjne"],
     seoTitle: "Sufity napinane wielopoziomowe | Konstrukcje i nisze LED | EkoSufity",
     seoDescription:
-      "Zobacz możliwości sufitów napinanych: sufity wielopoziomowe, przejścia między poziomami, nisze LED, ukryte karnisze, obejścia rur i nietypowe konstrukcje.",
+      "Poziomy i konstrukcje w sufitach napinanych: sufity wielopoziomowe, obniżenia, podziały stref, LED i ukryty karnisz.",
     ctaText: "Zapytaj o konstrukcję",
     detailSections: [
       {
@@ -283,6 +305,10 @@ export const solutionItems: SolutionItem[] = [
       {
         question: "Czy można ukryć karnisz w konstrukcji?",
         answer: "Tak. Wnęka pod karnisz to jedno z popularnych rozwiązań przy sufitach napinanych.",
+      },
+      {
+        question: "Czy konstrukcję można połączyć z LED?",
+        answer: "Tak. Linie LED, taśmy i podświetlenie obwodowe często planuje się razem z poziomami sufitu.",
       },
     ],
     items: constructionItems,

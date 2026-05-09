@@ -6,33 +6,21 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { CTASection } from "@/components/sections/CTASection";
 import { FAQSection, type FAQItem } from "@/components/sections/FAQSection";
 import { Footer } from "@/components/sections/Footer";
+import { getStaticPageContent, mapContentFAQItems } from "@/lib/content";
 import { galleryProjects } from "@/lib/gallery";
 import { createPageMetadata } from "@/lib/metadata";
 import { BadgeCheck, Images, Sparkles } from "lucide-react";
 
+const pageContent = getStaticPageContent("/realizacje");
+
 export const metadata = createPageMetadata({
-  title: "Realizacje sufitów napinanych | EkoSufity",
-  description:
-    "Zobacz przykładowe realizacje sufitów napinanych: sufity matowe, satynowe, błyszczące, z LED, szynami magnetycznymi i podświetleniem.",
-  path: "/realizacje",
+  title: pageContent.seoTitle,
+  description: pageContent.seoDescription,
+  path: pageContent.path,
 });
 
 const faqItems: FAQItem[] = [
-  {
-    question: "Czy realizacje pokazują dokładną cenę?",
-    answer:
-      "Nie. Zdjęcia i opisy są orientacyjne, a dokładna cena zależy od metrażu, profili, oświetlenia, liczby pomieszczeń i lokalizacji.",
-  },
-  {
-    question: "Czy można wykonać podobny sufit u mnie?",
-    answer:
-      "Tak, ale najpierw sprawdzamy wymiary, ściany, instalacje i możliwości montażu. Na tej podstawie dobieramy podobne rozwiązanie do konkretnego wnętrza.",
-  },
-  {
-    question: "Czy macie realizacje z oświetleniem LED?",
-    answer:
-      "Tak. Wykonujemy linie LED, punkty świetlne, taśmy LED, szyny magnetyczne i podświetlenie obwodowe.",
-  },
+  ...mapContentFAQItems(pageContent.faq),
 ];
 
 export default function RealizationsPage() {
@@ -40,19 +28,17 @@ export default function RealizationsPage() {
     <>
       <Header />
       <main className="overflow-hidden pb-24 md:pb-0">
-        <PageBreadcrumbs current="Realizacje" />
+        <PageBreadcrumbs current="Realizacje" href="/realizacje" />
 
         <section className="pb-12 pt-10">
           <div className="mx-auto grid max-w-7xl gap-8 px-5 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:px-8">
             <div>
-              <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-gold-dark">Realizacje</p>
+              <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-gold-dark">{pageContent.eyebrow}</p>
               <h1 className="mt-4 text-4xl font-extrabold leading-tight text-ink md:text-6xl">
-                Realizacje sufitów napinanych
+                {pageContent.h1}
               </h1>
               <p className="mt-5 max-w-2xl text-base leading-8 text-muted md:text-lg">
-                Zobacz przykłady wykończeń, które najczęściej wybierają klienci:
-                matowe powierzchnie, sufity z LED, ukryte karnisze, szyny magnetyczne
-                i rozwiązania do łazienek, kuchni oraz salonów.
+                {pageContent.lead}
               </p>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                 <a
@@ -91,7 +77,7 @@ export default function RealizationsPage() {
             <SectionHeading
               eyebrow="Galeria"
               title="Przykładowe montaże i układy oświetlenia"
-              description="Użyj filtrów, aby szybko znaleźć podobny typ sufitu, rodzaj światła albo pomieszczenie."
+              description="Użyj filtrów, aby szybko znaleźć podobny typ sufitu, rodzaj światła albo pomieszczenie. Część zdjęć traktujemy jako inspiracje, dopóki nie zostaną potwierdzone jako rzeczywiste realizacje EkoSufity."
             />
             <div className="mt-10">
               <GalleryGrid projects={galleryProjects} showFilters />

@@ -45,7 +45,7 @@ export function LocalBusinessJsonLd() {
         url: siteConfig.url,
         telephone: siteConfig.phone,
         email: siteConfig.email,
-        priceRange: "od 120 zł/m²",
+        priceRange: siteConfig.priceRange,
         address: {
           "@type": "PostalAddress",
           streetAddress: siteConfig.streetAddress,
@@ -53,6 +53,22 @@ export function LocalBusinessJsonLd() {
           addressLocality: siteConfig.city,
           addressCountry: siteConfig.country,
         },
+        contactPoint: {
+          "@type": "ContactPoint",
+          telephone: siteConfig.phone,
+          email: siteConfig.email,
+          contactType: "customer service",
+          areaServed: "PL",
+          availableLanguage: ["pl"],
+        },
+        openingHoursSpecification: [
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            opens: "09:00",
+            closes: "20:00",
+          },
+        ],
         areaServed: [
           {
             "@type": "City",
@@ -97,7 +113,7 @@ export function BreadcrumbJsonLd({
 
 export function ServiceJsonLd({
   name = "Montaż sufitów napinanych we Wrocławiu",
-  areaServed = "Wrocław i okolice do 100 km",
+  areaServed = siteConfig.areaServed,
 }: {
   name?: string;
   areaServed?: string;
@@ -109,6 +125,7 @@ export function ServiceJsonLd({
         "@type": "Service",
         "@id": `${siteConfig.url}/#service`,
         name,
+        description: siteConfig.description,
         serviceType: "Sufity napinane",
         areaServed,
         provider: {
@@ -132,61 +149,5 @@ export function ServiceJsonLd({
 }
 
 export function SeoJsonLd() {
-  const serviceSchema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "@id": `${siteConfig.url}/#service`,
-    name: "Montaż sufitów napinanych we Wrocławiu",
-    serviceType: "Sufity napinane",
-    areaServed: "Wrocław i okolice do 100 km",
-    provider: {
-      "@id": `${siteConfig.url}/#business`,
-    },
-    offers: {
-      "@type": "Offer",
-      priceCurrency: "PLN",
-      price: "120",
-      priceSpecification: {
-        "@type": "UnitPriceSpecification",
-        price: "120",
-        priceCurrency: "PLN",
-        unitText: "m²",
-      },
-      availability: "https://schema.org/InStock",
-    },
-  };
-
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: featuredFAQItems.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.answer,
-      },
-    })),
-  };
-
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Strona główna",
-        item: siteConfig.url,
-      },
-    ],
-  };
-
-  return (
-    <>
-      <JsonLd data={serviceSchema} />
-      <JsonLd data={faqSchema} />
-      <JsonLd data={breadcrumbSchema} />
-    </>
-  );
+  return <ServiceJsonLd />;
 }

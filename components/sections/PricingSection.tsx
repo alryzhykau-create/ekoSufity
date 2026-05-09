@@ -3,15 +3,15 @@ import { Bath, Home, LampDesk, Sparkles } from "lucide-react";
 const priceRows = [
   ["Sufit matowy", "od 120 zł/m²"],
   ["Sufit satynowy", "od 140 zł/m²"],
-  ["Sufit z linią LED", "od 170 zł/m²"],
-  ["Sufity niestandardowe", "wycena indywidualna"],
+  ["Sufit błyszczący", "od 150 zł/m²"],
+  ["LED i rozwiązania dodatkowe", "wycena indywidualna"],
 ];
 
 const priceExamples = [
-  { title: "Łazienka 6 m²", price: "od 900 zł", icon: Bath },
-  { title: "Kuchnia 10 m²", price: "od 1400 zł", icon: Home },
-  { title: "Salon 20 m²", price: "od 2600 zł", icon: Sparkles },
-  { title: "Salon z linią LED 20 m²", price: "od 3600 zł", icon: LampDesk },
+  { title: "Łazienka 6 m²", price: "od 1200 zł", icon: Bath },
+  { title: "Kuchnia 10 m²", price: "od 1600 zł", icon: Home },
+  { title: "Salon 22 m²", price: "od 4200 zł", icon: Sparkles },
+  { title: "Mieszkanie 45 m² z LED", price: "od 7600 zł", icon: LampDesk },
 ];
 
 export function PricingSection() {
@@ -36,7 +36,7 @@ export function PricingSection() {
             </div>
             <p className="mt-5 max-w-[460px] text-[15px] leading-7 text-muted">
               Dokładna cena zależy od metrażu, liczby narożników, oświetlenia i rodzaju
-              profilu.
+              profilu. Kalkulator pokazuje orientacyjny zakres, a finalną ofertę przygotowujemy po pomiarze.
             </p>
             <a
               className="mt-5 inline-flex h-12 items-center justify-center rounded-lg border border-charcoal/20 bg-white px-6 text-base font-medium leading-none text-ink transition hover:border-gold hover:text-gold-dark"
@@ -77,4 +77,3 @@ export function PricingSection() {
     </section>
   );
 }
-

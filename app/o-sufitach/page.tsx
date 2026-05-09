@@ -9,22 +9,24 @@ import { Footer } from "@/components/sections/Footer";
 import { CeilingTypesSection } from "@/components/sections/CeilingTypesSection";
 import { ComparisonSection } from "@/components/sections/ComparisonSection";
 import { SolutionsSection } from "@/components/sections/SolutionsSection";
+import { getStaticPageContent, mapContentFAQItems } from "@/lib/content";
 import { getFAQItemsByCategory } from "@/lib/faq";
 import { createPageMetadata } from "@/lib/metadata";
 import { Clock3, Layers3, ShieldCheck, Sparkles, Wrench, XCircle } from "lucide-react";
 
+const pageContent = getStaticPageContent("/o-sufitach");
+
 export const metadata = createPageMetadata({
-  title: "O sufitach napinanych",
-  description:
-    "Dowiedz się, czym jest sufit napinany, z czego składa się system, jakie ma zalety, ograniczenia i jak wygląda montaż.",
-  path: "/o-sufitach",
+  title: pageContent.seoTitle,
+  description: pageContent.seoDescription,
+  path: pageContent.path,
 });
 
 const systemParts = [
-  ["Membrana", "Elastyczna powłoka tworząca idealnie równą powierzchnię sufitu."],
-  ["Profile", "Elementy montażowe mocowane przy ścianach lub w konstrukcji."],
-  ["Oświetlenie", "LED, punkty, szyny i oprawy dopasowane do projektu."],
-  ["Detale techniczne", "Wentylacja, luki rewizyjne i przejścia instalacyjne."],
+  ["Membrana", "Elastyczna powłoka tworząca idealnie równą powierzchnię sufitu. Dostępna w wersji matowej, satynowej, błyszczącej, translucent, perforowanej lub z nadrukiem."],
+  ["Profile", "Elementy montażowe mocowane przy ścianach lub w konstrukcji. Dobór profilu decyduje o wyglądzie krawędzi, wysokości montażu i możliwości zastosowania LED."],
+  ["Oświetlenie", "Linie LED, punkty, taśmy, szyny magnetyczne i oprawy dopasowane do projektu. Światło warto zaplanować przed montażem membrany."],
+  ["Detale techniczne", "Wentylacja, luki rewizyjne, dostęp do zasilaczy, przejścia instalacyjne i rozwiązania przy szafach lub płytkach."],
 ];
 
 const advantages = [
@@ -35,23 +37,23 @@ const advantages = [
 ];
 
 const limitations = [
-  "dokładny pomiar jest konieczny przed produkcją",
-  "elementy instalacyjne trzeba zaplanować przed montażem",
-  "ostre przedmioty mogą uszkodzić membranę",
-  "nietypowe konstrukcje wymagają indywidualnej wyceny",
+  "dokładny pomiar jest konieczny przed produkcją i montażem",
+  "oświetlenie, wentylację, zasilacze i dostęp techniczny trzeba zaplanować wcześniej",
+  "ostre przedmioty mogą uszkodzić membranę, dlatego dalsze prace wymagają ostrożności",
+  "nietypowe konstrukcje, skosy i zabudowy wymagają indywidualnej wyceny",
 ];
 
 const steps = [
   ["Pomiar", "Sprawdzamy wymiary, ściany, narożniki i instalacje."],
-  ["Projekt", "Dobieramy materiał, profile, oświetlenie i detale techniczne."],
-  ["Montaż profili", "Przygotowujemy konstrukcję pod membranę i światło."],
-  ["Naciągnięcie sufitu", "Montujemy powłokę, oprawy i sprawdzamy efekt końcowy."],
+  ["Projekt i dobór materiału", "Dobieramy membranę, profile, oświetlenie i detale techniczne."],
+  ["Montaż profili", "Przygotowujemy konstrukcję pod membranę, światło i instalacje."],
+  ["Naciągnięcie membrany i odbiór", "Montujemy powłokę, oprawy i sprawdzamy efekt końcowy."],
 ];
 
 const aboutFaq: FAQItem[] = [
+  ...mapContentFAQItems(pageContent.faq),
   ...getFAQItemsByCategory("rodzaje-sufitow").slice(0, 2),
-  ...getFAQItemsByCategory("montaz").slice(0, 3),
-  ...getFAQItemsByCategory("oswietlenie").slice(0, 1),
+  ...getFAQItemsByCategory("montaz").slice(0, 2),
 ];
 
 export default function AboutCeilingsPage() {
@@ -59,21 +61,19 @@ export default function AboutCeilingsPage() {
     <>
       <Header />
       <main className="overflow-hidden pb-24 md:pb-0">
-        <PageBreadcrumbs current="O sufitach" />
+        <PageBreadcrumbs current="O sufitach" href="/o-sufitach" />
 
         <section className="pb-12 pt-10">
           <div className="mx-auto grid max-w-7xl gap-8 px-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:px-8">
             <div>
               <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-gold-dark">
-                O sufitach napinanych
+                {pageContent.eyebrow}
               </p>
               <h1 className="mt-4 text-4xl font-extrabold leading-tight text-ink md:text-6xl">
-                Co to jest sufit napinany?
+                {pageContent.h1}
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">
-                To lekki system wykończenia sufitu, w którym specjalna membrana jest naciągana
-                na profile. Pozwala szybko uzyskać równą powierzchnię, ukryć instalacje i
-                zaplanować nowoczesne oświetlenie.
+                {pageContent.lead}
               </p>
             </div>
             <div className="rounded-lg bg-white p-6 shadow-card md:p-8">

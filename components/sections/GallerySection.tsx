@@ -36,14 +36,14 @@ export function GallerySection() {
             <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-gold-dark">
               Portfolio
             </p>
-            <h2 className="mt-4 text-3xl font-extrabold md:text-5xl">Nasze realizacje</h2>
+            <h2 className="mt-4 text-3xl font-extrabold md:text-5xl">Przykładowe realizacje i inspiracje</h2>
           </div>
           <a
             className="inline-flex h-12 items-center gap-2 rounded-lg px-4 text-base font-medium leading-none text-gold-dark transition hover:text-ink"
             href="/realizacje"
-            aria-label="Zobacz więcej realizacji"
+            aria-label="Zobacz więcej przykładów realizacji"
           >
-            Zobacz więcej realizacji
+            Zobacz więcej przykładów
             <ArrowRight size={18} aria-hidden="true" />
           </a>
         </div>
@@ -62,7 +62,7 @@ export function GallerySection() {
               <div className="p-5">
                 <h3 className="font-extrabold">{project.location}</h3>
                 <p className="mt-2 text-muted">{project.title}</p>
-                <p className="mt-2 text-sm font-bold">{project.meta}</p>
+                <p className="mt-2 text-sm font-bold">Przykładowy efekt | {project.meta}</p>
               </div>
             </article>
           ))}
