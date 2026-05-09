@@ -8,17 +8,18 @@ import { Footer } from "@/components/sections/Footer";
 import { ceilingTypes, getCeilingTypeBySlug } from "@/lib/ceilingTypes";
 
 type CeilingTypePageProps = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 export function generateStaticParams() {
   return ceilingTypes.map((type) => ({ slug: type.slug }));
 }
 
-export function generateMetadata({ params }: CeilingTypePageProps): Metadata {
-  const type = getCeilingTypeBySlug(params.slug);
+export async function generateMetadata({ params }: CeilingTypePageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const type = getCeilingTypeBySlug(slug);
 
   if (!type) {
     return {};
@@ -38,8 +39,9 @@ export function generateMetadata({ params }: CeilingTypePageProps): Metadata {
   };
 }
 
-export default function CeilingTypePage({ params }: CeilingTypePageProps) {
-  const type = getCeilingTypeBySlug(params.slug);
+export default async function CeilingTypePage({ params }: CeilingTypePageProps) {
+  const { slug } = await params;
+  const type = getCeilingTypeBySlug(slug);
 
   if (!type) {
     notFound();

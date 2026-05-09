@@ -7,17 +7,18 @@ import { Footer } from "@/components/sections/Footer";
 import { getLocationBySlug, locations } from "@/lib/locations";
 
 type LocationPageProps = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 export function generateStaticParams() {
   return locations.map((location) => ({ slug: location.slug }));
 }
 
-export function generateMetadata({ params }: LocationPageProps): Metadata {
-  const location = getLocationBySlug(params.slug);
+export async function generateMetadata({ params }: LocationPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const location = getLocationBySlug(slug);
 
   if (!location) {
     return {};
@@ -36,8 +37,9 @@ export function generateMetadata({ params }: LocationPageProps): Metadata {
   };
 }
 
-export default function LocationPage({ params }: LocationPageProps) {
-  const location = getLocationBySlug(params.slug);
+export default async function LocationPage({ params }: LocationPageProps) {
+  const { slug } = await params;
+  const location = getLocationBySlug(slug);
 
   if (!location) {
     notFound();

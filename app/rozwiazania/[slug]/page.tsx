@@ -19,9 +19,9 @@ import { getRelatedSolutions, getSolutionBySlug, solutionItems } from "@/lib/sol
 import { ArrowRight, BadgeCheck, Check, MessageCircle, PanelsTopLeft } from "lucide-react";
 
 type SolutionPageProps = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 const faqCategoryBySlug: Record<string, string> = {
@@ -45,8 +45,9 @@ export function generateStaticParams() {
     .map((solution) => ({ slug: solution.slug }));
 }
 
-export function generateMetadata({ params }: SolutionPageProps): Metadata {
-  const solution = getSolutionBySlug(params.slug);
+export async function generateMetadata({ params }: SolutionPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const solution = getSolutionBySlug(slug);
 
   if (!solution) {
     return {};
@@ -66,8 +67,9 @@ export function generateMetadata({ params }: SolutionPageProps): Metadata {
   };
 }
 
-export default function SolutionPage({ params }: SolutionPageProps) {
-  const solution = getSolutionBySlug(params.slug);
+export default async function SolutionPage({ params }: SolutionPageProps) {
+  const { slug } = await params;
+  const solution = getSolutionBySlug(slug);
 
   if (!solution) {
     notFound();

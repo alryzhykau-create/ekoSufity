@@ -8,17 +8,18 @@ import { Footer } from "@/components/sections/Footer";
 import { getLightingBySlug, lightingItems } from "@/lib/lighting";
 
 type LightingPageProps = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 export function generateStaticParams() {
   return lightingItems.map((item) => ({ slug: item.slug }));
 }
 
-export function generateMetadata({ params }: LightingPageProps): Metadata {
-  const item = getLightingBySlug(params.slug);
+export async function generateMetadata({ params }: LightingPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const item = getLightingBySlug(slug);
 
   if (!item) {
     return {};
@@ -38,8 +39,9 @@ export function generateMetadata({ params }: LightingPageProps): Metadata {
   };
 }
 
-export default function LightingPage({ params }: LightingPageProps) {
-  const item = getLightingBySlug(params.slug);
+export default async function LightingPage({ params }: LightingPageProps) {
+  const { slug } = await params;
+  const item = getLightingBySlug(slug);
 
   if (!item) {
     notFound();
