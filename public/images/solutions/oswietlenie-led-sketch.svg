@@ -1,0 +1,26 @@
+<svg width="640" height="390" viewBox="0 0 640 390" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="390" fill="#fff8ef"/>
+  <rect width="640" height="390" fill="url(#warm)"/>
+  <path d="M0 0h640v390H0z" fill="url(#spots)" opacity=".78"/>
+  <path d="M0 44 188 116h452" stroke="#ddcdbb" stroke-width="2"/>
+  <path d="M188 116v194" stroke="#ddcdbb" stroke-width="2"/>
+  <circle cx="260" cy="76" r="16" stroke="#a69889" stroke-width="1.5"/>
+  <circle cx="390" cy="103" r="16" stroke="#a69889" stroke-width="1.5"/>
+  <circle cx="510" cy="126" r="16" stroke="#a69889" stroke-width="1.5"/>
+  <path d="M260 92v62M390 119v70M510 142v82" stroke="#f0d9b8" stroke-width="1.3"/>
+  <path d="M250 154c-22 28-28 60-18 96M382 190c-32 30-44 66-34 108M504 224c-22 24-30 52-24 84" stroke="#f6dfbd" stroke-width="24" stroke-linecap="round" opacity=".62"/>
+  <path d="M72 254h150M72 294h110M72 334h216" stroke="#cfc0af" stroke-width="1.4" stroke-linecap="round"/>
+  <path d="M72 166h124v78H72z" stroke="#94897e" stroke-width="1.5"/>
+  <path d="M424 222c32 34 42 78 30 116M452 238c14 26 18 56 10 88M412 266c26 10 50 12 74 4" stroke="#9a9187" stroke-width="1.4" stroke-linecap="round"/>
+  <defs>
+    <radialGradient id="warm" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(520 46) rotate(143) scale(456 476)">
+      <stop stop-color="#f2dec6" stop-opacity=".75"/>
+      <stop offset="1" stop-color="#fffaf4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="spots" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(390 176) rotate(90) scale(176 288)">
+      <stop stop-color="#ffe7bc"/>
+      <stop offset=".45" stop-color="#fff4e4" stop-opacity=".48"/>
+      <stop offset="1" stop-color="#fff8ef" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>

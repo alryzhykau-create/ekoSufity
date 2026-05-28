@@ -1,0 +1,21 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gold" x1="29" y1="20" x2="99" y2="108" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFE1A8"/>
+      <stop offset="0.44" stop-color="#D89A35"/>
+      <stop offset="1" stop-color="#9E5D12"/>
+    </linearGradient>
+    <linearGradient id="fill" x1="42" y1="28" x2="88" y2="104" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF1D8" stop-opacity="0.23"/>
+      <stop offset="1" stop-color="#C98B3A" stop-opacity="0.03"/>
+    </linearGradient>
+    <filter id="shadow" x="15" y="10" width="98" height="111" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#C98B3A" flood-opacity="0.28"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <path d="M64 20L96 33.2V58.7C96 82.8 82.6 101.7 64 109C45.4 101.7 32 82.8 32 58.7V33.2L64 20Z" fill="url(#fill)" stroke="url(#gold)" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M49 62.5L59.1 72.5L80 50.5" stroke="url(#gold)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
