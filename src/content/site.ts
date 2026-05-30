@@ -32,6 +32,13 @@ export const siteConfig = {
   }
 } as const;
 
+export const socialLinks = [
+  { href: "https://www.instagram.com/ekosufity/", label: "Instagram", iconSrc: "/icon/footer-social/instagram.svg" },
+  { href: "https://www.tiktok.com/@eko_sufity_napinane", label: "TikTok", iconSrc: "/icon/footer-social/tiktok.svg" },
+  { href: "https://www.facebook.com/ekosufity/", label: "Facebook", iconSrc: "/icon/footer-social/facebook.svg" },
+  { href: "https://www.youtube.com/@EkoSufityNapinane", label: "YouTube", iconSrc: "/icon/footer-social/youtube.svg" }
+] as const;
+
 export function whatsappUrl(message?: string) {
   if (!message) {
     return siteConfig.contacts.whatsappHref;

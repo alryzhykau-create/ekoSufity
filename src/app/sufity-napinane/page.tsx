@@ -130,7 +130,8 @@ export default function StretchCeilingsPage() {
       <section className="section">
         <div className="container pricingDeck">
           <article className="card priceTableCard">
-            <SectionHeader eyebrow="Cena" title="Ile kosztuje sufit napinany?" />
+            <span className="eyebrow">Cena</span>
+            <h2 className="priceCardTitle">Ile kosztuje sufit napinany?</h2>
             <p>
               Dla prostego sufitu MSD w prostokątnym pomieszczeniu z 4 narożnikami przyjmujemy
               średnio ok. 120 zł/m² jako punkt odniesienia. Dokładna cena zależy od materiału,

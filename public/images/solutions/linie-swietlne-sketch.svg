@@ -3,7 +3,7 @@
   <rect width="640" height="390" fill="url(#warm)"/>
   <path d="M0 36 240 126h400" stroke="#ddcdbb" stroke-width="2"/>
   <path d="M240 126v196" stroke="#ddcdbb" stroke-width="2"/>
-  <path d="M168 74 418 144 568 74" stroke="#f1a83e" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M168 74 418 144 568 74" stroke="#c9791c" stroke-width="6" stroke-linejoin="round"/>
   <path d="M178 75 418 137 558 76" stroke="#fff6dc" stroke-width="2" stroke-linejoin="round"/>
   <path d="M168 74 418 144 418 214 168 142Z" stroke="#cdbdaa" stroke-width="1.4"/>
   <path d="M418 144 568 74v72l-150 68" stroke="#cdbdaa" stroke-width="1.4"/>

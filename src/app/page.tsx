@@ -8,7 +8,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { homepageFaqs } from "@/content/faqs";
 import { services } from "@/content/services";
-import { siteConfig, whatsappUrl } from "@/content/site";
+import { siteConfig, socialLinks, whatsappUrl } from "@/content/site";
 import { visualAssets } from "@/content/visual-assets";
 import { faqSchema, serviceSchema } from "@/lib/seo/schema";
 
@@ -44,6 +44,13 @@ const trustItems = [
     imageSrc: "/icon/trust-final/swiatlo-klimat.webp"
   }
 ] as const;
+
+const socialChoiceIconSrc = {
+  Instagram: "/icon/footer-social/instagram.svg",
+  TikTok: "/icon/footer-social/tiktok.svg",
+  Facebook: "/icon/footer-social/facebook.svg",
+  YouTube: "/icon/footer-social/youtube.svg"
+} as const;
 
 type TrustIconName = (typeof trustItems)[number]["icon"];
 
@@ -501,7 +508,7 @@ export default function HomePage() {
             </div>
 
             <div className="buttonRow">
-              <Button href={siteConfig.contacts.phoneHref} variant="dark" className="heroPrimaryCta">
+              <Button href={siteConfig.contacts.phoneHref} className="heroPrimaryCta">
                 <CtaIcon name="phone" />
                 Zadzwoń i umów pomiar
               </Button>
@@ -510,6 +517,7 @@ export default function HomePage() {
                   "Dzień dobry, chcę zapytać o sufit napinany. Mogę wysłać zdjęcie i metraż."
                 )}
                 variant="secondary"
+                className="heroWhatsappCta"
               >
                 <CtaIcon name="whatsapp" />
                 Napisz na WhatsApp
@@ -551,7 +559,8 @@ export default function HomePage() {
       <section className="section pricingSection" id="cena">
         <div className="container pricingDeck">
           <article className="card priceTableCard">
-            <SectionHeader eyebrow="Cena" title="Ile kosztuje sufit napinany?" />
+            <span className="eyebrow">Cena</span>
+            <h2 className="priceCardTitle">Ile kosztuje sufit napinany?</h2>
             <div className="priceRows">
               {priceRows.map(([name, value]) => (
                 <div className="priceRow" key={name}>
@@ -573,7 +582,7 @@ export default function HomePage() {
           <aside className="priceExamplesPanel" aria-labelledby="price-examples-title">
             <div className="priceExamplesHeader">
               <span className="priceKicker" id="price-examples-title">
-                Przykładowe realizacje i ceny
+                Opis realizacji i ceny
               </span>
             </div>
             <div className="priceExampleGrid">
@@ -694,7 +703,7 @@ export default function HomePage() {
 
       <section className="section servicesSection">
         <div className="container">
-          <div className="centerHeader servicesHeader">
+          <div className="servicesHeader">
             <span className="eyebrow">Rozwiązania</span>
             <h2 className="sectionTitle">Sufit, światło i detale w jednym projekcie</h2>
             <p className="sectionLead">
@@ -732,21 +741,44 @@ export default function HomePage() {
           </div>
           <div className="servicesCta">
             <div className="servicesCtaIcon" aria-hidden="true">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M16 12.5h-3.2A3.8 3.8 0 0 0 9 16.3v20.4a3.8 3.8 0 0 0 3.8 3.8h18.4a3.8 3.8 0 0 0 3.8-3.8v-4.2" />
-                <path d="M17 10.5h14v6H17z" />
-                <path d="M19 25h9" />
-                <path d="M19 31h6" />
-                <path d="m28.5 31.5 9.4-9.4a3.1 3.1 0 0 1 4.4 4.4l-9.4 9.4-5.4 1 1-5.4Z" />
-              </svg>
+              <Image
+                src="/icon/social-choice/phone-social-illustration.svg"
+                alt=""
+                width={112}
+                height={112}
+                sizes="112px"
+              />
             </div>
-            <div>
-              <h3>Nie wiesz, które rozwiązanie będzie najlepsze?</h3>
-              <p>Pomożemy dobrać idealne rozwiązanie do Twojego wnętrza.</p>
+            <span className="servicesCtaDivider" aria-hidden="true" />
+            <div className="servicesCtaCopy">
+              <h3>Nie wiesz, które rozwiązanie wybrać?</h3>
+              <p>
+                Zobacz nasze realizacje, filmy i porady w social media. Pokażemy, co sprawdza się
+                najlepiej w prawdziwych wnętrzach.
+              </p>
             </div>
-            <Link className="servicesCtaButton" href="/kontakt">
-              Skontaktuj się z nami
-            </Link>
+            <div className="servicesCtaSocial" aria-label="Social media EkoSufity">
+              {socialLinks.map((item) => (
+                <Link
+                  aria-label={`${item.label} EkoSufity`}
+                  className="servicesCtaSocialLink"
+                  href={item.href}
+                  key={item.label}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <Image
+                    className="servicesCtaSocialIcon"
+                    src={socialChoiceIconSrc[item.label]}
+                    alt=""
+                    width={68}
+                    height={68}
+                    sizes="68px"
+                  />
+                  <span>{item.label}</span>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -754,8 +786,8 @@ export default function HomePage() {
       <section className="section ownerSection">
         <div className="container ownerDeck">
           <article className="card ownerBlock">
+            <span className="eyebrow ownerEyebrow">Za EkoSufity stoi konkretna osoba</span>
             <div className="ownerPhoto">
-              <span className="eyebrow">Za EkoSufity stoi konkretna osoba</span>
               <Image
                 src="/images/aleks-ekosufity-v2.webp"
                 alt="Specjalista EkoSufity"
@@ -764,7 +796,7 @@ export default function HomePage() {
                 sizes="(max-width: 700px) 100vw, 180px"
               />
             </div>
-            <div>
+            <div className="ownerCopy">
               <h2 className="sectionTitle">Osobiście odpowiadam za jakość Twojego sufitu</h2>
               <p>{siteConfig.owner.description}</p>
               <p className="softLabel ownerSignature">

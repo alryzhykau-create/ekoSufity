@@ -1,16 +1,16 @@
 <svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="gold" x1="27" y1="22" x2="101" y2="108" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#FFE1A8"/>
-      <stop offset="0.42" stop-color="#D89A35"/>
-      <stop offset="1" stop-color="#9E5D12"/>
+      <stop stop-color="#F2B05C"/>
+      <stop offset="0.42" stop-color="#C9791C"/>
+      <stop offset="1" stop-color="#8F4F0D"/>
     </linearGradient>
     <linearGradient id="fill" x1="36" y1="34" x2="92" y2="96" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#FFF5E6" stop-opacity="0.22"/>
-      <stop offset="1" stop-color="#C98B3A" stop-opacity="0.04"/>
+      <stop stop-color="#F8E1C9" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#C9791C" stop-opacity="0.04"/>
     </linearGradient>
     <filter id="shadow" x="7" y="10" width="114" height="112" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#C98B3A" flood-opacity="0.28"/>
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#C9791C" flood-opacity="0.28"/>
       <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.22"/>
     </filter>
   </defs>

@@ -1,112 +1,116 @@
 import Link from "next/link";
-import { cities } from "@/content/cities";
-import { siteConfig, whatsappUrl } from "@/content/site";
-import { services } from "@/content/services";
+import { siteConfig, socialLinks } from "@/content/site";
 
-const majorCitySlugs = [
-  "wroclaw",
-  "olawa",
-  "olesnica",
-  "swidnica",
-  "legnica",
-  "walbrzych",
-  "lubin",
-  "glogow",
-  "jelenia-gora",
-  "brzeg"
+const offerLinks = [
+  { href: "/", label: "Strona główna" },
+  { href: "/sufity-napinane", label: "Oferta" },
+  { href: "/realizacje", label: "Realizacje" },
+  { href: siteConfig.contacts.googleBusinessProfileHref, label: "Opinie", external: true },
+  { href: "/kontakt", label: "Kontakt" }
 ];
 
-export function Footer() {
-  const footerCities = cities.filter((city) => majorCitySlugs.includes(city.slug));
-  const clientLinks = [
-    { href: "/ceny", label: "Ceny" },
-    { href: "/realizacje", label: "Realizacje" },
-    { href: "/faq", label: "FAQ" },
-    { href: "/kontakt", label: "Kontakt" },
-    { href: "/polityka-prywatnosci", label: "Polityka prywatności" }
-  ];
+const serviceLinks = [
+  { href: "/rozwiazania/sufity-napinane", label: "Sufity napinane" },
+  { href: "/rozwiazania/oswietlenie-led", label: "Sufity podświetlane LED" },
+  { href: "/sufity-napinane", label: "Sufity matowe" },
+  { href: "/sufity-napinane", label: "Sufity błyszczące" },
+  { href: "/sufity-napinane", label: "Sufity z nadrukiem" }
+];
 
+const footerSocialOrder = ["Facebook", "Instagram", "TikTok", "YouTube"] as const;
+const footerSocialLinks = footerSocialOrder
+  .map((label) => socialLinks.find((item) => item.label === label))
+  .filter((item): item is (typeof socialLinks)[number] => Boolean(item));
+
+export function Footer() {
   return (
     <footer className="footer">
       <div className="container footerShell">
-        <div className="footerContactStrip" aria-label="Szybki kontakt">
-          <Link className="footerContactItem" href={siteConfig.contacts.phoneHref}>
-            <span aria-hidden="true">Tel</span>
-            <strong>{siteConfig.contacts.phoneDisplay}</strong>
-          </Link>
-          <Link className="footerContactItem" href={whatsappUrl()}>
-            <span aria-hidden="true">WA</span>
-            <strong>WhatsApp</strong>
-          </Link>
-          <Link className="footerContactItem" href={`mailto:${siteConfig.contacts.email}`}>
-            <span aria-hidden="true">@</span>
-            <strong>{siteConfig.contacts.email}</strong>
-          </Link>
-        </div>
-
-        <div className="footerDirectory">
+        <div className="footerPanel">
           <div className="footerBrandColumn">
-            <Link className="brand" href="/">
-              <span className="brandName">ekoSufity</span>
-              <span className="brandSub">Sufity napinane</span>
+            <Link className="footerBrand" href="/">
+              <span className="footerBrandName">
+                ek<span>o</span>Sufity
+              </span>
+              <span className="footerBrandSub">Napinane</span>
             </Link>
             <p className="footerMuted">
-              Sufity napinane we Wrocławiu i okolicy do 100 km. Telefon i WhatsApp jako
-              najszybszy kontakt.
+              Nowoczesne sufity napinane dopasowane do Twojego wnętrza. Działamy we Wrocławiu i
+              okolicach.
             </p>
           </div>
 
-          <div>
-            <h3>Rozwiązania</h3>
-            <p className="footerMuted">
-              {services.map((service) => (
-                <span key={service.href}>
-                  <Link href={service.href}>{service.title}</Link>
-                  <br />
-                </span>
+          <nav className="footerColumn" aria-label="Nawigacja w stopce">
+            <h3>Nawigacja</h3>
+            <ul>
+              {offerLinks.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    target={item.external ? "_blank" : undefined}
+                    rel={item.external ? "noopener noreferrer" : undefined}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
               ))}
-            </p>
-          </div>
+            </ul>
+          </nav>
 
-          <div>
-            <h3>Dla klienta</h3>
-            <p className="footerMuted">
-              {clientLinks.map((item) => (
-                <span key={item.href}>
+          <nav className="footerColumn" aria-label="Usługi">
+            <h3>Usługi</h3>
+            <ul>
+              {serviceLinks.map((item) => (
+                <li key={`${item.href}-${item.label}`}>
                   <Link href={item.href}>{item.label}</Link>
-                  <br />
-                </span>
+                </li>
               ))}
-            </p>
-          </div>
+            </ul>
+          </nav>
 
-          <div>
-            <h3>Duże miasta</h3>
-            <p className="footerMuted">
-              {footerCities.map((city) => (
-                <span key={city.slug}>
-                  <Link href={`/lokalizacje/${city.slug}`}>{city.name}</Link>
-                  <br />
-                </span>
+          <address className="footerColumn footerContactColumn">
+            <h3>Kontakt</h3>
+            <Link href={siteConfig.contacts.phoneHref}>
+              <span aria-hidden="true">☎</span>
+              {siteConfig.contacts.phoneDisplay}
+            </Link>
+            <Link href={`mailto:${siteConfig.contacts.email}`}>
+              <span aria-hidden="true">@</span>
+              {siteConfig.contacts.email}
+            </Link>
+            <span className="footerContactText">
+              <span aria-hidden="true">⌖</span>
+              Wrocław i okolice
+            </span>
+            <span className="footerContactNote">Do 100 km dojazd gratis</span>
+          </address>
+
+          <div className="footerColumn footerSocialColumn">
+            <div className="footerSocialList">
+              {footerSocialLinks.map((item) => (
+                <Link
+                  key={item.href}
+                  className="footerSocialLink"
+                  href={item.href}
+                  aria-label={`${item.label} ekoSufity`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="footerSocialIcon" aria-hidden="true">
+                    <img src={item.iconSrc} alt="" />
+                  </span>
+                  <span>{item.label}</span>
+                </Link>
               ))}
-            </p>
+            </div>
           </div>
 
-          <div>
-            <h3>Informacje</h3>
-            <p className="footerMuted">
-              Pracujemy 9:00-20:00.
-              <br />
-              Pomiar i dojazd do 100 km od Wrocławia.
-              <br />
-              NIP/REGON: do uzupełnienia przed publikacją.
-            </p>
+          <div className="footerBottom">
+            <span>© 2025 ekoSufity. Wszystkie prawa zastrzeżone.</span>
+            <div className="footerLegalLinks">
+              <Link href="/polityka-prywatnosci">Polityka prywatności</Link>
+            </div>
           </div>
-        </div>
-
-        <div className="footerBottom">
-          <span>© {new Date().getFullYear()} EkoSufity</span>
-          <Link href="/polityka-prywatnosci">Polityka prywatności</Link>
         </div>
       </div>
     </footer>
