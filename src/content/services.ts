@@ -4,12 +4,12 @@ export const services = [
     title: "Sufity napinane",
     h1: "Sufity napinane z montażem",
     copy:
-      "Montaż sufitów napinanych dowolnej złożoności - od prostych sufitów MSD po projekty z LED i dodatkowymi detalami.",
+      "Montaż sufitów napinanych dowolnej złożoności - od prostych sufitów z LED i dodatkowymi detalami.",
     href: "/rozwiazania/sufity-napinane"
   },
   {
     slug: "oswietlenie-led",
-    title: "Oświetlenie LED",
+    title: "Oświetlenie",
     h1: "Sufity napinane z oświetleniem LED",
     copy: "Linie, punkty i podświetlenia dopasowane do układu pomieszczenia.",
     href: "/rozwiazania/oswietlenie-led"

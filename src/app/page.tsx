@@ -109,22 +109,22 @@ const heroFeatures = [
   {
     label: "Bezpłatny pomiar",
     icon: "shieldBolt",
-    imageSrc: "/icon/hero/bezplatny-pomiar-v2.png"
+    imageSrc: "/icon/hero/hero-bezplatny-pomiar.avif"
   },
   {
     label: "Dojazd do 100 km",
     icon: "mapPin",
-    imageSrc: "/icon/hero/dojazd-100km-v2.png"
+    imageSrc: "/icon/hero/hero-dojazd-100km.avif"
   },
   {
     label: "15 lat gwarancji",
     icon: "tag",
-    imageSrc: "/icon/hero/15-lat-gwarancji-v2.png"
+    imageSrc: "/icon/hero/hero-15-lat-gwarancji.avif"
   },
   {
     label: "Czysty montaż",
     icon: "shield",
-    imageSrc: "/icon/hero/czysty-montaz-v2.png"
+    imageSrc: "/icon/hero/hero-czysty-montaz.avif"
   }
 ] as const;
 
@@ -291,7 +291,7 @@ const segments = [
     badge: "Salon / kuchnia / łazienka",
     title: "Mieszkania",
     copy: "Do salonu, kuchni, łazienki, korytarza i nowych mieszkań po odbiorze.",
-    imageSrc: "/icon/dla-kogo-final/mieszkania.webp",
+    imageSrc: "/icon/dla-kogo-final/mieszkania-v3.avif",
     iconKey: "mieszkania",
     featured: true
   },
@@ -299,7 +299,7 @@ const segments = [
     badge: "Duże przestrzenie",
     title: "Domy",
     copy: "Do większych pomieszczeń, indywidualnych układów i projektów z oświetleniem.",
-    imageSrc: "/icon/dla-kogo-final/domy.webp",
+    imageSrc: "/icon/dla-kogo-final/domy-v3.avif",
     iconKey: "domy",
     featured: false
   },
@@ -307,7 +307,7 @@ const segments = [
     badge: "Bez mokrych prac",
     title: "Remonty",
     copy: "Gdy chcesz wyrównać sufit bez długich mokrych prac i kolejnego malowania.",
-    imageSrc: "/icon/dla-kogo-final/remonty.webp",
+    imageSrc: "/icon/dla-kogo-final/remonty-v3.avif",
     iconKey: "remonty",
     featured: false
   },
@@ -315,7 +315,7 @@ const segments = [
     badge: "Schludny wygląd",
     title: "Lokale komercyjne",
     copy: "Do biur, salonów usługowych i przestrzeni, które muszą wyglądać schludnie.",
-    imageSrc: "/icon/dla-kogo-final/lokale-komercyjne.webp",
+    imageSrc: "/icon/dla-kogo-final/lokale-komercyjne-v3.avif",
     iconKey: "lokale",
     featured: false
   },
@@ -323,7 +323,7 @@ const segments = [
     badge: "Efekt klimatu",
     title: "Restauracje",
     copy: "Do wnętrz, gdzie sufit i światło budują klimat miejsca.",
-    imageSrc: "/icon/dla-kogo-final/restauracje.webp",
+    imageSrc: "/icon/dla-kogo-final/restauracje-v3.avif",
     iconKey: "restauracje",
     featured: false
   },
@@ -331,7 +331,7 @@ const segments = [
     badge: "Odporność na wilgoć",
     title: "Baseny i strefy wilgotne",
     copy: "Do pomieszczeń, w których ważna jest odporność na wilgoć i łatwe utrzymanie.",
-    imageSrc: "/icon/dla-kogo-final/strefy-wilgotne.webp",
+    imageSrc: "/icon/dla-kogo-final/baseny-strefy-wilgotne-v3.avif",
     iconKey: "wilgotne",
     featured: false
   }
@@ -342,31 +342,31 @@ const processSteps = [
     icon: "phone",
     title: "Kontakt",
     copy: "Napisz do nas na WhatsApp lub wyślij zdjęcie i metraż pomieszczenia.",
-    imageSrc: "/icon/proces-premium-gold/kontakt.png"
+    imageSrc: "/icon/proces-premium-gold/proces-kontakt-v2.avif"
   },
   {
     icon: "measure",
     title: "Pomiar",
     copy: "Przyjeżdżamy, mierzymy pomieszczenie, narożniki, oświetlenie i doradzamy.",
-    imageSrc: "/icon/proces-premium-gold/pomiar.png"
+    imageSrc: "/icon/proces-premium-gold/proces-pomiar-v2.avif"
   },
   {
     icon: "estimate",
     title: "Wycena",
     copy: "Podajemy cenę po pomiarze i ustaleniu pełnego zakresu prac.",
-    imageSrc: "/icon/proces-premium-gold/wycena.png"
+    imageSrc: "/icon/proces-premium-gold/proces-wycena-v2.avif"
   },
   {
     icon: "drill",
     title: "Montaż",
     copy: "Wykonujemy montaż sufitu napinanego zgodnie z ustaleniami.",
-    imageSrc: "/icon/proces-premium-gold/montaz.png"
+    imageSrc: "/icon/proces-premium-gold/proces-montaz-v2.avif"
   },
   {
     icon: "shield",
     title: "Odbiór",
     copy: "Sprawdzasz efekt, a my przekazujemy informacje o gwarancji.",
-    imageSrc: "/icon/proces-premium-gold/odbior.png"
+    imageSrc: "/icon/proces-premium-gold/proces-odbior-v2.avif"
   }
 ] as const;
 
@@ -500,7 +500,7 @@ export default function HomePage() {
               {heroFeatures.map((feature) => (
                 <div className="heroFeature" key={feature.label}>
                   <span className="heroFeatureIcon">
-                    <Image src={feature.imageSrc} alt="" width={44} height={44} />
+                    <Image src={feature.imageSrc} alt="" width={60} height={60} />
                   </span>
                   <span>{feature.label}</span>
                 </div>
