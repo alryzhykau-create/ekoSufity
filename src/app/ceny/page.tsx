@@ -143,6 +143,21 @@ export default function PricesPage() {
           </div>
         </div>
       </section>
+
+      <section className="section sectionAlt">
+        <div className="container">
+          <article className="card" style={{ borderColor: "var(--accent)" }}>
+            <SectionHeader
+              eyebrow="Rozwiązania"
+              title="Chcesz poznać warianty — LED, karnisze, rodzaje sufitów?"
+              lead="W rozwiązaniach tłumaczymy plusy, minusy i niuanse każdego wariantu."
+            />
+            <div className="buttonRow" style={{ marginTop: 24 }}>
+              <Button href="/rozwiazania">Zobacz rozwiązania</Button>
+            </div>
+          </article>
+        </div>
+      </section>
     </>
   );
 }

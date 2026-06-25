@@ -556,6 +556,50 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="section">
+        <div className="container">
+          <SectionHeader eyebrow="Od czego zacząć?" title="Wybierz swoją ścieżkę" />
+          <div className="grid2" style={{ marginTop: 34 }}>
+            <article
+              className="card miniCard"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+                background: "var(--accent-soft)",
+                borderColor: "var(--accent)"
+              }}
+            >
+              <span className="audienceBadge" style={{ background: "var(--accent)", color: "var(--black)" }}>
+                Wiem, czego chcę
+              </span>
+              <h3 style={{ marginTop: 14 }}>Sufit napinany — wycena i pomiar</h3>
+              <p>Znasz sufity napinane? Przejdź od razu do cen, realizacji i bezpłatnego pomiaru.</p>
+              <div className="buttonRow" style={{ marginTop: "auto", paddingTop: 18 }}>
+                <Button href="/ceny">Zobacz ceny</Button>
+              </div>
+            </article>
+
+            <article
+              className="card miniCard"
+              style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}
+            >
+              <span className="audienceBadge">Dopiero poznaję temat</span>
+              <h3 style={{ marginTop: 14 }}>Co to jest sufit napinany?</h3>
+              <p>
+                Nie znasz się na sufitach napinanych? Wyjaśnimy, czym są, czym różnią się od
+                karton-gipsu i ile kosztują.
+              </p>
+              <div className="buttonRow" style={{ marginTop: "auto", paddingTop: 18 }}>
+                <Button href="/sufity-napinane" variant="secondary">
+                  Dowiedz się więcej
+                </Button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section className="section pricingSection" id="cena">
         <div className="container pricingDeck">
           <article className="card priceTableCard">
