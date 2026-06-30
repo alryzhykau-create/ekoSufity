@@ -256,31 +256,31 @@ const priceRows = [
   ["Sufit napinany", "od 120 zł/m²"],
   ["Linie świetlne LED", "od 250 zł/mb"],
   ["Ukryty karnisz z LED", "od 300 zł/mb"],
-  ["Punkt oświetlenia", "od 70 zł/szt."]
+  ["Punkt oświetlenia", "od 100 zł/szt."]
 ];
 
 const priceExamples = [
   {
     title: "Łazienka 6 m²",
-    price: "od 1200 zł",
+    price: "od 1800 zł",
     image: "/images/lazienka-6m2-photo.png",
     alt: "Łazienka z sufitem napinanym"
   },
   {
     title: "Kuchnia 10 m²",
-    price: "od 1600 zł",
+    price: "od 3000 zł",
     image: "/images/kuchnia-10m2-photo.png",
     alt: "Kuchnia z sufitem napinanym"
   },
   {
     title: "Salon 22 m²",
-    price: "od 4200 zł",
+    price: "od 7200 zł",
     image: "/images/salon-22m2-photo.png",
     alt: "Salon z sufitem napinanym"
   },
   {
     title: "Mieszkanie 45 m² z LED",
-    price: "od 7600 zł",
+    price: "od 9350 zł",
     image: "/images/mieszkanie-45m2-led-photo.png",
     alt: "Mieszkanie z sufitem napinanym i linią LED"
   }
@@ -642,6 +642,14 @@ export default function HomePage() {
                 </article>
               ))}
             </div>
+            <p className="softLabel">
+              Przykładowe realizacje z oświetleniem i dodatkami. Sam sufit liczony jest od 120
+              zł/m² — sprawdź w{" "}
+              <Link href="/ceny#kalkulator" style={{ color: "var(--accent)" }}>
+                kalkulatorze
+              </Link>
+              .
+            </p>
             <div className="priceExamplesActions">
               <Link className="sectionArrowLink" href="/realizacje">
                 Zobacz więcej realizacji
