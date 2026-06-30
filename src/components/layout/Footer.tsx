@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { cities } from "@/content/cities";
 import { siteConfig, socialLinks } from "@/content/site";
 
 const offerLinks = [
@@ -103,6 +104,43 @@ export function Footer() {
                 </Link>
               ))}
             </div>
+          </div>
+
+          <div
+            className="footerCities"
+            style={{
+              gridColumn: "1 / -1",
+              borderTop: "1px solid var(--footer-divider)",
+              paddingTop: 14
+            }}
+          >
+            <span
+              style={{
+                display: "block",
+                marginBottom: 6,
+                color: "var(--footer-muted)",
+                fontSize: "0.72rem",
+                fontWeight: 600,
+                letterSpacing: "0.02em"
+              }}
+            >
+              Działamy w miastach:
+            </span>
+            <p
+              style={{
+                margin: 0,
+                color: "var(--footer-muted)",
+                fontSize: "0.78rem",
+                lineHeight: 1.7
+              }}
+            >
+              {cities.map((cityItem, index) => (
+                <span key={cityItem.slug}>
+                  {index > 0 ? <span aria-hidden="true"> · </span> : null}
+                  <Link href={`/lokalizacje/${cityItem.slug}`}>{cityItem.name}</Link>
+                </span>
+              ))}
+            </p>
           </div>
 
           <div className="footerBottom">

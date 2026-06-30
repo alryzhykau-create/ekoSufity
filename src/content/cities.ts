@@ -18,11 +18,13 @@ const cityNames = {
   swidnica: "Świdnica",
   legnica: "Legnica",
   walbrzych: "Wałbrzych",
-  lubin: "Lubin",
-  glogow: "Głogów",
-  "jelenia-gora": "Jelenia Góra",
   brzeg: "Brzeg",
-  swiebodzice: "Świebodzice"
+  swiebodzice: "Świebodzice",
+  dzierzoniow: "Dzierżoniów",
+  bielawa: "Bielawa",
+  strzelin: "Strzelin",
+  "sroda-slaska": "Środa Śląska",
+  "katy-wroclawskie": "Kąty Wrocławskie"
 } as const;
 
 function city(slug: keyof typeof cityNames, priority: City["priority"], nearby: string[]): City {
@@ -48,18 +50,20 @@ function city(slug: keyof typeof cityNames, priority: City["priority"], nearby: 
 
 export const cities: City[] = [
   city("wroclaw", "P0", ["olawa", "olesnica", "dlugoleka", "trzebnica"]),
-  city("olawa", "P1", ["wroclaw", "brzeg", "swidnica"]),
+  city("olawa", "P1", ["wroclaw", "brzeg", "strzelin"]),
   city("olesnica", "P1", ["wroclaw", "dlugoleka", "trzebnica"]),
   city("dlugoleka", "P1", ["wroclaw", "olesnica", "trzebnica"]),
   city("trzebnica", "P1", ["wroclaw", "dlugoleka", "olesnica"]),
   city("swidnica", "P1", ["wroclaw", "walbrzych", "swiebodzice"]),
-  city("legnica", "P1", ["wroclaw", "lubin", "glogow"]),
+  city("legnica", "P1", ["wroclaw", "sroda-slaska", "swidnica"]),
   city("walbrzych", "P1", ["swidnica", "swiebodzice", "wroclaw"]),
-  city("lubin", "P2", ["legnica", "glogow", "wroclaw"]),
-  city("glogow", "P2", ["lubin", "legnica", "wroclaw"]),
-  city("jelenia-gora", "P2", ["walbrzych", "swidnica", "wroclaw"]),
   city("brzeg", "P2", ["olawa", "wroclaw", "olesnica"]),
-  city("swiebodzice", "P2", ["swidnica", "walbrzych", "wroclaw"])
+  city("swiebodzice", "P2", ["swidnica", "walbrzych", "wroclaw"]),
+  city("dzierzoniow", "P1", ["bielawa", "swidnica", "walbrzych"]),
+  city("bielawa", "P2", ["dzierzoniow", "swidnica", "walbrzych"]),
+  city("strzelin", "P2", ["olawa", "brzeg", "wroclaw"]),
+  city("sroda-slaska", "P2", ["legnica", "wroclaw", "katy-wroclawskie"]),
+  city("katy-wroclawskie", "P2", ["wroclaw", "sroda-slaska", "swidnica"])
 ];
 
 export function getCity(slug: string) {
