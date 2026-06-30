@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Kalkulator } from "@/components/ceny/Kalkulator";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
@@ -97,36 +98,8 @@ export default function PricesPage() {
       </section>
 
       <section className="section sectionAlt" id="kalkulator">
-        <div className="container pricePanel">
-          <div>
-            <SectionHeader
-              eyebrow="Szybka wycena"
-              title="Chcesz orientacyjnie sprawdzić koszt?"
-              lead="Wyślij na WhatsApp miasto, przybliżony metraż, zdjęcie pomieszczenia i informację, czy planujesz LED."
-            />
-            <p>
-              Na tej podstawie powiemy, co będzie potrzebne do dokładnej wyceny i umówimy bezpłatny
-              pomiar.
-            </p>
-          </div>
-          <div className="card">
-            <h3>Co najlepiej wysłać?</h3>
-            <div className="factorList">
-              {["Miasto", "Przybliżony metraż", "Liczba narożników", "Informacja o LED", "Zdjęcie pomieszczenia"].map(
-                (item) => (
-                  <div className="factor" key={item}>
-                    <span className="check">✓</span>
-                    <span>{item}</span>
-                  </div>
-                )
-              )}
-            </div>
-            <div className="buttonRow" style={{ marginTop: 24 }}>
-              <Button href={whatsappUrl("Dzień dobry, chcę wysłać dane do orientacyjnej wyceny.")}>
-                Wyślij dane na WhatsApp
-              </Button>
-            </div>
-          </div>
+        <div className="container">
+          <Kalkulator />
         </div>
       </section>
 
