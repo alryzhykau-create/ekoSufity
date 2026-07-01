@@ -212,21 +212,6 @@ function CtaIcon({ name }: { name: "phone" | "whatsapp" | "camera" }) {
   );
 }
 
-function ProcessWhatsAppIcon() {
-  return (
-    <svg
-      className="processWhatsAppIcon"
-      viewBox="0 0 48 48"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <path d="M24.1 6.5c-9.2 0-16.6 7-16.6 15.6 0 3 .9 5.8 2.5 8.2L7.9 40.5l10.6-2.7c1.8.7 3.7 1 5.6 1 9.2 0 16.6-7 16.6-15.6S33.3 6.5 24.1 6.5Z" />
-      <path d="M16.5 15.1c.4-.7.8-.8 1.3-.8h1c.4 0 .8.2 1 .7l1.5 3.5c.2.5.1 1-.3 1.4l-1 1c1.2 2.4 3.1 4.3 5.5 5.5l1.1-1c.4-.4.9-.5 1.4-.3l3.3 1.5c.5.2.8.7.8 1.2v1c0 .7-.3 1.2-.9 1.6-1.6 1.2-4.2.9-7.4-.7a20.1 20.1 0 0 1-9.1-9.1c-1.5-3.1-1.8-5.6-.6-7.2Z" />
-    </svg>
-  );
-}
-
 type ServiceSlug = (typeof services)[number]["slug"];
 
 const solutionVisuals = {
@@ -747,7 +732,6 @@ export default function HomePage() {
               )}
             >
               Wyślij zdjęcie na WhatsApp
-              <ProcessWhatsAppIcon />
             </Button>
           </div>
         </div>
