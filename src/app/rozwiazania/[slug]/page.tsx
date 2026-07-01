@@ -16,7 +16,16 @@ type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
-const details = {
+type ServiceDetail = {
+  eyebrow: string;
+  imageIndex: number;
+  options: string[];
+  benefits: string[];
+  optionCards?: { title: string; desc: string }[];
+  benefitCards?: { title: string; desc: string }[];
+};
+
+const details: Record<(typeof services)[number]["slug"], ServiceDetail> = {
   "sufity-napinane": {
     eyebrow: "Sufity napinane",
     imageIndex: 0,
@@ -35,6 +44,42 @@ const details = {
       "światło zaplanowane razem z sufitem",
       "czytelny podział kosztu sufitu i oświetlenia",
       "dobór scenariusza do salonu, kuchni, łazienki lub lokalu"
+    ],
+    optionCards: [
+      {
+        title: "Linie świetlne LED",
+        desc: "Wąskie, równe linie światła wtopione w sufit — proste albo geometryczne. Profil z maskownicą daje czysty efekt bez widocznych opraw."
+      },
+      {
+        title: "Punkty świetlne",
+        desc: "Halogeny, oprawy podtynkowe, lampy i miejsca pod żyrandol. Rozmieszczenie dobieramy pod układ pomieszczenia."
+      },
+      {
+        title: "Podświetlenie obwodowe",
+        desc: "Delikatna poświata po obwodzie sufitu i na ścianę. Wizualnie unosi sufit i buduje nastrój."
+      },
+      {
+        title: "Podświetlenie translucent",
+        desc: "Membrana translucent podświetlona od wewnątrz — cała powierzchnia świeci miękkim, równym światłem, jak świetlny panel na cały sufit."
+      },
+      {
+        title: "Sterowanie i barwa światła",
+        desc: "Regulacja jasności, zmiana barwy (ciepła, neutralna, zimna), efekty RGB i płynne przejścia. Dobieramy zasilacze i sterowanie pod scenariusz oświetlenia."
+      }
+    ],
+    benefitCards: [
+      {
+        title: "Światło zaplanowane razem z sufitem",
+        desc: "Profile, zasilacze i przewody chowamy pod membraną na etapie montażu. Później nie da się tego dołożyć bez demontażu sufitu — dlatego ustalamy wszystko przed pomiarem."
+      },
+      {
+        title: "Jeden wykonawca, spójny efekt",
+        desc: "Sufit i oświetlenie robimy w jednym zakresie. Barwa światła, układ linii i punktów są dopasowane do siebie i do wnętrza."
+      },
+      {
+        title: "Czysty, trwały montaż",
+        desc: "Bez widocznych puszek i przewodów. Na oświetlenie LED dajemy 2 lata gwarancji, na membranę — 15 lat, a na montaż — 5 lat."
+      }
     ]
   },
   "linie-swietlne": {
@@ -57,7 +102,7 @@ const details = {
       "estetyczne połączenie sufitu z detalem wykończeniowym"
     ]
   }
-} satisfies Record<(typeof services)[number]["slug"], { eyebrow: string; imageIndex: number; options: string[]; benefits: string[] }>;
+};
 
 const faqs = [
   {
@@ -120,6 +165,18 @@ export default async function SolutionPage({ params }: PageProps) {
 
   const detail = details[service.slug];
   const image = visualAssets[detail.imageIndex];
+  const optionCards =
+    detail.optionCards ??
+    detail.options.map((option) => ({
+      title: option,
+      desc: "Zakres do omówienia i wyceny po sprawdzeniu pomieszczenia."
+    }));
+  const benefitCards =
+    detail.benefitCards ??
+    detail.benefits.map((benefit) => ({
+      title: benefit,
+      desc: "Ustalamy to przed montażem, żeby końcowy zakres był czytelny."
+    }));
 
   return (
     <>
@@ -179,10 +236,10 @@ export default async function SolutionPage({ params }: PageProps) {
             lead="Na pomiarze doprecyzowujemy wariant, materiał, układ i elementy dodatkowe."
           />
           <div className="grid4 sectionCards">
-            {detail.options.map((option) => (
-              <article className="card miniCard" key={option}>
-                <h3>{option}</h3>
-                <p>Zakres do omówienia i wyceny po sprawdzeniu pomieszczenia.</p>
+            {optionCards.map((card) => (
+              <article className="card miniCard" key={card.title}>
+                <h3>{card.title}</h3>
+                <p>{card.desc}</p>
               </article>
             ))}
           </div>
@@ -220,10 +277,10 @@ export default async function SolutionPage({ params }: PageProps) {
             lead="Dzięki temu unikamy przypadkowych detali i od razu wiemy, co jest bazą, a co dodatkiem."
           />
           <div className="grid3 sectionCards">
-            {detail.benefits.map((benefit) => (
-              <article className="card miniCard" key={benefit}>
-                <h3>{benefit}</h3>
-                <p>Ustalamy to przed montażem, żeby końcowy zakres był czytelny.</p>
+            {benefitCards.map((card) => (
+              <article className="card miniCard" key={card.title}>
+                <h3>{card.title}</h3>
+                <p>{card.desc}</p>
               </article>
             ))}
           </div>
