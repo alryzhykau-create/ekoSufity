@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { RozwiazanieDetail } from "@/components/rozwiazania/RozwiazanieDetail";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { getRozwiazanie, rozwiazania } from "@/content/rozwiazania";
 import { getService, services } from "@/content/services";
 import { siteConfig, whatsappUrl } from "@/content/site";
 import { visualAssets } from "@/content/visual-assets";
@@ -73,11 +75,23 @@ const faqs = [
 ];
 
 export function generateStaticParams() {
-  return services.map((service) => ({ slug: service.slug }));
+  return [
+    ...services.map((service) => ({ slug: service.slug })),
+    ...rozwiazania.map((item) => ({ slug: item.slug }))
+  ];
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
+
+  const rozwiazanie = getRozwiazanie(slug);
+  if (rozwiazanie) {
+    return {
+      title: rozwiazanie.metaTitle,
+      description: rozwiazanie.metaDescription
+    };
+  }
+
   const service = getService(slug);
 
   if (!service) {
@@ -92,6 +106,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function SolutionPage({ params }: PageProps) {
   const { slug } = await params;
+
+  const rozwiazanie = getRozwiazanie(slug);
+  if (rozwiazanie) {
+    return <RozwiazanieDetail rozwiazanie={rozwiazanie} />;
+  }
+
   const service = getService(slug);
 
   if (!service) {

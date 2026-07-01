@@ -791,6 +791,11 @@ export default function HomePage() {
               );
             })}
           </div>
+          <div style={{ marginTop: 24, textAlign: "center" }}>
+            <Link className="sectionArrowLink" href="/rozwiazania">
+              Zobacz wszystkie rozwiązania
+            </Link>
+          </div>
           <div className="servicesCta">
             <div className="servicesCtaIcon" aria-hidden="true">
               <Image

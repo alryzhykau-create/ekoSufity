@@ -5,7 +5,7 @@ import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { services } from "@/content/services";
+import { getSolutionCards } from "@/content/rozwiazania";
 import { siteConfig, whatsappUrl } from "@/content/site";
 import { visualAssets } from "@/content/visual-assets";
 import { breadcrumbSchema, serviceSchema } from "@/lib/seo/schema";
@@ -75,11 +75,11 @@ export default function SolutionsPage() {
             lead="Każda karta prowadzi do osobnej strony z wyjaśnieniem, dla kogo jest dane rozwiązanie, jak wygląda wycena i co ustalamy na pomiarze."
           />
           <div className="grid4 sectionCards servicesGrid">
-            {services.map((service) => (
-              <article className="card serviceCard" key={service.href}>
-                <h3>{service.title}</h3>
-                <p>{service.copy}</p>
-                <Link href={service.href}>Zobacz rozwiązanie</Link>
+            {getSolutionCards().map((card) => (
+              <article className="card serviceCard" key={card.href}>
+                <h3>{card.title}</h3>
+                <p>{card.copy}</p>
+                <Link href={card.href}>Zobacz rozwiązanie</Link>
               </article>
             ))}
           </div>
