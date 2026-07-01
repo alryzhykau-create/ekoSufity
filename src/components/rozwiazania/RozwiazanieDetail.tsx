@@ -4,13 +4,7 @@ import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import {
-  finalCta,
-  getSolutionLink,
-  processSteps,
-  whyEkoSufity,
-  type Rozwiazanie
-} from "@/content/rozwiazania";
+import { finalCta, getSolutionLink, processSteps, type Rozwiazanie } from "@/content/rozwiazania";
 import { siteConfig, whatsappUrl } from "@/content/site";
 import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/seo/schema";
 
@@ -80,98 +74,28 @@ export function RozwiazanieDetail({ rozwiazanie }: RozwiazanieDetailProps) {
         </div>
       </section>
 
-      {/* 3. Blok centralny */}
-      {rozwiazanie.type === "A" && rozwiazanie.componentGroups ? (
-        <section className="section sectionAlt">
-          <div className="container">
-            <SectionHeader
-              eyebrow="Warianty"
-              title={rozwiazanie.centralTitle ?? "Co można zamontować"}
-              lead="Konkretny zestaw dobieramy po obejrzeniu pomieszczenia i ustaleniu efektu."
-            />
-            {rozwiazanie.componentGroups.map((group, index) => (
-              <div
-                className="grid2"
-                key={group.title ?? `group-${index}`}
-                style={{ marginTop: 30, alignItems: "start" }}
-              >
-                {group.image ? <PlaceholderImage slot={group.image} ratio="4 / 3" /> : null}
-                <div>
-                  {group.title ? <h3 className="sectionTitle" style={{ fontSize: "1.3rem" }}>{group.title}</h3> : null}
-                  <div className="factorList" style={{ marginTop: group.title ? 16 : 0 }}>
-                    {group.items.map((item) => (
-                      <div className="factor" key={item.name}>
-                        <span className="check">✓</span>
-                        <span>
-                          <strong>{item.name}</strong>
-                          {item.desc ? ` — ${item.desc}` : null}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+      {/* 3. Co możemy zaplanować */}
+      <section className="section sectionAlt">
+        <div className="container">
+          <SectionHeader
+            eyebrow="Zakres"
+            title="Co możemy zaplanować"
+            lead="Konkretny zestaw dobieramy po obejrzeniu pomieszczenia i ustaleniu efektu."
+          />
+          <div className="grid4 sectionCards">
+            {rozwiazanie.planCards.map((card) => (
+              <article className="card miniCard" key={card.title}>
+                <h3>{card.title}</h3>
+                <p>{card.desc}</p>
+              </article>
             ))}
           </div>
-        </section>
-      ) : null}
+        </div>
+      </section>
 
-      {rozwiazanie.type === "B" && rozwiazanie.gallery ? (
-        <section className="section sectionAlt">
-          <div className="container">
-            <SectionHeader
-              eyebrow="Realizacje"
-              title="Jak to wygląda"
-              lead="Materiały to wizualizacje przykładowych efektów, nie zdjęcia konkretnej realizacji."
-            />
-            <div className="grid3 sectionCards">
-              {rozwiazanie.gallery.map((slot) => (
-                <figure className="card" key={slot.src} style={{ margin: 0 }}>
-                  <PlaceholderImage slot={slot} ratio="4 / 3" />
-                  <figcaption style={{ marginTop: 12, fontWeight: 700 }}>{slot.alt}</figcaption>
-                </figure>
-              ))}
-            </div>
-          </div>
-        </section>
-      ) : null}
-
-      {/* 4. Blok uzupełniający */}
-      {rozwiazanie.type === "A" && rozwiazanie.howItLooks ? (
-        <section className="section">
-          <div className="container">
-            <SectionHeader
-              eyebrow="Realizacje"
-              title="Jak wygląda"
-              lead="Materiały to wizualizacje przykładowych efektów, nie zdjęcia konkretnej realizacji."
-            />
-            <div className="grid2 sectionCards">
-              {rozwiazanie.howItLooks.map((slot) => (
-                <PlaceholderImage slot={slot} ratio="4 / 3" key={slot.src} />
-              ))}
-            </div>
-          </div>
-        </section>
-      ) : null}
-
-      {rozwiazanie.type === "B" && rozwiazanie.variants ? (
-        <section className="section">
-          <div className="container">
-            <SectionHeader eyebrow="Warianty" title="Warianty do wyboru" />
-            <div className="grid3 sectionCards">
-              {rozwiazanie.variants.map((variant) => (
-                <article className="card miniCard" key={variant}>
-                  <h3>{variant}</h3>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-      ) : null}
-
-      {/* 5. Cena zależy od zakresu */}
+      {/* 4. Cena zależy od zakresu */}
       {rozwiazanie.priceFactors ? (
-        <section className="section sectionAlt">
+        <section className="section">
           <div className="container pricePanel">
             <div>
               <SectionHeader eyebrow="Wycena" title="Cena zależy od zakresu" lead={rozwiazanie.priceCopy} />
@@ -197,7 +121,7 @@ export function RozwiazanieDetail({ rozwiazanie }: RozwiazanieDetailProps) {
           </div>
         </section>
       ) : (
-        <section className="section sectionAlt">
+        <section className="section">
           <div className="container">
             <SectionHeader eyebrow="Wycena" title="Cena zależy od zakresu" lead={rozwiazanie.priceCopy} />
             <p className="softLabel" style={{ marginTop: 16, maxWidth: 760 }}>
@@ -211,37 +135,22 @@ export function RozwiazanieDetail({ rozwiazanie }: RozwiazanieDetailProps) {
         </section>
       )}
 
-      {/* 6. Dlaczego EkoSufity (wspólny) */}
-      <section className="section">
+      {/* 5. Dlaczego warto */}
+      <section className="section sectionAlt">
         <div className="container">
-          <SectionHeader eyebrow={whyEkoSufity.eyebrow} title="Dlaczego warto wybrać EkoSufity" />
-          <div className="card" style={{ marginTop: 28 }}>
-            <div className="factorList">
-              {whyEkoSufity.points.map((point) => (
-                <div className="factor" key={point}>
-                  <span className="check">✓</span>
-                  <span>{point}</span>
-                </div>
-              ))}
-            </div>
-            <div className="buttonRow" style={{ marginTop: 22 }}>
-              {whyEkoSufity.links.map((link) => (
-                <Link
-                  key={link.href}
-                  className="sectionArrowLink"
-                  href={link.href}
-                  target={link.external ? "_blank" : undefined}
-                  rel={link.external ? "noopener noreferrer" : undefined}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
+          <SectionHeader eyebrow="Korzyści" title="Dlaczego warto" />
+          <div className="grid3 sectionCards">
+            {rozwiazanie.whyCards.map((card) => (
+              <article className="card miniCard" key={card.title}>
+                <h3>{card.title}</h3>
+                <p>{card.desc}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 7. Proces (wspólny) */}
+      {/* 6. Proces */}
       <section className="section processSection">
         <div className="container">
           <div className="centerHeader">
@@ -260,7 +169,7 @@ export function RozwiazanieDetail({ rozwiazanie }: RozwiazanieDetailProps) {
         </div>
       </section>
 
-      {/* 8. FAQ */}
+      {/* 7. FAQ */}
       <section className="section faqSection">
         <div className="container faqShell">
           <div className="centerHeader">
@@ -277,7 +186,7 @@ export function RozwiazanieDetail({ rozwiazanie }: RozwiazanieDetailProps) {
         </div>
       </section>
 
-      {/* 9. CTA + Powiązane rozwiązania */}
+      {/* 8. CTA */}
       <section className="section finalCtaSection">
         <div className="container finalCtaCard">
           <div>
@@ -299,6 +208,7 @@ export function RozwiazanieDetail({ rozwiazanie }: RozwiazanieDetailProps) {
         </div>
       </section>
 
+      {/* 9. Powiązane rozwiązania */}
       {relatedLinks.length > 0 ? (
         <section className="section">
           <div className="container">

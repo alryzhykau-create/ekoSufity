@@ -1,7 +1,4 @@
 import { services } from "@/content/services";
-import { siteConfig } from "@/content/site";
-
-export type RozwiazanieType = "A" | "B";
 
 export type ImageSlot = {
   // Ścieżka placeholdera — realne zdjęcia podmieniamy tu, w danych.
@@ -10,15 +7,9 @@ export type ImageSlot = {
   caption?: string;
 };
 
-export type ComponentItem = {
-  name: string;
-  desc?: string;
-};
-
-export type ComponentGroup = {
-  title?: string;
-  image?: ImageSlot;
-  items: ComponentItem[];
+export type Card = {
+  title: string;
+  desc: string;
 };
 
 export type Faq = {
@@ -28,7 +19,6 @@ export type Faq = {
 
 export type Rozwiazanie = {
   slug: string;
-  type: RozwiazanieType;
   eyebrow: string;
   shortTitle: string;
   h1: string;
@@ -38,33 +28,12 @@ export type Rozwiazanie = {
   heroSubtitle: string;
   heroImage: ImageSlot;
   whatIs: string;
-  // Typ A — blok centralny "Co można zamontować"
-  centralTitle?: string;
-  componentGroups?: ComponentGroup[];
-  howItLooks?: ImageSlot[];
-  // Typ B — blok centralny "Jak to wygląda"
-  gallery?: ImageSlot[];
-  variants?: string[];
+  planCards: Card[];
+  whyCards: Card[];
   priceCopy: string;
   priceFactors?: string[];
   faq: Faq[];
   related: string[];
-};
-
-// Wspólny blok "Dlaczego EkoSufity" — jedno miejsce dla wszystkich stron.
-export const whyEkoSufity = {
-  eyebrow: "Dlaczego EkoSufity",
-  title: "Dlaczego EkoSufity",
-  points: [
-    "15 lat gwarancji na membranę, 5 lat na montaż, 2 lata na oświetlenie LED",
-    "Bezpłatny pomiar z dojazdem do 100 km od Wrocławia",
-    "Czysty montaż — bez kucia i pyłu",
-    "Na rynku od 2020 roku"
-  ],
-  links: [
-    { label: "Realne realizacje", href: "/realizacje", external: false },
-    { label: "Opinie w Google", href: siteConfig.contacts.googleBusinessProfileHref, external: true }
-  ]
 };
 
 // Wspólny blok "Proces" — 5 kroków.
@@ -75,18 +44,9 @@ export const finalCta = {
   text: "Które rozwiązanie pasuje do konkretnego wnętrza, najłatwiej sprawdzić na bezpłatnym pomiarze."
 };
 
-// Buduje sloty galerii z listy podpisów (każdy slot = placeholder "przykładowy efekt").
-function gallerySlots(slug: string, labels: string[]): ImageSlot[] {
-  return labels.map((label, index) => ({
-    src: `/images/rozwiazania/${slug}/galeria-${index + 1}.jpg`,
-    alt: label
-  }));
-}
-
 export const rozwiazania: Rozwiazanie[] = [
   {
     slug: "wentylacja",
-    type: "A",
     eyebrow: "Wentylacja",
     shortTitle: "Wentylacja",
     h1: "Wentylacja w suficie napinanym — Wrocław i do 100 km",
@@ -101,69 +61,37 @@ export const rozwiazania: Rozwiazanie[] = [
       alt: "Sufit napinany z ukrytą wentylacją — przykładowy efekt"
     },
     whatIs:
-      "Standardowe kratki wentylacyjne i zewnętrzne elementy instalacji potrafią zepsuć efekt nowoczesnego wnętrza. W suficie napinanym prowadzimy wentylację inaczej — kanały i osprzęt chowamy nad membraną, a na widoku zostaje tylko wąska szczelina, cienka linia lub kratka wtopiona w płótno. Efekt jest czysty i minimalistyczny, a nawiew pozostaje w pełni funkcjonalny.",
-    centralTitle: "Co można zamontować",
-    componentGroups: [
+      "Ukryta wentylacja pozwala zachować czystą linię sufitu — zamiast widocznych kratek stosujemy wąskie, liniowe nawiewy wtopione w membranę. Elementy takie jak Airpipe Pro (nawiew w suficie) i Airwall (na styku sufitu i ściany) znikają w powierzchni sufitu. To rozwiązanie premium, którego nie ma w standardowych montażach. Wentylację planujemy razem z sufitem, na etapie pomiaru.",
+    planCards: [
       {
-        title: "Premium — dyfuzory liniowe",
-        image: {
-          src: "/images/rozwiazania/wentylacja/dyfuzory-liniowe.jpg",
-          alt: "Liniowy dyfuzor nawiewu w suficie napinanym — przykładowy efekt"
-        },
-        items: [
-          {
-            name: "Airpipe Pro",
-            desc: "sufitowy dyfuzor szczelinowy (26 mm), niemal niewidoczna linia nawiewu."
-          },
-          {
-            name: "Airwall",
-            desc: "dyfuzor przyścienny w formie szczeliny cienia po obwodzie pomieszczenia."
-          },
-          {
-            name: "Air Track Module",
-            desc: "wentylacja zintegrowana z magnetyczną szyną oświetlenia: światło i powietrze w jednej linii."
-          }
-        ]
+        title: "Airpipe Pro",
+        desc: "Wąski, liniowy nawiew wtopiony w sufit napinany — zamiast widocznej kratki."
       },
       {
-        title: "Kratki ukryte i cieniowe",
-        image: {
-          src: "/images/rozwiazania/wentylacja/kratki-cieniowe.jpg",
-          alt: "Kratka cieniowa wpuszczona równo z sufitem — przykładowy efekt"
-        },
-        items: [
-          {
-            name: "Kratki cieniowe (100 / 125 mm)",
-            desc: "wpuszczone równo z sufitem, praktycznie niewidoczne."
-          },
-          {
-            name: "Kratki magnetyczne",
-            desc: "zdejmowane na magnes, łatwe w czyszczeniu i obsłudze."
-          }
-        ]
+        title: "Airwall",
+        desc: "Liniowy element wentylacyjny na styku sufitu i ściany, ukryty w cieniu."
       },
       {
-        title: "Podstawowe kratki okrągłe",
-        image: {
-          src: "/images/rozwiazania/wentylacja/kratki-okragle.jpg",
-          alt: "Okrągła kratka wentylacyjna z pierścieniem — przykładowy efekt"
-        },
-        items: [
-          {
-            name: "Kratki okrągłe",
-            desc: "klasyczne rozwiązanie z pierścieniem ochronnym, gdy liczy się prostota i budżet."
-          }
-        ]
+        title: "Ukryte kratki",
+        desc: "Punktowe rozwiązania nawiewne, które znikają w membranie."
+      },
+      {
+        title: "Wentylacja + sufit w jednym",
+        desc: "Elementy planujemy tak, żeby nie psuły czystej linii sufitu."
       }
     ],
-    howItLooks: [
+    whyCards: [
       {
-        src: "/images/rozwiazania/wentylacja/wnetrze-1.jpg",
-        alt: "Sufit z niewidoczną wentylacją w salonie — przykładowy efekt"
+        title: "Czysta linia zamiast kratek",
+        desc: "Nawiew jest ukryty — sufit wygląda jednolicie i nowocześnie."
       },
       {
-        src: "/images/rozwiazania/wentylacja/wnetrze-2.jpg",
-        alt: "Liniowy nawiew wtopiony w sufit napinany — przykładowy efekt"
+        title: "Rozwiązanie premium",
+        desc: "Ukryta wentylacja to detal, którego nie ma w standardowych montażach."
+      },
+      {
+        title: "Planowane z sufitem",
+        desc: "Elementy wentylacyjne uwzględniamy na etapie pomiaru i montażu."
       }
     ],
     priceCopy:
@@ -196,7 +124,6 @@ export const rozwiazania: Rozwiazanie[] = [
   },
   {
     slug: "system-magnetyczny",
-    type: "A",
     eyebrow: "System magnetyczny",
     shortTitle: "System magnetyczny",
     h1: "System magnetyczny 48 V w suficie napinanym — Wrocław i do 100 km",
@@ -211,38 +138,37 @@ export const rozwiazania: Rozwiazanie[] = [
       alt: "Magnetyczna szyna oświetlenia w suficie napinanym — przykładowy efekt"
     },
     whatIs:
-      "System magnetyczny to ukryta w suficie szyna 48 V, do której lampy mocuje się na magnes. Oprawy można przesuwać, dokładać i wymieniać bez przeróbek — oświetlenie dopasowuje się do wnętrza, a nie odwrotnie. Szynę prowadzimy w cieniu lub równo z płótnem, więc na widoku zostaje samo światło.",
-    centralTitle: "Co można zamontować w szynie",
-    componentGroups: [
+      "System magnetyczny to ukryta szyna 48 V wtopiona w sufit napinany, na której lampy trzymają się na magnes. Oprawy liniowe, spoty i lampy wiszące można dowolnie przestawiać, dokładać i zmieniać — nawet po montażu, bez ingerencji w sufit. To elastyczne, nowoczesne rozwiązanie zamiast wielu osobnych opraw z osobnymi wypustami. Cały układ działa na jednym zasilaniu, dobranym pod pomieszczenie.",
+    planCards: [
       {
-        image: {
-          src: "/images/rozwiazania/system-magnetyczny/elementy.jpg",
-          alt: "Elementy systemu magnetycznego 48 V — przykładowy efekt"
-        },
-        items: [
-          {
-            name: "Szyna",
-            desc: "montaż podtynkowy, w tym wersje do płyt GK; prosto lub z zakrętami."
-          },
-          { name: "Lampy liniowe", desc: "równomierne, rozproszone światło wzdłuż szyny." },
-          { name: "Reflektory (spoty)", desc: "kierunkowe światło akcentujące." },
-          { name: "Lampy wiszące", desc: "nad stołem, wyspą, barem." },
-          { name: "Głośnik magnetyczny", desc: "Sound Bar wpinany w tę samą szynę." },
-          {
-            name: "Zasilanie i łączniki",
-            desc: "kompaktowy zasilacz ukryty w konstrukcji; łączniki proste i kątowe (L) pozwalają poprowadzić szynę pod kształt pomieszczenia."
-          }
-        ]
-      }
-    ],
-    howItLooks: [
-      {
-        src: "/images/rozwiazania/system-magnetyczny/wnetrze-1.jpg",
-        alt: "Lampy wiszące na szynie magnetycznej nad stołem — przykładowy efekt"
+        title: "Szyna magnetyczna 48 V",
+        desc: "Ukryta szyna wtopiona w sufit. Lampy trzymają się na magnes i można je dowolnie przestawiać."
       },
       {
-        src: "/images/rozwiazania/system-magnetyczny/wnetrze-2.jpg",
-        alt: "Reflektory i lampa liniowa w jednej szynie — przykładowy efekt"
+        title: "Lampy liniowe i spoty",
+        desc: "Moduły liniowe do równego światła i punktowe spoty do akcentów — na jednej szynie."
+      },
+      {
+        title: "Lampy wiszące",
+        desc: "Zwieszane oprawy na tej samej szynie, bez osobnych wypustów w suficie."
+      },
+      {
+        title: "Elastyczny układ",
+        desc: "Lampy dokładamy, przesuwamy i zmieniamy nawet po montażu — bez ingerencji w sufit."
+      }
+    ],
+    whyCards: [
+      {
+        title: "Pełna elastyczność",
+        desc: "Ustawienie światła można zmienić w każdej chwili, dopasowując je do mebli i potrzeb."
+      },
+      {
+        title: "Minimalistyczny wygląd",
+        desc: "Ukryta szyna daje czysty, nowoczesny efekt zamiast wielu osobnych opraw."
+      },
+      {
+        title: "Jeden spójny system",
+        desc: "Wszystkie lampy działają na jednym zasilaniu 48 V, dobranym pod pomieszczenie."
       }
     ],
     priceCopy:
@@ -267,7 +193,6 @@ export const rozwiazania: Rozwiazanie[] = [
   },
   {
     slug: "gwiazdne-niebo",
-    type: "B",
     eyebrow: "Gwiazdne niebo",
     shortTitle: "Gwiazdne niebo",
     h1: "Sufit „gwiaździste niebo” — Wrocław i do 100 km",
@@ -282,18 +207,38 @@ export const rozwiazania: Rozwiazanie[] = [
       alt: "Sufit napinany z efektem gwiaździstego nieba — przykładowy efekt"
     },
     whatIs:
-      "Gwiaździste niebo to efekt świetlny wbudowany w sufit napinany. Punkty świetlne rozprowadzamy w membranie i podłączamy do źródła ukrytego nad płótnem, dzięki czemu w pomieszczeniu widać samą „gwiezdną” poświatę. Efekt można zaplanować jako spokojne, równomierne rozsypanie gwiazd albo jako wyraziste konstelacje z migotaniem.",
-    gallery: gallerySlots("gwiazdne-niebo", [
-      "Rozproszone gwiazdy",
-      "Efekt drogi mlecznej",
-      "Konstelacje",
-      "Migotanie i zmiana barwy",
-      "Połączenie z podświetleniem obwodowym"
-    ]),
-    variants: [
-      "Gęstość i układ punktów — od subtelnej poświaty po gęste niebo",
-      "Efekt statyczny lub z migotaniem",
-      "Sterowanie pilotem / zmiana barwy"
+      "Gwiazdne niebo to setki świetlnych punktów wtopionych w membranę sufitu — efekt rozgwieżdżonego nieba nad głową. Wykonujemy je na światłowodach albo na punktach LED, z możliwością migotania i zmiany jasności. Rozmieszczenie i gęstość gwiazd projektujemy indywidualnie — od delikatnych akcentów po gęste niebo. Sprawdza się w sypialni, pokoju dziecka, kinie domowym i strefie relaksu.",
+    planCards: [
+      {
+        title: "Światłowody",
+        desc: "Setki punktów świetlnych wtopionych w membranę, jak rozgwieżdżone niebo."
+      },
+      {
+        title: "Punkty LED",
+        desc: "Świecące punkty z efektem migotania i zmiany jasności."
+      },
+      {
+        title: "Efekt migotania",
+        desc: "Sterowanie daje wrażenie mrugających gwiazd i spokojnej, zmiennej poświaty."
+      },
+      {
+        title: "Układ na zamówienie",
+        desc: "Rozmieszczenie punktów projektujemy pod pomieszczenie — od pojedynczych akcentów po gęste niebo."
+      }
+    ],
+    whyCards: [
+      {
+        title: "Wyjątkowy nastrój",
+        desc: "Efekt sprawdza się w sypialni, pokoju dziecka, kinie domowym i strefie relaksu."
+      },
+      {
+        title: "Efekt planowany z sufitem",
+        desc: "Światłowody i okablowanie chowamy pod membraną na etapie montażu."
+      },
+      {
+        title: "Rozwiązanie na zamówienie",
+        desc: "Gęstość i układ gwiazd dobieramy indywidualnie do wnętrza."
+      }
     ],
     priceCopy:
       "Koszt zależy od powierzchni, liczby punktów świetlnych oraz wybranego efektu. Wycenę przygotowujemy po pomiarze.",
@@ -319,7 +264,6 @@ export const rozwiazania: Rozwiazanie[] = [
   },
   {
     slug: "sufity-wielopoziomowe",
-    type: "B",
     eyebrow: "Sufity wielopoziomowe",
     shortTitle: "Sufity wielopoziomowe",
     h1: "Sufity wielopoziomowe i pływające — Wrocław i do 100 km",
@@ -334,18 +278,38 @@ export const rozwiazania: Rozwiazanie[] = [
       alt: "Sufit wielopoziomowy z podświetleniem obwodowym — przykładowy efekt"
     },
     whatIs:
-      "Sufit wielopoziomowy to konstrukcja z dwóch lub więcej płaszczyzn na różnych wysokościach — pozwala wydzielić strefy, ukryć instalacje i nadać wnętrzu głębię. Wariant „pływający” to sufit z podświetleniem po obwodzie, który sprawia wrażenie, jakby unosił się nad ścianami. Efekt planujemy razem z oświetleniem i wykończeniem krawędzi.",
-    gallery: gallerySlots("sufity-wielopoziomowe", [
-      "Sufit dwupoziomowy",
-      "Sufit pływający z podświetleniem obwodowym",
-      "Uskok z linią LED",
-      "Wydzielenie strefy (salon / kuchnia)",
-      "Podświetlenie ciepłe vs zimne"
-    ]),
-    variants: [
-      "Dwa i więcej poziomów",
-      "Efekt pływający (podświetlenie po obwodzie)",
-      "Integracja z liniami świetlnymi i szczeliną cienia"
+      "Sufit wielopoziomowy to konstrukcja z uskokami i różnymi wysokościami, która dodaje wnętrzu głębi i charakteru. Poziomy można podświetlić taśmą LED, uzyskując efekt „pływającego” sufitu oderwanego od reszty powierzchni. Wielopoziomowość pozwala też ukryć belki, instalacje i nierówności stropu. Formę i podświetlenie planujemy razem, żeby efekt był spójny.",
+    planCards: [
+      {
+        title: "Dwa i więcej poziomów",
+        desc: "Sufit z uskokami i różnymi wysokościami — bardziej przestrzenny efekt."
+      },
+      {
+        title: "Efekt „pływający”",
+        desc: "Poziom wizualnie oderwany od reszty sufitu dzięki podświetleniu."
+      },
+      {
+        title: "Podświetlenie między poziomami",
+        desc: "Taśma LED w uskoku daje miękką poświatę i podkreśla formę."
+      },
+      {
+        title: "Formy na zamówienie",
+        desc: "Fale, ramki i geometryczne układy dopasowane do wnętrza."
+      }
+    ],
+    whyCards: [
+      {
+        title: "Efektowny, przestrzenny sufit",
+        desc: "Poziomy dodają wnętrzu głębi i charakteru."
+      },
+      {
+        title: "Ukrycie różnic sufitu",
+        desc: "Wielopoziomowość maskuje belki, instalacje i nierówności stropu."
+      },
+      {
+        title: "Podświetlenie w jednym projekcie",
+        desc: "Poziomy i światło planujemy razem, żeby efekt był spójny."
+      }
     ],
     priceCopy:
       "Koszt zależy od liczby poziomów, powierzchni i zakresu podświetlenia. Wycenę przygotowujemy po pomiarze.",
@@ -368,7 +332,6 @@ export const rozwiazania: Rozwiazanie[] = [
   },
   {
     slug: "szczelina-cienia",
-    type: "B",
     eyebrow: "Szczelina cienia",
     shortTitle: "Szczelina cienia",
     h1: "Szczelina cienia — sufit bez widocznej ramki — Wrocław i do 100 km",
@@ -383,17 +346,38 @@ export const rozwiazania: Rozwiazanie[] = [
       alt: "Szczelina cienia między sufitem napinanym a ścianą — przykładowy efekt"
     },
     whatIs:
-      "Szczelina cienia to sposób wykończenia krawędzi sufitu bez widocznej listwy. Zamiast standardowego styku ze ścianą powstaje wąski, cienisty rowek (ok. 5–10 mm), który daje efekt lekkości i porządku. To detal ceniony w nowoczesnych, minimalistycznych wnętrzach.",
-    gallery: gallerySlots("szczelina-cienia", [
-      "Szczelina przyścienna po obwodzie",
-      "Połączenie z sufitem pływającym",
-      "Szczelina + linia świetlna",
-      "Zbliżenie detalu"
-    ]),
-    variants: [
-      "Szerokość szczeliny (ok. 5–10 mm)",
-      "Wersje przyścienne i sufitowe",
-      "Możliwość połączenia z podświetleniem"
+      "Szczelina cienia to wąska, cienista przerwa 5–10 mm między sufitem a ścianą, zamiast klasycznej listwy. Sufit wizualnie „odrywa się” od ściany — to bardzo nowoczesny, minimalistyczny detal, który wygląda drogo. Przejście sufit–ściana jest czyste, bez widocznych maskownic i profili. Efekt wymaga precyzyjnego pomiaru i równych ścian, dlatego ustalamy go przed montażem.",
+    planCards: [
+      {
+        title: "Szczelina 5–10 mm",
+        desc: "Wąska, cienista przerwa między sufitem a ścianą zamiast listwy."
+      },
+      {
+        title: "Efekt „oderwanego” sufitu",
+        desc: "Sufit wizualnie unosi się i odrywa od ściany — bardzo nowoczesny detal."
+      },
+      {
+        title: "Bez listew",
+        desc: "Czyste przejście sufit–ściana bez maskownic i profili przyściennych."
+      },
+      {
+        title: "Połączenie z LED",
+        desc: "Szczelinę można połączyć z delikatnym podświetleniem obwodowym."
+      }
+    ],
+    whyCards: [
+      {
+        title: "Minimalistyczny, nowoczesny efekt",
+        desc: "Cienista linia wygląda drogo i porządkuje wnętrze."
+      },
+      {
+        title: "Czyste wykończenie",
+        desc: "Brak widocznych listew i profili — sam czysty detal."
+      },
+      {
+        title: "Precyzyjny montaż",
+        desc: "Efekt wymaga dokładnego pomiaru i równych ścian, dlatego ustalamy go przed montażem."
+      }
     ],
     priceCopy:
       "Koszt zależy od obwodu pomieszczenia i wybranego wariantu. Wycenę przygotowujemy po pomiarze.",
@@ -412,7 +396,6 @@ export const rozwiazania: Rozwiazanie[] = [
   },
   {
     slug: "sufit-z-nadrukiem",
-    type: "B",
     eyebrow: "Sufit z nadrukiem",
     shortTitle: "Sufit z nadrukiem",
     h1: "Sufit z nadrukiem (fotodruk) — Wrocław i do 100 km",
@@ -427,18 +410,38 @@ export const rozwiazania: Rozwiazanie[] = [
       alt: "Sufit napinany z nadrukiem wielkoformatowym — przykładowy efekt"
     },
     whatIs:
-      "Sufit z nadrukiem to membrana z nadrukowaną grafiką. Nadruk wykonujemy w wysokiej rozdzielczości na całej powierzchni lub na wybranym fragmencie. Motyw dobieramy pod wnętrze — od zdjęć i wzorów po delikatne tła; grafikę można też połączyć z podświetleniem.",
-    gallery: gallerySlots("sufit-z-nadrukiem", [
-      "Niebo z chmurami",
-      "Motyw natury / las",
-      "Wzór dekoracyjny",
-      "Nadruk podświetlany od tyłu",
-      "Pokój dziecięcy"
-    ]),
-    variants: [
-      "Nadruk na całości lub fragmencie",
-      "Dobór grafiki pod projekt",
-      "Możliwość podświetlenia (efekt świetlistego obrazu)"
+      "Sufit z nadrukiem to dowolna grafika — zdjęcie, wzór albo własny motyw — wydrukowana na membranie w wysokiej rozdzielczości. Stosujemy trwały druk UV odporny na blaknięcie, na macie, satynie albo połysku. W wariancie Double Vision nadruk wygląda inaczej przy świetle wyłączonym i włączonym. Sufit staje się wtedy elementem wystroju wnętrza, a nie tylko powierzchnią.",
+    planCards: [
+      {
+        title: "Dowolna grafika",
+        desc: "Zdjęcie, wzór albo motyw wydrukowany na membranie w wysokiej rozdzielczości."
+      },
+      {
+        title: "Nadruk UV",
+        desc: "Trwały druk odporny na blaknięcie, na macie, satynie albo połysku."
+      },
+      {
+        title: "Double Vision",
+        desc: "Nadruk widoczny inaczej przy świetle wyłączonym i włączonym (podświetlany)."
+      },
+      {
+        title: "Motyw na zamówienie",
+        desc: "Niebo, wzory dekoracyjne albo własna grafika klienta."
+      }
+    ],
+    whyCards: [
+      {
+        title: "Sufit jak element wystroju",
+        desc: "Nadruk zamienia sufit w ozdobę wnętrza, a nie tylko powierzchnię."
+      },
+      {
+        title: "Sprawdza się w wielu wnętrzach",
+        desc: "Pokój dziecka, sypialnia, salon, lokal usługowy."
+      },
+      {
+        title: "Jakość druku",
+        desc: "Wysoka rozdzielczość i trwały nadruk UV — bez pikseli i blaknięcia."
+      }
     ],
     priceCopy:
       "Koszt zależy od powierzchni nadruku, wybranej grafiki i podświetlenia. Wycenę przygotowujemy po pomiarze.",
@@ -460,7 +463,6 @@ export const rozwiazania: Rozwiazanie[] = [
   },
   {
     slug: "sufit-podswietlany",
-    type: "B",
     eyebrow: "Sufit podświetlany",
     shortTitle: "Sufit podświetlany",
     h1: "Sufit podświetlany (translucent) — Wrocław i do 100 km",
@@ -475,19 +477,38 @@ export const rozwiazania: Rozwiazanie[] = [
       alt: "Podświetlany sufit napinany świecący równomiernie — przykładowy efekt"
     },
     whatIs:
-      "Sufit podświetlany to półprzezroczysta membrana z ukrytym za nią oświetleniem LED. Światło rozkłada się równomiernie na całej powierzchni — bez widocznych punktów — dając efekt świetlistego sufitu jak świetlik dzienny. Można podświetlić cały sufit, jego fragment lub wydzielony kształt, także z regulacją barwy.",
-    gallery: gallerySlots("sufit-podswietlany", [
-      "Cały sufit świecący",
-      "Świetlny fragment / wyspa",
-      "Kształt geometryczny",
-      "Ciepła vs zimna barwa",
-      "Łazienka / kuchnia"
-    ]),
-    variants: [
-      "Cała powierzchnia",
-      "Fragment lub kształt",
-      "Regulacja barwy i jasności",
-      "Połączenie z nadrukiem (świetlisty obraz)"
+      "Sufit podświetlany to prześwitująca membrana translucent podświetlona od wewnątrz — cała powierzchnia świeci miękkim, równym światłem, jak świetlny panel na cały sufit. Świecić może całość albo wybrany fragment, z regulacją jasności i barwy. Rozwiązanie świetnie doświetla pomieszczenia bez okien — łazienki i wnętrza bez światła dziennego. Źródła światła i zasilanie chowamy nad membraną na etapie montażu.",
+    planCards: [
+      {
+        title: "Membrana translucent",
+        desc: "Prześwitująca membrana podświetlona od wewnątrz — cała powierzchnia świeci."
+      },
+      {
+        title: "Równe, miękkie światło",
+        desc: "Efekt świetlnego panelu na cały sufit, bez widocznych punktów."
+      },
+      {
+        title: "Podświetlenie strefowe",
+        desc: "Świecąca może być całość albo wybrany fragment sufitu."
+      },
+      {
+        title: "Sterowanie barwą",
+        desc: "Regulacja jasności i barwy światła (ciepła, neutralna, zimna)."
+      }
+    ],
+    whyCards: [
+      {
+        title: "Efekt świetlnego sufitu",
+        desc: "Miękkie, rozproszone światło z całej powierzchni — bardzo nowoczesny efekt."
+      },
+      {
+        title: "Doświetlenie pomieszczeń bez okien",
+        desc: "Sprawdza się w łazienkach i wnętrzach bez dostępu światła dziennego."
+      },
+      {
+        title: "Planowane z sufitem",
+        desc: "Źródła światła i zasilanie chowamy nad membraną na etapie montażu."
+      }
     ],
     priceCopy:
       "Koszt zależy od powierzchni świecącej, rodzaju podświetlenia i sterowania. Wycenę przygotowujemy po pomiarze.",

@@ -19,6 +19,7 @@ type PageProps = {
 type ServiceDetail = {
   eyebrow: string;
   imageIndex: number;
+  whatIs: string;
   options: string[];
   benefits: string[];
   optionCards?: { title: string; desc: string }[];
@@ -29,16 +30,52 @@ const details: Record<(typeof services)[number]["slug"], ServiceDetail> = {
   "sufity-napinane": {
     eyebrow: "Sufity napinane",
     imageIndex: 0,
+    whatIs:
+      "Sufit napinany to lekka membrana montowana na profilach, która daje idealnie równą powierzchnię bez skuwania i mokrych prac. Wykonujemy sufity matowe, satynowe, połysk i translucent — z oświetleniem LED, karniszami i detalami w jednym projekcie. Montaż jest czysty i szybki, zwykle w 1–2 dni. Materiał i zakres dobieramy pod pomieszczenie po bezpłatnym pomiarze.",
     options: ["matowe", "satynowe", "połysk", "translucent", "do pomieszczeń wilgotnych"],
     benefits: [
       "równa powierzchnia bez klasycznego szpachlowania całego sufitu",
       "możliwość połączenia z LED i ukrytym karniszem",
       "dobór materiału po sprawdzeniu pomieszczenia"
+    ],
+    optionCards: [
+      {
+        title: "Sufit matowy",
+        desc: "Spokojny, równy efekt do mieszkań, domów i lokali po remoncie."
+      },
+      {
+        title: "Sufit satynowy i połysk",
+        desc: "Od delikatnego blasku po efekt lustra powiększający wnętrze."
+      },
+      {
+        title: "Sufit z LED i detalami",
+        desc: "Linie świetlne, punkty, karnisze i podświetlenia w jednym projekcie."
+      },
+      {
+        title: "Strefy wilgotne i nietypowe formy",
+        desc: "Łazienki, przejścia, łuki i indywidualne układy."
+      }
+    ],
+    benefitCards: [
+      {
+        title: "Szybki, czysty montaż",
+        desc: "Równa powierzchnia bez skuwania i mokrych prac, zwykle w 1–2 dni."
+      },
+      {
+        title: "Wszystko od jednego wykonawcy",
+        desc: "Sufit, światło i detale planujemy i montujemy razem."
+      },
+      {
+        title: "Trwałość i gwarancja",
+        desc: "15 lat na membranę, 5 lat na montaż, 2 lata na oświetlenie LED."
+      }
     ]
   },
   "oswietlenie-led": {
     eyebrow: "Światło",
     imageIndex: 3,
+    whatIs:
+      "Oświetlenie LED planujemy razem z sufitem napinanym — jako jeden, spójny projekt światła. Łączymy linie świetlne, punkty, podświetlenie obwodowe i translucent, dobierając barwę i scenariusz do wnętrza. Profile, zasilacze i przewody chowamy pod membraną, więc widać tylko czysty efekt. Zakres i wycenę ustalamy po bezpłatnym pomiarze.",
     options: ["światło obwodowe", "punkty LED", "podświetlenie translucent", "zasilacze i sterowanie"],
     benefits: [
       "światło zaplanowane razem z sufitem",
@@ -85,21 +122,89 @@ const details: Record<(typeof services)[number]["slug"], ServiceDetail> = {
   "linie-swietlne": {
     eyebrow: "Linie świetlne",
     imageIndex: 1,
+    whatIs:
+      "Linie świetlne to wąskie, równe pasy światła LED wtopione w sufit napinany — proste albo geometryczne. Dają nowoczesny, minimalistyczny efekt i pozwalają wydzielić strefy wnętrza bez ścianek. Profil z maskownicą ukrywa źródło światła, więc widać tylko czystą linię. Układ i długość dobieramy pod pomieszczenie na etapie pomiaru.",
     options: ["linie proste", "linie geometryczne", "linie 27-30 mm", "linie 50 mm"],
     benefits: [
       "nowoczesny efekt dekoracyjny",
       "możliwość podkreślenia stref we wnętrzu",
       "wycena po ustaleniu długości i układu linii"
+    ],
+    optionCards: [
+      {
+        title: "Linie proste",
+        desc: "Wąskie, równe pasy światła wzdłuż sufitu. Podstawa nowoczesnego, minimalistycznego wnętrza."
+      },
+      {
+        title: "Linie geometryczne",
+        desc: "Kwadraty, ramki, załamania i formy przestrzenne z linii LED. Efekt na zamówienie."
+      },
+      {
+        title: "Profil 27–30 mm",
+        desc: "Wąska linia do delikatnego akcentu i doświetlenia stref."
+      },
+      {
+        title: "Profil 50 mm",
+        desc: "Szersza linia jako mocniejszy element dekoracyjny i główne światło."
+      }
+    ],
+    benefitCards: [
+      {
+        title: "Nowoczesny efekt dekoracyjny",
+        desc: "Linia światła zmienia charakter sufitu i porządkuje przestrzeń."
+      },
+      {
+        title: "Podział stref",
+        desc: "Światłem można wydzielić jadalnię, kuchnię czy strefę wypoczynku bez ścianek."
+      },
+      {
+        title: "Ukryte prowadzenie",
+        desc: "Profil i zasilanie chowamy pod membraną — widać tylko czystą linię światła."
+      }
     ]
   },
   "karnisze-sufitowe": {
     eyebrow: "Karnisze",
     imageIndex: 0,
+    whatIs:
+      "Ukryty karnisz to wnęka w suficie, w której chowają się szyny i mocowania zasłon. Zasłony wychodzą wtedy prosto z sufitu, bez widocznego karnisza — wnętrze wygląda schludnie i nowocześnie. Niszę można połączyć z podświetleniem LED, które daje miękką poświatę zza zasłon. Rozwiązanie planujemy razem z sufitem, na etapie montażu.",
     options: ["nisza karniszowa", "ukryty karnisz", "karnisz z podświetleniem", "połączenie z LED"],
     benefits: [
       "czysta linia przy oknie",
       "możliwość ukrycia prowadzenia zasłon",
       "estetyczne połączenie sufitu z detalem wykończeniowym"
+    ],
+    optionCards: [
+      {
+        title: "Nisza karniszowa",
+        desc: "Ukryta wnęka w suficie, w której chowa się karnisz i szyny zasłon."
+      },
+      {
+        title: "Karnisz z dociągnięciem",
+        desc: "Wnęka wykończona tak, że zasłony sięgają idealnie do sufitu."
+      },
+      {
+        title: "Karnisz z podświetleniem",
+        desc: "Taśma LED w niszy daje miękką poświatę zza zasłon."
+      },
+      {
+        title: "Połączenie z LED",
+        desc: "Podświetlenie karnisza łączymy ze scenariuszem światła w pomieszczeniu."
+      }
+    ],
+    benefitCards: [
+      {
+        title: "Czysta linia przy oknie",
+        desc: "Zasłony wychodzą prosto z sufitu, bez widocznego karnisza."
+      },
+      {
+        title: "Ukryte prowadzenie zasłon",
+        desc: "Szyny i mocowania znikają w niszy — wnętrze wygląda schludnie."
+      },
+      {
+        title: "Efekt razem z sufitem",
+        desc: "Niszę planujemy na etapie montażu sufitu, żeby wszystko pasowało idealnie."
+      }
     ]
   }
 };
@@ -225,6 +330,15 @@ export default async function SolutionPage({ params }: PageProps) {
             />
             <p className="softLabel">{image.label}. Ostateczny efekt zależy od pomieszczenia i ustalonego zakresu.</p>
           </aside>
+        </div>
+      </section>
+
+      <section className="section sectionAlt">
+        <div className="container">
+          <SectionHeader eyebrow="O rozwiązaniu" title="Co to jest" />
+          <p className="sectionLead" style={{ marginTop: 18, maxWidth: 900 }}>
+            {detail.whatIs}
+          </p>
         </div>
       </section>
 
