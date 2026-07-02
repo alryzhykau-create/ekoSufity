@@ -16,6 +16,14 @@ export const metadata: Metadata = {
     "Rozwiązania EkoSufity: sufity napinane, oświetlenie LED, linie świetlne i ukryte karnisze. Montaż we Wrocławiu i do 100 km."
 };
 
+// Kafle mozaiki, które zajmują 2 komórki (są wyższe od pozostałych).
+const largeTiles = new Set([
+  "sufity-napinane",
+  "oswietlenie-led",
+  "gwiazdne-niebo",
+  "sufit-podswietlany"
+]);
+
 const scenarios = [
   ["Salon i mieszkanie", "Równy matowy sufit, delikatne światło obwodowe i ukryte prowadzenie detali."],
   ["Kuchnia", "Czyste wykończenie, punkty świetlne i materiał dobrany do codziennego użytkowania."],
@@ -74,13 +82,19 @@ export default function SolutionsPage() {
             title="Wybierz zakres, który chcesz omówić"
             lead="Każda karta prowadzi do osobnej strony z wyjaśnieniem, dla kogo jest dane rozwiązanie, jak wygląda wycena i co ustalamy na pomiarze."
           />
-          <div className="grid4 sectionCards servicesGrid">
+          <div className="solutionMosaic">
             {getSolutionCards().map((card) => (
-              <article className="card serviceCard" key={card.href}>
-                <h3>{card.title}</h3>
-                <p>{card.copy}</p>
-                <Link href={card.href}>Zobacz rozwiązanie</Link>
-              </article>
+              <Link
+                key={card.href}
+                href={card.href}
+                className={`mosaicTile${largeTiles.has(card.slug) ? " mosaicTile--large" : ""}`}
+              >
+                <div className="mosaicTileBody">
+                  <h3>{card.title}</h3>
+                  <p>{card.copy}</p>
+                  <span className="mosaicTileLink">Zobacz rozwiązanie →</span>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
