@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
@@ -22,6 +21,17 @@ const ceilingTypes = [
   ["Translucent", "Materiał do podświetlenia i efektu miękkiego światła."],
   ["Z LED", "Linie świetlne, światło obwodowe, punkty i scenariusze oświetlenia."],
   ["Do stref wilgotnych", "Rozwiązania dobierane do łazienek, basenów i pomieszczeń z wilgocią."]
+];
+
+const comparisonRows = [
+  ["Koszt z materiałem", "od 120 zł/m²", "od 250 zł/m²"],
+  ["Czas montażu", "1–2 dni", "3–5 dni"],
+  ["Podczas montażu", "Bez wynoszenia mebli, bez kurzu i brudu", "Wynoszenie mebli, kurz, bałagan"],
+  ["Odporność na wodę", "Nie boi się wody, wytrzymuje zalanie", "Chłonie wodę, odkształca się, pęka"],
+  ["Pielęgnacja", "Można myć wodą lub łagodnym detergentem", "Wymaga przemalowania lub odnowienia"],
+  ["Obniżenie sufitu", "Już od 3 cm", "Od 7–10 cm (konstrukcja ramy)"],
+  ["Trwałość", "15–20 lat bez utraty wyglądu", "Z czasem pęknięcia i odpryski"],
+  ["Konserwacja", "Nie wymaga dodatkowego wykończenia", "Wymaga okresowych napraw"]
 ];
 
 const useCases = [
@@ -58,6 +68,7 @@ export default function StretchCeilingsPage() {
         ]}
       />
 
+      {/* 1. Hero */}
       <section className="pageHero">
         <div className="container splitHero">
           <div>
@@ -91,6 +102,21 @@ export default function StretchCeilingsPage() {
         </div>
       </section>
 
+      {/* 2. Co to jest */}
+      <section className="section sectionAlt">
+        <div className="container">
+          <SectionHeader eyebrow="Co to jest" title="Co to jest sufit napinany?" />
+          <p className="sectionLead" style={{ marginTop: 18, maxWidth: 900 }}>
+            Sufit napinany to cienka, wytrzymała membrana rozpięta na profilach zamontowanych przy
+            suficie lub ścianach. Powstaje idealnie równa powierzchnia — bez gładzenia, malowania i
+            mokrych prac. Pod membraną chowamy oświetlenie, przewody i nierówności starego sufitu,
+            więc widać tylko czysty efekt. Montaż jest szybki i czysty, zwykle zajmuje 1–2 dni i nie
+            wymaga wynoszenia mebli.
+          </p>
+        </div>
+      </section>
+
+      {/* 3. Rodzaje */}
       <section className="section">
         <div className="container">
           <SectionHeader
@@ -109,6 +135,66 @@ export default function StretchCeilingsPage() {
         </div>
       </section>
 
+      {/* 4. Oświetlenie */}
+      <section className="section sectionAlt">
+        <div className="container">
+          <SectionHeader eyebrow="Oświetlenie" title="Oświetlenie w suficie napinanym" />
+          <p className="sectionLead" style={{ marginTop: 18, maxWidth: 900 }}>
+            Sufit napinany łączymy z dowolnym oświetleniem — planujemy je razem, jako jeden projekt.
+            Montujemy linie świetlne LED, światło obwodowe, punkty, a także dowolne oprawy: halogeny,
+            lampy i żyrandole. Zakładamy też system magnetyczny 48 V i podświetlenie translucent, gdy
+            świecić ma cała powierzchnia. Profile, zasilacze i przewody chowamy pod membraną — widać
+            tylko efekt końcowy.
+          </p>
+        </div>
+      </section>
+
+      {/* 5. Gdzie */}
+      <section className="section">
+        <div className="container">
+          <SectionHeader eyebrow="Gdzie" title="Gdzie montujemy sufity napinane" />
+          <p className="sectionLead" style={{ marginTop: 18, maxWidth: 900 }}>
+            Sufity napinane sprawdzają się niemal w każdym pomieszczeniu. Montujemy je w mieszkaniach
+            i domach — w salonach, kuchniach, sypialniach, łazienkach i na korytarzach. Wykonujemy je
+            również w lokalach komercyjnych: restauracjach, gabinetach, sklepach i biurach. Radzimy
+            sobie też z nietypowymi warunkami — pomieszczeniami wilgotnymi, basenami oraz skosami
+            dachu na poddaszu.
+          </p>
+        </div>
+      </section>
+
+      {/* 6. Porównanie */}
+      <section className="section sectionAlt">
+        <div className="container">
+          <SectionHeader
+            eyebrow="Porównanie"
+            title="Sufit napinany czy karton-gips?"
+            lead="Sufit napinany i sufit z płyt karton-gips (G-K) to dwa różne rozwiązania. Poniżej porównanie, które pomaga zdecydować."
+          />
+          <div className="comparisonScroll">
+            <table className="comparisonTable">
+              <thead>
+                <tr>
+                  <th>Właściwość</th>
+                  <th>Sufit napinany</th>
+                  <th>Sufit z płyt G-K</th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparisonRows.map(([property, stretch, gk]) => (
+                  <tr key={property}>
+                    <th scope="row">{property}</th>
+                    <td>{stretch}</td>
+                    <td>{gk}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. Kiedy sufit napinany ma największy sens */}
       <section className="section sectionAlt">
         <div className="container">
           <SectionHeader
@@ -127,6 +213,7 @@ export default function StretchCeilingsPage() {
         </div>
       </section>
 
+      {/* 8. Cena */}
       <section className="section">
         <div className="container pricingDeck">
           <article className="card priceTableCard">
@@ -155,6 +242,7 @@ export default function StretchCeilingsPage() {
         </div>
       </section>
 
+      {/* 9. FAQ */}
       <section className="section faqSection">
         <div className="container faqShell">
           <div className="centerHeader">
@@ -177,6 +265,7 @@ export default function StretchCeilingsPage() {
         </div>
       </section>
 
+      {/* 10. Zobacz LED, linie świetlne i ukryte karnisze */}
       <section className="section finalCtaSection">
         <div className="container finalCtaCard">
           <div>

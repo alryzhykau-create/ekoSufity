@@ -933,6 +933,62 @@ main {
   padding: var(--section-y-compact) 0;
 }
 
+.comparisonScroll {
+  margin-top: 34px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--radius);
+}
+
+.comparisonTable {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+  font-size: 0.95rem;
+}
+
+.comparisonTable th,
+.comparisonTable td {
+  padding: 14px 18px;
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.45;
+  border-bottom: 1px solid var(--border);
+}
+
+.comparisonTable thead th {
+  font-family: var(--font-display);
+  font-weight: 800;
+  color: var(--text);
+  background: var(--bg-alt);
+}
+
+.comparisonTable tbody th {
+  width: 30%;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.comparisonTable tbody td {
+  color: var(--muted);
+}
+
+.comparisonTable th:nth-child(2),
+.comparisonTable td:nth-child(2) {
+  background: var(--accent-soft);
+  color: var(--text);
+  font-weight: 600;
+}
+
+.comparisonTable tbody tr:last-child th,
+.comparisonTable tbody tr:last-child td {
+  border-bottom: 0;
+}
+
 .pricingDeck {
   display: grid;
   grid-template-columns: 380px minmax(0, 1fr);
