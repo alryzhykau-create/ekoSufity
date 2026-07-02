@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { FinalContactSection } from "@/components/home/FinalContactSection";
 import { GallerySection } from "@/components/home/GallerySection";
+import { GoogleReviews } from "@/components/reviews/GoogleReviews";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { homepageFaqs } from "@/content/faqs";
@@ -860,58 +861,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section reviewsSection">
-        <div className="container reviewsDeck">
-          <article className="card reviewsNote">
-            <div className="reviewsIntro">
-              <div>
-                <span className="eyebrow">Opinie</span>
-                <h2 className="sectionTitle">Realne opinie są w Google</h2>
-                <p>
-                  Nie pokazujemy na stronie wymyślonych cytatów. Przejdź do profilu Google
-                  EkoSufity, żeby zobaczyć aktualną ocenę, zdjęcia i realne komentarze klientów.
-                </p>
-              </div>
-              <aside className="googleSummaryCard" aria-label="Profil Google EkoSufity">
-                <div className="googleSummaryBrand">
-                  <span className="googleMark" aria-hidden="true">
-                    G
-                  </span>
-                  <div>
-                    <strong>EkoSufity</strong>
-                    <span>Profil Firmy w Google</span>
-                  </div>
-                </div>
-                <div className="googleRatingLine">
-                  <span>Opinie Google</span>
-                </div>
-                <p>Aktualna ocena i wszystkie komentarze są dostępne w profilu Google.</p>
-              </aside>
-            </div>
-            <div className="googleProfilePreview">
-              <div className="googlePreviewMark" aria-hidden="true">
-                G
-              </div>
-              <div>
-                <h3>EkoSufity w Google</h3>
-                <p>
-                  Otwórz wizytówkę firmy, sprawdź realne opinie i wróć do kontaktu, gdy chcesz
-                  umówić pomiar.
-                </p>
-              </div>
-              <Button href={siteConfig.contacts.googleBusinessProfileHref} className="googleProfileButton">
-                Przejdź do profilu Google
-              </Button>
-            </div>
-            <div className="reviewsFooter">
-              <p>
-                Jeśli chcesz mieć opinie bezpośrednio na stronie, trzeba dodać realne teksty
-                ręcznie albo podłączyć Google Business Profile API.
-              </p>
-            </div>
-          </article>
-        </div>
-      </section>
+      <GoogleReviews />
 
       <section className="section faqSection">
         <div className="container faqShell">

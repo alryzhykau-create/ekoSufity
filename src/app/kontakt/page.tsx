@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { GoogleReviews } from "@/components/reviews/GoogleReviews";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -77,7 +78,7 @@ export default function ContactPage() {
           </article>
           <article className="card miniCard">
             <h3>Dane firmy</h3>
-            <p>NIP/REGON i pełne dane firmowe trzeba dodać przed publikacją.</p>
+            <p>NIP: 8943174798</p>
           </article>
         </div>
       </section>
@@ -110,6 +111,8 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      <GoogleReviews />
 
       <section className="section sectionAlt" id="lokalizacje">
         <div className="container">

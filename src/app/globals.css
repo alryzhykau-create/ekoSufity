@@ -1055,6 +1055,121 @@ main {
   }
 }
 
+/* Opinie w stylu Google (wspólny blok na stronie głównej i kontakcie). */
+.reviewsSummary {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.reviewsScore {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text);
+}
+
+.reviewsSummaryMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.reviewsStars {
+  color: #fbbc05;
+  font-size: 1.25rem;
+  letter-spacing: 2px;
+}
+
+.reviewsSummaryNote {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.reviewsTrack {
+  display: flex;
+  gap: 16px;
+  margin-top: 28px;
+  padding-bottom: 6px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.reviewCard {
+  flex: 0 0 clamp(260px, 82vw, 330px);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+}
+
+.reviewCardTop {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.reviewAvatar {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.reviewMeta {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.reviewName {
+  font-weight: 700;
+  color: var(--text);
+}
+
+.reviewStars {
+  color: #fbbc05;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+}
+
+.reviewGoogle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: auto;
+  align-self: flex-start;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.reviewText {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.reviewsCta {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+}
+
 /* Mozaika rozwiązań — kafle różnej wielkości, gotowe pod zdjęcie w tle. */
 .solutionMosaic {
   display: grid;
