@@ -56,6 +56,20 @@ const faqs = [
     question: "Czy mogę dostać wycenę przez WhatsApp?",
     answer:
       "Możesz wysłać zdjęcie i metraż przez WhatsApp. Dokładną cenę potwierdzamy po pomiarze."
+  },
+  {
+    question: "Od czego zależy finalna cena?",
+    answer:
+      "Od powierzchni, liczby narożników, rodzaju materiału, oświetlenia i nietypowych przejść. Dokładną cenę podajemy po bezpłatnym pomiarze."
+  },
+  {
+    question: "Czy dajecie wycenę na piśmie?",
+    answer: "Tak. Po pomiarze podajemy konkretną wycenę z rozbiciem na sufit i dodatki."
+  },
+  {
+    question: "Czy jest minimalne zamówienie?",
+    answer:
+      "Tak, minimalne zamówienie to 1200 zł. Przy małych pomieszczeniach cena końcowa może być równa tej kwocie."
   }
 ];
 
