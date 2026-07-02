@@ -27,6 +27,40 @@ const cityNames = {
   "katy-wroclawskie": "Kąty Wrocławskie"
 } as const;
 
+// Unikalny wstęp dla każdego miasta — usuwa duplikaty treści (SEO).
+const intros: Record<keyof typeof cityNames, string> = {
+  wroclaw:
+    "Wrocław to nasza baza — tu montujemy sufity napinane najczęściej i tu dojazd na pomiar jest zawsze bezpłatny. Obsługujemy mieszkania, domy, lokale usługowe i biura w całym mieście oraz na obrzeżach. Doradzamy materiał, oświetlenie i detale, a dokładną cenę podajemy po bezpłatnym pomiarze.",
+  olawa:
+    "Oława leży około 30 km na południowy wschód od Wrocławia — blisko, więc dojeżdżamy tu szybko i bez dodatkowych opłat. Montujemy sufity napinane z oświetleniem LED w mieszkaniach, domach i lokalach. Cenę podajemy po bezpłatnym pomiarze.",
+  olesnica:
+    "Oleśnica znajduje się około 32 km na północny wschód od Wrocławia. Dojeżdżamy tu na bezpłatny pomiar i montujemy sufity napinane razem z oświetleniem i detalami. Dokładną cenę ustalamy po sprawdzeniu pomieszczenia.",
+  dlugoleka:
+    "Długołęka leży tuż pod Wrocławiem, około 15 km na północny wschód — to jedna z najbliższych lokalizacji. Dojeżdżamy tu bardzo szybko i bez opłat, montujemy sufity napinane z oświetleniem i detalami. Cenę podajemy po bezpłatnym pomiarze.",
+  trzebnica:
+    "Trzebnica leży około 26 km na północ od Wrocławia — to bliska lokalizacja, dojazd na pomiar jest szybki i bezpłatny. Montujemy sufity napinane z oświetleniem w mieszkaniach, domach i lokalach. Cenę podajemy po pomiarze.",
+  swidnica:
+    "Świdnica leży około 58 km na południe od Wrocławia — dojeżdżamy tu regularnie, w ramach bezpłatnego dojazdu do 100 km. Montujemy sufity napinane w mieszkaniach, domach i lokalach, razem z oświetleniem LED i detalami. Pomiar jest bezpłatny, a cenę podajemy po sprawdzeniu pomieszczenia.",
+  legnica:
+    "Legnica znajduje się około 74 km na zachód od Wrocławia, wzdłuż trasy A4. Dojeżdżamy tu na bezpłatny pomiar i montujemy sufity napinane z oświetleniem oraz detalami. Cena zależy od pomieszczenia i zakresu — podajemy ją po pomiarze.",
+  walbrzych:
+    "Wałbrzych leży około 80 km na południowy zachód od Wrocławia. Dojeżdżamy tu na pomiar i montaż sufitów napinanych w mieszkaniach, domach i lokalach. Doradzamy materiał i oświetlenie, a dokładną cenę ustalamy po bezpłatnym pomiarze.",
+  brzeg:
+    "Brzeg znajduje się około 45 km na południowy wschód od Wrocławia, przy trasie A4. Montujemy tu sufity napinane z oświetleniem i detalami — w mieszkaniach, domach i lokalach. Pomiar i dojazd są bezpłatne, cenę podajemy po sprawdzeniu pomieszczenia.",
+  swiebodzice:
+    "Świebodzice znajdują się około 65 km na południowy zachód od Wrocławia, blisko Świdnicy i Wałbrzycha. Dojeżdżamy tu na bezpłatny pomiar i montaż sufitów napinanych z oświetleniem. Cena zależy od pomieszczenia — podajemy ją po sprawdzeniu.",
+  dzierzoniow:
+    "Dzierżoniów leży około 61 km na południe od Wrocławia. Montujemy tu sufity napinane z oświetleniem LED i detalami — w mieszkaniach, domach i lokalach. Pomiar jest bezpłatny, a cenę podajemy po jego wykonaniu.",
+  bielawa:
+    "Bielawa znajduje się około 68 km na południe od Wrocławia, tuż obok Dzierżoniowa. Dojeżdżamy tu na pomiar i montaż sufitów napinanych z oświetleniem. Dokładną cenę ustalamy po bezpłatnym sprawdzeniu pomieszczenia.",
+  strzelin:
+    "Strzelin leży około 44 km na południe od Wrocławia. Montujemy tu sufity napinane z oświetleniem i detalami — w mieszkaniach, domach i lokalach. Pomiar i dojazd są bezpłatne, cenę podajemy po sprawdzeniu pomieszczenia.",
+  "sroda-slaska":
+    "Środa Śląska znajduje się około 37 km na zachód od Wrocławia, przy trasie A4. Dojeżdżamy tu szybko na bezpłatny pomiar i montujemy sufity napinane z oświetleniem. Cenę podajemy po pomiarze.",
+  "katy-wroclawskie":
+    "Kąty Wrocławskie znajdują się około 25 km na zachód od Wrocławia, przy trasie A4. Blisko, więc dojazd na pomiar jest szybki i bezpłatny. Montujemy sufity napinane z oświetleniem LED w mieszkaniach, domach i lokalach."
+};
+
 function city(slug: keyof typeof cityNames, priority: City["priority"], nearby: string[]): City {
   const name = cityNames[slug];
 
@@ -44,7 +78,7 @@ function city(slug: keyof typeof cityNames, priority: City["priority"], nearby: 
         ? "Sufity napinane Wrocław - pomiar i montaż | EkoSufity"
         : `Sufity napinane ${name} - pomiar i montaż | EkoSufity`,
     metaDescription: `Sufity napinane ${name} i okolice. Bezpłatny pomiar, dojazd gratis do 100 km od Wrocławia, cena średnio ok. 120 zł/m² dla prostego sufitu MSD.`,
-    intro: `Montujemy sufity napinane w miejscowości ${name} oraz w okolicy. Przyjeżdżamy na bezpłatny pomiar, doradzamy materiał i oświetlenie, a dokładną cenę podajemy po sprawdzeniu pomieszczenia.`
+    intro: intros[slug]
   };
 }
 
