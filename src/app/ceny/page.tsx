@@ -22,6 +22,13 @@ const factors = [
   ["Pomieszczenia wilgotne", "Wymagają oceny warunków i właściwego doboru rozwiązania."]
 ];
 
+const priceExamples = [
+  ["Łazienka 6 m²", "od 1800 zł", "sufit z linią LED i punktami świetlnymi"],
+  ["Kuchnia 10 m²", "od 3000 zł", "sufit z szyną magnetyczną"],
+  ["Salon 22 m²", "od 7200 zł", "sufit dwupoziomowy z podświetleniem"],
+  ["Mieszkanie 45 m²", "od 9350 zł", "sufit z LED w kilku pomieszczeniach"]
+];
+
 const faqs = [
   {
     question: "Czy 120 zł/m² to cena każdego sufitu?",
@@ -100,6 +107,36 @@ export default function PricesPage() {
       <section className="section sectionAlt" id="kalkulator">
         <div className="container">
           <Kalkulator />
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <SectionHeader
+            eyebrow="Przykłady"
+            title="Ile kosztują typowe realizacje?"
+            lead="Poniżej orientacyjne koszty typowych realizacji z oświetleniem i dodatkami. Sam sufit liczymy od 120 zł/m² — dokładną cenę podajemy po pomiarze."
+          />
+          <div className="grid4 sectionCards">
+            {priceExamples.map(([title, price, desc]) => (
+              <article className="card miniCard" key={title}>
+                <h3>{title}</h3>
+                <strong
+                  style={{
+                    display: "block",
+                    margin: "10px 0 4px",
+                    fontFamily: "var(--font-display)",
+                    fontSize: "1.4rem",
+                    fontWeight: 800,
+                    color: "var(--gold-dark)"
+                  }}
+                >
+                  {price}
+                </strong>
+                <p>{desc}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
