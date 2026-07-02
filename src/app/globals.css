@@ -998,6 +998,63 @@ main {
   width: auto;
 }
 
+/* Social media na stronie kontaktu — te same ikony co w stopce, ale większe. */
+.contactSocialRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.contactSocialLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 24px 12px 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.05rem;
+  box-shadow: var(--shadow-card);
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.contactSocialLink:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+}
+
+.contactSocialIcon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+}
+
+.contactSocialIcon img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+@media (max-width: 560px) {
+  .contactSocialRow {
+    flex-direction: column;
+  }
+
+  .contactSocialLink {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
 /* Mozaika rozwiązań — kafle różnej wielkości, gotowe pod zdjęcie w tle. */
 .solutionMosaic {
   display: grid;

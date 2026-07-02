@@ -6,7 +6,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { cities } from "@/content/cities";
-import { siteConfig, whatsappUrl } from "@/content/site";
+import { siteConfig, socialLinks, whatsappUrl } from "@/content/site";
 import { breadcrumbSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
@@ -14,6 +14,12 @@ export const metadata: Metadata = {
   description:
     "Skontaktuj się z EkoSufity. Telefon, WhatsApp i e-mail. Bezpłatny pomiar, dojazd gratis do 100 km od Wrocławia, obsługa PL/BY/RU/UA."
 };
+
+// Te same ikony co w stopce (footer-social), w kolejności dla tej strony.
+const socialOrder = ["Instagram", "Facebook", "TikTok", "YouTube"] as const;
+const contactSocials = socialOrder
+  .map((label) => socialLinks.find((item) => item.label === label))
+  .filter((item): item is (typeof socialLinks)[number] => Boolean(item));
 
 export default function ContactPage() {
   return (
@@ -73,6 +79,35 @@ export default function ContactPage() {
             <h3>Dane firmy</h3>
             <p>NIP/REGON i pełne dane firmowe trzeba dodać przed publikacją.</p>
           </article>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <div className="centerHeader">
+            <SectionHeader
+              eyebrow="Social media"
+              title="Zobacz nasze realizacje w social mediach"
+              lead="Zobacz nasze prace i opinie na bieżąco."
+            />
+          </div>
+          <div className="contactSocialRow">
+            {contactSocials.map((item) => (
+              <Link
+                key={item.href}
+                className="contactSocialLink"
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${item.label} EkoSufity`}
+              >
+                <span className="contactSocialIcon">
+                  <Image src={item.iconSrc} alt="" width={28} height={28} />
+                </span>
+                <span>{item.label}</span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
