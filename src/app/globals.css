@@ -989,6 +989,15 @@ main {
   border-bottom: 0;
 }
 
+/* Wariant kompaktowy (2 kolumny) — mieści się na telefonie bez przewijania. */
+.comparisonTable--compact {
+  min-width: 0;
+}
+
+.comparisonTable--compact tbody th {
+  width: auto;
+}
+
 /* Mozaika rozwiązań — kafle różnej wielkości, gotowe pod zdjęcie w tle. */
 .solutionMosaic {
   display: grid;

@@ -22,6 +22,15 @@ const factors = [
   ["Pomieszczenia wilgotne", "Wymagają oceny warunków i właściwego doboru rozwiązania."]
 ];
 
+const basePrices = [
+  ["Sufit napinany", "od 120 zł/m²"],
+  ["Linie świetlne LED", "od 250 zł/mb"],
+  ["Ukryty karnisz z LED", "od 300 zł/mb"],
+  ["Punkt oświetlenia", "od 100 zł/szt"],
+  ["System magnetyczny 48 V", "od 300 zł/mb"],
+  ["Podświetlenie obwodowe", "od 170 zł/mb"]
+];
+
 const priceExamples = [
   ["Łazienka 6 m²", "od 1800 zł", "sufit z linią LED i punktami świetlnymi"],
   ["Kuchnia 10 m²", "od 3000 zł", "sufit z szyną magnetyczną"],
@@ -83,6 +92,34 @@ export default function PricesPage() {
               profili i nietypowych przejść. Końcowa cena zależy od wybranego materiału.
             </p>
           </aside>
+        </div>
+      </section>
+
+      <section className="section sectionAlt">
+        <div className="container">
+          <SectionHeader
+            eyebrow="Cennik"
+            title="Podstawowe ceny"
+            lead="Ceny orientacyjne. Dokładną wycenę podajemy po bezpłatnym pomiarze."
+          />
+          <div className="comparisonScroll">
+            <table className="comparisonTable comparisonTable--compact">
+              <thead>
+                <tr>
+                  <th>Pozycja</th>
+                  <th>Cena</th>
+                </tr>
+              </thead>
+              <tbody>
+                {basePrices.map(([position, price]) => (
+                  <tr key={position}>
+                    <th scope="row">{position}</th>
+                    <td>{price}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 
