@@ -24,11 +24,6 @@ export const siteConfig = {
   owner: {
     description:
       "Nazywam się Aleks i osobiście pomagam dobrać sufit, oświetlenie oraz detale wykończenia do wnętrza, budżetu i oczekiwań klienta. Nadzoruję realizację i dbam o to, aby efekt był estetyczny, trwały i dopracowany."
-  },
-  missingProof: {
-    googleBusinessProfile: "Do uzupełnienia",
-    nipRegon: "Do uzupełnienia",
-    realProjectPhotos: "Do uzupełnienia"
   }
 } as const;
 
