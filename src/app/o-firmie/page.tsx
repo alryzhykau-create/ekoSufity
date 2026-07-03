@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
@@ -31,9 +32,19 @@ export default function AboutPage() {
               </Button>
             </div>
           </div>
-          <aside className="card">
-            <h3>Języki obsługi</h3>
-            <p>{siteConfig.languages.join(", ")}.</p>
+          <aside className="card pageVisualCard">
+            <Image
+              src="/images/aleks-ekosufity-v2.webp"
+              alt="Aleks — specjalista EkoSufity"
+              width={900}
+              height={900}
+              priority
+              loading="eager"
+              sizes="(max-width: 900px) 100vw, 420px"
+            />
+            <p className="softLabel">
+              <strong>Aleks</strong> — osobiście odpowiadam za jakość Twojego sufitu.
+            </p>
           </aside>
         </div>
       </section>
@@ -43,13 +54,16 @@ export default function AboutPage() {
           <SectionHeader
             eyebrow="Zasady pracy"
             title="Spokojne doradztwo, dokładny pomiar, jasne ustalenia"
-            lead="Pochodzenie właściciela pokazujemy jako ludzki trust-factor, a nie jako agresywny slogan."
+            lead="Bez ukrytych kosztów i presji — cenę i zakres ustalamy jasno, po bezpłatnym pomiarze."
           />
           <div className="grid3" style={{ marginTop: 34 }}>
             {[
               ["Osobisty kontakt", "Telefon i WhatsApp bez niepotrzebnych pośredników."],
+              ["Na rynku od 2020 roku", "Montujemy sufity napinane we Wrocławiu i okolicy od 2020 roku."],
               ["Wycena po pomiarze", "Cena zależy od metrażu, narożników, LED i detali."],
-              ["Gwarancja", siteConfig.offerFacts.warranty]
+              ["Obszar działania", "Wrocław i miejscowości do 100 km od miasta — pomiar i dojazd gratis."],
+              ["Gwarancja", siteConfig.offerFacts.warranty],
+              ["Języki obsługi", `${siteConfig.languages.join(", ")}.`]
             ].map(([title, copy]) => (
               <article className="card miniCard" key={title}>
                 <h3>{title}</h3>
