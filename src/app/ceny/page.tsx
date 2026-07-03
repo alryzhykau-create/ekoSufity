@@ -85,9 +85,9 @@ export default function PricesPage() {
             <span className="eyebrow">Cena i wycena</span>
             <h1>Sufity napinane cena - od czego zależy koszt?</h1>
             <p className="pageLead">
-              Cena sufitu napinanego wynosi średnio ok. 120 zł/m² dla prostego sufitu MSD w
-              prostokątnym pomieszczeniu z 4 narożnikami, bez dodatkowych elementów. Dokładną cenę
-              podajemy po bezpłatnym pomiarze.
+              Cena sufitu napinanego zależy od metrażu, liczby narożników, materiału i dodatków —
+              takich jak LED czy ukryty karnisz. Orientacyjne stawki są w cenniku niżej, a dokładną
+              cenę podajemy po bezpłatnym pomiarze.
             </p>
             <div className="buttonRow">
               <Button href={siteConfig.contacts.phoneHref}>Zadzwoń i umów pomiar</Button>

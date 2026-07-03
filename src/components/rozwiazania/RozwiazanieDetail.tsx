@@ -4,7 +4,7 @@ import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { finalCta, getSolutionLink, processSteps, type Rozwiazanie } from "@/content/rozwiazania";
+import { finalCta, getSolutionLink, type Rozwiazanie } from "@/content/rozwiazania";
 import { siteConfig, whatsappUrl } from "@/content/site";
 import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/seo/schema";
 
@@ -150,26 +150,7 @@ export function RozwiazanieDetail({ rozwiazanie }: RozwiazanieDetailProps) {
         </div>
       </section>
 
-      {/* 6. Proces */}
-      <section className="section processSection">
-        <div className="container">
-          <div className="centerHeader">
-            <SectionHeader eyebrow="Proces" title="Jak wygląda współpraca?" />
-          </div>
-          <div className="processPanel">
-            <div className="stepList">
-              {processSteps.map((step, index) => (
-                <article className="card miniCard" key={step}>
-                  <span className="stepNumber">{index + 1}</span>
-                  <h3>{step}</h3>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 7. FAQ */}
+      {/* 6. FAQ */}
       <section className="section faqSection">
         <div className="container faqShell">
           <div className="centerHeader">
