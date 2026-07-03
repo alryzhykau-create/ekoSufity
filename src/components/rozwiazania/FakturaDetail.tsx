@@ -51,6 +51,13 @@ export function FakturaDetail({ faktura }: FakturaDetailProps) {
       <article className="card" style={{ marginTop: 24, maxWidth: 860 }}>
         <p style={{ margin: 0 }}>{faktura.warto}</p>
       </article>
+      {faktura.bridge ? (
+        <p style={{ marginTop: 16 }}>
+          <Link href={faktura.bridge.href} className="inlineLink">
+            {faktura.bridge.text} →
+          </Link>
+        </p>
+      ) : null}
     </div>
   );
 

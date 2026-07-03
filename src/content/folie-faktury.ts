@@ -24,6 +24,8 @@ export type Faktura = {
   warto: string; // "O czym warto wiedzieć" (minusy / niuanse)
   gdzie: string; // "Gdzie sprawdza się najlepiej"
   inneFaktury: string; // "…a inne faktury"
+  // Opcjonalny odnośnik-mostek do powiązanej strony (np. rozwiązania).
+  bridge?: { text: string; href: string };
   faq: FakturaFaq[];
 };
 
@@ -219,40 +221,40 @@ export const faktury: Faktura[] = [
     slug: "podswietlany",
     name: "Podświetlany",
     eyebrow: "Rodzaj folii",
-    h1: "Sufit podświetlany (translucent)",
-    metaTitle: "Sufit podświetlany (translucent) | Wrocław",
+    h1: "Folia translucent (podświetlana)",
+    metaTitle: "Folia translucent (podświetlana) | Wrocław",
     metaDescription:
-      "Sufit podświetlany świeci całą powierzchnią miękkim, równym światłem — także we wnętrzach bez okien. Folia transparentna i LED. Wrocław i do 100 km.",
+      "Folia translucent — półprzezroczysta membrana, która przepuszcza światło i pozwala uzyskać świecący sufit. Materiał pod podświetlenie LED. Wrocław i do 100 km.",
     heroIntro:
-      "Sufit podświetlany świeci całą powierzchnią miękkim, równym światłem — jak wielki świetlny panel. Efektowne i praktyczne rozwiązanie, także do wnętrz bez okien. Montujemy go we Wrocławiu i do 100 km od miasta.",
+      "Folia translucent to półprzezroczysta membrana, która przepuszcza światło. Dzięki temu sufit może świecić całą powierzchnią miękkim, równym blaskiem. Montujemy ją we Wrocławiu i do 100 km od miasta.",
     whatIs:
-      "Sufit podświetlany to osobna kategoria — nie mylić z matem, satyną czy połyskiem. Wykorzystuje folię transparentną (translucent) oraz taśmy LED umieszczone nad membraną. Po włączeniu światła cała powierzchnia sufitu świeci miękkim, równym blaskiem, imitując naturalne światło dzienne. Po wyłączeniu folia wraca do białej, mlecznej barwy i wygląda jak zwykły gładki sufit.",
+      "Folia translucent różni się od matu, satyny i połysku jedną kluczową cechą — przepuszcza światło. Umieszczone nad nią źródła światła prześwitują przez membranę, tworząc efekt jednolicie świecącej płaszczyzny. Po wyłączeniu światła folia ma białą, mleczną barwę i wygląda jak zwykły gładki sufit. To materiał, który sam w sobie nie świeci — ujawnia swój potencjał dopiero w połączeniu z oświetleniem LED.",
     zalety: [
       {
-        title: "Miękkie światło z całej powierzchni",
-        desc: "Równomierna poświata bez widocznych punktów, przyjemna dla oka i imitująca światło dzienne."
+        title: "Przepuszcza światło",
+        desc: "Pozwala uzyskać efekt świecącej całej powierzchni, niemożliwy przy zwykłej folii."
       },
       {
-        title: "Może być jedynym źródłem światła",
-        desc: "Świetnie doświetla wnętrza, także te bez okien."
+        title: "Równomierny efekt",
+        desc: "Dobrze rozprasza światło, dając miękką, jednolitą poświatę bez ostrych punktów."
       },
       {
-        title: "Sterowanie barwą i jasnością",
-        desc: "Światło ciepłe, neutralne lub zimne, a także efekty RGB i płynne przejścia."
+        title: "Neutralna po wyłączeniu",
+        desc: "Bez włączonego światła wygląda jak klasyczny biały sufit."
       },
       {
-        title: "Elastyczność efektu",
-        desc: "Świecić może cała powierzchnia albo wybrany fragment, na przykład po obwodzie."
-      },
-      {
-        title: "Nowoczesny, efektowny wygląd",
-        desc: "Robi wrażenie i podnosi standard wnętrza."
+        title: "Baza pod różne efekty",
+        desc: "Na jej podstawie można zbudować pełne podświetlenie lub podświetlany nadruk."
       }
     ],
     warto:
-      "Efekt zależy nie tylko od folii, ale przede wszystkim od dobrze zaplanowanego projektu podświetlenia. Kluczowa jest odpowiednia odległość taśm LED od membrany — to ona decyduje o tym, czy światło będzie idealnie równe, bez widocznych pasów. Dlatego sufit podświetlany planujemy indywidualnie. To rozwiązanie z wyższej półki niż zwykła folia — ale efekt jest wyjątkowy.",
+      "Folia translucent to materiał, a nie gotowy efekt — liczy się projekt podświetlenia pod nią. Sam efekt świecącego sufitu opisujemy szerzej na stronie rozwiązania „Sufit podświetlany”.",
     gdzie:
-      "Sufit podświetlany świetnie sprawdza się w łazienkach — często jako jedyne oświetlenie. Idealny do pomieszczeń bez okien, garderób i korytarzy. Doskonale wygląda w strefach relaksu, spa i przy basenach. Coraz częściej wybierany do nowoczesnych salonów oraz lokali komercyjnych — restauracji, hoteli i gabinetów.",
+      "Wszędzie tam, gdzie sufit ma nie tylko wyglądać, ale i świecić — łazienki, wnętrza bez okien, strefy relaksu, nowoczesne salony i lokale komercyjne.",
+    bridge: {
+      text: "Zobacz pełne rozwiązanie: Sufit podświetlany",
+      href: "/rozwiazania/sufit-podswietlany"
+    },
     inneFaktury:
       "Podświetlany to nie „kolejna faktura”, tylko osobne rozwiązanie oparte na świetle. Mat, satyna i połysk różnią się sposobem odbijania światła — sufit podświetlany sam jest jego źródłem.",
     faq: [

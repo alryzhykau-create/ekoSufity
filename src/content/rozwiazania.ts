@@ -45,9 +45,13 @@ export type Rozwiazanie = {
   // Nagłówek sekcji z kartami planCards (różny w zależności od rozwiązania).
   planTitle?: string;
   planCards: Card[];
+  // Opcjonalne bloki tekstowe (proza) renderowane po kartach planCards.
+  textBlocks?: { eyebrow?: string; title: string; body: string }[];
   // Opcjonalny blok "Gdzie się sprawdza / Kiedy ma sens".
   whereFits?: Card[];
   whereFitsTitle?: string;
+  // Wariant "Gdzie się sprawdza" jako proza zamiast kart.
+  whereFitsText?: string;
   // Opcjonalna tabela porównawcza.
   comparison?: Comparison;
   whyCards: Card[];
@@ -55,6 +59,10 @@ export type Rozwiazanie = {
   notes?: string[];
   priceCopy: string;
   priceFactors?: string[];
+  // Ukryj sekcję ceny (gdy strona nie ma mówić o cenie).
+  hidePrice?: boolean;
+  // Opcjonalny odnośnik-mostek do powiązanej strony.
+  bridge?: { text: string; href: string };
   faq: Faq[];
   related: string[];
 };
@@ -571,79 +579,62 @@ export const rozwiazania: Rozwiazanie[] = [
     slug: "sufit-podswietlany",
     eyebrow: "Sufit podświetlany",
     shortTitle: "Sufit podświetlany",
-    h1: "Sufit podświetlany (translucent)",
+    h1: "Sufit podświetlany",
     cardDescription: "Cała powierzchnia świeci miękkim, równomiernym światłem.",
-    metaTitle: "Sufit podświetlany (translucent) — Wrocław",
+    metaTitle: "Sufit podświetlany — Wrocław i do 100 km",
     metaDescription:
-      "Sufit podświetlany (translucent) — cała powierzchnia świeci równomiernym światłem bez widocznych punktów. Wrocław i do 100 km.",
+      "Sufit podświetlany — świecący sufit po obwodzie lub całą powierzchnią, także jako główne źródło światła. Projekt i montaż we Wrocławiu i do 100 km.",
     heroSubtitle:
-      "Cała powierzchnia sufitu świeci miękkim, równomiernym światłem. Półprzezroczysta membrana podświetlona od wewnątrz — bez widocznych punktów i źródeł.",
+      "Sufit, który świeci — miękko po obwodzie albo całą powierzchnią. Projektujemy i montujemy podświetlenie pod indywidualne wnętrze, we Wrocławiu i do 100 km od miasta.",
     heroImage: {
       src: "/images/rozwiazania/sufit-podswietlany/hero.jpg",
       alt: "Podświetlany sufit napinany świecący równomiernie — przykładowy efekt"
     },
     whatIs:
-      "Sufit podświetlany to prześwitująca membrana translucent podświetlona od wewnątrz — cała powierzchnia świeci miękkim, równym światłem, jak świetlny panel na cały sufit. Świecić może całość albo wybrany fragment, z regulacją jasności i barwy. Rozwiązanie świetnie doświetla pomieszczenia bez okien — łazienki i wnętrza bez światła dziennego. Źródła światła i zasilanie chowamy nad membraną na etapie montażu.",
-    planTitle: "Co składa się na efekt",
-    whereFits: [
-      { title: "Łazienka bez okna", desc: "Równe światło zamiast dziennego." },
-      { title: "Kuchnia", desc: "Bezcieniowe światło nad blatem i wyspą." },
-      { title: "Gabinet", desc: "Komfortowe, rozproszone światło do pracy." }
-    ],
-    comparison: {
-      title: "Sufit podświetlany a punktowe oświetlenie",
-      aHead: "Sufit podświetlany",
-      bHead: "Punktowe oświetlenie",
-      rows: [
-        {
-          feature: "Charakter światła",
-          a: "Miękkie, równe z całej powierzchni",
-          b: "Skupione punkty i wyraźne cienie"
-        },
-        {
-          feature: "Źródła światła",
-          a: "Ukryte nad membraną, niewidoczne",
-          b: "Widoczne oprawy w suficie"
-        },
-        {
-          feature: "Pomieszczenia bez okien",
-          a: "Zastępuje światło dzienne",
-          b: "Doświetla tylko punktowo"
-        }
-      ]
-    },
+      "Sufit podświetlany to gotowe rozwiązanie oparte na folii translucent i oświetleniu LED. Światło umieszczone nad membraną prześwituje przez nią, dając efekt świecącej płaszczyzny. To nie tylko dekoracja — taki sufit może pełnić funkcję głównego źródła światła w pomieszczeniu.",
+    bridge: { text: "Materiał: folia translucent", href: "/rozwiazania/folie/podswietlany" },
+    planTitle: "Warianty podświetlenia",
     planCards: [
       {
-        title: "Membrana translucent",
-        desc: "Prześwitująca membrana podświetlona od wewnątrz — cała powierzchnia świeci."
+        title: "Podświetlenie całej powierzchni",
+        desc: "Cały sufit świeci równym światłem, jak wielki świetlny panel. Może być jedynym źródłem światła."
       },
       {
-        title: "Równe, miękkie światło",
-        desc: "Efekt świetlnego panelu na cały sufit, bez widocznych punktów."
-      },
-      {
-        title: "Podświetlenie strefowe",
-        desc: "Świecąca może być całość albo wybrany fragment sufitu."
+        title: "Podświetlenie obwodowe",
+        desc: "Świeci obrys sufitu, tworząc miękką ramę światła i efekt „unoszącej się” płaszczyzny."
       },
       {
         title: "Sterowanie barwą",
-        desc: "Regulacja jasności i barwy światła (ciepła, neutralna, zimna)."
+        desc: "Światło ciepłe, neutralne, zimne, a także efekty RGB i płynne przejścia."
       }
     ],
+    textBlocks: [
+      {
+        title: "Konstrukcja dwuwarstwowa",
+        body: "W sufitach podświetlanych stosujemy dwie membrany. Dolna to folia translucent, przez którą prześwituje światło. Górna pełni funkcję ochronną — zatrzymuje kurz, drobinki i zabrudzenia opadające z bazowego stropu, żeby nie osiadały na membranie podświetlanej. Ma to znaczenie, bo przy włączonym świetle nawet drobny okruch na świecącej folii byłby widoczny na prześwicie. Dzięki górnej membranie efekt świetlny pozostaje idealnie czysty i równomierny."
+      },
+      {
+        title: "Podświetlany nadruk — także do reklamy",
+        body: "Na folii translucent można wykonać nadruk, który po podświetleniu staje się świecącą grafiką. To rozwiązanie sprawdza się nie tylko w domach, ale i w przestrzeniach komercyjnych — jako podświetlane logo, grafika czy element reklamowy w lokalu, salonie lub witrynie."
+      }
+    ],
+    whereFitsText:
+      "Łazienki (często jako jedyne oświetlenie), wnętrza bez okien, strefy relaksu i spa, baseny, nowoczesne salony oraz lokale komercyjne — restauracje, hotele, sklepy, gabinety.",
     whyCards: [
       {
-        title: "Efekt świetlnego sufitu",
-        desc: "Miękkie, rozproszone światło z całej powierzchni — bardzo nowoczesny efekt."
+        title: "Światło i dekoracja w jednym",
+        desc: "Efektowne światło i pełnowartościowe źródło oświetlenia w jednym."
       },
       {
-        title: "Doświetlenie pomieszczeń bez okien",
-        desc: "Sprawdza się w łazienkach i wnętrzach bez dostępu światła dziennego."
+        title: "Podświetlana reklama",
+        desc: "Możliwość podświetlanej reklamy w lokalach komercyjnych."
       },
       {
-        title: "Planowane z sufitem",
-        desc: "Źródła światła i zasilanie chowamy nad membraną na etapie montażu."
+        title: "Trwała konstrukcja",
+        desc: "Trwała, dwuwarstwowa konstrukcja z warstwą ochronną."
       }
     ],
+    hidePrice: true,
     priceCopy:
       "Koszt zależy od powierzchni świecącej, rodzaju podświetlenia i sterowania. Wycenę przygotowujemy po pomiarze.",
     faq: [

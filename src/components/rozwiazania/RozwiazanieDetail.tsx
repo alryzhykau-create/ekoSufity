@@ -30,6 +30,13 @@ export function RozwiazanieDetail({ rozwiazanie }: RozwiazanieDetailProps) {
       <p className="sectionLead" style={{ marginTop: 18, maxWidth: 900 }}>
         {rozwiazanie.whatIs}
       </p>
+      {rozwiazanie.bridge ? (
+        <p style={{ marginTop: 16 }}>
+          <Link href={rozwiazanie.bridge.href} className="inlineLink">
+            {rozwiazanie.bridge.text} →
+          </Link>
+        </p>
+      ) : null}
     </div>
   );
 
@@ -71,7 +78,36 @@ export function RozwiazanieDetail({ rozwiazanie }: RozwiazanieDetailProps) {
     </div>
   );
 
-  // 4. Gdzie się sprawdza / Kiedy ma sens (opcjonalnie — rozwiązania wizualne)
+  // 3b. Bloki tekstowe (proza) — opcjonalnie, po kartach planCards
+  if (rozwiazanie.textBlocks) {
+    rozwiazanie.textBlocks.forEach((block) => {
+      blocks.push(
+        <div className="container">
+          <SectionHeader eyebrow={block.eyebrow ?? "Szczegóły"} title={block.title} />
+          <p className="sectionLead" style={{ marginTop: 18, maxWidth: 900 }}>
+            {block.body}
+          </p>
+        </div>
+      );
+    });
+  }
+
+  // 4. Gdzie się sprawdza — wariant prozą
+  if (rozwiazanie.whereFitsText) {
+    blocks.push(
+      <div className="container">
+        <SectionHeader
+          eyebrow="Zastosowanie"
+          title={rozwiazanie.whereFitsTitle ?? "Gdzie się sprawdza"}
+        />
+        <p className="sectionLead" style={{ marginTop: 18, maxWidth: 900 }}>
+          {rozwiazanie.whereFitsText}
+        </p>
+      </div>
+    );
+  }
+
+  // 4b. Gdzie się sprawdza / Kiedy ma sens (opcjonalnie — rozwiązania wizualne)
   if (rozwiazanie.whereFits) {
     const gridClass = rozwiazanie.whereFits.length === 3 ? "grid3" : "grid4";
     blocks.push(
@@ -122,8 +158,10 @@ export function RozwiazanieDetail({ rozwiazanie }: RozwiazanieDetailProps) {
     );
   }
 
-  // 6. Cena zależy od zakresu (zawsze)
-  if (rozwiazanie.priceFactors) {
+  // 6. Cena zależy od zakresu (chyba że strona ma nie mówić o cenie)
+  if (rozwiazanie.hidePrice) {
+    // pomijamy sekcję ceny
+  } else if (rozwiazanie.priceFactors) {
     blocks.push(
       <div className="container pricePanel">
         <div>
