@@ -205,6 +205,29 @@ export default async function CityPage({ params }: PageProps) {
           </aside>
         </div>
       </section>
+
+      <section className="section">
+        <div className="container">
+          <SectionHeader eyebrow="Co dalej" title="Sprawdź przed pomiarem" />
+          <div className="grid3 sectionCards">
+            <Link className="card miniCard" href="/ceny">
+              <h3>Ile to kosztuje?</h3>
+              <p>Kalkulator i przykładowe ceny</p>
+              <p className="cardArrowText">Zobacz →</p>
+            </Link>
+            <Link className="card miniCard" href="/rozwiazania">
+              <h3>Zobacz rozwiązania</h3>
+              <p>LED, karnisze, gwiazdne niebo i inne</p>
+              <p className="cardArrowText">Zobacz →</p>
+            </Link>
+            <Link className="card miniCard" href="/sufity-napinane">
+              <h3>Rodzaje sufitów i folie</h3>
+              <p>Matowe, satynowe, połysk, translucent</p>
+              <p className="cardArrowText">Zobacz →</p>
+            </Link>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

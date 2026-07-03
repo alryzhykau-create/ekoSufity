@@ -70,6 +70,18 @@ export default function ProjectsPage() {
         </div>
       </section>
 
+      <section className="section sectionAlt">
+        <div className="container">
+          <SectionHeader title="Chcesz wiedzieć, jak powstaje taki efekt?" />
+          <div className="buttonRow" style={{ marginTop: 24 }}>
+            <Button href="/rozwiazania">Zobacz rozwiązania</Button>
+            <Button href="/ceny" variant="secondary">
+              Sprawdź ceny i kalkulator
+            </Button>
+          </div>
+        </div>
+      </section>
+
       <section className="section finalCtaSection">
         <div className="container finalCtaCard">
           <div>
