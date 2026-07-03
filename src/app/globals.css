@@ -154,6 +154,14 @@ main {
   color: var(--accent-hover);
 }
 
+/* Strzałka-odnośnik w klikalnych kartach (np. "Zobacz fakturę →"). */
+.cardArrowText {
+  margin-top: 12px;
+  color: var(--gold-dark);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
 .grid2 {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

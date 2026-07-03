@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { FolieDetail } from "@/components/rozwiazania/FolieDetail";
 import { RozwiazanieDetail } from "@/components/rozwiazania/RozwiazanieDetail";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -183,7 +182,8 @@ const faqs = [
 
 export function generateStaticParams() {
   return [
-    ...services.map((service) => ({ slug: service.slug })),
+    // "folie" ma własny katalog /rozwiazania/folie, więc pomijamy je tutaj.
+    ...services.filter((service) => service.slug !== "folie").map((service) => ({ slug: service.slug })),
     ...rozwiazania.map((item) => ({ slug: item.slug }))
   ];
 }
@@ -217,10 +217,6 @@ export default async function SolutionPage({ params }: PageProps) {
   const rozwiazanie = getRozwiazanie(slug);
   if (rozwiazanie) {
     return <RozwiazanieDetail rozwiazanie={rozwiazanie} />;
-  }
-
-  if (slug === "folie") {
-    return <FolieDetail />;
   }
 
   const service = getService(slug);
