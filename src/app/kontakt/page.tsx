@@ -62,11 +62,28 @@ export default function ContactPage() {
               <span>Godziny</span>
               <span>{siteConfig.contacts.hours}</span>
             </div>
+            <div className="contactPanelSocial">
+              <span className="contactPanelSocialLabel">Social media</span>
+              <div className="contactPanelSocialRow">
+                {contactSocials.map((item) => (
+                  <Link
+                    key={item.href}
+                    className="contactPanelSocialIcon"
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${item.label} EkoSufity`}
+                  >
+                    <Image src={item.iconSrc} alt="" width={22} height={22} />
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="section">
+      <section className="section sectionAlt">
         <div className="container grid3">
           <article className="card miniCard">
             <h3>Obszar działania</h3>
@@ -78,37 +95,9 @@ export default function ContactPage() {
           </article>
           <article className="card miniCard">
             <h3>Dane firmy</h3>
+            <p>EkoSufity, Wrocław</p>
             <p>NIP: 8943174798</p>
           </article>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container">
-          <div className="centerHeader">
-            <SectionHeader
-              eyebrow="Social media"
-              title="Zobacz nasze realizacje w social mediach"
-              lead="Zobacz nasze prace i opinie na bieżąco."
-            />
-          </div>
-          <div className="contactSocialRow">
-            {contactSocials.map((item) => (
-              <Link
-                key={item.href}
-                className="contactSocialLink"
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${item.label} EkoSufity`}
-              >
-                <span className="contactSocialIcon">
-                  <Image src={item.iconSrc} alt="" width={28} height={28} />
-                </span>
-                <span>{item.label}</span>
-              </Link>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -120,7 +109,7 @@ export default function ContactPage() {
             <SectionHeader
               eyebrow="Lokalizacje"
               title="Dojazd do 100 km od Wrocławia"
-              lead="Lokalne strony zostają dostępne dla osób, które szukają montażu w konkretnym mieście. W menu głównym prowadzi do nich kontakt."
+              lead="Obsługujemy Wrocław i miejscowości do 100 km. Wybierz swoją lokalizację, aby zobaczyć szczegóły montażu w okolicy."
             />
             <Link className="sectionArrowLink" href="/lokalizacje">
               Zobacz wszystkie lokalizacje
@@ -162,10 +151,15 @@ export default function ContactPage() {
             lead="Nie musisz znać technologii. Wystarczy kilka podstawowych informacji."
           />
           <div className="grid4" style={{ marginTop: 34 }}>
-            {["Miasto", "Przybliżony metraż", "Zdjęcie pomieszczenia", "Czy planujesz LED"].map((item) => (
-              <article className="card miniCard" key={item}>
-                <h3>{item}</h3>
-                <p>Ta informacja pomaga szybciej ustalić zakres i umówić pomiar.</p>
+            {[
+              ["Miasto", "Ustalimy dojazd i możliwy termin pomiaru."],
+              ["Przybliżony metraż", "Pozwala wstępnie oszacować zakres prac."],
+              ["Zdjęcie pomieszczenia", "Widać kształt, narożniki i sytuację w pokoju."],
+              ["Oświetlenie LED", "Światło wyceniamy jako osobny zakres."]
+            ].map(([title, copy]) => (
+              <article className="card miniCard" key={title}>
+                <h3>{title}</h3>
+                <p>{copy}</p>
               </article>
             ))}
           </div>

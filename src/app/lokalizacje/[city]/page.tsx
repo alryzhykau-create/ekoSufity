@@ -158,7 +158,7 @@ export default async function CityPage({ params }: PageProps) {
           <SectionHeader
             eyebrow="Inspiracje"
             title="Podobne efekty, które można omówić na pomiarze"
-            lead="Materiały są wizualizacjami, nie realnymi zdjęciami z tej lokalizacji."
+            lead="Przykładowe wizualizacje efektów — dokładny wygląd ustalamy na pomiarze."
           />
           <div className="galleryGrid">
             {visualAssets.slice(0, 4).map((asset) => (
@@ -192,7 +192,7 @@ export default async function CityPage({ params }: PageProps) {
           </div>
           <aside className="card">
             <h3>Pobliskie lokalizacje</h3>
-            <p className="softLabel">Linki pomagają użytkownikom i wzmacniają lokalne SEO.</p>
+            <p className="softLabel">Montujemy sufity także w sąsiednich miejscowościach.</p>
             <div className="factorList">
               {nearby.map((nearbyCity) =>
                 nearbyCity ? (

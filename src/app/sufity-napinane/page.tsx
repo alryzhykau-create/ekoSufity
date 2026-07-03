@@ -185,7 +185,7 @@ export default function StretchCeilingsPage() {
       </section>
 
       {/* 4. Oświetlenie */}
-      <section className="section sectionAlt">
+      <section className="section">
         <div className="container">
           <SectionHeader eyebrow="Oświetlenie" title="Oświetlenie w suficie napinanym" />
           <p className="sectionLead" style={{ marginTop: 18, maxWidth: 900 }}>
@@ -199,7 +199,7 @@ export default function StretchCeilingsPage() {
       </section>
 
       {/* 5. Gdzie */}
-      <section className="section">
+      <section className="section sectionAlt">
         <div className="container">
           <SectionHeader eyebrow="Gdzie" title="Gdzie montujemy sufity napinane" />
           <p className="sectionLead" style={{ marginTop: 18, maxWidth: 900 }}>
@@ -213,7 +213,7 @@ export default function StretchCeilingsPage() {
       </section>
 
       {/* 6. Porównanie */}
-      <section className="section sectionAlt">
+      <section className="section">
         <div className="container">
           <SectionHeader
             eyebrow="Porównanie"
