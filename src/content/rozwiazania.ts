@@ -17,6 +17,18 @@ export type Faq = {
   answer: string;
 };
 
+export type ProblemSolution = {
+  problem: string;
+  solution: string;
+};
+
+export type Comparison = {
+  title?: string;
+  aHead: string;
+  bHead: string;
+  rows: { feature: string; a: string; b: string }[];
+};
+
 export type Rozwiazanie = {
   slug: string;
   eyebrow: string;
@@ -28,8 +40,19 @@ export type Rozwiazanie = {
   heroSubtitle: string;
   heroImage: ImageSlot;
   whatIs: string;
+  // Opcjonalny blok "Problem i rozwiązanie" (dla rozwiązań technicznych).
+  problemSolution?: ProblemSolution;
+  // Nagłówek sekcji z kartami planCards (różny w zależności od rozwiązania).
+  planTitle?: string;
   planCards: Card[];
+  // Opcjonalny blok "Gdzie się sprawdza / Kiedy ma sens".
+  whereFits?: Card[];
+  whereFitsTitle?: string;
+  // Opcjonalna tabela porównawcza.
+  comparison?: Comparison;
   whyCards: Card[];
+  // Opcjonalny blok "Na co zwrócić uwagę".
+  notes?: string[];
   priceCopy: string;
   priceFactors?: string[];
   faq: Faq[];
@@ -62,6 +85,18 @@ export const rozwiazania: Rozwiazanie[] = [
     },
     whatIs:
       "Ukryta wentylacja pozwala zachować czystą linię sufitu — zamiast widocznych kratek stosujemy wąskie, liniowe nawiewy wtopione w membranę. Elementy takie jak Airpipe Pro (nawiew w suficie) i Airwall (na styku sufitu i ściany) znikają w powierzchni sufitu. To rozwiązanie premium, którego nie ma w standardowych montażach. Wentylację planujemy razem z sufitem, na etapie pomiaru.",
+    problemSolution: {
+      problem:
+        "W szczelnym pomieszczeniu bez zaplanowanego nawiewu łatwiej o wilgoć, zaparowane lustra i osad na ścianach — szczególnie w łazience i kuchni. Standardowe kratki psują przy tym czystą linię sufitu.",
+      solution:
+        "Kanały nawiewu i wyciągu prowadzimy nad membraną, a na widoku zostaje wąska szczelina lub dyskretna kratka. Powietrze krąży swobodnie, a sufit zachowuje jednolitą, nowoczesną powierzchnię."
+    },
+    planTitle: "Elementy, które planujemy",
+    notes: [
+      "Wentylację najlepiej zaplanować razem z sufitem — przed montażem membrany.",
+      "Dyfuzory liniowe wymagają miejsca nad sufitem na poprowadzenie kanału.",
+      "Wersje magnetyczne zdejmuje się do czyszczenia i obsługi."
+    ],
     planCards: [
       {
         title: "Airpipe Pro",
@@ -139,6 +174,30 @@ export const rozwiazania: Rozwiazanie[] = [
     },
     whatIs:
       "System magnetyczny to ukryta szyna 48 V wtopiona w sufit napinany, na której lampy trzymają się na magnes. Oprawy liniowe, spoty i lampy wiszące można dowolnie przestawiać, dokładać i zmieniać — nawet po montażu, bez ingerencji w sufit. To elastyczne, nowoczesne rozwiązanie zamiast wielu osobnych opraw z osobnymi wypustami. Cały układ działa na jednym zasilaniu, dobranym pod pomieszczenie.",
+    planTitle: "Rodzaje opraw na jednej szynie",
+    comparison: {
+      title: "System magnetyczny a tradycyjne oprawy",
+      aHead: "System magnetyczny",
+      bHead: "Tradycyjne oprawy",
+      rows: [
+        {
+          feature: "Zmiana ustawienia",
+          a: "Lampy przestawiane na magnes w każdej chwili",
+          b: "Pozycja ustalona na stałe wypustem"
+        },
+        {
+          feature: "Wygląd",
+          a: "Jedna ukryta szyna, czysta linia światła",
+          b: "Wiele osobnych opraw i wypustów"
+        },
+        {
+          feature: "Rozbudowa",
+          a: "Moduły dokładane bez ingerencji w sufit",
+          b: "Nowa oprawa wymaga nowego wypustu"
+        },
+        { feature: "Napięcie", a: "Niskie, bezpieczne 48 V", b: "230 V przy każdej oprawie" }
+      ]
+    },
     planCards: [
       {
         title: "Szyna magnetyczna 48 V",
@@ -208,6 +267,13 @@ export const rozwiazania: Rozwiazanie[] = [
     },
     whatIs:
       "Gwiazdne niebo to setki świetlnych punktów wtopionych w membranę sufitu — efekt rozgwieżdżonego nieba nad głową. Wykonujemy je na światłowodach albo na punktach LED, z możliwością migotania i zmiany jasności. Rozmieszczenie i gęstość gwiazd projektujemy indywidualnie — od delikatnych akcentów po gęste niebo. Sprawdza się w sypialni, pokoju dziecka, kinie domowym i strefie relaksu.",
+    planTitle: "Warianty i efekty",
+    whereFits: [
+      { title: "Sypialnia", desc: "Miękka poświata do zasypiania i wieczornego relaksu." },
+      { title: "Pokój dziecka", desc: "Bajkowy efekt nieba nad łóżkiem." },
+      { title: "Kino domowe", desc: "Nastrojowe tło do wieczornych seansów." },
+      { title: "Strefa relaksu", desc: "Spokojne światło w domowym SPA lub czytelni." }
+    ],
     planCards: [
       {
         title: "Światłowody",
@@ -279,6 +345,14 @@ export const rozwiazania: Rozwiazanie[] = [
     },
     whatIs:
       "Sufit wielopoziomowy to konstrukcja z uskokami i różnymi wysokościami, która dodaje wnętrzu głębi i charakteru. Poziomy można podświetlić taśmą LED, uzyskując efekt „pływającego” sufitu oderwanego od reszty powierzchni. Wielopoziomowość pozwala też ukryć belki, instalacje i nierówności stropu. Formę i podświetlenie planujemy razem, żeby efekt był spójny.",
+    planTitle: "Rodzaje form",
+    whereFits: [
+      { title: "Strefowanie wnętrza", desc: "Wydzielenie jadalni, salonu albo wyspy kuchennej." },
+      { title: "Ukrycie instalacji", desc: "Zamaskowanie belek, rur i nierówności stropu." },
+      { title: "Wyższe wnętrze", desc: "Podświetlony poziom optycznie podnosi sufit." },
+      { title: "Reprezentacyjny efekt", desc: "Efektowny salon albo lokal usługowy." }
+    ],
+    whereFitsTitle: "Kiedy ma sens",
     planCards: [
       {
         title: "Dwa i więcej poziomów",
@@ -347,6 +421,26 @@ export const rozwiazania: Rozwiazanie[] = [
     },
     whatIs:
       "Szczelina cienia to wąska, cienista przerwa 5–10 mm między sufitem a ścianą, zamiast klasycznej listwy. Sufit wizualnie „odrywa się” od ściany — to bardzo nowoczesny, minimalistyczny detal, który wygląda drogo. Przejście sufit–ściana jest czyste, bez widocznych maskownic i profili. Efekt wymaga precyzyjnego pomiaru i równych ścian, dlatego ustalamy go przed montażem.",
+    comparison: {
+      title: "Szczelina cienia a zwykła listwa",
+      aHead: "Szczelina cienia",
+      bHead: "Zwykła listwa",
+      rows: [
+        {
+          feature: "Przejście sufit–ściana",
+          a: "Cienisty rowek, bez widocznych profili",
+          b: "Widoczna listwa maskująca"
+        },
+        { feature: "Efekt", a: "Sufit „odrywa się” od ściany", b: "Sufit dosunięty do ściany" },
+        { feature: "Styl", a: "Minimalistyczny, „drogi” detal", b: "Standardowe wykończenie" },
+        { feature: "Wymagania", a: "Precyzyjny pomiar i równe ściany", b: "Mniej wymagająca" }
+      ]
+    },
+    notes: [
+      "Efekt wymaga równych ścian i dokładnego pomiaru.",
+      "Szczelinę ustalamy przed montażem — trudno dodać ją później.",
+      "Można ją połączyć z delikatnym podświetleniem obwodowym."
+    ],
     planCards: [
       {
         title: "Szczelina 5–10 mm",
@@ -411,6 +505,18 @@ export const rozwiazania: Rozwiazanie[] = [
     },
     whatIs:
       "Sufit z nadrukiem to dowolna grafika — zdjęcie, wzór albo własny motyw — wydrukowana na membranie w wysokiej rozdzielczości. Stosujemy trwały druk UV odporny na blaknięcie, na macie, satynie albo połysku. W wariancie Double Vision nadruk wygląda inaczej przy świetle wyłączonym i włączonym. Sufit staje się wtedy elementem wystroju wnętrza, a nie tylko powierzchnią.",
+    planTitle: "Warianty nadruku",
+    whereFits: [
+      { title: "Pokój dziecka", desc: "Niebo, mapa albo motyw z ulubionej bajki." },
+      { title: "Sypialnia", desc: "Spokojny motyw natury nad łóżkiem." },
+      { title: "Salon", desc: "Grafika dopasowana do stylu wnętrza." },
+      { title: "Lokal usługowy", desc: "Sufit z logo albo motywem marki." }
+    ],
+    notes: [
+      "Własne zdjęcie musi mieć wysoką rozdzielczość do druku wielkoformatowego.",
+      "Motyw i kolory dobieramy do oświetlenia pomieszczenia.",
+      "W wariancie Double Vision grafika zmienia się po włączeniu światła."
+    ],
     planCards: [
       {
         title: "Dowolna grafika",
@@ -478,6 +584,34 @@ export const rozwiazania: Rozwiazanie[] = [
     },
     whatIs:
       "Sufit podświetlany to prześwitująca membrana translucent podświetlona od wewnątrz — cała powierzchnia świeci miękkim, równym światłem, jak świetlny panel na cały sufit. Świecić może całość albo wybrany fragment, z regulacją jasności i barwy. Rozwiązanie świetnie doświetla pomieszczenia bez okien — łazienki i wnętrza bez światła dziennego. Źródła światła i zasilanie chowamy nad membraną na etapie montażu.",
+    planTitle: "Co składa się na efekt",
+    whereFits: [
+      { title: "Łazienka bez okna", desc: "Równe światło zamiast dziennego." },
+      { title: "Kuchnia", desc: "Bezcieniowe światło nad blatem i wyspą." },
+      { title: "Gabinet", desc: "Komfortowe, rozproszone światło do pracy." }
+    ],
+    comparison: {
+      title: "Sufit podświetlany a punktowe oświetlenie",
+      aHead: "Sufit podświetlany",
+      bHead: "Punktowe oświetlenie",
+      rows: [
+        {
+          feature: "Charakter światła",
+          a: "Miękkie, równe z całej powierzchni",
+          b: "Skupione punkty i wyraźne cienie"
+        },
+        {
+          feature: "Źródła światła",
+          a: "Ukryte nad membraną, niewidoczne",
+          b: "Widoczne oprawy w suficie"
+        },
+        {
+          feature: "Pomieszczenia bez okien",
+          a: "Zastępuje światło dzienne",
+          b: "Doświetla tylko punktowo"
+        }
+      ]
+    },
     planCards: [
       {
         title: "Membrana translucent",
