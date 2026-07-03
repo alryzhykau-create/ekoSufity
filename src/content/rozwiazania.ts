@@ -120,7 +120,7 @@ export const rozwiazania: Rozwiazanie[] = [
         answer: "Rozwiązanie planujemy razem z sufitem; szczegóły ustalamy na pomiarze."
       }
     ],
-    related: ["system-magnetyczny", "linie-swietlne", "sufity-napinane"]
+    related: ["system-magnetyczny", "linie-swietlne", "folie"]
   },
   {
     slug: "system-magnetyczny",
@@ -260,7 +260,7 @@ export const rozwiazania: Rozwiazanie[] = [
         answer: "To oświetlenie LED o niskim poborze mocy."
       }
     ],
-    related: ["sufit-podswietlany", "oswietlenie-led", "sufity-napinane"]
+    related: ["sufit-podswietlany", "oswietlenie-led", "folie"]
   },
   {
     slug: "sufity-wielopoziomowe",
@@ -392,7 +392,7 @@ export const rozwiazania: Rozwiazanie[] = [
       },
       { question: "Czy można połączyć z LED?", answer: "Tak, szczelinę można podświetlić." }
     ],
-    related: ["sufity-wielopoziomowe", "linie-swietlne", "sufity-napinane"]
+    related: ["sufity-wielopoziomowe", "linie-swietlne", "folie"]
   },
   {
     slug: "sufit-z-nadrukiem",
@@ -459,7 +459,7 @@ export const rozwiazania: Rozwiazanie[] = [
         answer: "Tak, w połączeniu z membraną translucentną."
       }
     ],
-    related: ["sufit-podswietlany", "gwiazdne-niebo", "sufity-napinane"]
+    related: ["sufit-podswietlany", "gwiazdne-niebo", "folie"]
   },
   {
     slug: "sufit-podswietlany",
@@ -536,7 +536,7 @@ export function getRozwiazanie(slug: string) {
 
 // Rekomendowana kolejność wszystkich rozwiązań (istniejące usługi + nowe).
 export const solutionCardOrder = [
-  "sufity-napinane",
+  "folie",
   "oswietlenie-led",
   "linie-swietlne",
   "system-magnetyczny",

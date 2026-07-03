@@ -1,11 +1,11 @@
 export const services = [
   {
-    slug: "sufity-napinane",
-    title: "Sufity napinane",
-    h1: "Sufity napinane z montażem",
+    slug: "folie",
+    title: "Folie",
+    h1: "Folie do sufitów napinanych",
     copy:
-      "Montaż sufitów napinanych dowolnej złożoności - od prostych sufitów z LED i dodatkowymi detalami.",
-    href: "/rozwiazania/sufity-napinane"
+      "Producenci folii do sufitów napinanych — MSD, Bauf i Teqtum. Materiał dobieramy pod projekt, efekt i budżet.",
+    href: "/rozwiazania/folie"
   },
   {
     slug: "oswietlenie-led",

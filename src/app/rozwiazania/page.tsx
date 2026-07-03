@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 // Kafle mozaiki, które zajmują 2 komórki (są wyższe od pozostałych).
 const largeTiles = new Set([
-  "sufity-napinane",
+  "folie",
   "oswietlenie-led",
   "gwiazdne-niebo",
   "sufit-podswietlany"

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { FolieDetail } from "@/components/rozwiazania/FolieDetail";
 import { RozwiazanieDetail } from "@/components/rozwiazania/RozwiazanieDetail";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -26,51 +27,7 @@ type ServiceDetail = {
   benefitCards?: { title: string; desc: string }[];
 };
 
-const details: Record<(typeof services)[number]["slug"], ServiceDetail> = {
-  "sufity-napinane": {
-    eyebrow: "Sufity napinane",
-    imageIndex: 0,
-    whatIs:
-      "Sufit napinany to lekka membrana montowana na profilach, która daje idealnie równą powierzchnię bez skuwania i mokrych prac. Wykonujemy sufity matowe, satynowe, połysk i translucent — z oświetleniem LED, karniszami i detalami w jednym projekcie. Montaż jest czysty i szybki, zwykle w 1–2 dni. Materiał i zakres dobieramy pod pomieszczenie po bezpłatnym pomiarze.",
-    options: ["matowe", "satynowe", "połysk", "translucent", "do pomieszczeń wilgotnych"],
-    benefits: [
-      "równa powierzchnia bez klasycznego szpachlowania całego sufitu",
-      "możliwość połączenia z LED i ukrytym karniszem",
-      "dobór materiału po sprawdzeniu pomieszczenia"
-    ],
-    optionCards: [
-      {
-        title: "Sufit matowy",
-        desc: "Spokojny, równy efekt do mieszkań, domów i lokali po remoncie."
-      },
-      {
-        title: "Sufit satynowy i połysk",
-        desc: "Od delikatnego blasku po efekt lustra powiększający wnętrze."
-      },
-      {
-        title: "Sufit z LED i detalami",
-        desc: "Linie świetlne, punkty, karnisze i podświetlenia w jednym projekcie."
-      },
-      {
-        title: "Strefy wilgotne i nietypowe formy",
-        desc: "Łazienki, przejścia, łuki i indywidualne układy."
-      }
-    ],
-    benefitCards: [
-      {
-        title: "Szybki, czysty montaż",
-        desc: "Równa powierzchnia bez skuwania i mokrych prac, zwykle w 1–2 dni."
-      },
-      {
-        title: "Wszystko od jednego wykonawcy",
-        desc: "Sufit, światło i detale planujemy i montujemy razem."
-      },
-      {
-        title: "Trwałość i gwarancja",
-        desc: "15 lat na membranę, 5 lat na montaż, 2 lata na oświetlenie LED."
-      }
-    ]
-  },
+const details: Partial<Record<(typeof services)[number]["slug"], ServiceDetail>> = {
   "oswietlenie-led": {
     eyebrow: "Światło",
     imageIndex: 3,
@@ -262,6 +219,10 @@ export default async function SolutionPage({ params }: PageProps) {
     return <RozwiazanieDetail rozwiazanie={rozwiazanie} />;
   }
 
+  if (slug === "folie") {
+    return <FolieDetail />;
+  }
+
   const service = getService(slug);
 
   if (!service) {
@@ -269,6 +230,11 @@ export default async function SolutionPage({ params }: PageProps) {
   }
 
   const detail = details[service.slug];
+
+  if (!detail) {
+    notFound();
+  }
+
   const image = visualAssets[detail.imageIndex];
   const optionCards =
     detail.optionCards ??

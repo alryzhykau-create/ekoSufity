@@ -11,7 +11,7 @@ const offerLinks = [
 ];
 
 const serviceLinks = [
-  { href: "/rozwiazania/sufity-napinane", label: "Sufity napinane" },
+  { href: "/rozwiazania/folie", label: "Folie" },
   { href: "/rozwiazania/oswietlenie-led", label: "Sufity podświetlane LED" },
   { href: "/sufity-napinane", label: "Sufity matowe" },
   { href: "/sufity-napinane", label: "Sufity błyszczące" },

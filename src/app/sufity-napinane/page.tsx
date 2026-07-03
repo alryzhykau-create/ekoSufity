@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
@@ -21,6 +22,24 @@ const ceilingTypes = [
   ["Translucent", "Materiał do podświetlenia i efektu miękkiego światła."],
   ["Z LED", "Linie świetlne, światło obwodowe, punkty i scenariusze oświetlenia."],
   ["Do stref wilgotnych", "Rozwiązania dobierane do łazienek, basenów i pomieszczeń z wilgocią."]
+];
+
+const folieCards = [
+  {
+    title: "MSD (Chiny)",
+    copy: "Najczęściej montowana folia — najlepszy stosunek jakości do ceny. Bogaty wybór faktur i ponad 120 kolorów w linii Premium. Nasz podstawowy materiał.",
+    href: "/rozwiazania/folie#msd"
+  },
+  {
+    title: "Bauf (niemiecka marka)",
+    copy: "Niemiecka marka i technologia, produkcja według europejskich norm. Oznaczenia chroniące przed podróbką, wysoka klasa emisji A+.",
+    href: "/rozwiazania/folie#bauf"
+  },
+  {
+    title: "Teqtum (niemiecka marka)",
+    copy: "Niemiecka marka z segmentu premium. Najwyższa półka jakościowa dla najbardziej wymagających realizacji.",
+    href: "/rozwiazania/folie#teqtum"
+  }
 ];
 
 const comparisonRows = [
@@ -130,6 +149,36 @@ export default function StretchCeilingsPage() {
                 <h3>{title}</h3>
                 <p>{copy}</p>
               </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3b. Folie */}
+      <section className="section sectionAlt">
+        <div className="container">
+          <SectionHeader
+            eyebrow="Folie"
+            title="Jakie folie montujemy"
+            lead="Montujemy folie od sprawdzonych producentów. Materiał dobieramy pod projekt, efekt i budżet."
+          />
+          <div className="grid3 sectionCards">
+            {folieCards.map((card) => (
+              <Link className="card miniCard" href={card.href} key={card.href}>
+                <h3>{card.title}</h3>
+                <p>{card.copy}</p>
+                <span
+                  style={{
+                    display: "inline-block",
+                    marginTop: 12,
+                    color: "var(--accent)",
+                    fontWeight: 700,
+                    fontSize: "0.9rem"
+                  }}
+                >
+                  Poznaj folię →
+                </span>
+              </Link>
             ))}
           </div>
         </div>

@@ -216,7 +216,7 @@ function CtaIcon({ name }: { name: "phone" | "whatsapp" | "camera" }) {
 type ServiceSlug = (typeof services)[number]["slug"];
 
 const solutionVisuals = {
-  "sufity-napinane": {
+  folie: {
     src: "/images/solutions/sufity-napinane-sketch.png",
     alt: "Szkic salonu z sufitem napinanym i linią światła",
     iconSrc: "/icon/rozwiazania/sufity-napinane.webp"
