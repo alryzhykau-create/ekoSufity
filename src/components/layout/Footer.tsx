@@ -13,9 +13,9 @@ const offerLinks = [
 const serviceLinks = [
   { href: "/rozwiazania/folie", label: "Folie" },
   { href: "/rozwiazania/oswietlenie-led", label: "Sufity podświetlane LED" },
-  { href: "/sufity-napinane", label: "Sufity matowe" },
-  { href: "/sufity-napinane", label: "Sufity błyszczące" },
-  { href: "/sufity-napinane", label: "Sufity z nadrukiem" }
+  { href: "/rozwiazania/folie/matowy", label: "Sufity matowe" },
+  { href: "/rozwiazania/folie/polysk", label: "Sufity błyszczące" },
+  { href: "/rozwiazania/sufit-z-nadrukiem", label: "Sufity z nadrukiem" }
 ];
 
 const footerSocialOrder = ["Facebook", "Instagram", "TikTok", "YouTube"] as const;
