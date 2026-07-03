@@ -94,7 +94,7 @@ export default async function CityPage({ params }: PageProps) {
             <p className="pageLead">{city.intro}</p>
             <div className="buttonRow">
               <Button href={siteConfig.contacts.phoneHref}>
-                Zadzwoń i umów pomiar {city.name === "Wrocław" ? "we Wrocławiu" : `w ${city.name}`}
+                Zadzwoń i umów pomiar {city.locative}
               </Button>
               <Button
                 href={whatsappUrl(`Dzień dobry, interesuje mnie sufit napinany. Miasto: ${city.name}.`)}

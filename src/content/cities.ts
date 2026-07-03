@@ -1,6 +1,8 @@
 export type City = {
   slug: string;
   name: string;
+  // Nazwa w miejscowniku z przyimkiem, np. "we Wrocławiu", "w Świdnicy".
+  locative: string;
   h1: string;
   metaTitle: string;
   metaDescription: string;
@@ -26,6 +28,25 @@ const cityNames = {
   "sroda-slaska": "Środa Śląska",
   "katy-wroclawskie": "Kąty Wrocławskie"
 } as const;
+
+// Nazwa miasta w miejscowniku z przyimkiem (do zdań typu "umów pomiar w ...").
+const cityLocatives: Record<keyof typeof cityNames, string> = {
+  wroclaw: "we Wrocławiu",
+  olawa: "w Oławie",
+  olesnica: "w Oleśnicy",
+  dlugoleka: "w Długołęce",
+  trzebnica: "w Trzebnicy",
+  swidnica: "w Świdnicy",
+  legnica: "w Legnicy",
+  walbrzych: "w Wałbrzychu",
+  brzeg: "w Brzegu",
+  swiebodzice: "w Świebodzicach",
+  dzierzoniow: "w Dzierżoniowie",
+  bielawa: "w Bielawie",
+  strzelin: "w Strzelinie",
+  "sroda-slaska": "w Środzie Śląskiej",
+  "katy-wroclawskie": "w Kątach Wrocławskich"
+};
 
 // Unikalny wstęp dla każdego miasta — usuwa duplikaty treści (SEO).
 const intros: Record<keyof typeof cityNames, string> = {
@@ -67,6 +88,7 @@ function city(slug: keyof typeof cityNames, priority: City["priority"], nearby: 
   return {
     slug,
     name,
+    locative: cityLocatives[slug],
     priority,
     nearby,
     h1:
