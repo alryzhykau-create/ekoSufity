@@ -58,7 +58,7 @@ export function FolieDetail() {
               pod projekt, oczekiwany efekt i warunki pomieszczenia. Poniżej krótko o każdej marce.
             </p>
             <div className="buttonRow">
-              <Button href={siteConfig.contacts.phoneHref}>Umów pomiar</Button>
+              <Button href={siteConfig.contacts.phoneHref}>Zadzwoń i umów pomiar</Button>
               <Button
                 href={whatsappUrl("Dzień dobry, chcę dobrać folię do sufitu napinanego.")}
                 variant="secondary"
@@ -108,7 +108,7 @@ export function FolieDetail() {
             <p>Na pomiarze doradzamy markę i materiał pod wnętrze, efekt i budżet.</p>
           </div>
           <div className="buttonRow">
-            <Button href={siteConfig.contacts.phoneHref}>Umów pomiar</Button>
+            <Button href={siteConfig.contacts.phoneHref}>Zadzwoń i umów pomiar</Button>
             <Button
               href={whatsappUrl("Dzień dobry, chcę dobrać folię do sufitu napinanego.")}
               variant="secondary"

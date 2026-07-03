@@ -45,7 +45,7 @@ export function RozwiazanieDetail({ rozwiazanie }: RozwiazanieDetailProps) {
             <h1>{rozwiazanie.h1}</h1>
             <p className="pageLead">{rozwiazanie.heroSubtitle}</p>
             <div className="buttonRow">
-              <Button href={siteConfig.contacts.phoneHref}>Umów pomiar</Button>
+              <Button href={siteConfig.contacts.phoneHref}>Zadzwoń i umów pomiar</Button>
               <Button
                 href={whatsappUrl(`Dzień dobry, interesuje mnie rozwiązanie: ${rozwiazanie.shortTitle}.`)}
                 variant="secondary"
@@ -195,7 +195,7 @@ export function RozwiazanieDetail({ rozwiazanie }: RozwiazanieDetailProps) {
             <p>{finalCta.text}</p>
           </div>
           <div className="buttonRow">
-            <Button href={siteConfig.contacts.phoneHref}>Umów pomiar</Button>
+            <Button href={siteConfig.contacts.phoneHref}>Zadzwoń i umów pomiar</Button>
             <Button
               href={whatsappUrl(
                 `Dzień dobry, interesuje mnie rozwiązanie: ${rozwiazanie.shortTitle}. Chcę umówić bezpłatny pomiar.`

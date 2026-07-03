@@ -31,10 +31,8 @@ export default function ProjectsPage() {
               czy wykonany projekt.
             </p>
             <div className="buttonRow">
-              <Button href={whatsappUrl("Dzień dobry, chcę zapytać o podobny efekt sufitu.")}>
-                Chcę podobny efekt
-              </Button>
-              <Button href={whatsappUrl()} variant="secondary">
+              <Button href={siteConfig.contacts.phoneHref}>Zadzwoń i umów pomiar</Button>
+              <Button href={whatsappUrl("Dzień dobry, chcę zapytać o podobny efekt sufitu.")} variant="secondary">
                 Napisz na WhatsApp
               </Button>
             </div>

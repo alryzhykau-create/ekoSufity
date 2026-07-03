@@ -26,9 +26,9 @@ export default function AboutPage() {
             <h1>O EkoSufity</h1>
             <p className="pageLead">{siteConfig.owner.description}</p>
             <div className="buttonRow">
-              <Button href={siteConfig.contacts.phoneHref}>Zadzwoń</Button>
+              <Button href={siteConfig.contacts.phoneHref}>Zadzwoń i umów pomiar</Button>
               <Button href={whatsappUrl()} variant="secondary">
-                WhatsApp
+                Napisz na WhatsApp
               </Button>
             </div>
           </div>

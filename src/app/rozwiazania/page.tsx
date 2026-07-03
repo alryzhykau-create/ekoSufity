@@ -56,7 +56,7 @@ export default function SolutionsPage() {
             <div className="buttonRow">
               <Button href={siteConfig.contacts.phoneHref}>Zadzwoń i umów pomiar</Button>
               <Button href={whatsappUrl("Dzień dobry, chcę dobrać rozwiązanie do sufitu napinanego.")} variant="secondary">
-                Dobierz rozwiązanie na WhatsApp
+                Napisz na WhatsApp
               </Button>
             </div>
           </div>

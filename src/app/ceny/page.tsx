@@ -90,11 +90,9 @@ export default function PricesPage() {
               podajemy po bezpłatnym pomiarze.
             </p>
             <div className="buttonRow">
-              <Button href={whatsappUrl("Dzień dobry, chcę zapytać o wycenę sufitu napinanego.")}>
-                Zapytaj o wycenę na WhatsApp
-              </Button>
-              <Button href={siteConfig.contacts.phoneHref} variant="secondary">
-                Zadzwoń i umów pomiar
+              <Button href={siteConfig.contacts.phoneHref}>Zadzwoń i umów pomiar</Button>
+              <Button href={whatsappUrl("Dzień dobry, chcę zapytać o wycenę sufitu napinanego.")} variant="secondary">
+                Napisz na WhatsApp
               </Button>
             </div>
           </div>

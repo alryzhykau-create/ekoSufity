@@ -102,7 +102,7 @@ export default function StretchCeilingsPage() {
             <div className="buttonRow">
               <Button href={siteConfig.contacts.phoneHref}>Zadzwoń i umów pomiar</Button>
               <Button href={whatsappUrl("Dzień dobry, chcę dobrać rodzaj sufitu napinanego.")} variant="secondary">
-                Dobierz sufit przez WhatsApp
+                Napisz na WhatsApp
               </Button>
             </div>
           </div>
