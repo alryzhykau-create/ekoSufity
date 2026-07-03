@@ -83,23 +83,6 @@ function RealizationsIcon() {
   );
 }
 
-function ReviewsIcon() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false">
-      <path d="M12 4.5 14.2 9l4.9.7-3.6 3.5.9 4.9-4.4-2.3-4.4 2.3.9-4.9L4.9 9.7 9.8 9 12 4.5Z" />
-    </svg>
-  );
-}
-
-function UserIcon() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false">
-      <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" />
-      <path d="M5 20a7 7 0 0 1 14 0" />
-    </svg>
-  );
-}
-
 function ContactIcon() {
   return (
     <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false">
@@ -108,36 +91,35 @@ function ContactIcon() {
   );
 }
 
-function ChevronIcon() {
+function SolutionsIcon() {
   return (
     <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false">
-      <path d="m8 10 4 4 4-4" />
+      <path d="M4.5 4.5h6v6h-6zM13.5 4.5h6v6h-6zM4.5 13.5h6v6h-6zM13.5 13.5h6v6h-6z" />
     </svg>
   );
 }
 
-type MobileNavigationItem = {
-  label: string;
-  href: string;
-  icon: ReactNode;
-  hasChevron?: boolean;
-  external?: boolean;
-};
+function FaqIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false">
+      <path d="M5 5.5h14a1.5 1.5 0 0 1 1.5 1.5v8a1.5 1.5 0 0 1-1.5 1.5H9l-4 3v-3H5a1.5 1.5 0 0 1-1.5-1.5V7A1.5 1.5 0 0 1 5 5.5Z" />
+      <path d="M9.7 9.6a2.3 2.3 0 0 1 3.8 1.7c0 1.4-1.8 1.6-1.8 2.8" />
+      <path d="M11.6 16h.01" />
+    </svg>
+  );
+}
 
-const mobileNavigation: MobileNavigationItem[] = [
-  { label: "Strona główna", href: "/", icon: <HomeIcon /> },
-  { label: "Oferta", href: "/sufity-napinane", icon: <OfferIcon />, hasChevron: true },
-  { label: "Ceny", href: "/ceny", icon: <PriceIcon /> },
-  { label: "Realizacje", href: "/realizacje", icon: <RealizationsIcon /> },
-  {
-    label: "Opinie",
-    href: siteConfig.contacts.googleBusinessProfileHref,
-    icon: <ReviewsIcon />,
-    external: true
-  },
-  { label: "O nas", href: "/o-firmie", icon: <UserIcon /> },
-  { label: "Kontakt", href: "/kontakt", icon: <ContactIcon /> }
-];
+// Mobilne menu używa tych samych pozycji co desktop (navigation),
+// dokłada tylko ikonę dopasowaną po href — dzięki temu pozycje się nie rozjeżdżają.
+const navIcons: Record<string, ReactNode> = {
+  "/": <HomeIcon />,
+  "/sufity-napinane": <OfferIcon />,
+  "/rozwiazania": <SolutionsIcon />,
+  "/ceny": <PriceIcon />,
+  "/realizacje": <RealizationsIcon />,
+  "/faq": <FaqIcon />,
+  "/kontakt": <ContactIcon />
+};
 
 export function Header() {
   const pathname = usePathname();
@@ -256,27 +238,20 @@ export function Header() {
                 </div>
 
                 <nav className="mobileMenuNav" aria-label="Nawigacja mobilna">
-                  {mobileNavigation.map((item) => {
+                  {navigation.map((item) => {
                     const isActive =
-                      !item.external && (pathname === item.href || pathname.startsWith(`${item.href}/`));
+                      pathname === item.href || pathname.startsWith(`${item.href}/`);
 
                     return (
                       <Link
                         key={item.href}
                         className={isActive ? "mobileMenuNavActive" : undefined}
                         href={item.href}
-                        target={item.external ? "_blank" : undefined}
-                        rel={item.external ? "noopener noreferrer" : undefined}
                         aria-current={isActive ? "page" : undefined}
                         onClick={() => setIsOpen(false)}
                       >
-                        <span className="mobileMenuNavIcon">{item.icon}</span>
+                        <span className="mobileMenuNavIcon">{navIcons[item.href]}</span>
                         <span>{item.label}</span>
-                        {item.hasChevron ? (
-                          <span className="mobileMenuChevron">
-                            <ChevronIcon />
-                          </span>
-                        ) : null}
                       </Link>
                     );
                   })}
