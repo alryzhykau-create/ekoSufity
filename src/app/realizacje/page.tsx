@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { visualAssets } from "@/content/visual-assets";
 import { breadcrumbSchema } from "@/lib/seo/schema";
-import { whatsappUrl } from "@/content/site";
+import { siteConfig, whatsappUrl } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Realizacje i inspiracje sufitów napinanych",
@@ -40,10 +40,10 @@ export default function ProjectsPage() {
             </div>
           </div>
           <div className="card">
-            <h3>Ważna informacja o zdjęciach</h3>
+            <h3>Wizualizacje, nie stockowe zdjęcia</h3>
             <p>
-              Materiały wizualne z obecnego archiwum traktujemy jako wizualizacje i inspiracje.
-              Realne zdjęcia wykonanych prac będą oznaczone jako “Realizacja EkoSufity”.
+              Materiały poniżej to wizualizacje przykładowych efektów. Realne zdjęcia naszych
+              realizacji dodajemy na bieżąco.
             </p>
           </div>
         </div>
@@ -54,21 +54,17 @@ export default function ProjectsPage() {
           <SectionHeader
             eyebrow="Inspiracje"
             title="Przykładowe efekty i kierunki projektowe"
-            lead="Filtry i case studies można rozbudować po dodaniu realnych zdjęć prac."
+            lead="Przykłady efektów, jakie można uzyskać — od salonów i kuchni po strefy wilgotne."
           />
           <div className="galleryGrid">
             {visualAssets.map((asset) => (
               <article className="card galleryCard" key={asset.src}>
                 <div className="galleryImage">
                   <Image src={asset.src} alt={asset.alt} fill sizes="(max-width: 700px) 100vw, 280px" />
-                  <span className="badge imageCaption">{asset.label}</span>
                 </div>
                 <div className="galleryContent">
                   <h3>{asset.title}</h3>
                   <p className="softLabel">{asset.meta}</p>
-                  <Button href={whatsappUrl(`Dzień dobry, interesuje mnie podobny projekt: ${asset.title}.`)} variant="secondary">
-                    Zapytaj o podobny projekt
-                  </Button>
                 </div>
               </article>
             ))}
@@ -76,18 +72,24 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      <section className="section sectionAlt">
-        <div className="container">
-          <SectionHeader eyebrow="Docelowo" title="Jak opiszemy realne realizacje?" />
-          <div className="grid3" style={{ marginTop: 34 }}>
-            {["Miasto i pomieszczenie", "Typ sufitu i oświetlenie", "Zakres: pomiar, materiał, montaż"].map(
-              (item) => (
-                <article className="card miniCard" key={item}>
-                  <h3>{item}</h3>
-                  <p>To pole uzupełnimy wyłącznie dla realnych wykonanych prac.</p>
-                </article>
-              )
-            )}
+      <section className="section finalCtaSection">
+        <div className="container finalCtaCard">
+          <div>
+            <span className="eyebrow">Twój projekt</span>
+            <h2 className="sectionTitle">Chcesz podobny efekt u siebie?</h2>
+            <p>
+              Wyślij zdjęcie pomieszczenia i metraż — podpowiemy materiał, światło i orientacyjny
+              koszt, a potem umówimy bezpłatny pomiar.
+            </p>
+          </div>
+          <div className="buttonRow">
+            <Button href={siteConfig.contacts.phoneHref}>Zadzwoń</Button>
+            <Button
+              href={whatsappUrl("Dzień dobry, chcę podobny efekt sufitu. Mogę wysłać zdjęcie i metraż.")}
+              variant="secondary"
+            >
+              Napisz na WhatsApp
+            </Button>
           </div>
         </div>
       </section>
