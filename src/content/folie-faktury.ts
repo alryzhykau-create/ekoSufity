@@ -24,6 +24,7 @@ export type Faktura = {
   warto: string; // "O czym warto wiedzieć" (minusy / niuanse)
   gdzie: string; // "Gdzie sprawdza się najlepiej"
   inneFaktury: string; // "…a inne faktury"
+  inneFakturyTitle?: string; // nadpisanie nagłówka sekcji porównania
   // Opcjonalny odnośnik-mostek do powiązanej strony (np. rozwiązania).
   bridge?: { text: string; href: string };
   faq: FakturaFaq[];
@@ -219,7 +220,7 @@ export const faktury: Faktura[] = [
   },
   {
     slug: "podswietlany",
-    name: "Podświetlany",
+    name: "Translucent",
     eyebrow: "Rodzaj folii",
     h1: "Folia translucent (podświetlana)",
     metaTitle: "Folia translucent (podświetlana) | Wrocław",
@@ -257,6 +258,7 @@ export const faktury: Faktura[] = [
     },
     inneFaktury:
       "Podświetlany to nie „kolejna faktura”, tylko osobne rozwiązanie oparte na świetle. Mat, satyna i połysk różnią się sposobem odbijania światła — sufit podświetlany sam jest jego źródłem.",
+    inneFakturyTitle: "Folia translucent a inne faktury",
     faq: [
       {
         question: "Czy sufit podświetlany może być jedynym światłem w pomieszczeniu?",

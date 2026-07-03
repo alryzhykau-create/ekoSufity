@@ -105,7 +105,10 @@ export function FakturaDetail({ faktura }: FakturaDetailProps) {
   // 6. …a inne faktury
   blocks.push(
     <div className="container">
-      <SectionHeader eyebrow="Porównanie" title={`Sufit ${lower} a inne faktury`} />
+      <SectionHeader
+        eyebrow="Porównanie"
+        title={faktura.inneFakturyTitle ?? `Sufit ${lower} a inne faktury`}
+      />
       <p className="sectionLead" style={{ marginTop: 18, maxWidth: 900 }}>
         {faktura.inneFaktury}
       </p>
