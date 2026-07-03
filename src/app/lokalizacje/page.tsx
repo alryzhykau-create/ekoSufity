@@ -37,29 +37,30 @@ export default function LocationsPage() {
             </div>
           </div>
           <aside className="card">
-            <h3>Główna lokalna money page</h3>
+            <h3>Bezpłatny pomiar i dojazd</h3>
             <p>
-              Najważniejsza strona lokalna to <Link href="/lokalizacje/wroclaw">Wrocław</Link>.
-              Pozostałe miasta budujemy jako użyteczne local pages, nie jako puste kopie.
+              Obejmuje Wrocław i miejscowości do 100 km od miasta. Nie widzisz swojej na liście?
+              Zadzwoń — najprawdopodobniej i tak dojedziemy.
             </p>
+            <Button href={siteConfig.contacts.phoneHref} variant="secondary">
+              Zapytaj o swoją miejscowość
+            </Button>
           </aside>
         </div>
       </section>
 
-      <section className="section">
+      <section className="section sectionAlt">
         <div className="container">
           <SectionHeader
             eyebrow="Miasta"
-            title="Lokalne strony dla miejscowości do 100 km"
-            lead="Każda strona powinna z czasem dostać własne zdjęcia, FAQ lub notatki logistyczne, żeby uniknąć thin content."
+            title="Gdzie montujemy sufity napinane"
+            lead="Wybierz swoją miejscowość — na jej stronie znajdziesz informacje o dojeździe, pomiarze i lokalnych realizacjach."
           />
-          <div className="grid3" style={{ marginTop: 34 }}>
+          <div className="cityPillGrid" style={{ marginTop: 30 }}>
             {cities.map((city) => (
-              <article className="card miniCard" key={city.slug}>
-                <h3>{city.name}</h3>
-                <p>{city.intro}</p>
-                <Link href={`/lokalizacje/${city.slug}`}>Sufity napinane {city.name}</Link>
-              </article>
+              <Link className="cityPill" href={`/lokalizacje/${city.slug}`} key={city.slug}>
+                {city.name}
+              </Link>
             ))}
           </div>
         </div>
