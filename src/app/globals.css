@@ -6,7 +6,9 @@
   --muted: #56524d;
   --border: #e7e1d8;
   --gold: #c9791c;
-  --gold-dark: #c9791c;
+  /* Ciemniejszy odcień do TEKSTU (eyebrow, etykiety, linki) — kontrast >=4.5:1 na jasnym tle.
+     --gold / --accent zostają jasne do teł, obramowań i dekoracji. */
+  --gold-dark: #9a5a0f;
   --accent: #c9791c;
   --accent-hover: #a96112;
   --accent-soft: #f8ebdd;
@@ -137,6 +139,19 @@ main {
   margin: 14px 0 0;
   color: var(--muted);
   font-size: var(--type-lead);
+}
+
+/* Link w ciągu tekstu — czytelny kolor + podkreślenie (nie tylko kolor). */
+.inlineLink {
+  color: var(--gold-dark);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 160ms ease;
+}
+
+.inlineLink:hover {
+  color: var(--accent-hover);
 }
 
 .grid2 {
@@ -3080,6 +3095,40 @@ details.faqItem:not([open]) p {
   padding-bottom: 0;
 }
 
+.contactPanelSocial {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.contactPanelSocialLabel {
+  color: var(--muted);
+  font-size: var(--type-body-sm);
+}
+
+.contactPanelSocialRow {
+  display: flex;
+  gap: 8px;
+}
+
+.contactPanelSocialIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #fff;
+  transition: border-color 160ms ease, transform 160ms ease;
+}
+
+.contactPanelSocialIcon:hover {
+  border-color: var(--gold);
+  transform: translateY(-1px);
+}
+
 .contactAreaCard {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 280px;
@@ -3109,11 +3158,11 @@ details.faqItem:not([open]) p {
 .cityPill {
   display: inline-flex;
   align-items: center;
-  min-height: 38px;
+  min-height: 44px;
   border: 1px solid var(--border);
   border-radius: 999px;
   background: #fff;
-  padding: 8px 14px;
+  padding: 10px 16px;
   color: var(--text);
   font-size: 0.88rem;
   font-weight: 750;
