@@ -194,12 +194,14 @@ export default function PricesPage() {
       <section className="section">
         <div className="container">
           <SectionHeader eyebrow="FAQ" title="Pytania o cenę sufitu napinanego" />
-          <div className="faqGrid">
-            {faqs.map((item) => (
-              <article className="faqItem" key={item.question}>
-                <h3>{item.question}</h3>
+          <div className="faqList">
+            {faqs.map((item, index) => (
+              <details className="faqItem" key={item.question} open={index === 0}>
+                <summary>
+                  <span>{item.question}</span>
+                </summary>
                 <p>{item.answer}</p>
-              </article>
+              </details>
             ))}
           </div>
         </div>

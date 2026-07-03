@@ -71,12 +71,14 @@ export default function FaqPage() {
       <section className="section">
         <div className="container">
           <SectionHeader title="Pytania przed kontaktem" />
-          <div className="faqGrid">
-            {pageFaqs.map((item) => (
-              <article className="faqItem" key={item.question}>
-                <h3>{item.question}</h3>
+          <div className="faqList">
+            {pageFaqs.map((item, index) => (
+              <details className="faqItem" key={item.question} open={index === 0}>
+                <summary>
+                  <span>{item.question}</span>
+                </summary>
                 <p>{item.answer}</p>
-              </article>
+              </details>
             ))}
           </div>
         </div>
