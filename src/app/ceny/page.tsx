@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { seoMeta } from "@/lib/seo/metadata";
 import { Kalkulator } from "@/components/ceny/Kalkulator";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -10,7 +11,8 @@ import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/seo/schema";
 export const metadata: Metadata = {
   title: "Sufity napinane cena - od czego zależy koszt?",
   description:
-    "Cena sufitu napinanego średnio ok. 120 zł/m² dla prostego sufitu MSD: prostokąt, 4 narożniki, bez dodatków. Dokładna wycena po bezpłatnym pomiarze."
+    "Cena sufitu napinanego średnio ok. 120 zł/m² dla prostego sufitu MSD: prostokąt, 4 narożniki, bez dodatków. Dokładna wycena po bezpłatnym pomiarze.",
+  ...seoMeta("/ceny")
 };
 
 const factors = [

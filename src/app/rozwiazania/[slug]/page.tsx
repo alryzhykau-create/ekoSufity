@@ -10,6 +10,7 @@ import { getRozwiazanie, rozwiazania } from "@/content/rozwiazania";
 import { getService, services } from "@/content/services";
 import { siteConfig, whatsappUrl } from "@/content/site";
 import { visualAssets } from "@/content/visual-assets";
+import { seoMeta } from "@/lib/seo/metadata";
 import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/seo/schema";
 
 type PageProps = {
@@ -195,7 +196,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (rozwiazanie) {
     return {
       title: rozwiazanie.metaTitle,
-      description: rozwiazanie.metaDescription
+      description: rozwiazanie.metaDescription,
+      ...seoMeta(`/rozwiazania/${slug}`)
     };
   }
 
@@ -207,7 +209,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: `${service.h1} - Wrocław i do 100 km`,
-    description: `${service.copy} Bezpłatny pomiar, dojazd gratis do 100 km od Wrocławia i kontakt przez telefon lub WhatsApp.`
+    description: `${service.copy} Bezpłatny pomiar, dojazd gratis do 100 km od Wrocławia i kontakt przez telefon lub WhatsApp.`,
+    ...seoMeta(`/rozwiazania/${slug}`)
   };
 }
 

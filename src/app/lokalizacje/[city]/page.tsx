@@ -9,6 +9,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { cities, getCity } from "@/content/cities";
 import { siteConfig, whatsappUrl } from "@/content/site";
 import { visualAssets } from "@/content/visual-assets";
+import { seoMeta } from "@/lib/seo/metadata";
 import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/seo/schema";
 
 type PageProps = {
@@ -49,7 +50,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: city.metaTitle,
-    description: city.metaDescription
+    description: city.metaDescription,
+    ...seoMeta(`/lokalizacje/${citySlug}`)
   };
 }
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { seoMeta } from "@/lib/seo/metadata";
 import Image from "next/image";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -11,7 +12,8 @@ import { siteConfig, whatsappUrl } from "@/content/site";
 export const metadata: Metadata = {
   title: "Realizacje i inspiracje sufitów napinanych",
   description:
-    "Zobacz inspiracje i docelowo realne realizacje sufitów napinanych: mieszkania, domy, lokale, restauracje i pomieszczenia wilgotne."
+    "Zobacz inspiracje i docelowo realne realizacje sufitów napinanych: mieszkania, domy, lokale, restauracje i pomieszczenia wilgotne.",
+  ...seoMeta("/realizacje")
 };
 
 export default function ProjectsPage() {

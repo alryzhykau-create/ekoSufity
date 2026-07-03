@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { seoMeta } from "@/lib/seo/metadata";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -9,7 +10,8 @@ import { breadcrumbSchema } from "@/lib/seo/schema";
 export const metadata: Metadata = {
   title: "Polityka prywatności",
   description:
-    "Polityka prywatności EkoSufity: kontakt telefoniczny, WhatsApp, e-mail i formularz pomiaru."
+    "Polityka prywatności EkoSufity: kontakt telefoniczny, WhatsApp, e-mail i formularz pomiaru.",
+  ...seoMeta("/polityka-prywatnosci")
 };
 
 const privacyItems = [

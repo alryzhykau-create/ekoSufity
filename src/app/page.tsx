@@ -11,12 +11,14 @@ import { homepageFaqs } from "@/content/faqs";
 import { services } from "@/content/services";
 import { siteConfig, socialLinks, whatsappUrl } from "@/content/site";
 import { visualAssets } from "@/content/visual-assets";
+import { seoMeta } from "@/lib/seo/metadata";
 import { faqSchema, serviceSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
   title: "Sufity napinane Wrocław i do 100 km",
   description:
-    "Sufity napinane z montażem we Wrocławiu i do 100 km od miasta. Bezpłatny pomiar, dojazd gratis, cena średnio ok. 120 zł/m² dla prostego sufitu MSD."
+    "Sufity napinane z montażem we Wrocławiu i do 100 km od miasta. Bezpłatny pomiar, dojazd gratis, cena średnio ok. 120 zł/m² dla prostego sufitu MSD.",
+  ...seoMeta("/")
 };
 
 const trustItems = [
@@ -472,7 +474,7 @@ export default function HomePage() {
         <div className="container heroShell">
           <div className="heroCopy">
             <h1>
-              <span>Sufity napinane</span>
+              <span>Sufity napinane</span>{" "}
               <span>
                 we Wrocławiu <span className="heroTitleAccent">i okolicach</span>
               </span>

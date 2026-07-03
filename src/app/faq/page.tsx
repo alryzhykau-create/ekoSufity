@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { seoMeta } from "@/lib/seo/metadata";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -8,7 +9,8 @@ import { breadcrumbSchema, faqSchema } from "@/lib/seo/schema";
 export const metadata: Metadata = {
   title: "Najczęstsze pytania o sufity napinane",
   description:
-    "FAQ EkoSufity: cena, pomiar, dojazd, gwarancja, LED, WhatsApp i status wizualizacji."
+    "FAQ EkoSufity: cena, pomiar, dojazd, gwarancja, LED, WhatsApp i status wizualizacji.",
+  ...seoMeta("/faq")
 };
 
 // Dodatkowe pytania tylko dla strony FAQ (nie ruszamy wspólnego homepageFaqs,

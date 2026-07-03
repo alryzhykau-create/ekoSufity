@@ -4,7 +4,7 @@ import { siteConfig, socialLinks } from "@/content/site";
 
 const offerLinks = [
   { href: "/", label: "Strona główna" },
-  { href: "/sufity-napinane", label: "Oferta" },
+  { href: "/sufity-napinane", label: "Sufity napinane" },
   { href: "/realizacje", label: "Realizacje" },
   { href: siteConfig.contacts.googleBusinessProfileHref, label: "Opinie", external: true },
   { href: "/kontakt", label: "Kontakt" }

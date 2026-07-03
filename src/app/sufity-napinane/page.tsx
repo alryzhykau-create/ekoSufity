@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { seoMeta } from "@/lib/seo/metadata";
 import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
@@ -12,7 +13,8 @@ import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/seo/schema";
 export const metadata: Metadata = {
   title: "Sufity napinane - rodzaje, efekty i montaż",
   description:
-    "Czym są sufity napinane, jakie są rodzaje materiałów i gdzie sprawdzają się najlepiej. Montaż we Wrocławiu i do 100 km od miasta."
+    "Czym są sufity napinane, jakie są rodzaje materiałów i gdzie sprawdzają się najlepiej. Montaż we Wrocławiu i do 100 km od miasta.",
+  ...seoMeta("/sufity-napinane")
 };
 
 const ceilingTypes = [

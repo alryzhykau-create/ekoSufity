@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { FakturaDetail } from "@/components/rozwiazania/FakturaDetail";
 import { faktury, getFaktura } from "@/content/folie-faktury";
+import { seoMeta } from "@/lib/seo/metadata";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -21,7 +22,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: faktura.metaTitle,
-    description: faktura.metaDescription
+    description: faktura.metaDescription,
+    ...seoMeta(`/rozwiazania/folie/${slug}`)
   };
 }
 

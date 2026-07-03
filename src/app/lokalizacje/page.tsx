@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { seoMeta } from "@/lib/seo/metadata";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -11,7 +12,8 @@ import { breadcrumbSchema, serviceSchema } from "@/lib/seo/schema";
 export const metadata: Metadata = {
   title: "Sufity napinane Wrocław i Dolny Śląsk",
   description:
-    "Lokalizacje EkoSufity: Wrocław i miejscowości do 100 km. Bezpłatny pomiar, dojazd gratis i montaż sufitów napinanych."
+    "Lokalizacje EkoSufity: Wrocław i miejscowości do 100 km. Bezpłatny pomiar, dojazd gratis i montaż sufitów napinanych.",
+  ...seoMeta("/lokalizacje")
 };
 
 export default function LocationsPage() {

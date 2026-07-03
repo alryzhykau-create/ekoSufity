@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { seoMeta } from "@/lib/seo/metadata";
 import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
@@ -13,7 +14,8 @@ import { breadcrumbSchema } from "@/lib/seo/schema";
 export const metadata: Metadata = {
   title: "Kontakt - bezpłatny pomiar i wycena",
   description:
-    "Skontaktuj się z EkoSufity. Telefon, WhatsApp i e-mail. Bezpłatny pomiar, dojazd gratis do 100 km od Wrocławia, obsługa PL/BY/RU/UA."
+    "Skontaktuj się z EkoSufity. Telefon, WhatsApp i e-mail. Bezpłatny pomiar, dojazd gratis do 100 km od Wrocławia, obsługa PL/BY/RU/UA.",
+  ...seoMeta("/kontakt")
 };
 
 // Te same ikony co w stopce (footer-social), w kolejności dla tej strony.

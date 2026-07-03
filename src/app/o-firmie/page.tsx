@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { seoMeta } from "@/lib/seo/metadata";
 import Image from "next/image";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -10,7 +11,8 @@ import { breadcrumbSchema } from "@/lib/seo/schema";
 export const metadata: Metadata = {
   title: "O EkoSufity",
   description:
-    "O EkoSufity: osobisty kontakt, właściciel Białorusin we Wrocławiu, obsługa po polsku, białorusku, rosyjsku i ukraińsku."
+    "O EkoSufity: osobisty kontakt, właściciel Białorusin we Wrocławiu, obsługa po polsku, białorusku, rosyjsku i ukraińsku.",
+  ...seoMeta("/o-firmie")
 };
 
 export default function AboutPage() {

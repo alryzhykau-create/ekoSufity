@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { seoMeta } from "@/lib/seo/metadata";
 import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
@@ -13,7 +14,8 @@ import { breadcrumbSchema, serviceSchema } from "@/lib/seo/schema";
 export const metadata: Metadata = {
   title: "Rozwiązania - sufity napinane, LED i karnisze",
   description:
-    "Rozwiązania EkoSufity: sufity napinane, oświetlenie LED, linie świetlne i ukryte karnisze. Montaż we Wrocławiu i do 100 km."
+    "Rozwiązania EkoSufity: sufity napinane, oświetlenie LED, linie świetlne i ukryte karnisze. Montaż we Wrocławiu i do 100 km.",
+  ...seoMeta("/rozwiazania")
 };
 
 // Kafle mozaiki, które zajmują 2 komórki (są wyższe od pozostałych).
