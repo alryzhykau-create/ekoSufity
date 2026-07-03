@@ -49,7 +49,7 @@ export const rozwiazania: Rozwiazanie[] = [
     slug: "wentylacja",
     eyebrow: "Wentylacja",
     shortTitle: "Wentylacja",
-    h1: "Wentylacja w suficie napinanym — Wrocław i do 100 km",
+    h1: "Wentylacja w suficie napinanym",
     cardDescription: "Wentylacja ukryta nad membraną — czysta linia zamiast widocznych kratek.",
     metaTitle: "Wentylacja w suficie napinanym — Wrocław",
     metaDescription:
@@ -126,7 +126,7 @@ export const rozwiazania: Rozwiazanie[] = [
     slug: "system-magnetyczny",
     eyebrow: "System magnetyczny",
     shortTitle: "System magnetyczny",
-    h1: "System magnetyczny 48 V w suficie napinanym — Wrocław i do 100 km",
+    h1: "System magnetyczny 48 V w suficie napinanym",
     cardDescription: "Ukryta szyna 48 V i lampy, które można dowolnie przestawiać.",
     metaTitle: "System magnetyczny 48 V w suficie napinanym — Wrocław",
     metaDescription:
@@ -195,7 +195,7 @@ export const rozwiazania: Rozwiazanie[] = [
     slug: "gwiazdne-niebo",
     eyebrow: "Gwiazdne niebo",
     shortTitle: "Gwiazdne niebo",
-    h1: "Sufit „gwiaździste niebo” — Wrocław i do 100 km",
+    h1: "Sufit „gwiaździste niebo”",
     cardDescription: "Setki świetlnych punktów wtopionych w sufit napinany.",
     metaTitle: "Sufit „gwiaździste niebo” — Wrocław",
     metaDescription:
@@ -266,7 +266,7 @@ export const rozwiazania: Rozwiazanie[] = [
     slug: "sufity-wielopoziomowe",
     eyebrow: "Sufity wielopoziomowe",
     shortTitle: "Sufity wielopoziomowe",
-    h1: "Sufity wielopoziomowe i pływające — Wrocław i do 100 km",
+    h1: "Sufity wielopoziomowe i pływające",
     cardDescription: "Poziomy, uskoki i efekt „pływającego” sufitu z podświetleniem.",
     metaTitle: "Sufity wielopoziomowe i pływające — Wrocław",
     metaDescription:
@@ -334,7 +334,7 @@ export const rozwiazania: Rozwiazanie[] = [
     slug: "szczelina-cienia",
     eyebrow: "Szczelina cienia",
     shortTitle: "Szczelina cienia",
-    h1: "Szczelina cienia — sufit bez widocznej ramki — Wrocław i do 100 km",
+    h1: "Szczelina cienia — sufit bez widocznej ramki",
     cardDescription: "Wąska, cienista szczelina zamiast listwy — sufit „odrywa się” od ściany.",
     metaTitle: "Szczelina cienia — sufit bez widocznej ramki — Wrocław",
     metaDescription:
@@ -398,7 +398,7 @@ export const rozwiazania: Rozwiazanie[] = [
     slug: "sufit-z-nadrukiem",
     eyebrow: "Sufit z nadrukiem",
     shortTitle: "Sufit z nadrukiem",
-    h1: "Sufit z nadrukiem (fotodruk) — Wrocław i do 100 km",
+    h1: "Sufit z nadrukiem (fotodruk)",
     cardDescription: "Dowolna grafika na membranie w wysokiej rozdzielczości.",
     metaTitle: "Sufit z nadrukiem (fotodruk) — Wrocław",
     metaDescription:
@@ -465,7 +465,7 @@ export const rozwiazania: Rozwiazanie[] = [
     slug: "sufit-podswietlany",
     eyebrow: "Sufit podświetlany",
     shortTitle: "Sufit podświetlany",
-    h1: "Sufit podświetlany (translucent) — Wrocław i do 100 km",
+    h1: "Sufit podświetlany (translucent)",
     cardDescription: "Cała powierzchnia świeci miękkim, równomiernym światłem.",
     metaTitle: "Sufit podświetlany (translucent) — Wrocław",
     metaDescription:
