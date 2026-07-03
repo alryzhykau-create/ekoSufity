@@ -162,6 +162,29 @@ main {
   font-size: 0.9rem;
 }
 
+/* Lista producentów folii (MSD / Bauf / Teqtum) — jeden spójny blok. */
+.producentList {
+  display: grid;
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.producentCard {
+  padding: 26px 28px;
+}
+
+.producentCard h3 {
+  margin: 0 0 10px;
+  font-family: var(--font-display);
+  font-size: var(--type-card-title-lg);
+}
+
+.producentCard p {
+  margin: 0;
+  max-width: 900px;
+  color: var(--muted);
+}
+
 .grid2 {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

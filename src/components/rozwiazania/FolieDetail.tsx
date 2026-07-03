@@ -109,21 +109,28 @@ export function FolieDetail() {
         </div>
       </section>
 
-      {producers.map((producer, index) => (
-        <section
-          className={`section${index % 2 === 1 ? " sectionAlt" : ""}`}
-          id={producer.id}
-          key={producer.id}
-          style={{ scrollMarginTop: 90 }}
-        >
-          <div className="container">
-            <SectionHeader eyebrow="Producent" title={producer.title} />
-            <p className="sectionLead" style={{ marginTop: 18, maxWidth: 900 }}>
-              {producer.text}
-            </p>
+      <section className="section" id="producenci" style={{ scrollMarginTop: 90 }}>
+        <div className="container">
+          <SectionHeader
+            eyebrow="Producenci"
+            title="Producenci folii"
+            lead="Montujemy folie sprawdzonych producentów — dobieramy je do efektu i budżetu."
+          />
+          <div className="producentList">
+            {producers.map((producer) => (
+              <article
+                className="card producentCard"
+                id={producer.id}
+                key={producer.id}
+                style={{ scrollMarginTop: 90 }}
+              >
+                <h3>{producer.title}</h3>
+                <p>{producer.text}</p>
+              </article>
+            ))}
           </div>
-        </section>
-      ))}
+        </div>
+      </section>
 
       <section className="section finalCtaSection">
         <div className="container finalCtaCard">

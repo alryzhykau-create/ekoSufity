@@ -34,18 +34,18 @@ const fakturaLinks: Record<string, string> = {
 
 const folieCards = [
   {
-    title: "MSD (Chiny)",
-    copy: "Najczęściej montowana folia — najlepszy stosunek jakości do ceny. Bogaty wybór faktur i ponad 120 kolorów w linii Premium. Nasz podstawowy materiał.",
+    title: "MSD",
+    copy: "Najczęściej montowana folia, najlepszy stosunek jakości do ceny. Ponad 120 kolorów w linii Premium.",
     href: "/rozwiazania/folie#msd"
   },
   {
-    title: "Bauf (niemiecka marka)",
-    copy: "Niemiecka marka i technologia, produkcja według europejskich norm. Oznaczenia chroniące przed podróbką, wysoka klasa emisji A+.",
+    title: "Bauf",
+    copy: "Niemiecka marka i technologia, produkcja według europejskich norm.",
     href: "/rozwiazania/folie#bauf"
   },
   {
-    title: "Teqtum (niemiecka marka)",
-    copy: "Niemiecka marka z segmentu premium. Najwyższa półka jakościowa dla najbardziej wymagających realizacji.",
+    title: "Teqtum",
+    copy: "Niemiecka marka z segmentu premium. Najwyższa półka jakościowa.",
     href: "/rozwiazania/folie#teqtum"
   }
 ];
@@ -178,26 +178,16 @@ export default function StretchCeilingsPage() {
       <section className="section sectionAlt">
         <div className="container">
           <SectionHeader
-            eyebrow="Folie"
-            title="Jakie folie montujemy"
-            lead="Montujemy folie od sprawdzonych producentów. Materiał dobieramy pod projekt, efekt i budżet."
+            eyebrow="Producenci"
+            title="Folie sprawdzonych producentów"
+            lead="Materiał dobieramy pod projekt, efekt i budżet."
           />
           <div className="grid3 sectionCards">
             {folieCards.map((card) => (
               <Link className="card miniCard" href={card.href} key={card.href}>
                 <h3>{card.title}</h3>
                 <p>{card.copy}</p>
-                <span
-                  style={{
-                    display: "inline-block",
-                    marginTop: 12,
-                    color: "var(--accent)",
-                    fontWeight: 700,
-                    fontSize: "0.9rem"
-                  }}
-                >
-                  Poznaj folię →
-                </span>
+                <p className="cardArrowText">Poznaj folię →</p>
               </Link>
             ))}
           </div>
