@@ -24,6 +24,14 @@ const ceilingTypes = [
   ["Do stref wilgotnych", "Rozwiązania dobierane do łazienek, basenów i pomieszczeń z wilgocią."]
 ];
 
+// Faktury z osobnymi podstronami — te karty prowadzą do /rozwiazania/folie/[slug].
+const fakturaLinks: Record<string, string> = {
+  Matowe: "/rozwiazania/folie/matowy",
+  Satynowe: "/rozwiazania/folie/satynowy",
+  Połysk: "/rozwiazania/folie/polysk",
+  Translucent: "/rozwiazania/folie/podswietlany"
+};
+
 const folieCards = [
   {
     title: "MSD (Chiny)",
@@ -144,12 +152,24 @@ export default function StretchCeilingsPage() {
             lead="Dobór materiału zależy od pomieszczenia, światła, efektu wizualnego i planowanych dodatków."
           />
           <div className="grid3 sectionCards">
-            {ceilingTypes.map(([title, copy]) => (
-              <article className="card miniCard" key={title}>
-                <h3>{title}</h3>
-                <p>{copy}</p>
-              </article>
-            ))}
+            {ceilingTypes.map(([title, copy]) => {
+              const href = fakturaLinks[title];
+              if (href) {
+                return (
+                  <Link className="card miniCard" href={href} key={title}>
+                    <h3>{title}</h3>
+                    <p>{copy}</p>
+                    <p className="cardArrowText">Zobacz fakturę →</p>
+                  </Link>
+                );
+              }
+              return (
+                <article className="card miniCard" key={title}>
+                  <h3>{title}</h3>
+                  <p>{copy}</p>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>

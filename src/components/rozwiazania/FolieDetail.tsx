@@ -1,8 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { faktury, fakturaCardCopy } from "@/content/folie-faktury";
 import { siteConfig, whatsappUrl } from "@/content/site";
 import { visualAssets } from "@/content/visual-assets";
 import { breadcrumbSchema, serviceSchema } from "@/lib/seo/schema";
@@ -81,6 +83,29 @@ export function FolieDetail() {
               {image.label}. Ostateczny efekt zależy od wybranej folii i pomieszczenia.
             </p>
           </aside>
+        </div>
+      </section>
+
+      <section className="section sectionAlt">
+        <div className="container">
+          <SectionHeader
+            eyebrow="Faktury"
+            title="Rodzaje faktur"
+            lead="Każda faktura daje inny efekt — od klasycznego matu po lustrzany połysk i świecący sufit. Zobacz szczegóły."
+          />
+          <div className="grid4 sectionCards">
+            {faktury.map((faktura) => (
+              <Link
+                className="card miniCard"
+                href={`/rozwiazania/folie/${faktura.slug}`}
+                key={faktura.slug}
+              >
+                <h3>{faktura.name}</h3>
+                <p>{fakturaCardCopy[faktura.slug]}</p>
+                <p className="cardArrowText">Zobacz fakturę →</p>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
