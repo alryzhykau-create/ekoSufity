@@ -144,7 +144,7 @@ export function Footer() {
           </div>
 
           <div className="footerBottom">
-            <span>© 2025 ekoSufity. Wszystkie prawa zastrzeżone.</span>
+            <span>© {new Date().getFullYear()} ekoSufity. Wszystkie prawa zastrzeżone.</span>
             <div className="footerLegalLinks">
               <Link href="/polityka-prywatnosci">Polityka prywatności</Link>
             </div>

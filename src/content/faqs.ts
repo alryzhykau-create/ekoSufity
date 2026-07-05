@@ -2,7 +2,7 @@ export const homepageFaqs = [
   {
     question: "Ile kosztuje sufit napinany?",
     answer:
-      "Orientacyjnie prosty sufit napinany zaczyna się od ok. 120 zł/m². Finalna cena zależy od metrażu, liczby narożników, rodzaju materiału, profili i dodatków."
+      "Orientacyjnie prosty sufit napinany zaczyna się od ok. 120 zł/m². Finalna cena zależy od metrażu, liczby narożników, rodzaju materiału, profili i dodatków. Minimalna wartość zamówienia to 1200 zł — dotyczy to głównie bardzo małych pomieszczeń."
   },
   {
     question: "Od czego zależy końcowa wycena?",
