@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { seoMeta } from "@/lib/seo/metadata";
-import Image from "next/image";
+import { RealizacjeGallery } from "@/components/realizacje/RealizacjeGallery";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { visualAssets } from "@/content/visual-assets";
 import { breadcrumbSchema } from "@/lib/seo/schema";
 import { siteConfig, whatsappUrl } from "@/content/site";
 
@@ -16,7 +15,13 @@ export const metadata: Metadata = {
   ...seoMeta("/realizacje")
 };
 
-export default function ProjectsPage() {
+type PageProps = {
+  searchParams: Promise<{ room?: string; faktura?: string }>;
+};
+
+export default async function ProjectsPage({ searchParams }: PageProps) {
+  const { room, faktura } = await searchParams;
+
   return (
     <>
       <JsonLd data={breadcrumbSchema([{ label: "Realizacje", href: "/realizacje" }])} />
@@ -56,19 +61,7 @@ export default function ProjectsPage() {
             title="Przykładowe efekty i kierunki projektowe"
             lead="Przykłady efektów, jakie można uzyskać — od salonów i kuchni po strefy wilgotne."
           />
-          <div className="galleryGrid">
-            {visualAssets.map((asset) => (
-              <article className="card galleryCard" key={asset.src}>
-                <div className="galleryImage">
-                  <Image src={asset.src} alt={asset.alt} fill sizes="(max-width: 700px) 100vw, 280px" />
-                </div>
-                <div className="galleryContent">
-                  <h3>{asset.title}</h3>
-                  <p className="softLabel">{asset.meta}</p>
-                </div>
-              </article>
-            ))}
-          </div>
+          <RealizacjeGallery initialRoom={room} initialFinish={faktura} />
         </div>
       </section>
 

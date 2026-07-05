@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { whatsappUrl } from "@/content/site";
 import { visualAssets } from "@/content/visual-assets";
 
 type GalleryCard = (typeof visualAssets)[number] & {
@@ -64,9 +63,9 @@ export function GallerySection() {
                 </div>
                 <Link
                   className="galleryCta"
-                  href={whatsappUrl(`Dzień dobry, interesuje mnie podobny efekt: ${asset.title}.`)}
+                  href={`/realizacje?room=${encodeURIComponent(asset.room)}`}
                 >
-                  Chcę podobny efekt
+                  Zobacz podobne realizacje
                 </Link>
               </div>
             </article>
