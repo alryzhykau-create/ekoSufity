@@ -58,7 +58,7 @@ export default function AboutPage() {
             title="Spokojne doradztwo, dokładny pomiar, jasne ustalenia"
             lead="Bez ukrytych kosztów i presji — cenę i zakres ustalamy jasno, po bezpłatnym pomiarze."
           />
-          <div className="grid3" style={{ marginTop: 34 }}>
+          <div className="grid3 sectionCards">
             {[
               ["Osobisty kontakt", "Telefon i WhatsApp bez niepotrzebnych pośredników."],
               ["Na rynku od 2020 roku", "Montujemy sufity napinane we Wrocławiu i okolicy od 2020 roku."],

@@ -135,7 +135,7 @@ export default function StretchCeilingsPage() {
       <section className="section sectionAlt">
         <div className="container">
           <SectionHeader eyebrow="Co to jest" title="Co to jest sufit napinany?" />
-          <p className="sectionLead" style={{ marginTop: 18, maxWidth: 900 }}>
+          <p className="sectionLead sectionLead--wide">
             Sufit napinany to cienka, wytrzymała membrana rozpięta na profilach zamontowanych przy
             suficie lub ścianach. Powstaje idealnie równa powierzchnia — bez gładzenia, malowania i
             mokrych prac. Pod membraną chowamy oświetlenie, przewody i nierówności starego sufitu,
@@ -200,7 +200,7 @@ export default function StretchCeilingsPage() {
       <section className="section">
         <div className="container">
           <SectionHeader eyebrow="Oświetlenie" title="Oświetlenie w suficie napinanym" />
-          <p className="sectionLead" style={{ marginTop: 18, maxWidth: 900 }}>
+          <p className="sectionLead sectionLead--wide">
             Sufit napinany łączymy z dowolnym oświetleniem — planujemy je razem, jako jeden projekt.
             Montujemy linie świetlne LED, światło obwodowe, punkty, a także dowolne oprawy: halogeny,
             lampy i żyrandole. Zakładamy też system magnetyczny 48 V i podświetlenie translucent, gdy
@@ -214,7 +214,7 @@ export default function StretchCeilingsPage() {
       <section className="section sectionAlt">
         <div className="container">
           <SectionHeader eyebrow="Gdzie" title="Gdzie montujemy sufity napinane" />
-          <p className="sectionLead" style={{ marginTop: 18, maxWidth: 900 }}>
+          <p className="sectionLead sectionLead--wide">
             Sufity napinane sprawdzają się niemal w każdym pomieszczeniu. Montujemy je w mieszkaniach
             i domach — w salonach, kuchniach, sypialniach, łazienkach i na korytarzach. Wykonujemy je
             również w lokalach komercyjnych: restauracjach, gabinetach, sklepach i biurach. Radzimy

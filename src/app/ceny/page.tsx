@@ -144,7 +144,7 @@ export default function PricesPage() {
             title="Co zwiększa cenę?"
             lead="Nie ukrywamy, że cena zależy od złożoności. Dlatego pokazujemy orientacyjną średnią z warunkami, a dokładną wycenę robimy po pomiarze."
           />
-          <div className="grid3" style={{ marginTop: 34 }}>
+          <div className="grid3 sectionCards">
             {factors.map(([title, copy]) => (
               <article className="card miniCard" key={title}>
                 <h3>{title}</h3>
@@ -172,18 +172,7 @@ export default function PricesPage() {
             {priceExamples.map(([title, price, desc]) => (
               <article className="card miniCard" key={title}>
                 <h3>{title}</h3>
-                <strong
-                  style={{
-                    display: "block",
-                    margin: "10px 0 4px",
-                    fontFamily: "var(--font-display)",
-                    fontSize: "1.4rem",
-                    fontWeight: 800,
-                    color: "var(--gold-dark)"
-                  }}
-                >
-                  {price}
-                </strong>
+                <strong className="examplePrice">{price}</strong>
                 <p>{desc}</p>
               </article>
             ))}

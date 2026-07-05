@@ -141,6 +141,12 @@ main {
   font-size: var(--type-lead);
 }
 
+/* Szerszy akapit prozy pod nagłówkiem sekcji (strony wewnętrzne). */
+.sectionLead--wide {
+  margin-top: 18px;
+  max-width: 900px;
+}
+
 /* Link w ciągu tekstu — czytelny kolor + podkreślenie (nie tylko kolor). */
 .inlineLink {
   color: var(--gold-dark);
@@ -160,6 +166,86 @@ main {
   color: var(--gold-dark);
   font-weight: 700;
   font-size: 0.9rem;
+}
+
+/* Cena w kartach przykładów (strona /ceny). */
+.examplePrice {
+  display: block;
+  margin: 10px 0 4px;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--gold-dark);
+}
+
+/* Filtry realizacji — chipy (pomieszczenie / faktura). */
+.filterBar {
+  display: grid;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.filterGroup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.filterGroupLabel {
+  margin-right: 6px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.filterChip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #fff;
+  padding: 10px 18px;
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 750;
+  cursor: pointer;
+  transition: border-color 160ms ease, background 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.filterChip:hover {
+  border-color: var(--gold);
+  transform: translateY(-1px);
+}
+
+.filterChip.is-active {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: var(--black);
+}
+
+.galleryEmpty {
+  margin-top: 34px;
+  display: grid;
+  justify-items: start;
+  gap: 8px;
+  padding: 32px;
+}
+
+.galleryEmpty h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--type-card-title-lg);
+  font-weight: 800;
+}
+
+.galleryEmpty p {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: var(--type-body-sm);
 }
 
 /* Lista producentów folii (MSD / Bauf / Teqtum) — jeden spójny blok. */
@@ -565,7 +651,7 @@ main {
   display: inline-flex;
   max-width: 560px;
   border-radius: var(--radius);
-  background: rgba(17, 24, 39, 0.22);
+  background: rgba(17, 24, 39, 0.46);
   padding: 14px 20px;
   color: #fff;
   font-size: 0.94rem;
@@ -633,7 +719,7 @@ main {
   max-width: 520px;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px 16px;
-  font-size: var(--type-eyebrow);
+  font-size: 0.85rem;
   font-weight: 750;
   line-height: 1.35;
 }
@@ -790,7 +876,6 @@ main {
 .trustCard h3 {
   font-size: var(--type-card-title);
   line-height: 1.28;
-  white-space: nowrap;
 }
 
 .trustCard p,
@@ -3197,6 +3282,7 @@ details.faqItem:not([open]) p {
   color: var(--text);
   font-size: 0.88rem;
   font-weight: 750;
+  white-space: nowrap;
   transition: border-color 160ms ease, color 160ms ease, transform 160ms ease;
 }
 

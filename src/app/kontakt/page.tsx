@@ -152,7 +152,7 @@ export default function ContactPage() {
             title="Co warto przygotować?"
             lead="Nie musisz znać technologii. Wystarczy kilka podstawowych informacji."
           />
-          <div className="grid4" style={{ marginTop: 34 }}>
+          <div className="grid4 sectionCards">
             {[
               ["Miasto", "Ustalimy dojazd i możliwy termin pomiaru."],
               ["Przybliżony metraż", "Pozwala wstępnie oszacować zakres prac."],

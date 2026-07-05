@@ -301,7 +301,7 @@ export default async function SolutionPage({ params }: PageProps) {
       <section className="section sectionAlt">
         <div className="container">
           <SectionHeader eyebrow="O rozwiązaniu" title="Co to jest" />
-          <p className="sectionLead" style={{ marginTop: 18, maxWidth: 900 }}>
+          <p className="sectionLead sectionLead--wide">
             {detail.whatIs}
           </p>
         </div>

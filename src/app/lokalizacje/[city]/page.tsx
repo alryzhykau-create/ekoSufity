@@ -125,8 +125,10 @@ export default async function CityPage({ params }: PageProps) {
           ].map(([title, copy]) => (
             <article className="card trustCard" key={title}>
               <div className="iconDot" aria-hidden="true" />
-              <h3>{title}</h3>
-              <p>{copy}</p>
+              <div className="trustText">
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </div>
             </article>
           ))}
         </div>
@@ -139,7 +141,7 @@ export default async function CityPage({ params }: PageProps) {
             title={`Najczęściej wybierane sufity napinane w lokalizacji ${city.name}`}
             lead="Dobór materiału i światła zależy od pomieszczenia, metrażu i oczekiwanego efektu."
           />
-          <div className="grid4" style={{ marginTop: 34 }}>
+          <div className="grid4 sectionCards">
             {[
               ["Sufit matowy", "Spokojny efekt do mieszkań, domów i pomieszczeń po remoncie."],
               ["Sufit z LED", "Linie świetlne, światło obwodowe lub punkty dopasowane do wnętrza."],

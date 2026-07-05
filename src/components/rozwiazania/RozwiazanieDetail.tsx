@@ -27,7 +27,7 @@ export function RozwiazanieDetail({ rozwiazanie }: RozwiazanieDetailProps) {
   blocks.push(
     <div className="container">
       <SectionHeader eyebrow="O rozwiązaniu" title="Co to jest" />
-      <p className="sectionLead" style={{ marginTop: 18, maxWidth: 900 }}>
+      <p className="sectionLead sectionLead--wide">
         {rozwiazanie.whatIs}
       </p>
       {rozwiazanie.bridge ? (
@@ -84,7 +84,7 @@ export function RozwiazanieDetail({ rozwiazanie }: RozwiazanieDetailProps) {
       blocks.push(
         <div className="container">
           <SectionHeader eyebrow={block.eyebrow ?? "Szczegóły"} title={block.title} />
-          <p className="sectionLead" style={{ marginTop: 18, maxWidth: 900 }}>
+          <p className="sectionLead sectionLead--wide">
             {block.body}
           </p>
         </div>
@@ -100,7 +100,7 @@ export function RozwiazanieDetail({ rozwiazanie }: RozwiazanieDetailProps) {
           eyebrow="Zastosowanie"
           title={rozwiazanie.whereFitsTitle ?? "Gdzie się sprawdza"}
         />
-        <p className="sectionLead" style={{ marginTop: 18, maxWidth: 900 }}>
+        <p className="sectionLead sectionLead--wide">
           {rozwiazanie.whereFitsText}
         </p>
       </div>

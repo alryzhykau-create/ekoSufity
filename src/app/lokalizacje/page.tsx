@@ -58,7 +58,7 @@ export default function LocationsPage() {
             title="Gdzie montujemy sufity napinane"
             lead="Wybierz swoją miejscowość — na jej stronie znajdziesz informacje o dojeździe, pomiarze i lokalnych realizacjach."
           />
-          <div className="cityPillGrid" style={{ marginTop: 30 }}>
+          <div className="cityPillGrid sectionCards">
             {cities.map((city) => (
               <Link className="cityPill" href={`/lokalizacje/${city.slug}`} key={city.slug}>
                 {city.name}

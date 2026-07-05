@@ -23,7 +23,7 @@ export function FakturaDetail({ faktura }: FakturaDetailProps) {
   blocks.push(
     <div className="container">
       <SectionHeader eyebrow="O fakturze" title="Co to jest" />
-      <p className="sectionLead" style={{ marginTop: 18, maxWidth: 900 }}>
+      <p className="sectionLead sectionLead--wide">
         {faktura.whatIs}
       </p>
     </div>
@@ -109,7 +109,7 @@ export function FakturaDetail({ faktura }: FakturaDetailProps) {
         eyebrow="Porównanie"
         title={faktura.inneFakturyTitle ?? `Sufit ${lower} a inne faktury`}
       />
-      <p className="sectionLead" style={{ marginTop: 18, maxWidth: 900 }}>
+      <p className="sectionLead sectionLead--wide">
         {faktura.inneFaktury}
       </p>
     </div>
