@@ -9,6 +9,7 @@ type GalleryCard = (typeof visualAssets)[number] & {
 const galleryCards: GalleryCard[] = [
   {
     ...visualAssets[0],
+    src: "/images/salon-22m2-photo.png",
     tags: ["salon", "LED", "połysk"]
   },
   {

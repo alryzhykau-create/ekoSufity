@@ -347,7 +347,7 @@ const processSteps = [
   {
     icon: "drill",
     title: "Montaż",
-    copy: "Wykonujemy montaż sufitu napinanego zgodnie z ustaleniami.",
+    copy: "Wykonujemy montaż zgodnie z ustaleniami. Po pracy sprzątamy po sobie — bez pyłu i gruzu.",
     imageSrc: "/icon/proces-premium-gold/proces-montaz-v2.avif"
   },
   {
@@ -474,9 +474,9 @@ export default function HomePage() {
         <div className="container heroShell">
           <div className="heroCopy">
             <h1>
-              <span>Sufity napinane</span>{" "}
+              <span>Sufity napinane we Wrocławiu —</span>{" "}
               <span>
-                we Wrocławiu <span className="heroTitleAccent">i okolicach</span>
+                <span className="heroTitleAccent">idealnie gładko</span>, montaż w 1–2 dni
               </span>
             </h1>
             <p className="heroLead">
