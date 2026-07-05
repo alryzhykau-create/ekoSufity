@@ -474,9 +474,9 @@ export default function HomePage() {
         <div className="container heroShell">
           <div className="heroCopy">
             <h1>
-              <span>Sufity napinane we Wrocławiu —</span>{" "}
+              <span>Sufity napinane</span>{" "}
               <span>
-                <span className="heroTitleAccent">idealnie gładko</span>, montaż w 1–2 dni
+                we Wrocławiu <span className="heroTitleAccent">i okolicach</span>
               </span>
             </h1>
             <p className="heroLead">
