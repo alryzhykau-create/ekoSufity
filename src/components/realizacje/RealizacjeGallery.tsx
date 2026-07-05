@@ -26,11 +26,9 @@ export function RealizacjeGallery({ initialRoom, initialFinish }: RealizacjeGall
     () => (Object.keys(roomLabels) as RoomKey[]).filter((r) => visualAssets.some((a) => a.room === r)),
     []
   );
-  const finishes = useMemo(
-    () =>
-      (Object.keys(finishLabels) as FinishKey[]).filter((f) => visualAssets.some((a) => a.finish === f)),
-    []
-  );
+  // Wszystkie 4 faktury pokazujemy zawsze — spójnie z fakturami na stronie.
+  // Jeśli danej faktury nie ma jeszcze w realizacjach, filtr pokaże pusty stan.
+  const finishes = useMemo(() => Object.keys(finishLabels) as FinishKey[], []);
 
   const [room, setRoom] = useState<string>(
     initialRoom && rooms.includes(initialRoom as RoomKey) ? initialRoom : ALL
