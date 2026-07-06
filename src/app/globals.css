@@ -521,6 +521,7 @@ main {
 .phoneTop {
   display: inline-flex;
   height: 48px;
+  flex-shrink: 0;
   align-items: center;
   gap: 9px;
   border: 1px solid rgba(201, 121, 28, 0.35);
@@ -531,6 +532,7 @@ main {
   font-size: 1rem;
   font-weight: 850;
   line-height: 1;
+  white-space: nowrap;
   box-shadow: 0 4px 18px rgba(13, 13, 13, 0.055), 0 8px 22px rgba(201, 121, 28, 0.08);
   transition: border-color 180ms ease, box-shadow 180ms ease;
 }
@@ -540,34 +542,84 @@ main {
   box-shadow: 0 8px 22px rgba(201, 121, 28, 0.14), 0 4px 18px rgba(13, 13, 13, 0.055);
 }
 
+/* WhatsApp w headerze — wirująca duga wokół rdzenia (dokładnie w połowie między
+   ikoną a złotą obwódką), na okrągłej podkładce w kolorze przycisku telefonu. */
 .whatsappTop {
-  display: inline-grid;
+  position: relative;
+  display: flex;
   width: 48px;
   height: 48px;
-  place-items: center;
-  border: 1px solid rgba(143, 79, 13, 0.24);
-  border-radius: var(--radius);
-  background: linear-gradient(180deg, #d88922, #c9791c);
-  color: #fff;
-  box-shadow: 0 8px 22px rgba(201, 121, 28, 0.22);
-  transition: background 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid rgba(201, 121, 28, 0.35);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 18px rgba(13, 13, 13, 0.055), 0 8px 22px rgba(201, 121, 28, 0.08);
+  transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
 }
 
+/* Hover: znika duga i biała podkładka, zielona ikona rośnie do złotej obwódki. */
 .whatsappTop:hover {
-  background: linear-gradient(180deg, #c9791c, #8f4f0d);
-  box-shadow: 0 10px 26px rgba(201, 121, 28, 0.28);
-  transform: translateY(-1px);
+  border-color: var(--gold);
+  background: transparent;
+  box-shadow: 0 8px 22px rgba(201, 121, 28, 0.14), 0 4px 18px rgba(13, 13, 13, 0.055);
 }
 
-.whatsappTop svg {
-  width: 24px;
-  height: 24px;
+.whatsappTop:hover .waRing {
+  opacity: 0;
+}
+
+.whatsappTop:hover .waCore {
+  transform: scale(1.45);
+  box-shadow: none;
+}
+
+.waRing {
+  position: absolute;
+  inset: 0;
+  animation: waSpin 2.4s linear infinite;
+  transition: opacity 200ms ease;
+}
+
+.waRing svg {
   display: block;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.9;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes waSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.waCore {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #25d366;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.waCore svg {
+  display: block;
+  width: 19px;
+  height: 19px;
+  fill: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .waRing {
+    animation: none;
+  }
 }
 
 .phoneGlyph,
