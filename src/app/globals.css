@@ -3336,7 +3336,16 @@ details.faqItem:not([open]) p {
   font-size: 0.88rem;
   font-weight: 750;
   white-space: nowrap;
+  hyphens: none;
+  overflow-wrap: normal;
   transition: border-color 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+/* Nazwy miast (stopka) — nie łamiemy słowa w środku, tylko całą nazwą. */
+.footerCities a {
+  white-space: nowrap;
+  hyphens: none;
+  overflow-wrap: normal;
 }
 
 .cityPill:hover {
@@ -4159,7 +4168,7 @@ details.faqItem:not([open]) p {
 
   .hero h1,
   .pageHero h1 {
-    font-size: 1.9rem;
+    font-size: 2.25rem;
   }
 
   .heroFeatureGrid,
