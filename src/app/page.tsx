@@ -12,7 +12,7 @@ import { services } from "@/content/services";
 import { siteConfig, socialLinks, whatsappUrl } from "@/content/site";
 import { visualAssets } from "@/content/visual-assets";
 import { seoMeta } from "@/lib/seo/metadata";
-import { faqSchema, serviceSchema } from "@/lib/seo/schema";
+import { serviceSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
   title: "Sufity napinane Wrocław i do 100 km",
@@ -451,7 +451,7 @@ function ProcessIllustration({ name }: { name: ProcessIconName }) {
 export default function HomePage() {
   return (
     <>
-      <JsonLd data={[serviceSchema("/"), faqSchema([...homepageFaqs])]} />
+      <JsonLd data={serviceSchema("/")} />
 
       <section className="hero">
         <div className="heroBackdrop" aria-hidden="true">
