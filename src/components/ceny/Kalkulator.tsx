@@ -66,6 +66,19 @@ export function Kalkulator() {
 
   const hasArea = area > 0;
 
+  // Wiadomość na WhatsApp z aktualnych wartości kalkulatora — tylko wypełnione pola.
+  const waLines = [
+    "Dzień dobry! Interesuje mnie wycena sufitu napinanego.",
+    `Powierzchnia: ${area} m²`
+  ];
+  if (corners > 0) waLines.push(`Narożniki: ${corners}`);
+  if (led > 0) waLines.push(`Linie LED: ${led} mb`);
+  if (points > 0) waLines.push(`Punkty światła: ${points} szt.`);
+  if (curtain > 0) waLines.push(`Ukryty karnisz: ${curtain} mb`);
+  waLines.push(`Orientacyjny koszt z kalkulatora: ${formatZl(lower)}–${formatZl(upper)} zł.`);
+  waLines.push("Proszę o dokładną wycenę.");
+  const waMessage = waLines.join("\n");
+
   return (
     <>
       <SectionHeader eyebrow="Kalkulator" title="Oblicz orientacyjny koszt" />
@@ -158,6 +171,11 @@ export function Kalkulator() {
             To wstępny szacunek dla typowego pomieszczenia. Minimalne zamówienie 1200 zł. Dokładną
             cenę podajemy po bezpłatnym pomiarze.
           </p>
+          {hasArea ? (
+            <div className="buttonRow" style={{ marginBottom: 12 }}>
+              <Button href={whatsappUrl(waMessage)}>Wyślij wyliczenie na WhatsApp</Button>
+            </div>
+          ) : null}
           <div className="buttonRow">
             <Button
               href={whatsappUrl(
