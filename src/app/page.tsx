@@ -480,8 +480,9 @@ export default function HomePage() {
               </span>
             </h1>
             <p className="heroLead">
-              Montujemy sufity napinane z oświetleniem LED w mieszkaniach, domach, lokalach
-              usługowych i pomieszczeniach wilgotnych. Obsługujemy Wrocław oraz okolice do 100 km.
+              Montujemy sufity napinane z oświetleniem LED w mieszkaniach, domach i lokalach
+              usługowych — równy sufit w 1–2 dni, bez kurzu i remontu. Obsługujemy Wrocław oraz
+              okolice do 100 km.
             </p>
 
             <div className="heroFeatureGrid" aria-label="Najważniejsze informacje">
@@ -496,20 +497,26 @@ export default function HomePage() {
             </div>
 
             <div className="buttonRow">
-              <Button href={siteConfig.contacts.phoneHref} className="heroPrimaryCta">
-                <CtaIcon name="phone" />
-                Zadzwoń i umów pomiar
-              </Button>
-              <Button
-                href={whatsappUrl(
-                  "Dzień dobry, chcę zapytać o sufit napinany. Mogę wysłać zdjęcie i metraż."
-                )}
-                variant="secondary"
-                className="heroWhatsappCta"
-              >
-                <CtaIcon name="whatsapp" />
-                Napisz na WhatsApp
-              </Button>
+              <div className="heroCta">
+                <Button href={siteConfig.contacts.phoneHref} className="heroPrimaryCta">
+                  <CtaIcon name="phone" />
+                  Zadzwoń i umów pomiar
+                </Button>
+                <span className="heroCtaNote">Pomiar i wycena 0 zł — bez zobowiązań</span>
+              </div>
+              <div className="heroCta">
+                <Button
+                  href={whatsappUrl(
+                    "Dzień dobry, chcę zapytać o sufit napinany. Mogę wysłać zdjęcie i metraż."
+                  )}
+                  variant="secondary"
+                  className="heroWhatsappCta"
+                >
+                  <CtaIcon name="whatsapp" />
+                  Napisz na WhatsApp
+                </Button>
+                <span className="heroCtaNote">Zwykle odpowiadamy w ciągu 30 minut</span>
+              </div>
             </div>
           </div>
 
@@ -541,6 +548,29 @@ export default function HomePage() {
               </div>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="heroStatsBar">
+        <div className="container">
+          <ul className="heroStats" aria-label="ekoSufity w liczbach">
+            <li>
+              <strong>Od 2020</strong>
+              <span>roku na rynku</span>
+            </li>
+            <li>
+              <strong>350+</strong>
+              <span>realizacji</span>
+            </li>
+            <li>
+              <strong>5,0</strong>
+              <span>w Google</span>
+            </li>
+            <li>
+              <strong>15 lat</strong>
+              <span>gwarancji</span>
+            </li>
+          </ul>
         </div>
       </section>
 
