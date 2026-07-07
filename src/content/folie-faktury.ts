@@ -160,14 +160,14 @@ export const faktury: Faktura[] = [
     slug: "polysk",
     name: "Połysk",
     eyebrow: "Rodzaj folii",
-    h1: "Sufit z połyskiem",
-    metaTitle: "Sufit z połyskiem — efekt lustra | Wrocław",
+    h1: "Sufit z połyskiem (lustrzany)",
+    metaTitle: "Sufit z połyskiem i lustrzany | Wrocław",
     metaDescription:
-      "Sufit z połyskiem (lakierowany) odbija światło jak lustro i optycznie powiększa wnętrze. Najbardziej efektowna faktura. Wrocław i do 100 km.",
+      "Sufit z połyskiem (lakierowany, lustrzany) odbija światło jak lustro i optycznie powiększa wnętrze — do małych i ciemnych pomieszczeń. Wrocław i do 100 km.",
     heroIntro:
-      "Sufit z połyskiem odbija światło niczym lustro i optycznie powiększa wnętrze. Najbardziej efektowna z klasycznych faktur. Montujemy go we Wrocławiu i do 100 km od miasta.",
+      "Sufit z połyskiem, potocznie nazywany też lustrzanym, odbija światło niczym lustro i optycznie powiększa wnętrze. Najbardziej efektowna z klasycznych faktur. Montujemy go we Wrocławiu i do 100 km od miasta.",
     whatIs:
-      "Folia z połyskiem (nazywana też lakierowaną lub lustrzaną) ma wysoki połysk i odbija światło oraz obraz jak lustro. Dzięki temu optycznie podnosi wysokość pomieszczenia i powiększa przestrzeń. To najbardziej efektowna z podstawowych faktur — od razu przyciąga uwagę i nadaje wnętrzu nowoczesny, prestiżowy charakter.",
+      "Folia z połyskiem (nazywana też lakierowaną lub lustrzaną) ma wysoki połysk i odbija światło oraz obraz jak lustro. Dzięki temu optycznie podnosi wysokość pomieszczenia i powiększa przestrzeń. To najbardziej efektowna z podstawowych faktur — od razu przyciąga uwagę i nadaje wnętrzu nowoczesny, prestiżowy charakter. Najmocniejszy, w pełni odbijający wariant jest potocznie nazywany sufitem lustrzanym.",
     zalety: [
       {
         title: "Optycznie powiększa przestrzeń",
@@ -196,6 +196,7 @@ export const faktury: Faktura[] = [
       "Połysk to idealne rozwiązanie do małych i ciemnych pomieszczeń, które chcemy optycznie powiększyć — korytarzy, przedpokoi, łazienek i toalet. Świetnie wygląda w nowoczesnych salonach i kuchniach. W wysokich pomieszczeniach potęguje wrażenie przestrzeni. Bardzo efektownie łączy się z oświetleniem LED, które odbija się w lustrzanej tafli.",
     inneFaktury:
       "Połysk to najmocniejszy efekt z klasycznych faktur. Od matu różni się diametralnie — mat nie odbija światła, połysk działa jak lustro. Od satyny różni się intensywnością — satyna daje delikatny perłowy blask, połysk pełne, lustrzane odbicie.",
+    inneFakturyTitle: "Sufit z połyskiem a inne faktury",
     faq: [
       {
         question: "Czy sufit z połyskiem naprawdę powiększa pomieszczenie?",
@@ -215,6 +216,11 @@ export const faktury: Faktura[] = [
         question: "Czy połysk trudniej utrzymać w czystości?",
         answer:
           "Widać na nim więcej śladów i kurzu, ale gładką powierzchnię łatwo przetrzeć wodą lub łagodnym detergentem."
+      },
+      {
+        question: "Czym różni się sufit lustrzany od sufitu z połyskiem?",
+        answer:
+          "To ta sama folia lakierowana o wysokim połysku. „Lustrzany” to potoczna nazwa najmocniejszego efektu, gdy tafla odbija wnętrze niemal jak lustro. Różnica to głównie stopień odbicia — najlepiej ocenić ją na próbkach podczas bezpłatnego pomiaru."
       }
     ]
   },
@@ -287,7 +293,7 @@ export const faktury: Faktura[] = [
 export const fakturaCardCopy: Record<string, string> = {
   matowy: "Klasyczny, bez odbić. Najczęściej wybierany.",
   satynowy: "Delikatny, perłowy połysk. Złoty środek.",
-  polysk: "Efekt lustra, optycznie powiększa wnętrze.",
+  polysk: "Efekt lustra (lustrzany), optycznie powiększa wnętrze.",
   podswietlany: "Świeci całą powierzchnią."
 };
 
