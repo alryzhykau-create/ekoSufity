@@ -9,11 +9,17 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { siteConfig, whatsappUrl } from "@/content/site";
 import { breadcrumbSchema } from "@/lib/seo/schema";
 
+const aboutDescription =
+  "O EkoSufity: osobisty kontakt i montaż sufitów napinanych we Wrocławiu od 2020 roku. Obsługa po polsku, białorusku, rosyjsku i ukraińsku.";
+
+const aboutSeo = seoMeta("/o-firmie");
+
 export const metadata: Metadata = {
   title: "O EkoSufity",
-  description:
-    "EkoSufity — montaż sufitów napinanych we Wrocławiu i okolicach od 2020 roku. Osobisty kontakt, obsługa po polsku, białorusku, rosyjsku i ukraińsku.",
-  ...seoMeta("/o-firmie")
+  description: aboutDescription,
+  ...aboutSeo,
+  openGraph: { ...aboutSeo.openGraph, description: aboutDescription },
+  twitter: { description: aboutDescription }
 };
 
 const principles = [
