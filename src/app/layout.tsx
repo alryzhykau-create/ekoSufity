@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Inter, Montserrat } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { MobileStickyCta } from "@/components/layout/MobileStickyCta";
@@ -6,6 +7,19 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/content/site";
 import { localBusinessSchema } from "@/lib/seo/schema";
 import "./globals.css";
+
+// Fonty zmiennoosiowe (CSS używa wag 750/800/850), latin-ext dla polskich znaków.
+const montserrat = Montserrat({
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
+  variable: "--font-montserrat"
+});
+
+const inter = Inter({
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
+  variable: "--font-inter"
+});
 
 // TYMCZASOWO (na czas developmentu): wyłącza cache — każda strona jest
 // renderowana dynamicznie, więc Vercel zawsze oddaje świeżą wersję.
@@ -33,7 +47,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pl">
+    <html lang="pl" className={`${montserrat.variable} ${inter.variable}`}>
       <body>
         <Header />
         <main>{children}</main>

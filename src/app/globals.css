@@ -51,8 +51,8 @@
   --type-section-title: clamp(2rem, 2.65vw, 2.62rem);
   --type-hero-title: clamp(2.25rem, 3.65vw, 3.08rem);
   --type-faq-question: 1.2rem;
-  --font-display: "Montserrat", "Segoe UI", system-ui, -apple-system, sans-serif;
-  --font-body: "Inter", "Montserrat", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-montserrat), "Montserrat", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-body: var(--font-inter), "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
 }
 
 * {
