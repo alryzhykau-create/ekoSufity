@@ -1,11 +1,13 @@
+import Image from "next/image";
 import Link from "next/link";
-import { PlaceholderImage } from "@/components/rozwiazania/PlaceholderImage";
+import { SolutionDiagram } from "@/components/rozwiazania/SolutionDiagram";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { faktury, fakturaCardCopy, type Faktura } from "@/content/folie-faktury";
 import { siteConfig, whatsappUrl } from "@/content/site";
+import { visualAssets } from "@/content/visual-assets";
 import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/seo/schema";
 
 type FakturaDetailProps = {
@@ -16,6 +18,9 @@ export function FakturaDetail({ faktura }: FakturaDetailProps) {
   const href = `/rozwiazania/folie/${faktura.slug}`;
   const others = faktury.filter((item) => item.slug !== faktura.slug);
   const lower = faktura.name.toLowerCase();
+  // Wizualizacja dopasowana do faktury (visual-assets mają klucz finish).
+  // Podświetlany nie ma wizualizacji — pokazujemy schemat sufitu podświetlanego.
+  const heroAsset = visualAssets.find((asset) => asset.finish === faktura.slug);
 
   const blocks: React.ReactNode[] = [];
 
@@ -61,48 +66,17 @@ export function FakturaDetail({ faktura }: FakturaDetailProps) {
     </div>
   );
 
-  // 4. Gdzie sprawdza się najlepiej (+ miejsce na zdjęcie)
+  // 4. Gdzie sprawdza się najlepiej
   blocks.push(
     <div className="container">
-      <div className="grid2" style={{ alignItems: "center" }}>
-        <div>
-          <SectionHeader eyebrow="Zastosowanie" title="Gdzie sprawdza się najlepiej" />
-          <p className="sectionLead" style={{ marginTop: 16 }}>
-            {faktura.gdzie}
-          </p>
-        </div>
-        <aside className="card pageVisualCard">
-          <PlaceholderImage
-            slot={{ src: "", alt: `Sufit ${lower} — przykładowy efekt`, caption: "przykładowy efekt" }}
-            ratio="4 / 3"
-          />
-          <p className="softLabel">Przykładowy efekt. Ostateczny wygląd zależy od pomieszczenia i światła.</p>
-        </aside>
-      </div>
+      <SectionHeader eyebrow="Zastosowanie" title="Gdzie sprawdza się najlepiej" />
+      <p className="sectionLead sectionLead--wide">
+        {faktura.gdzie}
+      </p>
     </div>
   );
 
-  // 5. Realizacje (placeholdery pod zdjęcia)
-  blocks.push(
-    <div className="container">
-      <SectionHeader
-        eyebrow="Realizacje"
-        title="Podobne realizacje"
-        lead="Zdjęcia naszych realizacji pojawią się tutaj. Poniżej poglądowe miejsca na fotografie."
-      />
-      <div className="grid3 sectionCards">
-        {[1, 2, 3].map((n) => (
-          <PlaceholderImage
-            key={n}
-            slot={{ src: "", alt: `Realizacja sufitu ${lower} ${n}`, caption: "zdjęcie realizacji" }}
-            ratio="4 / 3"
-          />
-        ))}
-      </div>
-    </div>
-  );
-
-  // 6. …a inne faktury
+  // 5. …a inne faktury
   blocks.push(
     <div className="container">
       <SectionHeader
@@ -154,12 +128,22 @@ export function FakturaDetail({ faktura }: FakturaDetailProps) {
             </div>
           </div>
           <aside className="card pageVisualCard">
-            <PlaceholderImage
-              slot={{ src: "", alt: `Sufit ${lower} — przykładowy efekt`, caption: "przykładowy efekt" }}
-              ratio="900 / 680"
-            />
+            {heroAsset ? (
+              <Image
+                src={heroAsset.src}
+                alt={heroAsset.alt}
+                width={900}
+                height={760}
+                priority
+                loading="eager"
+                sizes="(max-width: 900px) 100vw, 420px"
+              />
+            ) : (
+              <SolutionDiagram slug="sufit-podswietlany" />
+            )}
             <p className="softLabel">
-              Przykładowy efekt. Ostateczny wygląd zależy od pomieszczenia i ustalonego zakresu.
+              {heroAsset ? heroAsset.label : "Schemat poglądowy"}. Ostateczny wygląd zależy od
+              pomieszczenia i ustalonego zakresu.
             </p>
           </aside>
         </div>

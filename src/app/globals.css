@@ -1464,9 +1464,9 @@ main {
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(20, 16, 10, 0.82) 0%,
-    rgba(20, 16, 10, 0.4) 40%,
-    rgba(20, 16, 10, 0) 72%
+    rgba(20, 16, 10, 0.92) 0%,
+    rgba(20, 16, 10, 0.6) 45%,
+    rgba(20, 16, 10, 0.16) 100%
   );
 }
 

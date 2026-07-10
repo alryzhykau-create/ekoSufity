@@ -26,6 +26,22 @@ const largeTiles = new Set([
   "sufit-podswietlany"
 ]);
 
+// Tła kafli: wizualizacja tam, gdzie mamy pasujące zdjęcie, dla reszty
+// gradient nawiązujący do tematu (zamiast jednego gradientu na 11 kaflach).
+const tileBackgrounds: Record<string, string> = {
+  folie: "url(/images/hero.png)",
+  "oswietlenie-led": "url(/images/lazienka-6m2-photo.png)",
+  "linie-swietlne": "url(/images/mieszkanie-45m2-led-photo.png)",
+  "system-magnetyczny": "url(/images/kuchnia-10m2-photo.png)",
+  "sufity-wielopoziomowe": "url(/images/salon-22m2-photo.png)",
+  "gwiazdne-niebo": "linear-gradient(165deg, #26304a, #0b0e18)",
+  "sufit-podswietlany": "radial-gradient(circle at 50% 8%, #a26f24, #2b2013 70%)",
+  "szczelina-cienia": "linear-gradient(160deg, #4a4238, #191612)",
+  "sufit-z-nadrukiem": "linear-gradient(150deg, #6d5d4a, #2e261c)",
+  wentylacja: "linear-gradient(150deg, #5c6258, #23261f)",
+  "karnisze-sufitowe": "linear-gradient(150deg, #746753, #35291a)"
+};
+
 const scenarios = [
   ["Salon i mieszkanie", "Równy matowy sufit, delikatne światło obwodowe i ukryte prowadzenie detali."],
   ["Kuchnia", "Czyste wykończenie, punkty świetlne i materiał dobrany do codziennego użytkowania."],
@@ -90,6 +106,11 @@ export default function SolutionsPage() {
                 key={card.href}
                 href={card.href}
                 className={`mosaicTile${largeTiles.has(card.slug) ? " mosaicTile--large" : ""}`}
+                style={
+                  tileBackgrounds[card.slug]
+                    ? { backgroundImage: tileBackgrounds[card.slug] }
+                    : undefined
+                }
               >
                 <div className="mosaicTileBody">
                   <h3>{card.title}</h3>
