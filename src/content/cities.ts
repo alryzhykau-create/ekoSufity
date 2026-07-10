@@ -95,10 +95,11 @@ function city(slug: keyof typeof cityNames, priority: City["priority"], nearby: 
       slug === "wroclaw"
         ? "Sufity napinane Wrocław - bezpłatny pomiar i montaż"
         : `Sufity napinane ${name} - pomiar i montaż`,
+    // Bez "| EkoSufity" — sufiks dokleja template tytułu w root layout.
     metaTitle:
       slug === "wroclaw"
-        ? "Sufity napinane Wrocław - pomiar i montaż | EkoSufity"
-        : `Sufity napinane ${name} - pomiar i montaż | EkoSufity`,
+        ? "Sufity napinane Wrocław - pomiar i montaż"
+        : `Sufity napinane ${name} - pomiar i montaż`,
     metaDescription: `Sufity napinane ${name} i okolice. Bezpłatny pomiar, dojazd gratis do 100 km od Wrocławia, cena średnio ok. 120 zł/m² dla prostego sufitu MSD.`,
     intro: intros[slug]
   };

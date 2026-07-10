@@ -246,8 +246,8 @@ export default function StretchCeilingsPage() {
                 {comparisonRows.map(([property, stretch, gk]) => (
                   <tr key={property}>
                     <th scope="row">{property}</th>
-                    <td>{stretch}</td>
-                    <td>{gk}</td>
+                    <td data-label="Napinany">{stretch}</td>
+                    <td data-label="Płyty G-K">{gk}</td>
                   </tr>
                 ))}
               </tbody>

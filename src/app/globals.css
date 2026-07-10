@@ -167,9 +167,13 @@ main {
   color: var(--accent-hover);
 }
 
-/* Strzałka-odnośnik w klikalnych kartach (np. "Zobacz fakturę →"). */
-.cardArrowText {
-  margin-top: 12px;
+/* Strzałka-odnośnik w klikalnych kartach (np. "Zobacz fakturę →").
+   margin-top:auto dosuwa ją do dołu karty (miniCard jest flex-kolumną),
+   więc strzałki w rzędzie kart trzymają jedną linię. */
+.cardArrowText,
+.miniCard p.cardArrowText {
+  margin-top: auto;
+  padding-top: 12px;
   color: var(--gold-dark);
   font-weight: 700;
   font-size: 0.9rem;
@@ -1373,9 +1377,75 @@ main {
   border-bottom: 0;
 }
 
+/* Szeroka tabela porównawcza na telefonie: zamiast poziomego przewijania
+   (obcinało tekst w połowie słowa) każdy wiersz staje się blokiem
+   "cecha → dwie podpisane wartości". Podpisy z data-label w komórkach. */
+@media (max-width: 640px) {
+  .comparisonTable:not(.comparisonTable--compact) {
+    display: block;
+    min-width: 0;
+    border: 0;
+    background: none;
+  }
+
+  .comparisonTable:not(.comparisonTable--compact) thead {
+    display: none;
+  }
+
+  .comparisonTable:not(.comparisonTable--compact) tbody,
+  .comparisonTable:not(.comparisonTable--compact) tr,
+  .comparisonTable:not(.comparisonTable--compact) tbody th,
+  .comparisonTable:not(.comparisonTable--compact) td {
+    display: block;
+    width: auto;
+    padding: 0;
+    border: 0;
+    background: none;
+  }
+
+  .comparisonTable:not(.comparisonTable--compact) tr {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .comparisonTable:not(.comparisonTable--compact) tbody tr:last-child {
+    border-bottom: 0;
+  }
+
+  .comparisonTable:not(.comparisonTable--compact) tbody th {
+    margin-bottom: 10px;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 800;
+  }
+
+  .comparisonTable:not(.comparisonTable--compact) td {
+    display: grid;
+    grid-template-columns: 104px minmax(0, 1fr);
+    gap: 10px;
+    padding: 4px 0;
+    font-size: 0.92rem;
+    font-weight: 400;
+    color: var(--muted);
+  }
+
+  .comparisonTable:not(.comparisonTable--compact) td::before {
+    content: attr(data-label);
+    color: var(--gold-dark);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    line-height: 2;
+    text-transform: uppercase;
+  }
+}
+
 /* Wariant kompaktowy (2 kolumny) — mieści się na telefonie bez przewijania. */
+/* Cennik dwukolumnowy: bez ograniczenia rozjeżdża się na 1240px
+   i między pozycją a ceną robi się pusty pas. */
 .comparisonTable--compact {
   min-width: 0;
+  max-width: 720px;
 }
 
 .comparisonTable--compact tbody th {
@@ -1696,20 +1766,17 @@ main {
 }
 
 .priceExplainCard {
-  background:
-    linear-gradient(135deg, rgba(14, 15, 15, 0.98), rgba(14, 15, 15, 0.93)),
-    radial-gradient(circle at 85% 15%, rgba(201, 121, 28, 0.28), transparent 18rem);
-  color: #fff;
-  border-color: rgba(201, 121, 28, 0.42);
+  background: linear-gradient(160deg, #ffffff, var(--accent-soft));
+  border-color: rgba(201, 121, 28, 0.45);
 }
 
 .priceExplainCard p,
 .priceExplainCard .factor {
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--muted);
 }
 
 .priceKicker {
-  color: var(--gold);
+  color: var(--gold-dark);
   font-size: 0.75rem;
   font-weight: 900;
   letter-spacing: 0.12em;
@@ -1822,8 +1889,8 @@ main {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: var(--success);
-  color: #fff;
+  background: var(--accent-soft);
+  color: var(--gold-dark);
   display: grid;
   place-items: center;
   font-size: 0.78rem;
@@ -2019,12 +2086,18 @@ main {
   margin-top: 34px;
 }
 
+.miniCard {
+  display: flex;
+  flex-direction: column;
+}
+
 .miniCard,
 .serviceCard {
   transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
 }
 
-.miniCard:hover,
+/* Podnosimy tylko karty-linki — karta bez linku nie udaje klikalnej. */
+a.miniCard:hover,
 .serviceCard:hover,
 .galleryCard:hover {
   transform: translateY(-2px);

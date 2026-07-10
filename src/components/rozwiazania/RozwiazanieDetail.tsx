@@ -148,8 +148,8 @@ export function RozwiazanieDetail({ rozwiazanie }: RozwiazanieDetailProps) {
               {comparison.rows.map((row) => (
                 <tr key={row.feature}>
                   <th scope="row">{row.feature}</th>
-                  <td>{row.a}</td>
-                  <td>{row.b}</td>
+                  <td data-label={comparison.aHead}>{row.a}</td>
+                  <td data-label={comparison.bHead}>{row.b}</td>
                 </tr>
               ))}
             </tbody>
