@@ -5,6 +5,7 @@ import { Kalkulator } from "@/components/ceny/Kalkulator";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
+import { FaqList } from "@/components/ui/FaqList";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { siteConfig, whatsappUrl } from "@/content/site";
 import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/seo/schema";
@@ -189,16 +190,7 @@ export default function PricesPage() {
       <section className="section">
         <div className="container">
           <SectionHeader eyebrow="FAQ" title="Pytania o cenę sufitu napinanego" />
-          <div className="faqList">
-            {faqs.map((item, index) => (
-              <details className="faqItem" key={item.question} open={index === 0}>
-                <summary>
-                  <span>{item.question}</span>
-                </summary>
-                <p>{item.answer}</p>
-              </details>
-            ))}
-          </div>
+          <FaqList items={faqs} />
         </div>
       </section>
 

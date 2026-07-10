@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
+import { FaqList } from "@/components/ui/FaqList";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { cities, getCity } from "@/content/cities";
 import { siteConfig, whatsappUrl } from "@/content/site";
@@ -185,14 +186,7 @@ export default async function CityPage({ params }: PageProps) {
         <div className="container grid2">
           <div>
             <SectionHeader eyebrow="FAQ lokalne" title={`Pytania o montaż w lokalizacji ${city.name}`} />
-            <div className="faqGrid" style={{ gridTemplateColumns: "1fr" }}>
-              {localFaqs.map((item) => (
-                <article className="faqItem" key={item.question}>
-                  <h3>{item.question}</h3>
-                  <p>{item.answer}</p>
-                </article>
-              ))}
-            </div>
+            <FaqList items={localFaqs} />
           </div>
           <aside className="card">
             <h3>Pobliskie lokalizacje</h3>

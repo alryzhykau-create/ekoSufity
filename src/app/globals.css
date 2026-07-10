@@ -3006,24 +3006,12 @@ main {
   max-width: 720px;
 }
 
-.faqGrid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-  margin-top: 34px;
-}
-
 .faqItem {
   overflow: hidden;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: 0 10px 34px rgba(13, 13, 13, 0.035);
-}
-
-/* Wariant statyczny (article) — treść bez <summary>, więc padding daje sama karta. */
-article.faqItem {
-  padding: 24px 26px;
 }
 
 /* Pytanie pod listą FAQ + przycisk kontaktu. */
@@ -4276,8 +4264,7 @@ details.faqItem:not([open]) p {
   .audienceCards,
   .galleryGrid,
   .priceExampleGrid,
-  .stepList,
-  .faqGrid {
+  .stepList {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -4460,7 +4447,6 @@ details.faqItem:not([open]) p {
   .galleryGrid,
   .priceExampleGrid,
   .stepList,
-  .faqGrid,
   .footerPanel {
     grid-template-columns: 1fr;
   }

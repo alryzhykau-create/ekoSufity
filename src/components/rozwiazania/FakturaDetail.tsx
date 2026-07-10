@@ -4,6 +4,7 @@ import { SolutionDiagram } from "@/components/rozwiazania/SolutionDiagram";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
+import { FaqList } from "@/components/ui/FaqList";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { faktury, fakturaCardCopy, type Faktura } from "@/content/folie-faktury";
 import { siteConfig, whatsappUrl } from "@/content/site";
@@ -162,14 +163,7 @@ export function FakturaDetail({ faktura }: FakturaDetailProps) {
           <div className="centerHeader">
             <SectionHeader eyebrow="FAQ" title="Najczęstsze pytania" />
           </div>
-          <div className="faqGrid">
-            {faktura.faq.map((item) => (
-              <article className="faqItem" key={item.question}>
-                <h3>{item.question}</h3>
-                <p>{item.answer}</p>
-              </article>
-            ))}
-          </div>
+          <FaqList items={faktura.faq} />
         </div>
       </section>
 

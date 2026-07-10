@@ -3,6 +3,7 @@ import { seoMeta } from "@/lib/seo/metadata";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
+import { FaqList } from "@/components/ui/FaqList";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { homepageFaqs } from "@/content/faqs";
 import { siteConfig, whatsappUrl } from "@/content/site";
@@ -75,16 +76,7 @@ export default function FaqPage() {
       <section className="section">
         <div className="container">
           <SectionHeader title="Pytania przed kontaktem" />
-          <div className="faqList">
-            {pageFaqs.map((item, index) => (
-              <details className="faqItem" key={item.question} open={index === 0}>
-                <summary>
-                  <span>{item.question}</span>
-                </summary>
-                <p>{item.answer}</p>
-              </details>
-            ))}
-          </div>
+          <FaqList items={pageFaqs} />
         </div>
       </section>
 
