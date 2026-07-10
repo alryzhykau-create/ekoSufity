@@ -80,6 +80,12 @@ a {
   text-decoration: none;
 }
 
+/* Widoczny fokus dla nawigacji klawiaturą — wspólny dla linków, przycisków i pól. */
+:focus-visible {
+  outline: 2px solid var(--gold-dark);
+  outline-offset: 2px;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -335,6 +341,10 @@ main {
 
 .btn:hover {
   transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(1px);
 }
 
 .btnPrimary {
@@ -1131,6 +1141,7 @@ main {
 .kalkulatorInput:focus {
   outline: none;
   border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(201, 121, 28, 0.14);
 }
 
 .kalkulatorResult {
@@ -3500,6 +3511,10 @@ details.faqItem:not([open]) p {
   border-color: var(--gold);
   color: var(--gold-dark);
   transform: translateY(-1px);
+}
+
+.cityPill:active {
+  transform: translateY(1px);
 }
 
 .contactMap {
