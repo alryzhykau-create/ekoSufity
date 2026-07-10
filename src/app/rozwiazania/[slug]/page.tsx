@@ -7,7 +7,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
 import { FaqList } from "@/components/ui/FaqList";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { getRozwiazanie, rozwiazania } from "@/content/rozwiazania";
+import { finalCta, getRozwiazanie, rozwiazania } from "@/content/rozwiazania";
 import { getService, services } from "@/content/services";
 import { siteConfig, whatsappUrl } from "@/content/site";
 import { visualAssets } from "@/content/visual-assets";
@@ -377,6 +377,27 @@ export default async function SolutionPage({ params }: PageProps) {
             <p>Chcesz sprawdzić, czy to pasuje do Twojego wnętrza?</p>
             <Button href={whatsappUrl(`Dzień dobry, chcę zapytać o: ${service.title}.`)} variant="dark">
               Zapytaj na WhatsApp
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <section className="section finalCtaSection">
+        <div className="container finalCtaCard">
+          <div>
+            <span className="eyebrow">Bezpłatny pomiar</span>
+            <h2 className="sectionTitle">Dobierzemy rozwiązanie do wnętrza</h2>
+            <p>{finalCta.text}</p>
+          </div>
+          <div className="buttonRow">
+            <Button href={siteConfig.contacts.phoneHref}>Zadzwoń i umów pomiar</Button>
+            <Button
+              href={whatsappUrl(
+                `Dzień dobry, interesuje mnie: ${service.title}. Chcę umówić bezpłatny pomiar.`
+              )}
+              variant="secondary"
+            >
+              Napisz na WhatsApp
             </Button>
           </div>
         </div>
