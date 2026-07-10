@@ -877,6 +877,11 @@ export default function HomePage() {
                 <strong>Aleks</strong>
                 <span>Specjalista od sufitów napinanych</span>
               </p>
+              <p style={{ marginTop: 14 }}>
+                <Link href="/o-firmie" className="inlineLink">
+                  Poznaj nas bliżej →
+                </Link>
+              </p>
             </div>
             <aside className="ownerArea">
               <p className="ownerAreaTitle">Działamy we Wrocławiu i okolicy do 100 km</p>

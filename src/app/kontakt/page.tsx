@@ -100,6 +100,11 @@ export default function ContactPage() {
             <h3>Dane firmy</h3>
             <p>EkoSufity, Wrocław</p>
             <p>NIP: 8943174798</p>
+            <p className="cardArrowText">
+              <Link href="/o-firmie" className="inlineLink">
+                Więcej o firmie
+              </Link>
+            </p>
           </article>
         </div>
       </section>

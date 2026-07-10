@@ -6,6 +6,7 @@ const offerLinks = [
   { href: "/", label: "Strona główna" },
   { href: "/sufity-napinane", label: "Sufity napinane" },
   { href: "/realizacje", label: "Realizacje" },
+  { href: "/o-firmie", label: "O firmie" },
   { href: siteConfig.contacts.googleBusinessProfileHref, label: "Opinie", external: true },
   { href: "/kontakt", label: "Kontakt" }
 ];
