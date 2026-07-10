@@ -12,7 +12,7 @@ import { breadcrumbSchema } from "@/lib/seo/schema";
 export const metadata: Metadata = {
   title: "O EkoSufity",
   description:
-    "O EkoSufity: osobisty kontakt, właściciel Białorusin we Wrocławiu, obsługa po polsku, białorusku, rosyjsku i ukraińsku.",
+    "EkoSufity — montaż sufitów napinanych we Wrocławiu i okolicach od 2020 roku. Osobisty kontakt, obsługa po polsku, białorusku, rosyjsku i ukraińsku.",
   ...seoMeta("/o-firmie")
 };
 
