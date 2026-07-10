@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
-import { FinalContactSection } from "@/components/home/FinalContactSection";
+import { FinalContactSection } from "@/components/contact/FinalContactSection";
 import { GallerySection } from "@/components/home/GallerySection";
 import { GoogleReviews } from "@/components/reviews/GoogleReviews";
 import { SectionHeader } from "@/components/ui/SectionHeader";

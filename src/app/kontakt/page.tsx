@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { seoMeta } from "@/lib/seo/metadata";
 import Image from "next/image";
 import Link from "next/link";
+import { FinalContactSection } from "@/components/contact/FinalContactSection";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { GoogleReviews } from "@/components/reviews/GoogleReviews";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -167,6 +168,8 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      <FinalContactSection />
     </>
   );
 }
