@@ -10,15 +10,24 @@ type BreadcrumbsProps = {
 };
 
 export function Breadcrumbs({ items }: BreadcrumbsProps) {
+  const lastIndex = items.length - 1;
+
   return (
-    <nav className="softLabel" aria-label="Breadcrumb">
-      <Link href="/">Strona główna</Link>
-      {items.map((item) => (
-        <span key={item.href}>
-          {" / "}
-          <Link href={item.href}>{item.label}</Link>
-        </span>
-      ))}
+    <nav className="breadcrumbs" aria-label="Breadcrumb">
+      <ol>
+        <li>
+          <Link href="/">Strona główna</Link>
+        </li>
+        {items.map((item, index) => (
+          <li key={item.href}>
+            {index === lastIndex ? (
+              <span aria-current="page">{item.label}</span>
+            ) : (
+              <Link href={item.href}>{item.label}</Link>
+            )}
+          </li>
+        ))}
+      </ol>
     </nav>
   );
 }
