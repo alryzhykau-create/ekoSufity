@@ -145,11 +145,16 @@ export default function PricesPage() {
             title="Co zwiększa cenę?"
             lead="Nie ukrywamy, że cena zależy od złożoności. Dlatego pokazujemy orientacyjną średnią z warunkami, a dokładną wycenę robimy po pomiarze."
           />
-          <div className="grid3 sectionCards">
+          <div className="priceFactorList">
             {factors.map(([title, copy]) => (
-              <article className="card miniCard" key={title}>
-                <h3>{title}</h3>
-                <p>{copy}</p>
+              <article className="priceFactor" key={title}>
+                <span className="priceFactorMark" aria-hidden="true">
+                  +
+                </span>
+                <div>
+                  <h3>{title}</h3>
+                  <p>{copy}</p>
+                </div>
               </article>
             ))}
           </div>

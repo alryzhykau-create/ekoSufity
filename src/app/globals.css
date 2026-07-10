@@ -256,6 +256,123 @@ main {
 }
 
 /* Lista producentów folii (MSD / Bauf / Teqtum) — jeden spójny blok. */
+/* O firmie: zasady pracy — typograficznie, bez ramek kart. */
+.aboutPrinciples {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+  margin-top: 34px;
+}
+
+.aboutPrinciple {
+  border-top: 2px solid var(--gold);
+  padding-top: 18px;
+}
+
+.aboutPrinciple h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--type-card-title);
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.aboutPrinciple p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: var(--type-body-sm);
+  line-height: 1.55;
+}
+
+/* O firmie: fakty w wierszach etykieta–wartość. */
+.factRows {
+  max-width: 860px;
+  margin: 34px 0 0;
+  border-top: 1px solid var(--border);
+}
+
+.factRow {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.factRow dt {
+  font-weight: 700;
+}
+
+.factRow dd {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+/* Ceny: czynniki podnoszące cenę — lista z plusami zamiast siatki kart. */
+.priceFactorList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 56px;
+  margin-top: 34px;
+}
+
+.priceFactor {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.priceFactorMark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--gold-dark);
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.priceFactor h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--type-card-title);
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.priceFactor p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: var(--type-body-sm);
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .aboutPrinciples {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .priceFactorList {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .factRow {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
 .producentList {
   display: grid;
   gap: 18px;
