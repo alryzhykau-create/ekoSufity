@@ -1788,16 +1788,20 @@ main {
 }
 
 .priceCard {
-  background: var(--black);
-  color: var(--cream);
-  border-color: rgba(201, 121, 28, 0.78);
+  background: linear-gradient(160deg, #ffffff, var(--accent-soft));
+  border-color: rgba(201, 121, 28, 0.45);
+}
+
+.priceCard p {
+  color: var(--muted);
 }
 
 .priceValue {
   margin: 8px 0 10px;
-  color: var(--gold);
+  color: var(--gold-dark);
   font-family: var(--font-display);
   font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 800;
   line-height: 1;
 }
 
