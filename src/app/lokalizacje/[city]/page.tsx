@@ -232,6 +232,28 @@ export default async function CityPage({ params }: PageProps) {
           </div>
         </div>
       </section>
+
+      <section className="section finalCtaSection">
+        <div className="container finalCtaCard">
+          <div>
+            <span className="eyebrow">Bezpłatny pomiar</span>
+            <h2 className="sectionTitle">Umów pomiar {city.locative}</h2>
+            <p>
+              Zadzwoń albo wyślij zdjęcie pomieszczenia i orientacyjny metraż — ustalimy termin
+              bezpłatnego pomiaru. Pomiar i dojazd są gratis.
+            </p>
+          </div>
+          <div className="buttonRow">
+            <Button href={siteConfig.contacts.phoneHref}>Zadzwoń i umów pomiar</Button>
+            <Button
+              href={whatsappUrl(`Dzień dobry, chcę umówić bezpłatny pomiar. Miasto: ${city.name}.`)}
+              variant="secondary"
+            >
+              Napisz na WhatsApp
+            </Button>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

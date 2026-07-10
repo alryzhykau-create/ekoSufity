@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { seoMeta } from "@/lib/seo/metadata";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { Button } from "@/components/ui/Button";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { homepageFaqs } from "@/content/faqs";
+import { siteConfig, whatsappUrl } from "@/content/site";
 import { breadcrumbSchema, faqSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
@@ -82,6 +84,25 @@ export default function FaqPage() {
                 <p>{item.answer}</p>
               </details>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section finalCtaSection">
+        <div className="container finalCtaCard">
+          <div>
+            <span className="eyebrow">Nie znalazłeś odpowiedzi?</span>
+            <h2 className="sectionTitle">Zapytaj bezpośrednio</h2>
+            <p>
+              Odpowiadamy telefonicznie i na WhatsApp. Możesz od razu wysłać zdjęcie pomieszczenia,
+              miasto i orientacyjny metraż.
+            </p>
+          </div>
+          <div className="buttonRow">
+            <Button href={siteConfig.contacts.phoneHref}>Zadzwoń</Button>
+            <Button href={whatsappUrl("Dzień dobry, mam pytanie o sufity napinane.")} variant="secondary">
+              Napisz na WhatsApp
+            </Button>
           </div>
         </div>
       </section>
