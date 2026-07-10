@@ -171,19 +171,18 @@ export function Kalkulator() {
             To wstępny szacunek dla typowego pomieszczenia. Minimalne zamówienie 1200 zł. Dokładną
             cenę podajemy po bezpłatnym pomiarze.
           </p>
-          {hasArea ? (
-            <div className="buttonRow" style={{ marginBottom: 12 }}>
-              <Button href={whatsappUrl(waMessage)}>Wyślij wyliczenie na WhatsApp</Button>
-            </div>
-          ) : null}
           <div className="buttonRow">
-            <Button
-              href={whatsappUrl(
-                "Dzień dobry, policzyłem orientacyjny koszt w kalkulatorze i chcę umówić bezpłatny pomiar."
-              )}
-            >
-              Umów bezpłatny pomiar
-            </Button>
+            {hasArea ? (
+              <Button href={whatsappUrl(waMessage)}>Wyślij wyliczenie na WhatsApp</Button>
+            ) : (
+              <Button
+                href={whatsappUrl(
+                  "Dzień dobry, chcę umówić bezpłatny pomiar sufitu napinanego."
+                )}
+              >
+                Umów bezpłatny pomiar
+              </Button>
+            )}
             <Button href={siteConfig.contacts.phoneHref} variant="secondary">
               Zadzwoń
             </Button>
