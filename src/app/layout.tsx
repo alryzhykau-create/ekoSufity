@@ -21,11 +21,6 @@ const inter = Inter({
   variable: "--font-inter"
 });
 
-// TYMCZASOWO (na czas developmentu): wyłącza cache — każda strona jest
-// renderowana dynamicznie, więc Vercel zawsze oddaje świeżą wersję.
-// Konfiguracja w root layout kaskaduje na wszystkie strony. USUNĄĆ później.
-export const dynamic = "force-dynamic";
-
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.baseUrl),
   title: {
