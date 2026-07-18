@@ -1566,23 +1566,49 @@ main {
   font-size: 0.9rem;
 }
 
+/* Opinie jadą jako nieskończona taśma z zanikaniem na brzegach. */
+.reviewsViewport {
+  position: relative;
+  margin-top: 28px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
 .reviewsTrack {
   display: flex;
-  gap: 16px;
-  margin-top: 28px;
-  padding-bottom: 6px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
+  width: max-content;
+  gap: 14px;
+  animation: opMarquee 40s linear infinite;
+}
+
+.reviewsTrack:hover {
+  animation-play-state: paused;
+}
+
+@keyframes opMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reviewsTrack {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
 .reviewCard {
-  flex: 0 0 clamp(260px, 82vw, 330px);
-  scroll-snap-align: start;
+  flex: 0 0 320px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: 22px;
+  gap: 10px;
+  padding: 18px 20px;
   border-radius: var(--radius-card);
   border: 1px solid var(--border);
   background: var(--surface);
@@ -2172,8 +2198,7 @@ main {
 
 /* Podnosimy tylko karty-linki — karta bez linku nie udaje klikalnej. */
 a.miniCard:hover,
-.serviceCard:hover,
-.galleryCard:hover {
+.serviceCard:hover {
   transform: translateY(-2px);
   border-color: rgba(201, 121, 28, 0.38);
   box-shadow: var(--shadow);
@@ -2270,7 +2295,6 @@ a.miniCard:hover,
 }
 
 .serviceCard a,
-.galleryContent a,
 .sectionArrowLink {
   margin-top: auto;
   color: var(--gold-dark);
@@ -2430,106 +2454,95 @@ a.miniCard:hover,
   max-width: 760px;
 }
 
-.galleryGrid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
-  margin-top: 24px;
-}
-
-.galleryCard {
-  overflow: hidden;
-  padding: 0;
-  background: #fff;
-  box-shadow: 0 16px 38px rgba(17, 24, 39, 0.06);
-}
-
-.galleryImage {
+/* Wstęga inspiracji — nieskończona taśma z zanikaniem na brzegach.
+   Kafle jadą w lewo, a maska wygasza je przy krawędziach kontenera. */
+.insViewport {
   position: relative;
-  aspect-ratio: 1 / 1;
-  background: var(--bg-alt);
+  margin-top: 34px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
 }
 
-.galleryImage img {
-  object-fit: cover;
+.insRibbon {
+  display: flex;
+  width: max-content;
+  gap: 20px;
+  animation: insMarquee 34s linear infinite;
 }
 
-.galleryImageBadge {
+/* Najechanie zatrzymuje taśmę, żeby dało się obejrzeć kafel. */
+.insRibbon:hover {
+  animation-play-state: paused;
+}
+
+.insTile {
+  position: relative;
+  width: 360px;
+  height: 250px;
+  flex: none;
+  overflow: hidden;
+  border-radius: var(--radius-media);
+  box-shadow: var(--shadow-media, 0 14px 26px -8px rgba(20, 18, 16, 0.32));
+}
+
+.insTile img {
   position: absolute;
-  top: 18px;
-  left: 18px;
-  display: inline-flex;
-  align-items: center;
-  border: 1px solid rgba(201, 121, 28, 0.24);
-  border-radius: 999px;
-  background: rgba(255, 249, 238, 0.94);
-  color: var(--text);
-  padding: 7px 13px;
-  font-size: 0.82rem;
-  font-weight: 750;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.insTile:hover img {
+  transform: scale(1.06);
+}
+
+.insOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(20, 18, 16, 0.74), transparent 55%);
+}
+
+.insCaption {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 14px;
+}
+
+.insKicker {
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.insCaption h3 {
+  margin: 4px 0 0;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
   line-height: 1.2;
 }
 
-.galleryContent {
-  display: flex;
-  min-height: 188px;
-  flex-direction: column;
-  padding: 22px;
+@keyframes insMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
-.galleryContent h3 {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: var(--type-card-title-lg);
-  font-weight: 800;
-  line-height: 1.24;
-  min-height: 3.03rem;
-}
-
-.galleryTags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 16px;
-}
-
-.galleryTag {
-  display: inline-flex;
-  min-height: 30px;
-  align-items: center;
-  border: 1px solid rgba(201, 121, 28, 0.38);
-  border-radius: 999px;
-  background: rgba(255, 249, 238, 0.42);
-  padding: 0 13px;
-  color: #7a470f;
-  font-size: 0.9rem;
-  font-weight: 750;
-  line-height: 1;
-}
-
-.galleryCta {
-  display: inline-flex;
-  width: fit-content;
-  align-items: center;
-  gap: 8px;
-  margin-top: auto;
-  color: var(--gold-dark);
-  font-size: 1rem;
-  font-weight: 900;
-}
-
-.galleryCta::after {
-  content: "→";
-  font-size: 1.15em;
-  line-height: 1;
-}
-
-.galleryHelp a {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--gold-dark);
-  font-weight: 850;
+/* Szacunek dla ustawień dostępności — bez ruchu taśma stoi. */
+@media (prefers-reduced-motion: reduce) {
+  .insRibbon {
+    animation: none;
+  }
 }
 
 .processSection {
@@ -4500,7 +4513,6 @@ details.faqItem:not([open]) p {
 
   .grid4,
   .grid3,
-  .galleryGrid,
   .priceExampleGrid,
   .stepList {
     grid-template-columns: 1fr 1fr;
@@ -4673,7 +4685,6 @@ details.faqItem:not([open]) p {
   .heroFeatureGrid,
   .grid4,
   .grid3,
-  .galleryGrid,
   .priceExampleGrid,
   .stepList,
   .footerPanel {
