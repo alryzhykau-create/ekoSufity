@@ -204,7 +204,7 @@ main {
   margin: 10px 0 4px;
   font-family: var(--font-display);
   font-size: 1.4rem;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--gold-dark);
 }
 
@@ -241,7 +241,7 @@ main {
   padding: 10px 18px;
   color: var(--text);
   font-size: 0.9rem;
-  font-weight: 750;
+  font-weight: 700;
   cursor: pointer;
   transition: border-color 160ms ease, background 160ms ease, color 160ms ease, transform 160ms ease;
 }
@@ -269,7 +269,7 @@ main {
   margin: 0;
   font-family: var(--font-display);
   font-size: var(--type-card-title-lg);
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .galleryEmpty p {
@@ -296,7 +296,7 @@ main {
   margin: 0;
   font-family: var(--font-display);
   font-size: var(--type-card-title);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.25;
 }
 
@@ -367,7 +367,7 @@ main {
   margin: 0;
   font-family: var(--font-display);
   font-size: var(--type-card-title);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.25;
 }
 
@@ -622,7 +622,7 @@ main {
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.64);
   color: var(--gold-dark);
-  font-weight: 800;
+  font-weight: 700;
   box-shadow: 0 4px 12px rgba(13, 13, 13, 0.06);
 }
 
@@ -634,7 +634,7 @@ main {
 .brandName {
   font-family: var(--font-body);
   font-size: 1.25rem;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1;
 }
 
@@ -652,7 +652,7 @@ main {
   gap: 15px;
   color: var(--text);
   font-size: 0.8rem;
-  font-weight: 750;
+  font-weight: 700;
 }
 
 .nav a {
@@ -683,7 +683,7 @@ main {
   padding: 0 16px;
   color: var(--text);
   font-size: 1rem;
-  font-weight: 850;
+  font-weight: 700;
   line-height: 1;
   white-space: nowrap;
   box-shadow: 0 4px 14px rgba(13, 13, 13, 0.06);
@@ -999,11 +999,12 @@ main {
   left: 18px;
 }
 
+/* Cztery osobne karty zaufania nachodzące na dół hero — jak w projekcie. */
 .trustBar {
   position: relative;
   z-index: 3;
-  margin-top: -58px;
-  padding: 0 0 26px;
+  margin-top: -36px;
+  padding: 0;
 }
 
 .trustBar .container {
@@ -1011,31 +1012,19 @@ main {
 }
 
 .trustBar .grid4 {
-  gap: 0;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  border-radius: 22px;
-  background: #fff;
-  box-shadow: 0 18px 44px rgba(13, 13, 13, 0.08), 0 2px 10px rgba(201, 121, 28, 0.06);
+  gap: 18px;
 }
 
 .trustBar .card {
   display: grid;
-  grid-template-columns: 62px minmax(0, 1fr);
-  gap: 16px;
-  align-content: start;
-  min-height: 150px;
-  padding: 22px;
-  border-top: 0;
-  border-right: 1px solid var(--border);
-  border-bottom: 0;
-  border-left: 0;
-  border-radius: 0;
-  box-shadow: none;
-}
-
-.trustBar .card:last-child {
-  border-right: 0;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 18px 44px rgba(13, 13, 13, 0.07), 0 2px 10px rgba(201, 121, 28, 0.05);
 }
 
 .trustCard h3,
@@ -1045,7 +1034,7 @@ main {
   margin: 0;
   font-family: var(--font-display);
   font-size: var(--type-card-title);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.25;
 }
 
@@ -1055,8 +1044,8 @@ main {
 }
 
 .trustCard h3 {
-  font-size: var(--type-card-title);
-  line-height: 1.28;
+  font-size: 1.02rem;
+  line-height: 1.25;
 }
 
 .trustCard p,
@@ -1070,10 +1059,10 @@ main {
 }
 
 .trustCard p {
-  margin-top: 8px;
+  margin-top: 6px;
   color: var(--muted);
-  font-size: 0.92rem;
-  line-height: 1.5;
+  font-size: 0.9rem;
+  line-height: 1.45;
 }
 
 .trustText {
@@ -1082,12 +1071,12 @@ main {
 
 .trustIcon {
   display: grid;
-  width: 62px;
-  height: 62px;
+  width: 56px;
+  height: 56px;
   place-items: center;
   overflow: visible;
   border: 0;
-  border-radius: 0;
+  border-radius: 16px;
   background: transparent;
   color: var(--gold);
 }
@@ -1103,9 +1092,9 @@ main {
 
 .trustIcon img {
   display: block;
-  width: 62px;
-  height: 62px;
-  border-radius: 18px;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
   object-fit: contain;
   object-position: center;
 }
@@ -1124,7 +1113,7 @@ main {
   content: "✓";
   color: #fff;
   font-size: 0.92rem;
-  font-weight: 850;
+  font-weight: 700;
   line-height: 1;
 }
 
@@ -1199,7 +1188,7 @@ main {
 .kalkulatorResultValue {
   font-family: var(--font-display);
   font-size: 1.6rem;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.12;
   color: var(--gold-dark);
 }
@@ -1275,7 +1264,7 @@ main {
 
 .comparisonTable thead th {
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 700;
   color: var(--text);
   background: var(--bg-alt);
 }
@@ -1341,7 +1330,7 @@ main {
     margin-bottom: 10px;
     font-family: var(--font-display);
     font-size: 1rem;
-    font-weight: 800;
+    font-weight: 700;
   }
 
   .comparisonTable:not(.comparisonTable--compact) td {
@@ -1358,7 +1347,7 @@ main {
     content: attr(data-label);
     color: var(--gold-dark);
     font-size: 0.7rem;
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: 0.03em;
     line-height: 2;
     text-transform: uppercase;
@@ -1396,7 +1385,7 @@ main {
   background: var(--surface);
   color: var(--text);
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1.05rem;
   box-shadow: var(--shadow-card);
   transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
@@ -1445,7 +1434,7 @@ main {
 .reviewsScore {
   font-family: var(--font-display);
   font-size: 2.6rem;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1;
   color: var(--text);
 }
@@ -1513,7 +1502,6 @@ main {
   border-radius: var(--radius-card);
   border: 1px solid var(--border);
   background: var(--surface);
-  box-shadow: var(--shadow-card);
 }
 
 .reviewCardTop {
@@ -1526,11 +1514,11 @@ main {
   display: grid;
   flex-shrink: 0;
   place-items: center;
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   border-radius: 999px;
   color: #fff;
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1.1rem;
 }
 
@@ -1542,13 +1530,14 @@ main {
 }
 
 .reviewName {
-  font-weight: 700;
-  color: var(--text);
+  color: #202124;
+  font-size: 0.92rem;
+  font-weight: 600;
 }
 
 .reviewStars {
   color: #fbbc05;
-  font-size: 0.95rem;
+  font-size: 0.8rem;
   letter-spacing: 1px;
 }
 
@@ -1563,10 +1552,14 @@ main {
 }
 
 .reviewText {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   margin: 0;
-  color: var(--muted);
-  font-size: 0.95rem;
-  line-height: 1.55;
+  color: #3c4043;
+  font-size: 0.88rem;
+  line-height: 1.5;
 }
 
 .reviewsCta {
@@ -1637,7 +1630,7 @@ main {
   margin: 0;
   font-family: var(--font-display);
   font-size: var(--type-card-title);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.2;
   color: #fff;
 }
@@ -1674,6 +1667,7 @@ main {
 .priceExplainCard,
 .priceExamplesPanel {
   padding: 28px;
+  border-radius: var(--radius);
   box-shadow: 0 14px 32px rgba(17, 24, 39, 0.045);
 }
 
@@ -1684,11 +1678,11 @@ main {
 }
 
 .priceCardTitle {
-  max-width: 300px;
+  max-width: 310px;
   margin: 10px 0 0;
   font-family: var(--font-display);
-  font-size: var(--type-card-title-lg);
-  font-weight: 800;
+  font-size: 1.18rem;
+  font-weight: 700;
   line-height: 1.18;
   text-transform: uppercase;
 }
@@ -1729,7 +1723,7 @@ main {
 .priceKicker {
   color: var(--gold-dark);
   font-size: 0.75rem;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -1758,14 +1752,15 @@ main {
 .priceExampleItem {
   overflow: hidden;
   border: 1px solid var(--border);
-  border-radius: var(--radius-card);
+  border-radius: 16px;
   background: var(--surface);
+  box-shadow: 0 12px 30px rgba(13, 13, 13, 0.06);
 }
 
 .priceExampleImage {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 1.22;
+  aspect-ratio: 1.12;
   background: var(--bg-alt);
 }
 
@@ -1779,23 +1774,31 @@ main {
 }
 
 .priceExampleBody {
-  display: grid;
-  gap: 20px;
-  min-height: 128px;
-  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 12px 14px;
+  text-align: center;
 }
 
+/* Nazwa pomieszczenia jest cicha, cena — złota; hierarchia jak w projekcie. */
 .priceExampleBody h3 {
+  display: flex;
+  min-height: 2.3em;
+  align-items: center;
+  justify-content: center;
   margin: 0;
+  color: var(--muted);
   font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 800;
-  line-height: 1.25;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.2;
 }
 
 .priceExampleBody strong {
-  align-self: end;
-  font-size: 0.95rem;
+  color: var(--gold);
+  font-size: 1.05rem;
   line-height: 1.2;
 }
 
@@ -1819,7 +1822,7 @@ main {
   color: var(--gold-dark);
   font-family: var(--font-display);
   font-size: clamp(2.4rem, 5vw, 3.6rem);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1;
 }
 
@@ -1845,7 +1848,7 @@ main {
   display: grid;
   place-items: center;
   font-size: 0.78rem;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .servicesSection {
@@ -1872,7 +1875,7 @@ main {
 
 .servicesHeader .sectionTitle {
   font-size: var(--type-section-title);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.08;
 }
 
@@ -1920,17 +1923,75 @@ main {
 }
 
 /* Etykieta-tag używana też w bloku „Wybierz swoją ścieżkę". */
-.audienceBadge {
-  display: inline-flex;
-  max-width: 100%;
-  align-items: center;
-  border-radius: var(--radius);
-  background: rgba(250, 239, 226, 0.9);
-  color: var(--gold-dark);
-  padding: 6px 11px;
-  font-size: 0.78rem;
-  font-weight: 850;
-  line-height: 1.2;
+/* „Wybierz swoją ścieżkę" — dwie karty z szkicem architektonicznym w tle. */
+.pathGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 34px;
+}
+
+.pathCard {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: #fff;
+  padding: 34px;
+}
+
+.pathCard--inspiration {
+  background: #faf1e6;
+  border-color: #eadfce;
+}
+
+.pathCardSketch {
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 340px;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.pathCard--project .pathCardSketch {
+  width: 320px;
+  opacity: 0.2;
+}
+
+.pathCardBody {
+  position: relative;
+  max-width: 60%;
+}
+
+.pathCard h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.pathCard p {
+  margin: 12px 0 26px;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.pathCard .btn {
+  min-height: 52px;
+}
+
+@media (max-width: 860px) {
+  .pathGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .pathCardBody {
+    max-width: 100%;
+  }
 }
 
 /* „Dla kogo" — poziomy akordeon na hover (czysty CSS, bez JS).
@@ -2111,16 +2172,16 @@ a.miniCard:hover,
   min-height: 282px;
   flex-direction: column;
   border-color: #eadfd2;
-  background: #fffaf4;
+  background: linear-gradient(180deg, #fffaf4, #fff9f1);
   padding: 26px;
-  box-shadow: 0 14px 34px rgba(17, 24, 39, 0.045);
+  box-shadow: 0 12px 30px rgba(17, 24, 39, 0.045);
   transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
 }
 
 .serviceCard:hover {
   transform: translateY(-2px);
   border-color: #d8b98c;
-  box-shadow: 0 22px 52px rgba(17, 24, 39, 0.08);
+  box-shadow: 0 18px 42px rgba(17, 24, 39, 0.08);
 }
 
 .servicesSection .serviceCard {
@@ -2129,7 +2190,7 @@ a.miniCard:hover,
   border-radius: 14px;
   background: linear-gradient(180deg, #fffaf4, #fff9f1);
   padding: 0;
-  box-shadow: 0 18px 42px rgba(17, 24, 39, 0.055);
+  box-shadow: 0 12px 30px rgba(17, 24, 39, 0.045);
 }
 
 .serviceImage {
@@ -2184,7 +2245,7 @@ a.miniCard:hover,
 .servicesSection .serviceCard h3 {
   color: #111;
   font-size: var(--type-card-title-lg);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.2;
 }
 
@@ -2199,7 +2260,7 @@ a.miniCard:hover,
 .sectionArrowLink {
   margin-top: auto;
   color: var(--gold-dark);
-  font-weight: 850;
+  font-weight: 700;
 }
 
 .serviceCard a {
@@ -2268,7 +2329,7 @@ a.miniCard:hover,
   font-family: var(--font-display);
   color: #111;
   font-size: 1.34rem;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.15;
 }
 
@@ -2473,7 +2534,7 @@ a.miniCard:hover,
   color: var(--gold-dark);
   font-family: var(--font-display);
   font-size: 0.95rem;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1;
 }
 
@@ -2587,7 +2648,7 @@ a.miniCard:hover,
   margin: 0;
   font-family: var(--font-display);
   font-size: var(--type-card-title-lg);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.2;
 }
 
@@ -2643,7 +2704,7 @@ a.miniCard:hover,
   margin: 0;
   font-family: var(--font-display);
   font-size: var(--type-card-title-lg);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.2;
 }
 
@@ -2681,8 +2742,8 @@ a.miniCard:hover,
 
 .ownerSection {
   background: var(--bg);
-  padding-top: var(--section-y-compact);
-  padding-bottom: var(--section-y-tight);
+  padding-top: var(--section-y);
+  padding-bottom: var(--section-y);
 }
 
 .ownerBlock {
@@ -2788,7 +2849,7 @@ a.miniCard:hover,
   margin: 0 0 18px;
   color: var(--text);
   font-size: 1.18rem;
-  font-weight: 850;
+  font-weight: 700;
   line-height: 1.2;
 }
 
@@ -2857,7 +2918,7 @@ a.miniCard:hover,
   color: #1a73e8;
   font-family: Arial, sans-serif;
   font-size: 1.65rem;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1;
 }
 
@@ -2865,7 +2926,7 @@ a.miniCard:hover,
   display: block;
   color: #202124;
   font-size: 1.1rem;
-  font-weight: 850;
+  font-weight: 700;
   line-height: 1.2;
 }
 
@@ -2887,7 +2948,7 @@ a.miniCard:hover,
   color: #202124;
   font-family: var(--font-display);
   font-size: 1.35rem;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .googleReviewStars {
@@ -2925,7 +2986,7 @@ a.miniCard:hover,
   color: #1a73e8;
   font-family: Arial, sans-serif;
   font-size: 2.4rem;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1;
 }
 
@@ -2934,7 +2995,7 @@ a.miniCard:hover,
   color: #202124;
   font-family: var(--font-display);
   font-size: 1.35rem;
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1.18;
 }
 
@@ -2976,14 +3037,14 @@ a.miniCard:hover,
   border-radius: 50%;
   background: #e8f0fe;
   color: #1a73e8;
-  font-weight: 850;
+  font-weight: 700;
 }
 
 .googleReviewHead h3 {
   margin: 0;
   color: #202124;
   font-size: 1rem;
-  font-weight: 850;
+  font-weight: 700;
   line-height: 1.18;
 }
 
@@ -3228,7 +3289,7 @@ details.faqItem:not([open]) p {
   color: #fff;
   font-family: var(--font-display);
   font-size: clamp(2.35rem, 3.15vw, 3.35rem);
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1.05;
   letter-spacing: 0;
 }
@@ -3246,59 +3307,52 @@ details.faqItem:not([open]) p {
   line-height: 1.56;
 }
 
-.finalContactBenefits {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+/* Jasnozłoty eyebrow — ciemny odcień tekstowy ginie na ciemnym panelu. */
+.finalContactCopy .eyebrow {
+  color: #f0c98a;
+}
+
+/* Dwa chipy pod tekstem: telefon (złota poświata) i godziny pracy. */
+.contactChips {
+  display: flex;
+  flex-wrap: wrap;
   gap: 14px;
-  max-width: 620px;
   margin-top: 30px;
 }
 
-.finalContactBenefits > div {
-  min-height: 140px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 16px;
-  background: rgba(17, 17, 17, 0.48);
-  padding: 18px;
-  backdrop-filter: blur(8px);
-}
-
-.finalContactBenefits > div + div {
-  padding-left: 18px;
-}
-
-.finalContactBenefits > div:last-child {
-  border-right: 1px solid rgba(255, 255, 255, 0.14);
-}
-
-.benefitIcon {
-  display: grid;
-  width: 46px;
-  height: 46px;
-  margin: 0 0 14px;
-  place-items: center;
-  border-radius: 999px;
-  background: #fff;
-  color: var(--contact-accent);
-}
-
-.benefitIcon .contactIconMask {
-  width: 22px;
-  height: 22px;
-}
-
-.finalContactBenefits strong {
-  display: block;
+.contactChipPhone {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border: 1px solid rgba(201, 121, 28, 0.5);
+  border-radius: 12px;
+  background: rgba(201, 121, 28, 0.18);
   color: #fff;
-  font-size: 0.98rem;
-  font-weight: 900;
+  font-weight: 700;
+  transition: background 180ms ease;
 }
 
-.finalContactBenefits p {
-  margin: 8px 0 0;
-  color: rgba(255, 255, 255, 0.78);
+.contactChipPhone:hover {
+  background: var(--gold);
+  color: #fff;
+}
+
+.contactChipPhone img {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(1);
+}
+
+.contactChipHours {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.85);
   font-size: 0.9rem;
-  line-height: 1.45;
 }
 
 .contactIconMask {
@@ -3420,7 +3474,7 @@ details.faqItem:not([open]) p {
   border-radius: 12px;
   font-family: var(--font-body);
   font-size: 0.98rem;
-  font-weight: 800;
+  font-weight: 700;
   cursor: pointer;
 }
 
@@ -3710,7 +3764,7 @@ details.faqItem:not([open]) p {
   padding: 10px 16px;
   color: var(--text);
   font-size: 0.88rem;
-  font-weight: 750;
+  font-weight: 700;
   white-space: nowrap;
   hyphens: none;
   overflow-wrap: normal;
@@ -3783,7 +3837,7 @@ details.faqItem:not([open]) p {
 .footerBrandName {
   font-family: var(--font-display);
   font-size: 1.72rem;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: 0;
 }
 
@@ -3794,7 +3848,7 @@ details.faqItem:not([open]) p {
 .footerBrandSub {
   color: var(--footer-text);
   font-size: 0.76rem;
-  font-weight: 850;
+  font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -3874,7 +3928,7 @@ details.faqItem:not([open]) p {
   place-items: center;
   color: var(--footer-accent);
   font-size: 0.95rem;
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1;
 }
 
@@ -4041,7 +4095,7 @@ details.faqItem:not([open]) p {
 .privacyTextCard a,
 .privacyContactCard a {
   color: var(--text);
-  font-weight: 750;
+  font-weight: 700;
 }
 
 .privacyContactCard {
@@ -4082,7 +4136,7 @@ details.faqItem:not([open]) p {
     border-radius: var(--radius);
     background: rgba(255, 255, 255, 0.92);
     color: var(--text);
-    font-weight: 800;
+    font-weight: 700;
   }
 
   .mobileMenuButton {
@@ -4144,7 +4198,7 @@ details.faqItem:not([open]) p {
   .mobileMenuBrandName {
     color: var(--text);
     font-size: 1.54rem;
-    font-weight: 850;
+    font-weight: 700;
   }
 
   .mobileMenuBrandName span {
@@ -4154,7 +4208,7 @@ details.faqItem:not([open]) p {
   .mobileMenuBrandSub {
     color: var(--text);
     font-size: 0.58rem;
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
   }
@@ -4184,7 +4238,7 @@ details.faqItem:not([open]) p {
     border-radius: var(--radius);
     color: var(--muted);
     font-size: 1rem;
-    font-weight: 760;
+    font-weight: 700;
     line-height: 1.15;
     transition: background 160ms ease, color 160ms ease;
   }
@@ -4233,7 +4287,7 @@ details.faqItem:not([open]) p {
     min-height: 32px;
     color: var(--text);
     font-size: 1rem;
-    font-weight: 820;
+    font-weight: 700;
     line-height: 1.2;
   }
 
@@ -4271,7 +4325,7 @@ details.faqItem:not([open]) p {
     margin: 0;
     color: var(--text);
     font-size: 0.98rem;
-    font-weight: 790;
+    font-weight: 700;
     line-height: 1.25;
   }
 
@@ -4464,10 +4518,6 @@ details.faqItem:not([open]) p {
     display: none;
   }
 
-  .finalContactBenefits {
-    max-width: none;
-  }
-
   .contactFormPanel {
     width: min(100%, 460px);
   }
@@ -4518,25 +4568,6 @@ details.faqItem:not([open]) p {
 
   .trustBar {
     margin-top: 0;
-  }
-
-  .trustBar .card {
-    grid-template-columns: 62px minmax(0, 1fr);
-    gap: 16px;
-    min-height: 150px;
-    padding: 22px 22px;
-  }
-
-  .trustBar .card:nth-child(2n) {
-    border-right: 0;
-  }
-
-  .trustBar .card:nth-child(-n + 2) {
-    border-bottom: 1px solid var(--border);
-  }
-
-  .trustCard p {
-    font-size: 0.9rem;
   }
 
   .audienceContainer {
@@ -4709,23 +4740,6 @@ details.faqItem:not([open]) p {
     font-size: 1rem;
   }
 
-  .finalContactBenefits {
-    grid-template-columns: 1fr;
-    gap: 12px;
-    margin-top: 26px;
-  }
-
-  .finalContactBenefits > div,
-  .finalContactBenefits > div + div {
-    min-height: auto;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    padding: 16px;
-  }
-
-  .finalContactBenefits > div:last-child {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-  }
-
   .contactFormPanel {
     padding: 20px;
   }
@@ -4765,39 +4779,8 @@ details.faqItem:not([open]) p {
     grid-template-columns: 1fr;
   }
 
-  .trustBar .grid4 {
-    border-radius: 18px;
-  }
-
   .trustBar .container {
     width: min(var(--max), calc(100% - 32px));
-  }
-
-  .trustBar .card {
-    grid-template-columns: 62px minmax(0, 1fr);
-    gap: 16px;
-    min-height: auto;
-    padding: 24px 22px;
-    border-right: 0;
-  }
-
-  .trustBar .card:not(:last-child) {
-    border-bottom: 1px solid var(--border);
-  }
-
-  .trustIcon {
-    width: 62px;
-    height: 62px;
-  }
-
-  .trustIcon svg {
-    width: 30px;
-    height: 30px;
-  }
-
-  .trustIcon img {
-    width: 62px;
-    height: 62px;
   }
 
   .trustCard h3 {
@@ -4875,10 +4858,6 @@ details.faqItem:not([open]) p {
     font-size: 1rem;
   }
 
-  .audienceBadge {
-    padding: 6px 10px;
-    font-size: 0.76rem;
-  }
 
   .buttonRow .btn,
   .btn {
