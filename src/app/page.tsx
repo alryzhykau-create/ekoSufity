@@ -276,52 +276,34 @@ const priceExamples = [
 
 const segments = [
   {
-    badge: "Salon / kuchnia / łazienka",
     title: "Mieszkania",
     copy: "Do salonu, kuchni, łazienki, korytarza i nowych mieszkań po odbiorze.",
-    imageSrc: "/icon/dla-kogo-final/mieszkania-v3.avif",
-    iconKey: "mieszkania",
-    featured: true
+    photoSrc: "/images/salon-22m2-photo.png"
   },
   {
-    badge: "Duże przestrzenie",
     title: "Domy",
     copy: "Do większych pomieszczeń, indywidualnych układów i projektów z oświetleniem.",
-    imageSrc: "/icon/dla-kogo-final/domy-v3.avif",
-    iconKey: "domy",
-    featured: false
+    photoSrc: "/images/mieszkanie-45m2-led-photo.png"
   },
   {
-    badge: "Bez mokrych prac",
     title: "Remonty",
     copy: "Gdy chcesz wyrównać sufit bez długich mokrych prac i kolejnego malowania.",
-    imageSrc: "/icon/dla-kogo-final/remonty-v3.avif",
-    iconKey: "remonty",
-    featured: false
+    photoSrc: "/images/kuchnia-10m2-photo.png"
   },
   {
-    badge: "Schludny wygląd",
     title: "Lokale komercyjne",
     copy: "Do biur, salonów usługowych i przestrzeni, które muszą wyglądać schludnie.",
-    imageSrc: "/icon/dla-kogo-final/lokale-komercyjne-v3.avif",
-    iconKey: "lokale",
-    featured: false
+    photoSrc: "/images/hero.png"
   },
   {
-    badge: "Efekt klimatu",
     title: "Restauracje",
     copy: "Do wnętrz, gdzie sufit i światło budują klimat miejsca.",
-    imageSrc: "/icon/dla-kogo-final/restauracje-v3.avif",
-    iconKey: "restauracje",
-    featured: false
+    photoSrc: "/images/salon-22m2-photo.png"
   },
   {
-    badge: "Odporność na wilgoć",
     title: "Baseny i strefy wilgotne",
     copy: "Do pomieszczeń, w których ważna jest odporność na wilgoć i łatwe utrzymanie.",
-    imageSrc: "/icon/dla-kogo-final/baseny-strefy-wilgotne-v3.avif",
-    iconKey: "wilgotne",
-    featured: false
+    photoSrc: "/images/lazienka-6m2-photo.png"
   }
 ] as const;
 
@@ -686,39 +668,25 @@ export default function HomePage() {
               lead="Najpierw rozpoznajemy typ pomieszczenia, potem dobieramy materiał, światło i detale."
             />
           </div>
-          <div className="audienceCards" aria-label="Typy pomieszczeń">
+          <div className="dkacc" aria-label="Typy pomieszczeń">
             {segments.map((segment) => (
-              <article
-                className={`audienceCard${"featured" in segment && segment.featured ? " audienceCardFeatured" : ""}`}
-                key={segment.title}
-              >
-                <div className="audienceCardTop">
-                  <span className="audienceBadge">{segment.badge}</span>
-                  {"featured" in segment && segment.featured ? (
-                    <span className="audienceStar" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" fill="none">
-                        <path d="m12 3.6 2.3 5.1 5.5.7-4.1 3.7 1.1 5.5-4.8-2.8-4.8 2.8 1.1-5.5-4.1-3.7 5.5-.7L12 3.6Z" />
-                      </svg>
-                    </span>
-                  ) : null}
+              <div className="dkaccItem" key={`${segment.title}-${segment.photoSrc}`}>
+                <Image
+                  className="dkaccBg"
+                  src={segment.photoSrc}
+                  alt=""
+                  fill
+                  sizes="(max-width: 860px) 100vw, 40vw"
+                />
+                <div className="dkaccOverlay" />
+                <div className="dkaccVLabel" aria-hidden="true">
+                  <span>{segment.title}</span>
                 </div>
-                <div className="audienceCardBody">
-                  <span className="audienceIcon" aria-hidden="true">
-                    <Image
-                      className={`audienceIconImage audienceIconImage--${segment.iconKey}`}
-                      src={segment.imageSrc}
-                      alt=""
-                      width={256}
-                      height={256}
-                      loading="eager"
-                    />
-                  </span>
-                  <div className="audienceCopy">
-                    <h3>{segment.title}</h3>
-                    <p>{segment.copy}</p>
-                  </div>
+                <div className="dkaccFull">
+                  <h3>{segment.title}</h3>
+                  <p>{segment.copy}</p>
                 </div>
-              </article>
+              </div>
             ))}
           </div>
         </div>

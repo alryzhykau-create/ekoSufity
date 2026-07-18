@@ -1992,44 +1992,7 @@ main {
   font-size: var(--type-lead);
 }
 
-.audienceCards {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-  margin-top: 24px;
-}
-
-.audienceCard {
-  position: relative;
-  min-height: 222px;
-  overflow: hidden;
-  border: 1px solid rgba(31, 24, 16, 0.08);
-  border-radius: var(--radius-card);
-  background: #ffffff;
-  padding: 24px;
-  box-shadow: 0 18px 45px rgba(24, 20, 12, 0.05);
-  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
-}
-
-.audienceCard:hover {
-  transform: translateY(-2px);
-  border-color: rgba(201, 121, 28, 0.45);
-  box-shadow: var(--shadow);
-}
-
-.audienceCardFeatured {
-  border-color: rgba(31, 24, 16, 0.08);
-  background: #ffffff;
-}
-
-.audienceCardTop {
-  display: flex;
-  min-height: 32px;
-  align-items: start;
-  justify-content: space-between;
-  gap: 12px;
-}
-
+/* Etykieta-tag używana też w bloku „Wybierz swoją ścieżkę". */
 .audienceBadge {
   display: inline-flex;
   max-width: 100%;
@@ -2043,67 +2006,154 @@ main {
   line-height: 1.2;
 }
 
-.audienceStar {
-  display: grid;
-  flex: 0 0 34px;
-  width: 34px;
-  height: 34px;
-  place-items: center;
-  border: 1px solid rgba(201, 121, 28, 0.68);
-  border-radius: 999px;
-  color: var(--gold);
+/* „Dla kogo" — poziomy akordeon na hover (czysty CSS, bez JS).
+   Pierwsza karta jest domyślnie rozwinięta; hover na kontenerze ją zwija,
+   a karta pod kursorem rozwija się na fotografię z opisem. */
+.dkacc {
+  display: flex;
+  gap: 12px;
+  height: 360px;
+  margin-top: 24px;
 }
 
-.audienceStar svg {
-  width: 18px;
-  height: 18px;
-  fill: currentColor;
+.dkaccItem {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  border-radius: var(--radius-feature);
+  box-shadow: 0 12px 30px rgba(24, 20, 12, 0.06);
+  cursor: pointer;
+  transition: flex 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.audienceCardBody {
-  display: grid;
-  grid-template-columns: 84px minmax(0, 1fr);
-  gap: 20px;
-  align-items: center;
-  margin-top: 28px;
+.dkaccBg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.audienceIcon {
-  display: grid;
-  width: 80px;
-  height: 80px;
-  place-items: center;
-  overflow: visible;
-  border-radius: 0;
-  background: transparent;
-  filter: none;
+.dkaccOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(20, 18, 16, 0.86), rgba(20, 18, 16, 0.12) 62%);
 }
 
-.audienceIconImage {
-  width: 76px;
-  height: 76px;
-  max-width: none;
-  object-fit: contain;
+.dkaccVLabel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 22px;
+  display: flex;
+  justify-content: center;
+  transition: opacity 0.3s ease;
 }
 
-.audienceIconImage--mieszkania {
-  width: 76px;
-  height: 76px;
-}
-
-.audienceCopy h3 {
-  margin: 0;
+.dkaccVLabel span {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: #fff;
   font-family: var(--font-display);
-  font-size: var(--type-card-title);
-  font-weight: 800;
-  line-height: 1.2;
+  font-size: 1.02rem;
+  font-weight: 600;
+  white-space: nowrap;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 
-.audienceCopy p {
-  margin: 9px 0 0;
-  color: var(--muted);
-  font-size: 0.92rem;
-  line-height: 1.5;
+.dkaccFull {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 26px;
+  opacity: 0;
+  transition: opacity 0.35s ease 0.12s;
+}
+
+.dkaccFull h3 {
+  margin: 0;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.dkaccFull p {
+  max-width: 340px;
+  margin: 8px 0 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+/* Domyślnie rozwinięta pierwsza karta. */
+.dkaccItem:first-child {
+  flex: 3.6;
+}
+
+.dkaccItem:first-child .dkaccVLabel {
+  opacity: 0;
+}
+
+.dkaccItem:first-child .dkaccFull {
+  opacity: 1;
+}
+
+/* Gdy kursor wchodzi na kontener, pierwsza karta wraca do stanu zwiniętego... */
+.dkacc:hover .dkaccItem:first-child {
+  flex: 1;
+}
+
+.dkacc:hover .dkaccItem:first-child .dkaccVLabel {
+  opacity: 1;
+}
+
+.dkacc:hover .dkaccItem:first-child .dkaccFull {
+  opacity: 0;
+}
+
+/* ...a karta pod kursorem (dowolna) się rozwija. */
+.dkaccItem:hover {
+  flex: 3.6;
+}
+
+.dkaccItem:hover .dkaccVLabel {
+  opacity: 0;
+}
+
+.dkaccItem:hover .dkaccFull {
+  opacity: 1;
+}
+
+/* Bez myszy (dotyk/klawiatura) obramowanie fokusu na całej karcie. */
+.dkaccItem:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Na dotyku hover nie działa — pokazujemy wszystkie karty rozwinięte w kolumnie. */
+@media (max-width: 860px) {
+  .dkacc {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .dkaccItem,
+  .dkacc:hover .dkaccItem:first-child {
+    flex: none;
+    min-height: 210px;
+  }
+
+  .dkaccVLabel {
+    display: none;
+  }
+
+  .dkaccItem .dkaccFull,
+  .dkacc:hover .dkaccItem:first-child .dkaccFull {
+    opacity: 1;
+  }
 }
 
 .sectionCards {
@@ -4450,7 +4500,6 @@ details.faqItem:not([open]) p {
 
   .grid4,
   .grid3,
-  .audienceCards,
   .galleryGrid,
   .priceExampleGrid,
   .stepList {
@@ -4589,14 +4638,6 @@ details.faqItem:not([open]) p {
     font-size: clamp(2rem, 5vw, 3rem);
   }
 
-  .audienceCards {
-    gap: 16px;
-  }
-
-  .audienceCard {
-    min-height: 220px;
-    padding: 22px;
-  }
 }
 
 @media (max-width: 640px) {
@@ -4632,7 +4673,6 @@ details.faqItem:not([open]) p {
   .heroFeatureGrid,
   .grid4,
   .grid3,
-  .audienceCards,
   .galleryGrid,
   .priceExampleGrid,
   .stepList,
@@ -4932,54 +4972,9 @@ details.faqItem:not([open]) p {
     font-size: 1rem;
   }
 
-  .audienceCards {
-    margin-top: 28px;
-  }
-
-  .audienceCard {
-    min-height: auto;
-    padding: 20px;
-  }
-
-  .audienceCardBody {
-    grid-template-columns: 74px minmax(0, 1fr);
-    gap: 16px;
-    margin-top: 20px;
-  }
-
-  .audienceIcon {
-    width: 70px;
-    height: 70px;
-  }
-
-  .audienceIconImage {
-    width: 66px;
-    height: 66px;
-  }
-
-  .audienceIconImage--mieszkania {
-    width: 66px;
-    height: 66px;
-  }
-
   .audienceBadge {
     padding: 6px 10px;
     font-size: 0.76rem;
-  }
-
-  .audienceStar {
-    flex-basis: 32px;
-    width: 32px;
-    height: 32px;
-  }
-
-  .audienceCopy h3 {
-    font-size: 1.08rem;
-  }
-
-  .audienceCopy p {
-    font-size: 0.9rem;
-    line-height: 1.5;
   }
 
   .buttonRow .btn,
