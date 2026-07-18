@@ -51,8 +51,9 @@
   --type-section-title: clamp(2rem, 2.65vw, 2.62rem);
   --type-hero-title: clamp(2.25rem, 3.65vw, 3.08rem);
   --type-faq-question: 1.2rem;
-  --font-display: var(--font-montserrat), "Montserrat", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-rubik), "Rubik", "Segoe UI", system-ui, -apple-system, sans-serif;
   --font-body: var(--font-inter), "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-signature: var(--font-caveat), "Caveat", cursive;
 }
 
 * {
@@ -78,6 +79,17 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* Łamanie nagłówków jak w systemie projektowym — równe wiersze, ciaśniejszy trakting. */
+h1,
+h2 {
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+h3 {
+  text-wrap: pretty;
 }
 
 /* Widoczny fokus dla nawigacji klawiaturą — wspólny dla linków, przycisków i pól. */
@@ -134,10 +146,10 @@ main {
 .sectionTitle {
   margin: 10px 0 0;
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 700;
   font-size: var(--type-section-title);
   line-height: 1.14;
-  letter-spacing: 0;
+  letter-spacing: -0.01em;
 }
 
 .sectionLead {
@@ -942,9 +954,9 @@ main {
   margin: 0;
   font-family: var(--font-display);
   font-size: var(--type-hero-title);
-  font-weight: 850;
+  font-weight: 700;
   line-height: 1.14;
-  letter-spacing: 0;
+  letter-spacing: -0.01em;
 }
 
 .hero h1 span {
@@ -2781,11 +2793,11 @@ a.miniCard:hover,
 .ownerSignature strong {
   display: inline-block;
   justify-self: start;
-  color: var(--gold-dark);
-  font-family: "Bradley Hand", "Segoe Print", "Comic Sans MS", cursive;
-  font-size: 1.85rem;
+  color: var(--gold);
+  font-family: var(--font-signature);
+  font-size: 2.3rem;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0;
   line-height: 1;
   transform: rotate(-1deg);
