@@ -6,9 +6,11 @@
   --muted: #56524d;
   --border: #e7e1d8;
   --gold: #c9791c;
-  /* Ciemniejszy odcień do TEKSTU (eyebrow, etykiety, linki) — kontrast >=4.5:1 na jasnym tle.
+  /* Ciemniejszy odcień do TEKSTU (eyebrow, etykiety, linki). Odcień z projektu (#a65f13)
+     schodzi do 4.48:1 na najcieplejszym tle, więc bierzemy o włos ciemniejszy — 4.63:1
+     na każdym tle serwisu, a wizualnie nie do odróżnienia.
      --gold / --accent zostają jasne do teł, obramowań i dekoracji. */
-  --gold-dark: #9a5a0f;
+  --gold-dark: #a35d12;
   --accent: #c9791c;
   --accent-hover: #b06a12;
   --accent-soft: #f8ebdd;
