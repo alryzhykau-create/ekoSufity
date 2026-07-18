@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { visualAssets } from "@/content/visual-assets";
 
 type GalleryTile = {
@@ -57,6 +58,14 @@ export function GallerySection() {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+
+      <div className="container">
+        <div style={{ marginTop: 24, textAlign: "center" }}>
+          <Link className="sectionArrowLink" href="/realizacje">
+            Zobacz wszystkie realizacje
+          </Link>
         </div>
       </div>
     </section>
