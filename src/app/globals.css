@@ -57,7 +57,7 @@
   --type-card-title-lg: 1.18rem;
   --type-section-title: clamp(2rem, 2.65vw, 2.62rem);
   --type-hero-title: clamp(2.25rem, 3.65vw, 3.08rem);
-  --type-faq-question: 1.2rem;
+  --type-faq-question: 1.02rem;
   --font-display: var(--font-rubik), "Rubik", "Segoe UI", system-ui, -apple-system, sans-serif;
   --font-body: var(--font-inter), "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
   --font-signature: var(--font-caveat), "Caveat", cursive;
@@ -3071,8 +3071,16 @@ a.miniCard:hover,
 
 .faqList {
   display: grid;
-  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
   margin-top: 22px;
+}
+
+/* Na wąskich ekranach dwie kolumny nie mają sensu — pytania są za długie. */
+@media (max-width: 860px) {
+  .faqList {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 .faqSection {
@@ -3108,7 +3116,14 @@ a.miniCard:hover,
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
-  box-shadow: 0 10px 34px rgba(13, 13, 13, 0.035);
+  box-shadow: 0 8px 24px rgba(17, 24, 39, 0.043);
+  transition: background 250ms ease, border-color 250ms ease;
+}
+
+/* Otwarta karta podświetla się ciepłym kremem — tak wyróżnia się czytana odpowiedź. */
+.faqItem[open] {
+  background: #fdf3e6;
+  border-color: #d8b98c;
 }
 
 /* Pytanie pod listą FAQ + przycisk kontaktu. */
@@ -3130,17 +3145,17 @@ a.miniCard:hover,
 
 details.faqItem summary {
   display: flex;
-  min-height: 72px;
+  min-height: 60px;
   cursor: pointer;
   list-style: none;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  padding: 0 34px;
+  gap: 18px;
+  padding: 0 22px;
   color: var(--black);
   font-family: var(--font-display);
   font-size: var(--type-faq-question);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.22;
 }
 
@@ -3148,30 +3163,28 @@ details.faqItem summary::-webkit-details-marker {
   display: none;
 }
 
+/* Strzałka z dwóch krawędzi kwadratu — w dół, a po otwarciu obraca się w górę. */
 details.faqItem summary::after {
-  content: "+";
+  content: "";
+  width: 9px;
+  height: 9px;
   flex: 0 0 auto;
-  color: var(--gold-dark);
-  font-size: 1.6rem;
-  font-weight: 600;
-  line-height: 1;
-}
-
-details.faqItem[open] summary {
-  min-height: 78px;
+  border-right: 2px solid var(--gold);
+  border-bottom: 2px solid var(--gold);
+  transform: rotate(45deg);
+  transition: transform 250ms ease;
 }
 
 details.faqItem[open] summary::after {
-  content: "−";
+  transform: rotate(-135deg);
 }
 
 details.faqItem p {
   margin: 0;
-  border-top: 1px solid var(--border);
-  padding: 22px 34px 26px;
-  color: #35312d;
-  font-size: var(--type-body);
-  line-height: 1.58;
+  padding: 0 22px 20px;
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.5;
 }
 
 details.faqItem:not([open]) p {
