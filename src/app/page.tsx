@@ -448,7 +448,6 @@ export default function HomePage() {
                 sizes="(min-width: 1024px) 60vw, 100vw"
               />
               <div className="heroImageFade" />
-              <span className="heroImageNote">Sufit dwupoziomowy z LED — Wrocław. Realizacja: 2 dni.</span>
             </div>
           </div>
         </div>
@@ -467,52 +466,37 @@ export default function HomePage() {
               okolice do 100 km.
             </p>
 
+            <div className="buttonRow">
+              <Button href={siteConfig.contacts.phoneHref} className="heroPrimaryCta">
+                <CtaIcon name="phone" />
+                Zadzwoń i umów pomiar
+              </Button>
+              <Button
+                href={whatsappUrl(
+                  "Dzień dobry, chcę zapytać o sufit napinany. Mogę wysłać zdjęcie i metraż."
+                )}
+                variant="secondary"
+                className="heroWhatsappCta"
+              >
+                <CtaIcon name="whatsapp" />
+                Napisz na WhatsApp
+              </Button>
+            </div>
+
             <div className="heroFeatureGrid" aria-label="Najważniejsze informacje">
               {heroFeatures.map((feature) => (
                 <div className="heroFeature" key={feature.label}>
                   <span className="heroFeatureIcon">
-                    <Image src={feature.imageSrc} alt="" width={60} height={60} />
+                    <Image src={feature.imageSrc} alt="" width={40} height={40} />
                   </span>
                   <span>{feature.label}</span>
                 </div>
               ))}
             </div>
 
-            <div className="buttonRow">
-              <div className="heroCta">
-                <Button href={siteConfig.contacts.phoneHref} className="heroPrimaryCta">
-                  <CtaIcon name="phone" />
-                  Zadzwoń i umów pomiar
-                </Button>
-                <span className="heroCtaNote">Pomiar i wycena 0 zł — bez zobowiązań</span>
-              </div>
-              <div className="heroCta">
-                <Button
-                  href={whatsappUrl(
-                    "Dzień dobry, chcę zapytać o sufit napinany. Mogę wysłać zdjęcie i metraż."
-                  )}
-                  variant="secondary"
-                  className="heroWhatsappCta"
-                >
-                  <CtaIcon name="whatsapp" />
-                  Napisz na WhatsApp
-                </Button>
-                <span className="heroCtaNote">Zwykle odpowiadamy w ciągu 30 minut</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="heroMobileVisual">
-            <Image
-              src={visualAssets[0].src}
-              alt={visualAssets[0].alt}
-              width={1024}
-              height={1024}
-              priority
-              loading="eager"
-              sizes="100vw"
-            />
-            <span className="badge imageCaption">{visualAssets[0].label}</span>
+            <p className="heroPhotoCaption">
+              Sufit dwupoziomowy z LED — Wrocław. Realizacja: 2 dni.
+            </p>
           </div>
         </div>
       </section>
@@ -530,29 +514,6 @@ export default function HomePage() {
               </div>
             </article>
           ))}
-        </div>
-      </section>
-
-      <section className="heroStatsBar">
-        <div className="container">
-          <ul className="heroStats" aria-label="ekoSufity w liczbach">
-            <li>
-              <strong>Od 2020</strong>
-              <span>roku na rynku</span>
-            </li>
-            <li>
-              <strong>350+</strong>
-              <span>realizacji</span>
-            </li>
-            <li>
-              <strong>5,0</strong>
-              <span>w Google</span>
-            </li>
-            <li>
-              <strong>15 lat</strong>
-              <span>gwarancji</span>
-            </li>
-          </ul>
         </div>
       </section>
 
