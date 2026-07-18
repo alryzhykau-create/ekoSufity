@@ -92,14 +92,22 @@ export function Footer() {
               {footerSocialLinks.map((item) => (
                 <Link
                   key={item.href}
-                  className="footerSocialLink"
+                  className={`footerSocialLink footerSocial--${item.label.toLowerCase()}`}
                   href={item.href}
                   aria-label={`${item.label} ekoSufity`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <span className="footerSocialIcon" aria-hidden="true">
-                    <img src={item.iconSrc} alt="" />
+                    {item.label === "YouTube" ? (
+                      // Inline SVG, żeby hover mógł osobno przemalować prostokąt i trójkąt.
+                      <svg className="footerYtIcon" width="24" height="24" viewBox="0 0 24 24">
+                        <rect x="2" y="5.7" width="20" height="12.6" rx="3.8" />
+                        <path d="M10 9.15 15.1 12 10 14.85z" />
+                      </svg>
+                    ) : (
+                      <img src={item.iconSrc} alt="" />
+                    )}
                   </span>
                   <span>{item.label}</span>
                 </Link>
