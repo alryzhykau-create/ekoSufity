@@ -2,29 +2,23 @@ import Image from "next/image";
 import Link from "next/link";
 import { visualAssets } from "@/content/visual-assets";
 
-type GalleryCard = (typeof visualAssets)[number] & {
-  tags: string[];
+type GalleryTile = {
+  src: string;
+  alt: string;
+  kicker: string;
+  title: string;
 };
 
-const galleryCards: GalleryCard[] = [
-  {
-    ...visualAssets[0],
-    src: "/images/salon-22m2-photo.png",
-    tags: ["salon", "LED", "połysk"]
-  },
-  {
-    ...visualAssets[1],
-    tags: ["kuchnia", "jasny efekt"]
-  },
-  {
-    ...visualAssets[2],
-    tags: ["łazienka", "wilgoć"]
-  },
-  {
-    ...visualAssets[3],
-    tags: ["mieszkanie", "LED", "klimat"]
-  }
+const galleryTiles: GalleryTile[] = [
+  { src: "/images/salon-22m2-photo.png", alt: visualAssets[0].alt, kicker: "Salon", title: "Salon z sufitem napinanym i linią LED" },
+  { src: visualAssets[1].src, alt: visualAssets[1].alt, kicker: "Kuchnia", title: "Kuchnia z czystym wykończeniem" },
+  { src: visualAssets[2].src, alt: visualAssets[2].alt, kicker: "Łazienka", title: "Łazienka i strefa wilgotna" },
+  { src: visualAssets[3].src, alt: visualAssets[3].alt, kicker: "Mieszkanie", title: "Mieszkanie z linią LED" }
 ];
+
+// Wstęga jedzie płynnie, więc kafle renderujemy dwa razy — druga połowa jest
+// kopią (aria-hidden), żeby pętla translateX(-50%) była bezszwowa.
+const marqueeTiles = [...galleryTiles, ...galleryTiles];
 
 export function GallerySection() {
   return (
@@ -41,36 +35,35 @@ export function GallerySection() {
           </div>
         </div>
 
-        <div className="galleryGrid">
-          {galleryCards.map((asset, index) => (
-            <article className="card galleryCard" key={asset.src}>
-              <div className="galleryImage">
-                <Image
-                  src={asset.src}
-                  alt={asset.alt}
-                  fill
-                  loading={index === 0 ? "eager" : "lazy"}
-                  sizes="(max-width: 700px) 100vw, 280px"
-                />
+        <div className="insViewport">
+          <div className="insRibbon">
+          {marqueeTiles.map((tile, index) => (
+            <div
+              className="insTile"
+              key={`${tile.src}-${index}`}
+              aria-hidden={index >= galleryTiles.length ? true : undefined}
+            >
+              <Image
+                src={tile.src}
+                alt={index >= galleryTiles.length ? "" : tile.alt}
+                fill
+                sizes="360px"
+                loading={index < galleryTiles.length ? "eager" : "lazy"}
+              />
+              <div className="insOverlay" />
+              <div className="insCaption">
+                <span className="insKicker">{tile.kicker}</span>
+                <h3>{tile.title}</h3>
               </div>
-              <div className="galleryContent">
-                <h3>{asset.title}</h3>
-                <div className="galleryTags" aria-label={`Kategorie: ${asset.tags.join(", ")}`}>
-                  {asset.tags.map((tag) => (
-                    <span className="galleryTag" key={tag}>
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <Link
-                  className="galleryCta"
-                  href={`/realizacje?room=${encodeURIComponent(asset.room)}`}
-                >
-                  Zobacz podobne realizacje
-                </Link>
-              </div>
-            </article>
+            </div>
           ))}
+          </div>
+        </div>
+
+        <div style={{ marginTop: 24, textAlign: "center" }}>
+          <Link className="sectionArrowLink" href="/realizacje">
+            Zobacz wszystkie realizacje
+          </Link>
         </div>
       </div>
     </section>

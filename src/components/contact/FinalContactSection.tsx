@@ -52,28 +52,12 @@ export function FinalContactSection() {
             ma sens w Twoim wnętrzu. Wolisz bez formularza? Zadzwoń od razu.
           </p>
 
-          <div className="finalContactBenefits">
-            <div>
-              <span className="benefitIcon" aria-hidden="true">
-                <span className="contactIconMask contactIconPhone" />
-              </span>
-              <strong>Szybka odpowiedź</strong>
-              <p>Nie musisz czekać na długą korespondencję.</p>
-            </div>
-            <div>
-              <span className="benefitIcon" aria-hidden="true">
-                <span className="contactIconMask contactIconMessage" />
-              </span>
-              <strong>Konkretny kierunek</strong>
-              <p>Powiemy, od czego zacząć i co przygotować.</p>
-            </div>
-            <div>
-              <span className="benefitIcon" aria-hidden="true">
-                <span className="contactIconMask contactIconShield" />
-              </span>
-              <strong>Kontakt po Twojemu</strong>
-              <p>Wyślij formularz albo zadzwoń od razu.</p>
-            </div>
+          <div className="contactChips">
+            <a className="contactChipPhone" href={siteConfig.contacts.phoneHref}>
+              <img src="/icon/contact-block/phone.svg" alt="" aria-hidden="true" />
+              {siteConfig.contacts.phoneDisplay}
+            </a>
+            <span className="contactChipHours">🕘 Pon–Pt 9:00–20:00</span>
           </div>
         </div>
 

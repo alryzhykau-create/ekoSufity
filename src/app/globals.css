@@ -6,11 +6,13 @@
   --muted: #56524d;
   --border: #e7e1d8;
   --gold: #c9791c;
-  /* Ciemniejszy odcień do TEKSTU (eyebrow, etykiety, linki) — kontrast >=4.5:1 na jasnym tle.
+  /* Ciemniejszy odcień do TEKSTU (eyebrow, etykiety, linki). Odcień z projektu (#a65f13)
+     schodzi do 4.48:1 na najcieplejszym tle, więc bierzemy o włos ciemniejszy — 4.63:1
+     na każdym tle serwisu, a wizualnie nie do odróżnienia.
      --gold / --accent zostają jasne do teł, obramowań i dekoracji. */
-  --gold-dark: #9a5a0f;
+  --gold-dark: #a35d12;
   --accent: #c9791c;
-  --accent-hover: #a96112;
+  --accent-hover: #b06a12;
   --accent-soft: #f8ebdd;
   --footer-bg: #faf7f2;
   --footer-card-bg: #ffffff;
@@ -18,7 +20,7 @@
   --footer-text: #111111;
   --footer-muted: #5c554e;
   --footer-accent: #c9791c;
-  --footer-accent-hover: #a96112;
+  --footer-accent-hover: #b06a12;
   --footer-accent-soft: #f8ebdd;
   --footer-accent-border: rgba(201, 121, 28, 0.28);
   --footer-divider: rgba(92, 85, 78, 0.16);
@@ -29,7 +31,7 @@
   --contact-border: #e8ddd0;
   --contact-field-border: #e6d8c7;
   --contact-accent: #c9791c;
-  --contact-accent-hover: #a96112;
+  --contact-accent-hover: #b06a12;
   --contact-accent-soft: #f8ebdd;
   --contact-accent-border: rgba(201, 121, 28, 0.28);
   --black: #0e0f0f;
@@ -38,8 +40,13 @@
   --shadow: 0 22px 70px rgba(13, 13, 13, 0.075);
   --shadow-card: 0 12px 34px rgba(13, 13, 13, 0.055);
   --max: 1280px;
-  --radius: 8px;
-  --section-y: clamp(48px, 5vw, 72px);
+  /* Skala promieni z systemu projektowego — semantyczna, nie jedna dla wszystkiego. */
+  --radius: 8px; /* przyciski, pola formularzy */
+  --radius-card: 12px; /* karty treści, opinie */
+  --radius-media: 14px; /* kafle ze zdjęciami */
+  --radius-feature: 16px; /* karty korzyści */
+  --radius-panel: 22px; /* duże panele, sekcja kontaktu */
+  --section-y: clamp(36px, 3.6vw, 52px);
   --section-y-compact: clamp(36px, 3.6vw, 52px);
   --section-y-tight: clamp(24px, 2.6vw, 36px);
   --type-eyebrow: 0.8rem;
@@ -50,9 +57,10 @@
   --type-card-title-lg: 1.18rem;
   --type-section-title: clamp(2rem, 2.65vw, 2.62rem);
   --type-hero-title: clamp(2.25rem, 3.65vw, 3.08rem);
-  --type-faq-question: 1.2rem;
-  --font-display: var(--font-montserrat), "Montserrat", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --type-faq-question: 1.02rem;
+  --font-display: var(--font-rubik), "Rubik", "Segoe UI", system-ui, -apple-system, sans-serif;
   --font-body: var(--font-inter), "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-signature: var(--font-caveat), "Caveat", cursive;
 }
 
 * {
@@ -78,6 +86,17 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* Łamanie nagłówków jak w systemie projektowym — równe wiersze, ciaśniejszy trakting. */
+h1,
+h2 {
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+h3 {
+  text-wrap: pretty;
 }
 
 /* Widoczny fokus dla nawigacji klawiaturą — wspólny dla linków, przycisków i pól. */
@@ -134,10 +153,10 @@ main {
 .sectionTitle {
   margin: 10px 0 0;
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 700;
   font-size: var(--type-section-title);
   line-height: 1.14;
-  letter-spacing: 0;
+  letter-spacing: -0.01em;
 }
 
 .sectionLead {
@@ -185,7 +204,7 @@ main {
   margin: 10px 0 4px;
   font-family: var(--font-display);
   font-size: 1.4rem;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--gold-dark);
 }
 
@@ -222,7 +241,7 @@ main {
   padding: 10px 18px;
   color: var(--text);
   font-size: 0.9rem;
-  font-weight: 750;
+  font-weight: 700;
   cursor: pointer;
   transition: border-color 160ms ease, background 160ms ease, color 160ms ease, transform 160ms ease;
 }
@@ -250,7 +269,7 @@ main {
   margin: 0;
   font-family: var(--font-display);
   font-size: var(--type-card-title-lg);
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .galleryEmpty p {
@@ -277,7 +296,7 @@ main {
   margin: 0;
   font-family: var(--font-display);
   font-size: var(--type-card-title);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.25;
 }
 
@@ -348,7 +367,7 @@ main {
   margin: 0;
   font-family: var(--font-display);
   font-size: var(--type-card-title);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.25;
 }
 
@@ -420,7 +439,7 @@ main {
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: var(--radius-card);
   padding: 24px;
   box-shadow: var(--shadow-card);
 }
@@ -460,6 +479,12 @@ main {
   stroke-linejoin: round;
 }
 
+/* Pełne znaki rysujemy wypełnieniem — obrys z .btn svg by je zalepił. */
+.btn svg.ctaIconSolid {
+  fill: currentColor;
+  stroke: none;
+}
+
 .btn:hover {
   transform: translateY(-1px);
 }
@@ -479,13 +504,14 @@ main {
 }
 
 .heroPrimaryCta {
-  min-height: 65px;
+  min-height: 60px;
   border-color: rgba(201, 121, 28, 0.45);
   border-radius: 8px;
-  background: linear-gradient(180deg, #d88922, var(--accent));
+  background: var(--accent);
   color: #fff;
   font-size: 1rem;
-  box-shadow: 0 14px 30px rgba(201, 121, 28, 0.2);
+  padding: 0 26px;
+  box-shadow: 0 14px 30px rgba(201, 121, 28, 0.22);
 }
 
 .heroPrimaryCta:hover {
@@ -494,11 +520,12 @@ main {
 }
 
 .heroWhatsappCta {
-  min-height: 65px;
+  min-height: 60px;
   border-color: rgba(201, 121, 28, 0.42);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.92);
   color: var(--text);
+  padding: 0 24px;
   box-shadow: 0 10px 24px rgba(17, 17, 17, 0.04);
 }
 
@@ -506,78 +533,6 @@ main {
   border-color: var(--accent);
   background: #fff;
   color: var(--text);
-}
-
-/* CTA z mikro-podpisem pod przyciskiem (hero). */
-.heroCta {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.heroCtaNote {
-  color: var(--muted);
-  font-size: 0.8rem;
-  line-height: 1.35;
-}
-
-/* Wąski pasek zaufania pod hero (4 fakty; na mobile 2x2). */
-.heroStatsBar {
-  border-bottom: 1px solid var(--border);
-  background: var(--bg-alt);
-}
-
-.heroStats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.heroStats li {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  padding: 18px 12px;
-  text-align: center;
-  border-left: 1px solid var(--border);
-}
-
-.heroStats li:first-child {
-  border-left: 0;
-}
-
-.heroStats strong {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 800;
-  line-height: 1.1;
-  color: var(--text);
-}
-
-.heroStats span {
-  font-size: 0.82rem;
-  color: var(--muted);
-}
-
-@media (max-width: 640px) {
-  .heroStats {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .heroStats li {
-    border-left: 0;
-  }
-
-  .heroStats li:nth-child(2n) {
-    border-left: 1px solid var(--border);
-  }
-
-  .heroStats li:nth-child(-n + 2) {
-    border-bottom: 1px solid var(--border);
-  }
 }
 
 .btnSecondary {
@@ -673,7 +628,7 @@ main {
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.64);
   color: var(--gold-dark);
-  font-weight: 800;
+  font-weight: 700;
   box-shadow: 0 4px 12px rgba(13, 13, 13, 0.06);
 }
 
@@ -685,7 +640,7 @@ main {
 .brandName {
   font-family: var(--font-body);
   font-size: 1.25rem;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1;
 }
 
@@ -703,7 +658,7 @@ main {
   gap: 15px;
   color: var(--text);
   font-size: 0.8rem;
-  font-weight: 750;
+  font-weight: 700;
 }
 
 .nav a {
@@ -734,7 +689,7 @@ main {
   padding: 0 16px;
   color: var(--text);
   font-size: 1rem;
-  font-weight: 850;
+  font-weight: 700;
   line-height: 1;
   white-space: nowrap;
   box-shadow: 0 4px 14px rgba(13, 13, 13, 0.06);
@@ -858,9 +813,8 @@ main {
 .heroBackdrop {
   pointer-events: none;
   position: absolute;
-  inset: 0 0 auto;
+  inset: 0;
   display: none;
-  height: 620px;
 }
 
 .heroBackdropInner {
@@ -872,12 +826,12 @@ main {
 
 .heroBackdropImage {
   position: absolute;
-  top: -20px;
+  top: 0;
   right: 0;
   bottom: 0;
-  left: 30%;
+  left: 46%;
   overflow: hidden;
-  border-bottom-left-radius: 0;
+  border-bottom-left-radius: 28px;
 }
 
 .heroBackdropImage img {
@@ -891,41 +845,30 @@ main {
   background: linear-gradient(
     90deg,
     #fffefd 0%,
-    rgba(255, 254, 253, 0.98) 9%,
-    rgba(255, 254, 253, 0.82) 19%,
-    rgba(255, 254, 253, 0.48) 32%,
-    rgba(255, 254, 253, 0.16) 44%,
-    rgba(255, 254, 253, 0) 52%
+    rgba(255, 254, 253, 0.96) 6%,
+    rgba(255, 254, 253, 0.6) 16%,
+    rgba(255, 254, 253, 0.12) 28%,
+    rgba(255, 254, 253, 0) 40%
   );
 }
 
-.heroImageNote {
-  position: absolute;
-  bottom: 76px;
-  left: calc(55% + 38px);
-  transform: translateX(-50%);
-  display: inline-flex;
-  max-width: 560px;
-  border-radius: var(--radius);
-  background: rgba(17, 24, 39, 0.46);
-  padding: 14px 20px;
-  color: #fff;
-  font-size: 0.94rem;
-  font-weight: 750;
-  line-height: 1.35;
-  white-space: nowrap;
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
-  backdrop-filter: blur(18px);
+/* Podpis pod pasem korzyści — cichy dopisek kursywą, jak w projekcie. */
+.heroPhotoCaption {
+  margin: 0;
+  color: #8a847c;
+  font-size: 0.9rem;
+  font-style: italic;
+  line-height: 1.4;
 }
 
 .heroShell {
   display: grid;
-  min-height: 620px;
-  grid-template-columns: minmax(0, 0.48fr) minmax(0, 0.52fr);
+  min-height: 640px;
+  grid-template-columns: minmax(0, 0.56fr) minmax(0, 0.44fr);
   gap: 32px;
-  align-items: start;
-  padding-top: 104px;
-  padding-bottom: 86px;
+  align-items: center;
+  padding-top: 120px;
+  padding-bottom: 96px;
 }
 
 .heroCopy {
@@ -942,9 +885,9 @@ main {
   margin: 0;
   font-family: var(--font-display);
   font-size: var(--type-hero-title);
-  font-weight: 850;
+  font-weight: 700;
   line-height: 1.14;
-  letter-spacing: 0;
+  letter-spacing: -0.01em;
 }
 
 .hero h1 span {
@@ -955,9 +898,10 @@ main {
   color: var(--text);
 }
 
+/* Duży tekst (49px/700), więc jaśniejsze złoto trzyma próg 3:1 — jak w projekcie. */
 .hero h1 .heroTitleAccent {
   display: inline;
-  color: var(--gold-dark);
+  color: var(--gold);
 }
 
 .heroLead,
@@ -972,32 +916,30 @@ main {
 .heroFeatureGrid {
   display: grid;
   width: 100%;
-  max-width: 520px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px 16px;
-  font-size: 0.95rem;
-  font-weight: 750;
-  line-height: 1.45;
+  max-width: 600px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.25;
 }
 
 .heroFeature {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 11px;
   min-width: 0;
-  min-height: 62px;
 }
 
 .heroFeature > span:last-child {
   min-width: 0;
-  white-space: nowrap;
 }
 
 .heroFeatureIcon {
   display: grid;
-  flex: 0 0 60px;
-  width: 60px;
-  height: 60px;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
   place-items: center;
   overflow: hidden;
   border: 0;
@@ -1017,25 +959,10 @@ main {
 
 .heroFeatureIcon img {
   display: block;
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   object-fit: cover;
   object-position: center;
-}
-
-.heroMobileVisual {
-  position: relative;
-  display: none;
-  overflow: hidden;
-  border-radius: var(--radius);
-  background: #fff;
-  box-shadow: var(--shadow);
-}
-
-.heroMobileVisual img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
 }
 
 .heroImageFrame {
@@ -1043,7 +970,7 @@ main {
   height: 468px;
   overflow: hidden;
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: var(--radius-media);
   background: var(--bg-alt);
   box-shadow: var(--shadow);
 }
@@ -1079,11 +1006,12 @@ main {
   left: 18px;
 }
 
+/* Cztery osobne karty zaufania nachodzące na dół hero — jak w projekcie. */
 .trustBar {
   position: relative;
   z-index: 3;
-  margin-top: -58px;
-  padding: 0 0 26px;
+  margin-top: -36px;
+  padding: 0;
 }
 
 .trustBar .container {
@@ -1091,31 +1019,19 @@ main {
 }
 
 .trustBar .grid4 {
-  gap: 0;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  border-radius: 22px;
-  background: #fff;
-  box-shadow: 0 18px 44px rgba(13, 13, 13, 0.08), 0 2px 10px rgba(201, 121, 28, 0.06);
+  gap: 18px;
 }
 
 .trustBar .card {
   display: grid;
-  grid-template-columns: 62px minmax(0, 1fr);
-  gap: 16px;
-  align-content: start;
-  min-height: 150px;
-  padding: 22px;
-  border-top: 0;
-  border-right: 1px solid var(--border);
-  border-bottom: 0;
-  border-left: 0;
-  border-radius: 0;
-  box-shadow: none;
-}
-
-.trustBar .card:last-child {
-  border-right: 0;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 18px 44px rgba(13, 13, 13, 0.07), 0 2px 10px rgba(201, 121, 28, 0.05);
 }
 
 .trustCard h3,
@@ -1125,13 +1041,18 @@ main {
   margin: 0;
   font-family: var(--font-display);
   font-size: var(--type-card-title);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.25;
 }
 
+/* Karty korzyści mają łagodniejszy narożnik niż zwykłe karty treści. */
+.trustCard {
+  border-radius: var(--radius-feature);
+}
+
 .trustCard h3 {
-  font-size: var(--type-card-title);
-  line-height: 1.28;
+  font-size: 1.02rem;
+  line-height: 1.25;
 }
 
 .trustCard p,
@@ -1145,10 +1066,10 @@ main {
 }
 
 .trustCard p {
-  margin-top: 8px;
+  margin-top: 6px;
   color: var(--muted);
-  font-size: 0.92rem;
-  line-height: 1.5;
+  font-size: 0.9rem;
+  line-height: 1.45;
 }
 
 .trustText {
@@ -1157,12 +1078,12 @@ main {
 
 .trustIcon {
   display: grid;
-  width: 62px;
-  height: 62px;
+  width: 56px;
+  height: 56px;
   place-items: center;
   overflow: visible;
   border: 0;
-  border-radius: 0;
+  border-radius: 16px;
   background: transparent;
   color: var(--gold);
 }
@@ -1178,9 +1099,9 @@ main {
 
 .trustIcon img {
   display: block;
-  width: 62px;
-  height: 62px;
-  border-radius: 18px;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
   object-fit: contain;
   object-position: center;
 }
@@ -1199,7 +1120,7 @@ main {
   content: "✓";
   color: #fff;
   font-size: 0.92rem;
-  font-weight: 850;
+  font-weight: 700;
   line-height: 1;
 }
 
@@ -1274,7 +1195,7 @@ main {
 .kalkulatorResultValue {
   font-family: var(--font-display);
   font-size: 1.6rem;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.12;
   color: var(--gold-dark);
 }
@@ -1304,7 +1225,7 @@ main {
   align-items: center;
   justify-content: center;
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: var(--radius-media);
   background: linear-gradient(135deg, var(--bg-alt), #efeae1);
 }
 
@@ -1350,7 +1271,7 @@ main {
 
 .comparisonTable thead th {
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 700;
   color: var(--text);
   background: var(--bg-alt);
 }
@@ -1416,7 +1337,7 @@ main {
     margin-bottom: 10px;
     font-family: var(--font-display);
     font-size: 1rem;
-    font-weight: 800;
+    font-weight: 700;
   }
 
   .comparisonTable:not(.comparisonTable--compact) td {
@@ -1433,7 +1354,7 @@ main {
     content: attr(data-label);
     color: var(--gold-dark);
     font-size: 0.7rem;
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: 0.03em;
     line-height: 2;
     text-transform: uppercase;
@@ -1471,7 +1392,7 @@ main {
   background: var(--surface);
   color: var(--text);
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1.05rem;
   box-shadow: var(--shadow-card);
   transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
@@ -1514,13 +1435,13 @@ main {
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-top: 22px;
+  margin-top: 20px;
 }
 
 .reviewsScore {
   font-family: var(--font-display);
   font-size: 2.6rem;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1;
   color: var(--text);
 }
@@ -1542,27 +1463,52 @@ main {
   font-size: 0.9rem;
 }
 
+/* Opinie jadą jako nieskończona taśma z zanikaniem na brzegach. */
+.reviewsViewport {
+  position: relative;
+  margin-top: 16px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
 .reviewsTrack {
   display: flex;
-  gap: 16px;
-  margin-top: 28px;
-  padding-bottom: 6px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
+  width: max-content;
+  gap: 14px;
+  animation: opMarquee 40s linear infinite;
+}
+
+.reviewsTrack:hover {
+  animation-play-state: paused;
+}
+
+@keyframes opMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reviewsTrack {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
 .reviewCard {
-  flex: 0 0 clamp(260px, 82vw, 330px);
-  scroll-snap-align: start;
+  flex: 0 0 320px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: 22px;
-  border-radius: var(--radius);
+  gap: 10px;
+  padding: 18px 20px;
+  border-radius: var(--radius-card);
   border: 1px solid var(--border);
   background: var(--surface);
-  box-shadow: var(--shadow-card);
 }
 
 .reviewCardTop {
@@ -1575,11 +1521,11 @@ main {
   display: grid;
   flex-shrink: 0;
   place-items: center;
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   border-radius: 999px;
   color: #fff;
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1.1rem;
 }
 
@@ -1591,13 +1537,14 @@ main {
 }
 
 .reviewName {
-  font-weight: 700;
-  color: var(--text);
+  color: #202124;
+  font-size: 0.92rem;
+  font-weight: 600;
 }
 
 .reviewStars {
   color: #fbbc05;
-  font-size: 0.95rem;
+  font-size: 0.8rem;
   letter-spacing: 1px;
 }
 
@@ -1612,10 +1559,14 @@ main {
 }
 
 .reviewText {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   margin: 0;
-  color: var(--muted);
-  font-size: 0.95rem;
-  line-height: 1.55;
+  color: #3c4043;
+  font-size: 0.88rem;
+  line-height: 1.5;
 }
 
 .reviewsCta {
@@ -1640,7 +1591,7 @@ main {
   flex-direction: column;
   justify-content: flex-end;
   overflow: hidden;
-  border-radius: var(--radius);
+  border-radius: var(--radius-media);
   border: 1px solid var(--border);
   box-shadow: var(--shadow-card);
   color: #fff;
@@ -1686,7 +1637,7 @@ main {
   margin: 0;
   font-family: var(--font-display);
   font-size: var(--type-card-title);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.2;
   color: #fff;
 }
@@ -1723,6 +1674,7 @@ main {
 .priceExplainCard,
 .priceExamplesPanel {
   padding: 28px;
+  border-radius: var(--radius);
   box-shadow: 0 14px 32px rgba(17, 24, 39, 0.045);
 }
 
@@ -1733,11 +1685,11 @@ main {
 }
 
 .priceCardTitle {
-  max-width: 300px;
+  max-width: 310px;
   margin: 10px 0 0;
   font-family: var(--font-display);
-  font-size: var(--type-card-title-lg);
-  font-weight: 800;
+  font-size: 1.18rem;
+  font-weight: 700;
   line-height: 1.18;
   text-transform: uppercase;
 }
@@ -1778,13 +1730,15 @@ main {
 .priceKicker {
   color: var(--gold-dark);
   font-size: 0.75rem;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
 .priceExamplesPanel {
+  display: flex;
   min-width: 0;
+  flex-direction: column;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--surface);
@@ -1807,14 +1761,15 @@ main {
 .priceExampleItem {
   overflow: hidden;
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 16px;
   background: var(--surface);
+  box-shadow: 0 12px 30px rgba(13, 13, 13, 0.06);
 }
 
 .priceExampleImage {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 1.22;
+  aspect-ratio: 1.12;
   background: var(--bg-alt);
 }
 
@@ -1828,30 +1783,54 @@ main {
 }
 
 .priceExampleBody {
-  display: grid;
-  gap: 20px;
-  min-height: 128px;
-  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 12px 14px;
+  text-align: center;
 }
 
+/* Nazwa pomieszczenia jest cicha, cena — złota; hierarchia jak w projekcie. */
 .priceExampleBody h3 {
+  display: flex;
+  min-height: 2.3em;
+  align-items: center;
+  justify-content: center;
   margin: 0;
+  color: var(--muted);
   font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 800;
-  line-height: 1.25;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.2;
 }
 
 .priceExampleBody strong {
-  align-self: end;
-  font-size: 0.95rem;
+  color: var(--gold);
+  font-size: 1.05rem;
   line-height: 1.2;
+}
+
+/* Podpis i link tworzą jeden blok dosunięty do dołu karty: podpisy w obu
+   kolumnach wypadają na tej samej linii, bez pustki między nimi a linkiem. */
+.priceTableCard > .softLabel,
+.priceExamplesPanel > .softLabel {
+  margin: auto 0 0;
+  padding-top: 22px;
 }
 
 .priceExamplesActions {
   display: flex;
   justify-content: flex-start;
-  margin-top: 22px;
+  margin-top: 0;
+  padding-top: 2px;
+}
+
+/* Bez bocznego paddingu tekst linku stoi w tej samej osi co podpis nad nim. */
+.priceExamplesActions .sectionArrowLink {
+  min-height: 44px;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .priceCard {
@@ -1868,7 +1847,7 @@ main {
   color: var(--gold-dark);
   font-family: var(--font-display);
   font-size: clamp(2.4rem, 5vw, 3.6rem);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1;
 }
 
@@ -1894,7 +1873,7 @@ main {
   display: grid;
   place-items: center;
   font-size: 0.78rem;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .servicesSection {
@@ -1921,7 +1900,7 @@ main {
 
 .servicesHeader .sectionTitle {
   font-size: var(--type-section-title);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.08;
 }
 
@@ -1935,7 +1914,8 @@ main {
 }
 
 .servicesGrid {
-  gap: 24px;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
   margin-top: 28px;
 }
 
@@ -1968,118 +1948,226 @@ main {
   font-size: var(--type-lead);
 }
 
-.audienceCards {
+/* Etykieta-tag używana też w bloku „Wybierz swoją ścieżkę". */
+/* „Wybierz swoją ścieżkę" — dwie karty z szkicem architektonicznym w tle. */
+.pathGrid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 34px;
+}
+
+.pathCard {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: #fff;
+  padding: 34px;
+}
+
+.pathCard--inspiration {
+  background: #faf1e6;
+  border-color: #eadfce;
+}
+
+.pathCardSketch {
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 340px;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.pathCard--project .pathCardSketch {
+  width: 320px;
+  opacity: 0.2;
+}
+
+.pathCardBody {
+  position: relative;
+  max-width: 60%;
+}
+
+.pathCard h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.pathCard p {
+  margin: 12px 0 26px;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.pathCard .btn {
+  min-height: 52px;
+}
+
+@media (max-width: 860px) {
+  .pathGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .pathCardBody {
+    max-width: 100%;
+  }
+}
+
+/* „Dla kogo" — poziomy akordeon na hover (czysty CSS, bez JS).
+   Pierwsza karta jest domyślnie rozwinięta; hover na kontenerze ją zwija,
+   a karta pod kursorem rozwija się na fotografię z opisem. */
+.dkacc {
+  display: flex;
+  gap: 12px;
+  height: 360px;
   margin-top: 24px;
 }
 
-.audienceCard {
+.dkaccItem {
   position: relative;
-  min-height: 222px;
+  flex: 1;
   overflow: hidden;
-  border: 1px solid rgba(31, 24, 16, 0.08);
-  border-radius: var(--radius);
-  background: #ffffff;
-  padding: 24px;
-  box-shadow: 0 18px 45px rgba(24, 20, 12, 0.05);
-  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+  border-radius: var(--radius-feature);
+  box-shadow: 0 12px 30px rgba(24, 20, 12, 0.06);
+  cursor: pointer;
+  transition: flex 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.audienceCard:hover {
-  transform: translateY(-2px);
-  border-color: rgba(201, 121, 28, 0.45);
-  box-shadow: var(--shadow);
+.dkaccBg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.audienceCardFeatured {
-  border-color: rgba(31, 24, 16, 0.08);
-  background: #ffffff;
+.dkaccOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(20, 18, 16, 0.86), rgba(20, 18, 16, 0.12) 62%);
 }
 
-.audienceCardTop {
+.dkaccVLabel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 22px;
   display: flex;
-  min-height: 32px;
-  align-items: start;
-  justify-content: space-between;
-  gap: 12px;
+  justify-content: center;
+  transition: opacity 0.3s ease;
 }
 
-.audienceBadge {
-  display: inline-flex;
-  max-width: 100%;
-  align-items: center;
-  border-radius: var(--radius);
-  background: rgba(250, 239, 226, 0.9);
-  color: var(--gold-dark);
-  padding: 6px 11px;
-  font-size: 0.78rem;
-  font-weight: 850;
-  line-height: 1.2;
-}
-
-.audienceStar {
-  display: grid;
-  flex: 0 0 34px;
-  width: 34px;
-  height: 34px;
-  place-items: center;
-  border: 1px solid rgba(201, 121, 28, 0.68);
-  border-radius: 999px;
-  color: var(--gold);
-}
-
-.audienceStar svg {
-  width: 18px;
-  height: 18px;
-  fill: currentColor;
-}
-
-.audienceCardBody {
-  display: grid;
-  grid-template-columns: 84px minmax(0, 1fr);
-  gap: 20px;
-  align-items: center;
-  margin-top: 28px;
-}
-
-.audienceIcon {
-  display: grid;
-  width: 80px;
-  height: 80px;
-  place-items: center;
-  overflow: visible;
-  border-radius: 0;
-  background: transparent;
-  filter: none;
-}
-
-.audienceIconImage {
-  width: 76px;
-  height: 76px;
-  max-width: none;
-  object-fit: contain;
-}
-
-.audienceIconImage--mieszkania {
-  width: 76px;
-  height: 76px;
-}
-
-.audienceCopy h3 {
-  margin: 0;
+.dkaccVLabel span {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: #fff;
   font-family: var(--font-display);
-  font-size: var(--type-card-title);
-  font-weight: 800;
-  line-height: 1.2;
+  font-size: 1.02rem;
+  font-weight: 600;
+  white-space: nowrap;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 
-.audienceCopy p {
-  margin: 9px 0 0;
-  color: var(--muted);
-  font-size: 0.92rem;
-  line-height: 1.5;
+.dkaccFull {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 26px;
+  opacity: 0;
+  transition: opacity 0.35s ease 0.12s;
+}
+
+.dkaccFull h3 {
+  margin: 0;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.dkaccFull p {
+  max-width: 340px;
+  margin: 8px 0 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+/* Domyślnie rozwinięta pierwsza karta. */
+.dkaccItem:first-child {
+  flex: 3.6;
+}
+
+.dkaccItem:first-child .dkaccVLabel {
+  opacity: 0;
+}
+
+.dkaccItem:first-child .dkaccFull {
+  opacity: 1;
+}
+
+/* Gdy kursor wchodzi na kontener, pierwsza karta wraca do stanu zwiniętego... */
+.dkacc:hover .dkaccItem:first-child {
+  flex: 1;
+}
+
+.dkacc:hover .dkaccItem:first-child .dkaccVLabel {
+  opacity: 1;
+}
+
+.dkacc:hover .dkaccItem:first-child .dkaccFull {
+  opacity: 0;
+}
+
+/* ...a karta pod kursorem (dowolna) się rozwija. */
+.dkaccItem:hover {
+  flex: 3.6;
+}
+
+.dkaccItem:hover .dkaccVLabel {
+  opacity: 0;
+}
+
+.dkaccItem:hover .dkaccFull {
+  opacity: 1;
+}
+
+/* Bez myszy (dotyk/klawiatura) obramowanie fokusu na całej karcie. */
+.dkaccItem:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Na dotyku hover nie działa — pokazujemy wszystkie karty rozwinięte w kolumnie. */
+@media (max-width: 860px) {
+  .dkacc {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .dkaccItem,
+  .dkacc:hover .dkaccItem:first-child {
+    flex: none;
+    min-height: 210px;
+  }
+
+  .dkaccVLabel {
+    display: none;
+  }
+
+  .dkaccItem .dkaccFull,
+  .dkacc:hover .dkaccItem:first-child .dkaccFull {
+    opacity: 1;
+  }
 }
 
 .sectionCards {
@@ -2098,8 +2186,7 @@ main {
 
 /* Podnosimy tylko karty-linki — karta bez linku nie udaje klikalnej. */
 a.miniCard:hover,
-.serviceCard:hover,
-.galleryCard:hover {
+.serviceCard:hover {
   transform: translateY(-2px);
   border-color: rgba(201, 121, 28, 0.38);
   box-shadow: var(--shadow);
@@ -2111,40 +2198,42 @@ a.miniCard:hover,
   min-height: 282px;
   flex-direction: column;
   border-color: #eadfd2;
-  background: #fffaf4;
+  background: linear-gradient(180deg, #fffaf4, #fff9f1);
   padding: 26px;
-  box-shadow: 0 14px 34px rgba(17, 24, 39, 0.045);
+  box-shadow: 0 12px 30px rgba(17, 24, 39, 0.045);
   transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
 }
 
 .serviceCard:hover {
   transform: translateY(-2px);
   border-color: #d8b98c;
-  box-shadow: 0 22px 52px rgba(17, 24, 39, 0.08);
+  box-shadow: 0 18px 42px rgba(17, 24, 39, 0.08);
 }
 
+/* Karta pozioma: szkic po lewej, treść po prawej, ikona na styku obu. */
 .servicesSection .serviceCard {
-  min-height: 520px;
+  display: flex;
+  min-height: 0;
+  flex-direction: row;
+  gap: 18px;
+  align-items: stretch;
   overflow: hidden;
+  border-color: #eadfd2;
   border-radius: 14px;
   background: linear-gradient(180deg, #fffaf4, #fff9f1);
   padding: 0;
-  box-shadow: 0 18px 42px rgba(17, 24, 39, 0.055);
+  box-shadow: 0 12px 30px rgba(17, 24, 39, 0.045);
+}
+
+.servicesSection .serviceCard:hover {
+  transform: none;
 }
 
 .serviceImage {
   position: relative;
-  min-height: 238px;
-  overflow: hidden;
+  width: 150px;
+  flex: none;
   background: #fff8ef;
-}
-
-.serviceImage::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(255, 250, 244, 0) 58%, #fffaf4 100%);
-  pointer-events: none;
 }
 
 .serviceImage img {
@@ -2152,24 +2241,26 @@ a.miniCard:hover,
 }
 
 .servicesSection .serviceIcon {
-  position: relative;
+  position: absolute;
+  right: -24px;
+  top: 50%;
   z-index: 1;
   display: grid;
-  width: 112px;
-  height: 112px;
+  width: 60px;
+  height: 60px;
   place-items: center;
-  margin: -58px auto 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
+  margin: 0;
+  transform: translateY(-50%);
+  border: 1px solid #eddcc4;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 8px 18px rgba(17, 24, 39, 0.1);
 }
 
 .serviceIconImage {
-  width: 112px;
-  height: 112px;
+  width: 44px;
+  height: 44px;
   object-fit: contain;
-  filter: drop-shadow(0 16px 28px rgba(17, 24, 39, 0.12));
 }
 
 .servicesSection .serviceCardBody {
@@ -2177,30 +2268,32 @@ a.miniCard:hover,
   z-index: 1;
   display: flex;
   flex: 1;
+  min-width: 0;
   flex-direction: column;
-  padding: 26px 34px 30px;
+  padding: 20px 24px 20px 34px;
 }
 
 .servicesSection .serviceCard h3 {
+  margin: 0 0 6px;
   color: #111;
-  font-size: var(--type-card-title-lg);
-  font-weight: 800;
+  font-size: 1.14rem;
+  font-weight: 700;
   line-height: 1.2;
 }
 
 .servicesSection .serviceCard p {
-  max-width: 260px;
+  margin: 0;
+  max-width: none;
   color: #5c554e;
-  font-size: var(--type-body);
-  line-height: 1.58;
+  font-size: 0.96rem;
+  line-height: 1.5;
 }
 
 .serviceCard a,
-.galleryContent a,
 .sectionArrowLink {
   margin-top: auto;
   color: var(--gold-dark);
-  font-weight: 850;
+  font-weight: 700;
 }
 
 .serviceCard a {
@@ -2213,7 +2306,8 @@ a.miniCard:hover,
 }
 
 .servicesSection .serviceCard a {
-  font-size: 1.02rem;
+  padding-top: 14px;
+  font-size: 0.98rem;
 }
 
 .serviceCard a::after {
@@ -2269,7 +2363,7 @@ a.miniCard:hover,
   font-family: var(--font-display);
   color: #111;
   font-size: 1.34rem;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.15;
 }
 
@@ -2304,7 +2398,7 @@ a.miniCard:hover,
 }
 
 .servicesCtaSocialLink:hover {
-  color: #a96112;
+  color: var(--accent-hover);
   transform: translateY(-2px);
 }
 
@@ -2356,106 +2450,96 @@ a.miniCard:hover,
   max-width: 760px;
 }
 
-.galleryGrid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
-  margin-top: 24px;
-}
-
-.galleryCard {
-  overflow: hidden;
-  padding: 0;
-  background: #fff;
-  box-shadow: 0 16px 38px rgba(17, 24, 39, 0.06);
-}
-
-.galleryImage {
+/* Wstęga inspiracji — nieskończona taśma z zanikaniem na brzegach.
+   Kafle jadą w lewo, a maska wygasza je przy krawędziach kontenera. */
+/* Wstęga trzyma się kontenera 1280px, tak samo jak wstęga opinii. */
+.insViewport {
   position: relative;
-  aspect-ratio: 1 / 1;
-  background: var(--bg-alt);
+  margin-top: 28px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
 }
 
-.galleryImage img {
-  object-fit: cover;
+.insRibbon {
+  display: flex;
+  width: max-content;
+  gap: 20px;
+  animation: insMarquee 34s linear infinite;
 }
 
-.galleryImageBadge {
+/* Najechanie zatrzymuje taśmę, żeby dało się obejrzeć kafel. */
+.insRibbon:hover {
+  animation-play-state: paused;
+}
+
+.insTile {
+  position: relative;
+  width: 360px;
+  height: 250px;
+  flex: none;
+  overflow: hidden;
+  border-radius: var(--radius-media);
+  box-shadow: var(--shadow-media, 0 14px 26px -8px rgba(20, 18, 16, 0.32));
+}
+
+.insTile img {
   position: absolute;
-  top: 18px;
-  left: 18px;
-  display: inline-flex;
-  align-items: center;
-  border: 1px solid rgba(201, 121, 28, 0.24);
-  border-radius: 999px;
-  background: rgba(255, 249, 238, 0.94);
-  color: var(--text);
-  padding: 7px 13px;
-  font-size: 0.82rem;
-  font-weight: 750;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.insTile:hover img {
+  transform: scale(1.06);
+}
+
+.insOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(20, 18, 16, 0.74), transparent 55%);
+}
+
+.insCaption {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 14px;
+}
+
+.insKicker {
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.insCaption h3 {
+  margin: 4px 0 0;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
   line-height: 1.2;
 }
 
-.galleryContent {
-  display: flex;
-  min-height: 188px;
-  flex-direction: column;
-  padding: 22px;
+@keyframes insMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
-.galleryContent h3 {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: var(--type-card-title-lg);
-  font-weight: 800;
-  line-height: 1.24;
-  min-height: 3.03rem;
-}
-
-.galleryTags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 16px;
-}
-
-.galleryTag {
-  display: inline-flex;
-  min-height: 30px;
-  align-items: center;
-  border: 1px solid rgba(201, 121, 28, 0.38);
-  border-radius: 999px;
-  background: rgba(255, 249, 238, 0.42);
-  padding: 0 13px;
-  color: #7a470f;
-  font-size: 0.9rem;
-  font-weight: 750;
-  line-height: 1;
-}
-
-.galleryCta {
-  display: inline-flex;
-  width: fit-content;
-  align-items: center;
-  gap: 8px;
-  margin-top: auto;
-  color: var(--gold-dark);
-  font-size: 1rem;
-  font-weight: 900;
-}
-
-.galleryCta::after {
-  content: "→";
-  font-size: 1.15em;
-  line-height: 1;
-}
-
-.galleryHelp a {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--gold-dark);
-  font-weight: 850;
+/* Szacunek dla ustawień dostępności — bez ruchu taśma stoi. */
+@media (prefers-reduced-motion: reduce) {
+  .insRibbon {
+    animation: none;
+  }
 }
 
 .processSection {
@@ -2485,7 +2569,7 @@ a.miniCard:hover,
   color: var(--gold-dark);
   font-family: var(--font-display);
   font-size: 0.95rem;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1;
 }
 
@@ -2599,7 +2683,7 @@ a.miniCard:hover,
   margin: 0;
   font-family: var(--font-display);
   font-size: var(--type-card-title-lg);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.2;
 }
 
@@ -2655,7 +2739,7 @@ a.miniCard:hover,
   margin: 0;
   font-family: var(--font-display);
   font-size: var(--type-card-title-lg);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.2;
 }
 
@@ -2665,36 +2749,91 @@ a.miniCard:hover,
   font-size: var(--type-body);
 }
 
-.processCtaButton {
-  min-width: 340px;
-  min-height: 62px;
-  gap: 14px;
-  background: linear-gradient(180deg, #d88922, #a65f13);
-  color: #fff;
-  font-size: 1.08rem;
+/* Jasny przycisk WhatsApp z pulsującym złotym kółkiem — na hover zielenieje. */
+.waCta {
+  display: inline-flex;
+  min-height: 71px;
+  align-items: center;
+  gap: 16px;
+  padding: 13px 32px 13px 14px;
+  border: 1px solid #eadfd2;
+  border-radius: var(--radius);
+  background: #fffdf9;
+  color: #1c1916;
+  font-size: 1.22rem;
   font-weight: 650;
-  box-shadow: 0 16px 30px rgba(201, 121, 28, 0.22);
+  box-shadow: 0 12px 26px rgba(17, 24, 39, 0.07);
+  transition: border-color 200ms ease;
 }
 
-.processCtaButton svg {
-  width: 42px;
-  height: 42px;
-  fill: none;
-  stroke: #fff;
-  stroke-width: 2.25;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.processCtaButton:hover {
-  background: linear-gradient(180deg, #c9791c, #8f4f0d);
+.waCtaIcon {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  overflow: visible;
+  border-radius: 50%;
+  background: var(--gold);
   color: #fff;
+  animation: waPulse 2s infinite;
+  transition: background 200ms ease;
+}
+
+.waCtaIcon svg {
+  width: 30px;
+  height: 30px;
+}
+
+.waCtaLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  line-height: 1.15;
+}
+
+.waCtaSub {
+  color: var(--gold);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: color 200ms ease;
+}
+
+.waCta:hover {
+  border-color: #25d366;
+  color: #1c1916;
+}
+
+.waCta:hover .waCtaIcon {
+  background: #25d366;
+  animation: none;
+}
+
+.waCta:hover .waCtaSub {
+  color: #1eb457;
+}
+
+@keyframes waPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(201, 121, 28, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 13px rgba(201, 121, 28, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(201, 121, 28, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .waCtaIcon {
+    animation: none;
+  }
 }
 
 .ownerSection {
   background: var(--bg);
-  padding-top: var(--section-y-compact);
-  padding-bottom: var(--section-y-tight);
+  padding-top: var(--section-y);
+  padding-bottom: var(--section-y);
 }
 
 .ownerBlock {
@@ -2739,7 +2878,7 @@ a.miniCard:hover,
   position: relative;
   overflow: hidden;
   min-height: 300px;
-  border-radius: var(--radius);
+  border-radius: var(--radius-media);
   background: linear-gradient(145deg, var(--bg-alt), #d9d1c4);
   border: 1px solid var(--border);
 }
@@ -2781,11 +2920,11 @@ a.miniCard:hover,
 .ownerSignature strong {
   display: inline-block;
   justify-self: start;
-  color: var(--gold-dark);
-  font-family: "Bradley Hand", "Segoe Print", "Comic Sans MS", cursive;
-  font-size: 1.85rem;
+  color: var(--gold);
+  font-family: var(--font-signature);
+  font-size: 2.3rem;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0;
   line-height: 1;
   transform: rotate(-1deg);
@@ -2800,7 +2939,7 @@ a.miniCard:hover,
   margin: 0 0 18px;
   color: var(--text);
   font-size: 1.18rem;
-  font-weight: 850;
+  font-weight: 700;
   line-height: 1.2;
 }
 
@@ -2869,7 +3008,7 @@ a.miniCard:hover,
   color: #1a73e8;
   font-family: Arial, sans-serif;
   font-size: 1.65rem;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1;
 }
 
@@ -2877,7 +3016,7 @@ a.miniCard:hover,
   display: block;
   color: #202124;
   font-size: 1.1rem;
-  font-weight: 850;
+  font-weight: 700;
   line-height: 1.2;
 }
 
@@ -2899,7 +3038,7 @@ a.miniCard:hover,
   color: #202124;
   font-family: var(--font-display);
   font-size: 1.35rem;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .googleReviewStars {
@@ -2937,7 +3076,7 @@ a.miniCard:hover,
   color: #1a73e8;
   font-family: Arial, sans-serif;
   font-size: 2.4rem;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1;
 }
 
@@ -2946,7 +3085,7 @@ a.miniCard:hover,
   color: #202124;
   font-family: var(--font-display);
   font-size: 1.35rem;
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1.18;
 }
 
@@ -2988,14 +3127,14 @@ a.miniCard:hover,
   border-radius: 50%;
   background: #e8f0fe;
   color: #1a73e8;
-  font-weight: 850;
+  font-weight: 700;
 }
 
 .googleReviewHead h3 {
   margin: 0;
   color: #202124;
   font-size: 1rem;
-  font-weight: 850;
+  font-weight: 700;
   line-height: 1.18;
 }
 
@@ -3047,8 +3186,17 @@ a.miniCard:hover,
 
 .faqList {
   display: grid;
-  gap: 12px;
-  margin-top: 22px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+/* Na wąskich ekranach dwie kolumny nie mają sensu — pytania są za długie. */
+@media (max-width: 860px) {
+  .faqList {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 .faqSection {
@@ -3083,8 +3231,15 @@ a.miniCard:hover,
   overflow: hidden;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: 0 10px 34px rgba(13, 13, 13, 0.035);
+  border-radius: var(--radius-card);
+  box-shadow: 0 8px 24px rgba(17, 24, 39, 0.043);
+  transition: background 250ms ease, border-color 250ms ease;
+}
+
+/* Otwarta karta podświetla się ciepłym kremem — tak wyróżnia się czytana odpowiedź. */
+.faqItem[open] {
+  background: #fdf3e6;
+  border-color: #d8b98c;
 }
 
 /* Pytanie pod listą FAQ + przycisk kontaktu. */
@@ -3106,17 +3261,17 @@ a.miniCard:hover,
 
 details.faqItem summary {
   display: flex;
-  min-height: 72px;
+  min-height: 60px;
   cursor: pointer;
   list-style: none;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  padding: 0 34px;
+  gap: 18px;
+  padding: 0 22px;
   color: var(--black);
   font-family: var(--font-display);
   font-size: var(--type-faq-question);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.22;
 }
 
@@ -3124,30 +3279,28 @@ details.faqItem summary::-webkit-details-marker {
   display: none;
 }
 
+/* Strzałka z dwóch krawędzi kwadratu — w dół, a po otwarciu obraca się w górę. */
 details.faqItem summary::after {
-  content: "+";
+  content: "";
+  width: 9px;
+  height: 9px;
   flex: 0 0 auto;
-  color: var(--gold-dark);
-  font-size: 1.6rem;
-  font-weight: 600;
-  line-height: 1;
-}
-
-details.faqItem[open] summary {
-  min-height: 78px;
+  border-right: 2px solid var(--gold);
+  border-bottom: 2px solid var(--gold);
+  transform: rotate(45deg);
+  transition: transform 250ms ease;
 }
 
 details.faqItem[open] summary::after {
-  content: "−";
+  transform: rotate(-135deg);
 }
 
 details.faqItem p {
   margin: 0;
-  border-top: 1px solid var(--border);
-  padding: 22px 34px 26px;
-  color: #35312d;
-  font-size: var(--type-body);
-  line-height: 1.58;
+  padding: 0 22px 20px;
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.5;
 }
 
 details.faqItem:not([open]) p {
@@ -3227,7 +3380,7 @@ details.faqItem:not([open]) p {
   color: #fff;
   font-family: var(--font-display);
   font-size: clamp(2.35rem, 3.15vw, 3.35rem);
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1.05;
   letter-spacing: 0;
 }
@@ -3245,59 +3398,52 @@ details.faqItem:not([open]) p {
   line-height: 1.56;
 }
 
-.finalContactBenefits {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+/* Jasnozłoty eyebrow — ciemny odcień tekstowy ginie na ciemnym panelu. */
+.finalContactCopy .eyebrow {
+  color: #f0c98a;
+}
+
+/* Dwa chipy pod tekstem: telefon (złota poświata) i godziny pracy. */
+.contactChips {
+  display: flex;
+  flex-wrap: wrap;
   gap: 14px;
-  max-width: 620px;
   margin-top: 30px;
 }
 
-.finalContactBenefits > div {
-  min-height: 140px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 16px;
-  background: rgba(17, 17, 17, 0.48);
-  padding: 18px;
-  backdrop-filter: blur(8px);
-}
-
-.finalContactBenefits > div + div {
-  padding-left: 18px;
-}
-
-.finalContactBenefits > div:last-child {
-  border-right: 1px solid rgba(255, 255, 255, 0.14);
-}
-
-.benefitIcon {
-  display: grid;
-  width: 46px;
-  height: 46px;
-  margin: 0 0 14px;
-  place-items: center;
-  border-radius: 999px;
-  background: #fff;
-  color: var(--contact-accent);
-}
-
-.benefitIcon .contactIconMask {
-  width: 22px;
-  height: 22px;
-}
-
-.finalContactBenefits strong {
-  display: block;
+.contactChipPhone {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border: 1px solid rgba(201, 121, 28, 0.5);
+  border-radius: 12px;
+  background: rgba(201, 121, 28, 0.18);
   color: #fff;
-  font-size: 0.98rem;
-  font-weight: 900;
+  font-weight: 700;
+  transition: background 180ms ease;
 }
 
-.finalContactBenefits p {
-  margin: 8px 0 0;
-  color: rgba(255, 255, 255, 0.78);
+.contactChipPhone:hover {
+  background: var(--gold);
+  color: #fff;
+}
+
+.contactChipPhone img {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(1);
+}
+
+.contactChipHours {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.85);
   font-size: 0.9rem;
-  line-height: 1.45;
 }
 
 .contactIconMask {
@@ -3419,7 +3565,7 @@ details.faqItem:not([open]) p {
   border-radius: 12px;
   font-family: var(--font-body);
   font-size: 0.98rem;
-  font-weight: 800;
+  font-weight: 700;
   cursor: pointer;
 }
 
@@ -3622,7 +3768,7 @@ details.faqItem:not([open]) p {
   gap: 14px;
   padding: 28px;
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: var(--radius-panel);
   background: var(--surface);
 }
 
@@ -3709,7 +3855,7 @@ details.faqItem:not([open]) p {
   padding: 10px 16px;
   color: var(--text);
   font-size: 0.88rem;
-  font-weight: 750;
+  font-weight: 700;
   white-space: nowrap;
   hyphens: none;
   overflow-wrap: normal;
@@ -3756,11 +3902,14 @@ details.faqItem:not([open]) p {
   position: relative;
 }
 
+/* Cztery kolumny rozsunięte na całą szerokość — social media siedzą pod marką. */
 .footerPanel {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(100px, 0.56fr) minmax(160px, 0.78fr) minmax(225px, 0.96fr) minmax(250px, 0.95fr);
-  gap: 22px;
+  grid-template-columns: auto auto auto auto;
+  justify-content: space-between;
+  column-gap: 30px;
+  row-gap: 4px;
   border: 0;
   border-radius: 0;
   background: transparent;
@@ -3782,7 +3931,7 @@ details.faqItem:not([open]) p {
 .footerBrandName {
   font-family: var(--font-display);
   font-size: 1.72rem;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: 0;
 }
 
@@ -3793,7 +3942,7 @@ details.faqItem:not([open]) p {
 .footerBrandSub {
   color: var(--footer-text);
   font-size: 0.76rem;
-  font-weight: 850;
+  font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -3810,18 +3959,21 @@ details.faqItem:not([open]) p {
   font-style: normal;
 }
 
+/* Nagłówek kolumny ze złotym pionowym kreskowaniem z lewej — sygnatura projektu. */
 .footer h3 {
   margin: 0 0 10px;
+  padding-left: 10px;
+  border-left: 2px solid var(--gold);
   font-family: var(--font-display);
   color: var(--footer-text);
   font-size: 0.95rem;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.2;
 }
 
 .footerColumn ul {
   display: grid;
-  gap: 8px;
+  gap: 3px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -3873,7 +4025,7 @@ details.faqItem:not([open]) p {
   place-items: center;
   color: var(--footer-accent);
   font-size: 0.95rem;
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1;
 }
 
@@ -3886,55 +4038,79 @@ details.faqItem:not([open]) p {
 }
 
 .footerSocialList {
-  display: grid;
-  grid-template-columns: repeat(2, 62px);
-  gap: 12px 10px;
-  align-items: start;
-  justify-content: start;
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
 }
 
 .footerSocialLink {
-  display: flex;
-  width: 62px;
-  align-items: center;
-  flex-direction: column;
-  gap: 7px;
-  color: var(--footer-muted);
-  font-size: 11px;
-  line-height: 1.1;
-  text-align: center;
-  transition: color 180ms ease;
-}
-
-.footerSocialLink > span:last-child {
-  white-space: nowrap;
-}
-
-.footerSocialLink:hover {
-  color: var(--footer-accent-hover);
+  display: inline-flex;
 }
 
 .footerSocialIcon {
   display: grid;
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   place-items: center;
-  border: 1px solid var(--footer-accent-border);
   border-radius: 999px;
-  background: #fff;
-  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+  background: #f0e7da;
+  transition: background 180ms ease, transform 180ms ease;
 }
 
 .footerSocialIcon img {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   object-fit: contain;
 }
 
 .footerSocialLink:hover .footerSocialIcon {
-  border-color: rgba(169, 97, 18, 0.38);
-  background: var(--footer-accent-soft);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+}
+
+/* Po najechaniu każda ikona przyjmuje własny kolor marki, a glif bieleje. */
+.footerSocialLink:hover .footerSocialIcon img {
+  filter: brightness(0) invert(1);
+}
+
+.footerSocial--facebook:hover .footerSocialIcon {
+  background: #1877f2;
+}
+
+.footerSocial--instagram:hover .footerSocialIcon {
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
+}
+
+.footerSocial--tiktok:hover .footerSocialIcon {
+  background: #010101;
+}
+
+.footerSocial--youtube:hover .footerSocialIcon {
+  background: #ff0000;
+}
+
+/* YouTube: domyślnie złoty prostokąt z kremowym trójkątem, po najechaniu odwrotnie. */
+.footerYtIcon rect {
+  fill: var(--gold);
+  transition: fill 180ms ease;
+}
+
+.footerYtIcon path {
+  fill: #f0e7da;
+  transition: fill 180ms ease;
+}
+
+.footerSocial--youtube:hover .footerYtIcon rect {
+  fill: #fff;
+}
+
+.footerSocial--youtube:hover .footerYtIcon path {
+  fill: #ff0000;
 }
 
 .footerBottom {
@@ -3995,7 +4171,7 @@ details.faqItem:not([open]) p {
 .privacyTextCard a,
 .privacyContactCard a {
   color: var(--text);
-  font-weight: 750;
+  font-weight: 700;
 }
 
 .privacyContactCard {
@@ -4036,7 +4212,7 @@ details.faqItem:not([open]) p {
     border-radius: var(--radius);
     background: rgba(255, 255, 255, 0.92);
     color: var(--text);
-    font-weight: 800;
+    font-weight: 700;
   }
 
   .mobileMenuButton {
@@ -4098,7 +4274,7 @@ details.faqItem:not([open]) p {
   .mobileMenuBrandName {
     color: var(--text);
     font-size: 1.54rem;
-    font-weight: 850;
+    font-weight: 700;
   }
 
   .mobileMenuBrandName span {
@@ -4108,7 +4284,7 @@ details.faqItem:not([open]) p {
   .mobileMenuBrandSub {
     color: var(--text);
     font-size: 0.58rem;
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
   }
@@ -4138,7 +4314,7 @@ details.faqItem:not([open]) p {
     border-radius: var(--radius);
     color: var(--muted);
     font-size: 1rem;
-    font-weight: 760;
+    font-weight: 700;
     line-height: 1.15;
     transition: background 160ms ease, color 160ms ease;
   }
@@ -4187,7 +4363,7 @@ details.faqItem:not([open]) p {
     min-height: 32px;
     color: var(--text);
     font-size: 1rem;
-    font-weight: 820;
+    font-weight: 700;
     line-height: 1.2;
   }
 
@@ -4225,7 +4401,7 @@ details.faqItem:not([open]) p {
     margin: 0;
     color: var(--text);
     font-size: 0.98rem;
-    font-weight: 790;
+    font-weight: 700;
     line-height: 1.25;
   }
 
@@ -4312,10 +4488,6 @@ details.faqItem:not([open]) p {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .heroMobileVisual {
-    display: block;
-  }
-
   .processCards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 44px 24px;
@@ -4336,18 +4508,18 @@ details.faqItem:not([open]) p {
     padding: 26px;
   }
 
-  .processCtaButton {
+  .waCta {
     grid-column: 1 / -1;
     width: 100%;
-    min-width: 0;
+    justify-content: center;
   }
 
   .servicesHeader .sectionTitle {
     font-size: clamp(2.1rem, 6vw, 3.1rem);
   }
 
-  .servicesSection .serviceCard {
-    min-height: 500px;
+  .servicesGrid {
+    grid-template-columns: 1fr;
   }
 
   .servicesCta {
@@ -4368,8 +4540,6 @@ details.faqItem:not([open]) p {
 
   .grid4,
   .grid3,
-  .audienceCards,
-  .galleryGrid,
   .priceExampleGrid,
   .stepList {
     grid-template-columns: 1fr 1fr;
@@ -4424,10 +4594,6 @@ details.faqItem:not([open]) p {
     display: none;
   }
 
-  .finalContactBenefits {
-    max-width: none;
-  }
-
   .contactFormPanel {
     width: min(100%, 460px);
   }
@@ -4480,25 +4646,6 @@ details.faqItem:not([open]) p {
     margin-top: 0;
   }
 
-  .trustBar .card {
-    grid-template-columns: 62px minmax(0, 1fr);
-    gap: 16px;
-    min-height: 150px;
-    padding: 22px 22px;
-  }
-
-  .trustBar .card:nth-child(2n) {
-    border-right: 0;
-  }
-
-  .trustBar .card:nth-child(-n + 2) {
-    border-bottom: 1px solid var(--border);
-  }
-
-  .trustCard p {
-    font-size: 0.9rem;
-  }
-
   .audienceContainer {
     width: min(100% - 40px, var(--max));
   }
@@ -4507,14 +4654,6 @@ details.faqItem:not([open]) p {
     font-size: clamp(2rem, 5vw, 3rem);
   }
 
-  .audienceCards {
-    gap: 16px;
-  }
-
-  .audienceCard {
-    min-height: 220px;
-    padding: 22px;
-  }
 }
 
 @media (max-width: 640px) {
@@ -4550,8 +4689,6 @@ details.faqItem:not([open]) p {
   .heroFeatureGrid,
   .grid4,
   .grid3,
-  .audienceCards,
-  .galleryGrid,
   .priceExampleGrid,
   .stepList,
   .footerPanel {
@@ -4679,23 +4816,6 @@ details.faqItem:not([open]) p {
     font-size: 1rem;
   }
 
-  .finalContactBenefits {
-    grid-template-columns: 1fr;
-    gap: 12px;
-    margin-top: 26px;
-  }
-
-  .finalContactBenefits > div,
-  .finalContactBenefits > div + div {
-    min-height: auto;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    padding: 16px;
-  }
-
-  .finalContactBenefits > div:last-child {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-  }
-
   .contactFormPanel {
     padding: 20px;
   }
@@ -4712,11 +4832,6 @@ details.faqItem:not([open]) p {
 
   .heroCopy {
     gap: 20px;
-  }
-
-  .heroMobileVisual img {
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
   }
 
   .pageHero {
@@ -4740,39 +4855,8 @@ details.faqItem:not([open]) p {
     grid-template-columns: 1fr;
   }
 
-  .trustBar .grid4 {
-    border-radius: 18px;
-  }
-
   .trustBar .container {
     width: min(var(--max), calc(100% - 32px));
-  }
-
-  .trustBar .card {
-    grid-template-columns: 62px minmax(0, 1fr);
-    gap: 16px;
-    min-height: auto;
-    padding: 24px 22px;
-    border-right: 0;
-  }
-
-  .trustBar .card:not(:last-child) {
-    border-bottom: 1px solid var(--border);
-  }
-
-  .trustIcon {
-    width: 62px;
-    height: 62px;
-  }
-
-  .trustIcon svg {
-    width: 30px;
-    height: 30px;
-  }
-
-  .trustIcon img {
-    width: 62px;
-    height: 62px;
   }
 
   .trustCard h3 {
@@ -4793,16 +4877,25 @@ details.faqItem:not([open]) p {
     font-size: 1rem;
   }
 
-  .servicesSection .serviceCard {
-    min-height: auto;
+  /* Na telefonie szkic zwęża się, ale karta zostaje pozioma — pion robiłby
+     z czterech kart bardzo długą kolumnę. */
+  .serviceImage {
+    width: 108px;
   }
 
-  .serviceImage {
-    min-height: 220px;
+  .servicesSection .serviceIcon {
+    right: -20px;
+    width: 52px;
+    height: 52px;
+  }
+
+  .serviceIconImage {
+    width: 38px;
+    height: 38px;
   }
 
   .servicesSection .serviceCardBody {
-    padding: 24px 26px 28px;
+    padding: 18px 18px 18px 30px;
   }
 
   .servicesCta {
@@ -4850,55 +4943,6 @@ details.faqItem:not([open]) p {
     font-size: 1rem;
   }
 
-  .audienceCards {
-    margin-top: 28px;
-  }
-
-  .audienceCard {
-    min-height: auto;
-    padding: 20px;
-  }
-
-  .audienceCardBody {
-    grid-template-columns: 74px minmax(0, 1fr);
-    gap: 16px;
-    margin-top: 20px;
-  }
-
-  .audienceIcon {
-    width: 70px;
-    height: 70px;
-  }
-
-  .audienceIconImage {
-    width: 66px;
-    height: 66px;
-  }
-
-  .audienceIconImage--mieszkania {
-    width: 66px;
-    height: 66px;
-  }
-
-  .audienceBadge {
-    padding: 6px 10px;
-    font-size: 0.76rem;
-  }
-
-  .audienceStar {
-    flex-basis: 32px;
-    width: 32px;
-    height: 32px;
-  }
-
-  .audienceCopy h3 {
-    font-size: 1.08rem;
-  }
-
-  .audienceCopy p {
-    font-size: 0.9rem;
-    line-height: 1.5;
-  }
 
   .buttonRow .btn,
   .btn {

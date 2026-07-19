@@ -180,37 +180,29 @@ function HeroFeatureIcon({ name }: { name: HeroFeatureIconName }) {
   );
 }
 
-function CtaIcon({ name }: { name: "phone" | "whatsapp" | "camera" }) {
+// Pełne znaki, te same co w nagłówku — czytelniejsze i wyśrodkowane z natury.
+function CtaIcon({ name }: { name: "phone" | "whatsapp" }) {
   const iconProps = {
+    className: "ctaIconSolid",
     width: 28,
     height: 28,
-    viewBox: "0 0 28 28",
-    fill: "none",
     xmlns: "http://www.w3.org/2000/svg",
     "aria-hidden": true
   };
 
   if (name === "phone") {
+    // Słuchawka jest narysowana poza środkiem swojego pola (bbox 4.41/2.34),
+    // więc viewBox przesuwamy na jej faktyczny środek.
     return (
-      <svg {...iconProps}>
-        <path d="M9.3 6.4 7.1 8.6c-.5.5-.6 1.2-.4 1.8 1.4 5 5.8 9.4 10.9 10.9.6.2 1.3 0 1.8-.4l2.2-2.2-3.8-3-1.7 1.7c-2.2-1.1-4.2-3.1-5.3-5.3l1.7-1.7-3.2-4Z" />
-      </svg>
-    );
-  }
-
-  if (name === "camera") {
-    return (
-      <svg {...iconProps}>
-        <path d="M8.8 10.4h2.1l1.1-1.9h4l1.1 1.9h2.1a2 2 0 0 1 2 2v6.2a2 2 0 0 1-2 2H8.8a2 2 0 0 1-2-2v-6.2a2 2 0 0 1 2-2Z" />
-        <path d="M14 18a3.3 3.3 0 1 0 0-6.6 3.3 3.3 0 0 0 0 6.6Z" />
+      <svg {...iconProps} viewBox="1.537 -1.037 24 24">
+        <path d="M7.04 3.65 9.2 2.56c1.05-.52 2.34-.1 2.86.95l1.18 2.36c.4.81.25 1.78-.39 2.42l-.98.98a10.02 10.02 0 0 0 3.86 3.86l.98-.98c.64-.64 1.61-.8 2.42-.39l2.36 1.18c1.05.52 1.47 1.81.95 2.86l-1.09 2.16c-.58 1.16-1.85 1.82-3.13 1.58C10.92 18.18 5.82 13.08 4.46 5.78 4.22 4.5 4.88 3.23 6.04 2.65Z" />
       </svg>
     );
   }
 
   return (
-    <svg {...iconProps}>
-      <path d="M14 4.8a9 9 0 0 0-7.6 13.8l-1 4 4.1-1A9 9 0 1 0 14 4.8Z" />
-      <path d="M10.6 10.3c.2-.4.5-.5.8-.5h.5c.3 0 .5.2.6.4l.8 1.8c.1.3.1.6-.1.8l-.5.5c.7 1.4 1.8 2.4 3.2 3.2l.6-.6c.2-.2.5-.2.8-.1l1.7.8c.3.1.5.4.5.7v.5c0 .4-.2.7-.5.9-1 .8-2.6.6-4.4-.3a10.9 10.9 0 0 1-5-5c-.8-1.8-1-3.3-.3-4.3.2-.4.5-.6.9-.8Z" />
+    <svg {...iconProps} viewBox="0 0 24 24">
+      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.01c-.24.68-1.42 1.31-1.96 1.36-.5.05-1.14.07-1.84-.12-.42-.13-.97-.31-1.67-.61-2.94-1.27-4.86-4.23-5-4.43-.15-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.27-.3.59-.37.79-.37.2 0 .39 0 .57.01.18.01.43-.07.67.51.24.59.83 2.04.9 2.19.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.39-.44.52-.15.15-.3.31-.13.6.17.3.76 1.25 1.63 2.02 1.12 1 2.07 1.31 2.37 1.46.3.15.47.12.64-.07.17-.2.74-.86.94-1.16.2-.3.4-.25.67-.15.27.1 1.71.81 2 .96.3.15.5.22.57.34.07.13.07.73-.17 1.41z" />
     </svg>
   );
 }
@@ -276,52 +268,34 @@ const priceExamples = [
 
 const segments = [
   {
-    badge: "Salon / kuchnia / łazienka",
     title: "Mieszkania",
     copy: "Do salonu, kuchni, łazienki, korytarza i nowych mieszkań po odbiorze.",
-    imageSrc: "/icon/dla-kogo-final/mieszkania-v3.avif",
-    iconKey: "mieszkania",
-    featured: true
+    photoSrc: "/images/salon-22m2-photo.png"
   },
   {
-    badge: "Duże przestrzenie",
     title: "Domy",
     copy: "Do większych pomieszczeń, indywidualnych układów i projektów z oświetleniem.",
-    imageSrc: "/icon/dla-kogo-final/domy-v3.avif",
-    iconKey: "domy",
-    featured: false
+    photoSrc: "/images/mieszkanie-45m2-led-photo.png"
   },
   {
-    badge: "Bez mokrych prac",
     title: "Remonty",
     copy: "Gdy chcesz wyrównać sufit bez długich mokrych prac i kolejnego malowania.",
-    imageSrc: "/icon/dla-kogo-final/remonty-v3.avif",
-    iconKey: "remonty",
-    featured: false
+    photoSrc: "/images/kuchnia-10m2-photo.png"
   },
   {
-    badge: "Schludny wygląd",
     title: "Lokale komercyjne",
     copy: "Do biur, salonów usługowych i przestrzeni, które muszą wyglądać schludnie.",
-    imageSrc: "/icon/dla-kogo-final/lokale-komercyjne-v3.avif",
-    iconKey: "lokale",
-    featured: false
+    photoSrc: "/images/hero.png"
   },
   {
-    badge: "Efekt klimatu",
     title: "Restauracje",
     copy: "Do wnętrz, gdzie sufit i światło budują klimat miejsca.",
-    imageSrc: "/icon/dla-kogo-final/restauracje-v3.avif",
-    iconKey: "restauracje",
-    featured: false
+    photoSrc: "/images/salon-22m2-photo.png"
   },
   {
-    badge: "Odporność na wilgoć",
     title: "Baseny i strefy wilgotne",
     copy: "Do pomieszczeń, w których ważna jest odporność na wilgoć i łatwe utrzymanie.",
-    imageSrc: "/icon/dla-kogo-final/baseny-strefy-wilgotne-v3.avif",
-    iconKey: "wilgotne",
-    featured: false
+    photoSrc: "/images/lazienka-6m2-photo.png"
   }
 ] as const;
 
@@ -466,7 +440,6 @@ export default function HomePage() {
                 sizes="(min-width: 1024px) 60vw, 100vw"
               />
               <div className="heroImageFade" />
-              <span className="heroImageNote">Sufit dwupoziomowy z LED — Wrocław. Realizacja: 2 dni.</span>
             </div>
           </div>
         </div>
@@ -485,52 +458,37 @@ export default function HomePage() {
               okolice do 100 km.
             </p>
 
+            <div className="buttonRow">
+              <Button href={siteConfig.contacts.phoneHref} className="heroPrimaryCta">
+                <CtaIcon name="phone" />
+                Zadzwoń i umów pomiar
+              </Button>
+              <Button
+                href={whatsappUrl(
+                  "Dzień dobry, chcę zapytać o sufit napinany. Mogę wysłać zdjęcie i metraż."
+                )}
+                variant="secondary"
+                className="heroWhatsappCta"
+              >
+                <CtaIcon name="whatsapp" />
+                Napisz na WhatsApp
+              </Button>
+            </div>
+
             <div className="heroFeatureGrid" aria-label="Najważniejsze informacje">
               {heroFeatures.map((feature) => (
                 <div className="heroFeature" key={feature.label}>
                   <span className="heroFeatureIcon">
-                    <Image src={feature.imageSrc} alt="" width={60} height={60} />
+                    <Image src={feature.imageSrc} alt="" width={40} height={40} />
                   </span>
                   <span>{feature.label}</span>
                 </div>
               ))}
             </div>
 
-            <div className="buttonRow">
-              <div className="heroCta">
-                <Button href={siteConfig.contacts.phoneHref} className="heroPrimaryCta">
-                  <CtaIcon name="phone" />
-                  Zadzwoń i umów pomiar
-                </Button>
-                <span className="heroCtaNote">Pomiar i wycena 0 zł — bez zobowiązań</span>
-              </div>
-              <div className="heroCta">
-                <Button
-                  href={whatsappUrl(
-                    "Dzień dobry, chcę zapytać o sufit napinany. Mogę wysłać zdjęcie i metraż."
-                  )}
-                  variant="secondary"
-                  className="heroWhatsappCta"
-                >
-                  <CtaIcon name="whatsapp" />
-                  Napisz na WhatsApp
-                </Button>
-                <span className="heroCtaNote">Zwykle odpowiadamy w ciągu 30 minut</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="heroMobileVisual">
-            <Image
-              src={visualAssets[0].src}
-              alt={visualAssets[0].alt}
-              width={1024}
-              height={1024}
-              priority
-              loading="eager"
-              sizes="100vw"
-            />
-            <span className="badge imageCaption">{visualAssets[0].label}</span>
+            <p className="heroPhotoCaption">
+              Sufit dwupoziomowy z LED — Wrocław. Realizacja: 2 dni.
+            </p>
           </div>
         </div>
       </section>
@@ -551,66 +509,31 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="heroStatsBar">
-        <div className="container">
-          <ul className="heroStats" aria-label="ekoSufity w liczbach">
-            <li>
-              <strong>Od 2020</strong>
-              <span>roku na rynku</span>
-            </li>
-            <li>
-              <strong>350+</strong>
-              <span>realizacji</span>
-            </li>
-            <li>
-              <strong>5,0</strong>
-              <span>w Google</span>
-            </li>
-            <li>
-              <strong>15 lat</strong>
-              <span>gwarancji</span>
-            </li>
-          </ul>
-        </div>
-      </section>
-
       <section className="section">
         <div className="container">
           <SectionHeader eyebrow="Od czego zacząć?" title="Wybierz swoją ścieżkę" />
-          <div className="grid2" style={{ marginTop: 34 }}>
-            <article
-              className="card miniCard"
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "flex-start",
-                background: "var(--accent-soft)",
-                borderColor: "var(--accent)"
-              }}
-            >
-              <span className="audienceBadge" style={{ background: "var(--accent)", color: "var(--black)" }}>
-                Wiem, czego chcę
-              </span>
-              <h3 style={{ marginTop: 14 }}>Sufit napinany — wycena i pomiar</h3>
-              <p>Znasz sufity napinane? Przejdź od razu do cen, realizacji i bezpłatnego pomiaru.</p>
-              <div className="buttonRow" style={{ marginTop: "auto", paddingTop: 18 }}>
-                <Button href="/ceny">Zobacz ceny</Button>
+          <div className="pathGrid">
+            <article className="pathCard pathCard--inspiration">
+              <img className="pathCardSketch" src="/images/inspiracja-lines.png" alt="" aria-hidden="true" />
+              <div className="pathCardBody">
+                <h3>Szukasz inspiracji?</h3>
+                <p>Zobacz realizacje, poznaj możliwości i wybierz idealne rozwiązanie.</p>
+                <Button href="/realizacje">Zobacz realizacje</Button>
               </div>
             </article>
 
-            <article
-              className="card miniCard"
-              style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}
-            >
-              <span className="audienceBadge">Dopiero poznaję temat</span>
-              <h3 style={{ marginTop: 14 }}>Co to jest sufit napinany?</h3>
-              <p>
-                Nie znasz się na sufitach napinanych? Wyjaśnimy, czym są, czym różnią się od
-                karton-gipsu i ile kosztują.
-              </p>
-              <div className="buttonRow" style={{ marginTop: "auto", paddingTop: 18 }}>
-                <Button href="/sufity-napinane" variant="secondary">
-                  Dowiedz się więcej
+            <article className="pathCard pathCard--project">
+              <img
+                className="pathCardSketch"
+                src="/images/solutions/sufity-napinane-sketch.png"
+                alt=""
+                aria-hidden="true"
+              />
+              <div className="pathCardBody">
+                <h3>Wiesz, czego chcesz?</h3>
+                <p>Powiedz nam o swoim projekcie, a my przygotujemy spersonalizowaną wycenę.</p>
+                <Button href="/kontakt" variant="secondary">
+                  Bezpłatna wycena
                 </Button>
               </div>
             </article>
@@ -631,14 +554,12 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
-            <p className="softLabel">
-              Kalkulator pokazuje orientacyjny zakres.
-              <br />
-              Finalna cena po pomiarze.
-            </p>
-            <Button href="/ceny#kalkulator" variant="secondary">
-              Przejdź do kalkulatora
-            </Button>
+            <p className="softLabel">Kalkulator pokazuje orientacyjny zakres.</p>
+            <div className="priceExamplesActions">
+              <Link className="sectionArrowLink" href="/ceny#kalkulator">
+                Przejdź do kalkulatora
+              </Link>
+            </div>
           </article>
 
           <aside className="priceExamplesPanel" aria-labelledby="price-examples-title">
@@ -662,11 +583,7 @@ export default function HomePage() {
             </div>
             <p className="softLabel">
               Przykładowe realizacje z oświetleniem i dodatkami. Sam sufit liczony jest od 120
-              zł/m² — sprawdź w{" "}
-              <Link href="/ceny#kalkulator" className="inlineLink">
-                kalkulatorze
-              </Link>
-              .
+              zł/m²
             </p>
             <div className="priceExamplesActions">
               <Link className="sectionArrowLink" href="/realizacje">
@@ -686,39 +603,25 @@ export default function HomePage() {
               lead="Najpierw rozpoznajemy typ pomieszczenia, potem dobieramy materiał, światło i detale."
             />
           </div>
-          <div className="audienceCards" aria-label="Typy pomieszczeń">
+          <div className="dkacc" aria-label="Typy pomieszczeń">
             {segments.map((segment) => (
-              <article
-                className={`audienceCard${"featured" in segment && segment.featured ? " audienceCardFeatured" : ""}`}
-                key={segment.title}
-              >
-                <div className="audienceCardTop">
-                  <span className="audienceBadge">{segment.badge}</span>
-                  {"featured" in segment && segment.featured ? (
-                    <span className="audienceStar" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" fill="none">
-                        <path d="m12 3.6 2.3 5.1 5.5.7-4.1 3.7 1.1 5.5-4.8-2.8-4.8 2.8 1.1-5.5-4.1-3.7 5.5-.7L12 3.6Z" />
-                      </svg>
-                    </span>
-                  ) : null}
+              <div className="dkaccItem" key={`${segment.title}-${segment.photoSrc}`}>
+                <Image
+                  className="dkaccBg"
+                  src={segment.photoSrc}
+                  alt=""
+                  fill
+                  sizes="(max-width: 860px) 100vw, 40vw"
+                />
+                <div className="dkaccOverlay" />
+                <div className="dkaccVLabel" aria-hidden="true">
+                  <span>{segment.title}</span>
                 </div>
-                <div className="audienceCardBody">
-                  <span className="audienceIcon" aria-hidden="true">
-                    <Image
-                      className={`audienceIconImage audienceIconImage--${segment.iconKey}`}
-                      src={segment.imageSrc}
-                      alt=""
-                      width={256}
-                      height={256}
-                      loading="eager"
-                    />
-                  </span>
-                  <div className="audienceCopy">
-                    <h3>{segment.title}</h3>
-                    <p>{segment.copy}</p>
-                  </div>
+                <div className="dkaccFull">
+                  <h3>{segment.title}</h3>
+                  <p>{segment.copy}</p>
                 </div>
-              </article>
+              </div>
             ))}
           </div>
         </div>
@@ -758,14 +661,27 @@ export default function HomePage() {
               <h3>Chcesz poznać orientacyjny koszt swojego sufitu?</h3>
               <p>Wyślij zdjęcie pomieszczenia - przygotujemy wstępną wycenę.</p>
             </div>
-            <Button
-              className="processCtaButton"
+            <a
+              className="waCta"
               href={whatsappUrl(
                 "Dzień dobry, chcę poznać orientacyjny koszt sufitu napinanego. Mogę wysłać zdjęcie pomieszczenia i metraż."
               )}
             >
-              Wyślij zdjęcie na WhatsApp
-            </Button>
+              <span className="waCtaIcon" aria-hidden="true">
+                {/* Ten sam pełny znak WhatsApp co w nagłówku — jego środek masy pokrywa
+                    się ze środkiem bryły, więc siedzi w kole równo. */}
+                <svg viewBox="0 0 24 24" width="26" height="26">
+                  <path
+                    fill="currentColor"
+                    d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.01c-.24.68-1.42 1.31-1.96 1.36-.5.05-1.14.07-1.84-.12-.42-.13-.97-.31-1.67-.61-2.94-1.27-4.86-4.23-5-4.43-.15-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.27-.3.59-.37.79-.37.2 0 .39 0 .57.01.18.01.43-.07.67.51.24.59.83 2.04.9 2.19.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.39-.44.52-.15.15-.3.31-.13.6.17.3.76 1.25 1.63 2.02 1.12 1 2.07 1.31 2.37 1.46.3.15.47.12.64-.07.17-.2.74-.86.94-1.16.2-.3.4-.25.67-.15.27.1 1.71.81 2 .96.3.15.5.22.57.34.07.13.07.73-.17 1.41z"
+                  />
+                </svg>
+              </span>
+              <span className="waCtaLabel">
+                <span className="waCtaSub">Online Pon–Pt 9:00–20:00</span>
+                Wyślij zdjęcie na WhatsApp
+              </span>
+            </a>
           </div>
         </div>
       </section>
@@ -787,18 +703,18 @@ export default function HomePage() {
               return (
                 <article className={`card serviceCard serviceCard--${service.slug}`} key={service.href}>
                   <div className="serviceImage">
-                    <Image src={visual.src} alt={visual.alt} fill sizes="(max-width: 700px) 100vw, 25vw" />
+                    <Image src={visual.src} alt={visual.alt} fill sizes="(max-width: 860px) 40vw, 150px" />
+                    <span className="serviceIcon" aria-hidden="true">
+                      <Image
+                        className="serviceIconImage"
+                        src={visual.iconSrc}
+                        alt=""
+                        width={160}
+                        height={160}
+                        sizes="44px"
+                      />
+                    </span>
                   </div>
-                  <span className="serviceIcon" aria-hidden="true">
-                    <Image
-                      className="serviceIconImage"
-                      src={visual.iconSrc}
-                      alt=""
-                      width={160}
-                      height={160}
-                      sizes="112px"
-                    />
-                  </span>
                   <div className="serviceCardBody">
                     <h3>{service.title}</h3>
                     <p>{service.copy}</p>
@@ -910,8 +826,8 @@ export default function HomePage() {
             />
           </div>
           <div className="faqList">
-            {homepageFaqs.map((item, index) => (
-              <details className="faqItem" key={item.question} open={index === 0}>
+            {homepageFaqs.map((item) => (
+              <details className="faqItem" key={item.question}>
                 <summary>
                   <span>{item.question}</span>
                 </summary>

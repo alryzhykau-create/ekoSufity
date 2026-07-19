@@ -69,31 +69,40 @@ export function GoogleReviews() {
           </div>
         </div>
 
-        <div className="reviewsTrack">
-          {reviews.map((review, index) => (
-            <article className="reviewCard" key={review.name}>
-              <div className="reviewCardTop">
-                <span
-                  className="reviewAvatar"
-                  style={{ background: avatarColors[index % avatarColors.length] }}
-                  aria-hidden="true"
+        <div className="reviewsViewport">
+          <div className="reviewsTrack">
+            {[...reviews, ...reviews].map((review, index) => {
+              const isClone = index >= reviews.length;
+              return (
+                <article
+                  className="reviewCard"
+                  key={`${review.name}-${index}`}
+                  aria-hidden={isClone ? true : undefined}
                 >
-                  {review.name.charAt(0)}
-                </span>
-                <div className="reviewMeta">
-                  <span className="reviewName">{review.name}</span>
-                  <span className="reviewStars" aria-hidden="true">
-                    ★★★★★
-                  </span>
-                </div>
-                <span className="reviewGoogle">
-                  <GoogleG />
-                  Google
-                </span>
-              </div>
-              <p className="reviewText">{review.text}</p>
-            </article>
-          ))}
+                  <div className="reviewCardTop">
+                    <span
+                      className="reviewAvatar"
+                      style={{ background: avatarColors[index % reviews.length % avatarColors.length] }}
+                      aria-hidden="true"
+                    >
+                      {review.name.charAt(0)}
+                    </span>
+                    <div className="reviewMeta">
+                      <span className="reviewName">{review.name}</span>
+                      <span className="reviewStars" aria-hidden="true">
+                        ★★★★★
+                      </span>
+                    </div>
+                    <span className="reviewGoogle">
+                      <GoogleG />
+                      Google
+                    </span>
+                  </div>
+                  <p className="reviewText">{review.text}</p>
+                </article>
+              );
+            })}
+          </div>
         </div>
 
         <div className="reviewsCta">

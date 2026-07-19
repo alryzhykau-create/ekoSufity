@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Montserrat } from "next/font/google";
+import { Caveat, Inter, Rubik } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { MobileStickyCta } from "@/components/layout/MobileStickyCta";
@@ -9,16 +9,23 @@ import { localBusinessSchema } from "@/lib/seo/schema";
 import "./globals.css";
 
 // Fonty zmiennoosiowe (CSS używa wag 750/800/850), latin-ext dla polskich znaków.
-const montserrat = Montserrat({
+const rubik = Rubik({
   subsets: ["latin", "latin-ext"],
   display: "swap",
-  variable: "--font-montserrat"
+  variable: "--font-rubik"
 });
 
 const inter = Inter({
   subsets: ["latin", "latin-ext"],
   display: "swap",
   variable: "--font-inter"
+});
+
+// Odręczny podpis właściciela — tylko imię "Aleks", więc sam latin wystarczy.
+const caveat = Caveat({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-caveat"
 });
 
 export const metadata: Metadata = {
@@ -42,7 +49,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pl" className={`${montserrat.variable} ${inter.variable}`}>
+    <html lang="pl" className={`${rubik.variable} ${inter.variable} ${caveat.variable}`}>
       <body>
         <Header />
         <main>{children}</main>
