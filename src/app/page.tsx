@@ -832,8 +832,8 @@ export default function HomePage() {
             />
           </div>
           <div className="faqList">
-            {homepageFaqs.map((item, index) => (
-              <details className="faqItem" key={item.question} open={index === 0}>
+            {homepageFaqs.map((item) => (
+              <details className="faqItem" key={item.question}>
                 <summary>
                   <span>{item.question}</span>
                 </summary>
