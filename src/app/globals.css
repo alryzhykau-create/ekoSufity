@@ -2570,7 +2570,6 @@ a.miniCard:hover,
   flex: none;
   overflow: hidden;
   border-radius: var(--radius-media);
-  box-shadow: var(--shadow-media, 0 14px 26px -8px rgba(20, 18, 16, 0.32));
   cursor: pointer;
 }
 
