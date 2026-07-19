@@ -554,11 +554,7 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
-            <p className="softLabel">
-              Kalkulator pokazuje orientacyjny zakres.
-              <br />
-              Finalna cena po pomiarze.
-            </p>
+            <p className="softLabel">Kalkulator pokazuje orientacyjny zakres.</p>
             <Button href="/ceny#kalkulator" variant="secondary">
               Przejdź do kalkulatora
             </Button>
