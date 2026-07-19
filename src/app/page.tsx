@@ -555,9 +555,11 @@ export default function HomePage() {
               ))}
             </div>
             <p className="softLabel">Kalkulator pokazuje orientacyjny zakres.</p>
-            <Button href="/ceny#kalkulator" variant="secondary">
-              Przejdź do kalkulatora
-            </Button>
+            <div className="priceExamplesActions">
+              <Link className="sectionArrowLink" href="/ceny#kalkulator">
+                Przejdź do kalkulatora
+              </Link>
+            </div>
           </article>
 
           <aside className="priceExamplesPanel" aria-labelledby="price-examples-title">

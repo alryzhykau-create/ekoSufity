@@ -1736,7 +1736,9 @@ main {
 }
 
 .priceExamplesPanel {
+  display: flex;
   min-width: 0;
+  flex-direction: column;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--surface);
@@ -1809,10 +1811,13 @@ main {
   line-height: 1.2;
 }
 
+/* Obie karty cenowe kończą się linkiem-strzałką dosuniętym do dołu,
+   dzięki czemu lewy i prawy siedzą na tej samej linii. */
 .priceExamplesActions {
   display: flex;
   justify-content: flex-start;
-  margin-top: 22px;
+  margin-top: auto;
+  padding-top: 22px;
 }
 
 .priceCard {
