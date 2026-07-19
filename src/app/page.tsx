@@ -189,11 +189,9 @@ function CtaIcon({ name }: { name: "phone" | "whatsapp" }) {
   };
 
   if (name === "phone") {
-    // Pełna słuchawka, ta sama co w nagłówku. Narysowana poza środkiem swojego
-    // pola (bbox 4.41/2.34), więc viewBox przesuwamy na jej faktyczny środek.
     return (
-      <svg {...iconProps} className="ctaIconSolid" viewBox="1.537 -1.037 24 24">
-        <path d="M7.04 3.65 9.2 2.56c1.05-.52 2.34-.1 2.86.95l1.18 2.36c.4.81.25 1.78-.39 2.42l-.98.98a10.02 10.02 0 0 0 3.86 3.86l.98-.98c.64-.64 1.61-.8 2.42-.39l2.36 1.18c1.05.52 1.47 1.81.95 2.86l-1.09 2.16c-.58 1.16-1.85 1.82-3.13 1.58C10.92 18.18 5.82 13.08 4.46 5.78 4.22 4.5 4.88 3.23 6.04 2.65Z" />
+      <svg {...iconProps} className="ctaIconOutline" viewBox="0 0 28 28" fill="none">
+        <path d="M9.3 6.4 7.1 8.6c-.5.5-.6 1.2-.4 1.8 1.4 5 5.8 9.4 10.9 10.9.6.2 1.3 0 1.8-.4l2.2-2.2-3.8-3-1.7 1.7c-2.2-1.1-4.2-3.1-5.3-5.3l1.7-1.7-3.2-4Z" />
       </svg>
     );
   }
