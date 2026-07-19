@@ -131,17 +131,10 @@ export function Footer() {
             >
               Działamy w miastach:
             </span>
-            <p
-              style={{
-                margin: 0,
-                color: "var(--footer-muted)",
-                fontSize: "0.78rem",
-                lineHeight: 1.7
-              }}
-            >
+            <p className="footerCitiesList">
               {cities.map((cityItem, index) => (
                 <span key={cityItem.slug}>
-                  {index > 0 ? <span aria-hidden="true"> · </span> : null}
+                  {index > 0 ? <span className="footerCitiesDot" aria-hidden="true" /> : null}
                   <Link href={`/lokalizacje/${cityItem.slug}`}>{cityItem.name}</Link>
                 </span>
               ))}
