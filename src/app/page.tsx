@@ -758,14 +758,23 @@ export default function HomePage() {
                   target="_blank"
                 >
                   <span className="servicesCtaSocialCircle" aria-hidden="true">
-                    <Image
-                      className="servicesCtaSocialIcon"
-                      src={socialChoiceIconSrc[item.label]}
-                      alt=""
-                      width={68}
-                      height={68}
-                      sizes="42px"
-                    />
+                    {item.label === "YouTube" ? (
+                      // Inline SVG: na hover prostokąt i trójkąt trzeba przemalować
+                      // osobno, filtrem oba zbielałyby i trójkąt by zniknął.
+                      <svg className="servicesCtaYtIcon" width="42" height="42" viewBox="0 0 24 24">
+                        <rect x="2" y="5.7" width="20" height="12.6" rx="3.8" />
+                        <path d="M10 9.15 15.1 12 10 14.85z" />
+                      </svg>
+                    ) : (
+                      <Image
+                        className="servicesCtaSocialIcon"
+                        src={socialChoiceIconSrc[item.label]}
+                        alt=""
+                        width={68}
+                        height={68}
+                        sizes="42px"
+                      />
+                    )}
                   </span>
                   <span>{item.label}</span>
                 </Link>

@@ -2468,6 +2468,25 @@ a.miniCard:hover,
   background: #ff0000;
 }
 
+/* YouTube: domyślnie złoty prostokąt z białym trójkątem, po najechaniu odwrotnie. */
+.servicesCtaYtIcon rect {
+  fill: var(--gold);
+  transition: fill 250ms ease;
+}
+
+.servicesCtaYtIcon path {
+  fill: #fff;
+  transition: fill 250ms ease;
+}
+
+.servicesCtaSocialLink[aria-label^="YouTube"]:hover .servicesCtaYtIcon rect {
+  fill: #fff;
+}
+
+.servicesCtaSocialLink[aria-label^="YouTube"]:hover .servicesCtaYtIcon path {
+  fill: #ff0000;
+}
+
 .sectionSplitHeader {
   display: flex;
   justify-content: space-between;
