@@ -180,10 +180,8 @@ function HeroFeatureIcon({ name }: { name: HeroFeatureIconName }) {
   );
 }
 
-// Pełne znaki, te same co w nagłówku — czytelniejsze i wyśrodkowane z natury.
 function CtaIcon({ name }: { name: "phone" | "whatsapp" }) {
   const iconProps = {
-    className: "ctaIconSolid",
     width: 28,
     height: 28,
     xmlns: "http://www.w3.org/2000/svg",
@@ -191,18 +189,20 @@ function CtaIcon({ name }: { name: "phone" | "whatsapp" }) {
   };
 
   if (name === "phone") {
-    // Słuchawka jest narysowana poza środkiem swojego pola (bbox 4.41/2.34),
-    // więc viewBox przesuwamy na jej faktyczny środek.
+    // Pełna słuchawka, ta sama co w nagłówku. Narysowana poza środkiem swojego
+    // pola (bbox 4.41/2.34), więc viewBox przesuwamy na jej faktyczny środek.
     return (
-      <svg {...iconProps} viewBox="1.537 -1.037 24 24">
+      <svg {...iconProps} className="ctaIconSolid" viewBox="1.537 -1.037 24 24">
         <path d="M7.04 3.65 9.2 2.56c1.05-.52 2.34-.1 2.86.95l1.18 2.36c.4.81.25 1.78-.39 2.42l-.98.98a10.02 10.02 0 0 0 3.86 3.86l.98-.98c.64-.64 1.61-.8 2.42-.39l2.36 1.18c1.05.52 1.47 1.81.95 2.86l-1.09 2.16c-.58 1.16-1.85 1.82-3.13 1.58C10.92 18.18 5.82 13.08 4.46 5.78 4.22 4.5 4.88 3.23 6.04 2.65Z" />
       </svg>
     );
   }
 
+  // WhatsApp konturowy — rysowany obrysem z .btn svg, kolor nadaje CSS.
   return (
-    <svg {...iconProps} viewBox="0 0 24 24">
-      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.01c-.24.68-1.42 1.31-1.96 1.36-.5.05-1.14.07-1.84-.12-.42-.13-.97-.31-1.67-.61-2.94-1.27-4.86-4.23-5-4.43-.15-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.27-.3.59-.37.79-.37.2 0 .39 0 .57.01.18.01.43-.07.67.51.24.59.83 2.04.9 2.19.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.39-.44.52-.15.15-.3.31-.13.6.17.3.76 1.25 1.63 2.02 1.12 1 2.07 1.31 2.37 1.46.3.15.47.12.64-.07.17-.2.74-.86.94-1.16.2-.3.4-.25.67-.15.27.1 1.71.81 2 .96.3.15.5.22.57.34.07.13.07.73-.17 1.41z" />
+    <svg {...iconProps} className="ctaIconOutline" viewBox="0 0 28 28" fill="none">
+      <path d="M14 4.8a9 9 0 0 0-7.6 13.8l-1 4 4.1-1A9 9 0 1 0 14 4.8Z" />
+      <path d="M10.6 10.3c.2-.4.5-.5.8-.5h.5c.3 0 .5.2.6.4l.8 1.8c.1.3.1.6-.1.8l-.5.5c.7 1.4 1.8 2.4 3.2 3.2l.6-.6c.2-.2.5-.2.8-.1l1.7.8c.3.1.5.4.5.7v.5c0 .4-.2.7-.5.9-1 .8-2.6.6-4.4-.3a10.9 10.9 0 0 1-5-5c-.8-1.8-1-3.3-.3-4.3.2-.4.5-.6.9-.8Z" />
     </svg>
   );
 }
