@@ -479,6 +479,12 @@ main {
   stroke-linejoin: round;
 }
 
+/* Pełne znaki rysujemy wypełnieniem — obrys z .btn svg by je zalepił. */
+.btn svg.ctaIconSolid {
+  fill: currentColor;
+  stroke: none;
+}
+
 .btn:hover {
   transform: translateY(-1px);
 }
