@@ -1448,19 +1448,49 @@ main {
 }
 
 /* Opinie w stylu Google (wspólny blok na stronie głównej i kontakcie). */
+/* Pasek oceny w stylu Google: logo, nota i gwiazdki w jednej linii,
+   po prawej biały przycisk do profilu. */
 .reviewsSummary {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 16px;
+  justify-content: space-between;
+  gap: 14px;
   margin-top: 20px;
+  margin-bottom: 16px;
+}
+
+.reviewsSummaryScore {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.reviewsGoogleLink {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 10px;
+  padding: 0 20px;
+  border: 1px solid #dadce0;
+  border-radius: var(--radius);
+  background: #fff;
+  color: #3c4043;
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: background 180ms ease, border-color 180ms ease;
+}
+
+.reviewsGoogleLink:hover {
+  border-color: var(--gold);
+  background: #f8f9fa;
+  color: #3c4043;
 }
 
 .reviewsScore {
-  font-family: var(--font-display);
-  font-size: 2.6rem;
+  color: #202124;
+  font-size: 1.15rem;
   font-weight: 700;
-  line-height: 1;
-  color: var(--text);
 }
 
 .reviewsSummaryMeta {
@@ -1471,13 +1501,13 @@ main {
 
 .reviewsStars {
   color: #fbbc05;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   letter-spacing: 2px;
 }
 
 .reviewsSummaryNote {
-  color: var(--muted);
-  font-size: 0.9rem;
+  color: #5f6368;
+  font-size: 0.88rem;
 }
 
 /* Opinie jadą jako nieskończona taśma z zanikaniem na brzegach. */
@@ -1565,15 +1595,6 @@ main {
   letter-spacing: 1px;
 }
 
-.reviewGoogle {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  margin-left: auto;
-  align-self: flex-start;
-  color: var(--muted);
-  font-size: 0.8rem;
-}
 
 .reviewText {
   display: -webkit-box;
@@ -1586,11 +1607,6 @@ main {
   line-height: 1.5;
 }
 
-.reviewsCta {
-  display: flex;
-  justify-content: center;
-  margin-top: 28px;
-}
 
 /* Mozaika rozwiązań — kafle różnej wielkości, gotowe pod zdjęcie w tle. */
 .solutionMosaic {

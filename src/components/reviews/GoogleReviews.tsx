@@ -30,9 +30,9 @@ const reviews = [
 // Różne kolory awatarów (styl Google).
 const avatarColors = ["#4285F4", "#DB4437", "#0F9D58", "#C9791C", "#7B5EA7"];
 
-function GoogleG() {
+function GoogleG({ size = 16 }: { size?: number }) {
   return (
-    <svg viewBox="0 0 48 48" width="16" height="16" aria-hidden="true">
+    <svg viewBox="0 0 48 48" width={size} height={size} aria-hidden="true">
       <path
         fill="#4285F4"
         d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"
@@ -60,13 +60,23 @@ export function GoogleReviews() {
         <SectionHeader eyebrow="Opinie" title="Co mówią klienci w Google" />
 
         <div className="reviewsSummary">
-          <span className="reviewsScore">{RATING}</span>
-          <div className="reviewsSummaryMeta">
+          <div className="reviewsSummaryScore">
+            <GoogleG size={28} />
+            <span className="reviewsScore">{RATING}</span>
             <span className="reviewsStars" aria-hidden="true">
               ★★★★★
             </span>
-            <span className="reviewsSummaryNote">na podstawie {REVIEWS_COUNT} opinii w Google</span>
+            <span className="reviewsSummaryNote">· {REVIEWS_COUNT} opinii w Google</span>
           </div>
+          <a
+            className="reviewsGoogleLink"
+            href={siteConfig.contacts.googleBusinessProfileHref}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <GoogleG size={18} />
+            Zobacz w Google
+          </a>
         </div>
 
         <div className="reviewsViewport">
@@ -93,10 +103,6 @@ export function GoogleReviews() {
                         ★★★★★
                       </span>
                     </div>
-                    <span className="reviewGoogle">
-                      <GoogleG />
-                      Google
-                    </span>
                   </div>
                   <p className="reviewText">{review.text}</p>
                 </article>
@@ -105,16 +111,6 @@ export function GoogleReviews() {
           </div>
         </div>
 
-        <div className="reviewsCta">
-          <a
-            className="btn btnPrimary"
-            href={siteConfig.contacts.googleBusinessProfileHref}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Zobacz wszystkie opinie w Google
-          </a>
-        </div>
       </div>
     </section>
   );
