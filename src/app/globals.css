@@ -1811,13 +1811,19 @@ main {
   line-height: 1.2;
 }
 
-/* Obie karty cenowe kończą się linkiem-strzałką dosuniętym do dołu,
-   dzięki czemu lewy i prawy siedzą na tej samej linii. */
+/* Podpis i link tworzą jeden blok dosunięty do dołu karty: podpisy w obu
+   kolumnach wypadają na tej samej linii, bez pustki między nimi a linkiem. */
+.priceTableCard > .softLabel,
+.priceExamplesPanel > .softLabel {
+  margin-top: auto;
+  padding-top: 22px;
+}
+
 .priceExamplesActions {
   display: flex;
   justify-content: flex-start;
-  margin-top: auto;
-  padding-top: 22px;
+  margin-top: 0;
+  padding-top: 10px;
 }
 
 .priceCard {
