@@ -2452,12 +2452,13 @@ a.miniCard:hover,
 
 /* Wstęga inspiracji — nieskończona taśma z zanikaniem na brzegach.
    Kafle jadą w lewo, a maska wygasza je przy krawędziach kontenera. */
+/* Wstęga trzyma się kontenera 1280px, tak samo jak wstęga opinii. */
 .insViewport {
   position: relative;
-  margin-top: 34px;
+  margin-top: 28px;
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
 }
 
 .insRibbon {

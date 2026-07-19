@@ -34,10 +34,9 @@ export function GallerySection() {
             </p>
           </div>
         </div>
-      </div>
 
-      <div className="insViewport">
-        <div className="insRibbon">
+        <div className="insViewport">
+          <div className="insRibbon">
           {marqueeTiles.map((tile, index) => (
             <div
               className="insTile"
@@ -58,10 +57,9 @@ export function GallerySection() {
               </div>
             </div>
           ))}
+          </div>
         </div>
-      </div>
 
-      <div className="container">
         <div style={{ marginTop: 24, textAlign: "center" }}>
           <Link className="sectionArrowLink" href="/realizacje">
             Zobacz wszystkie realizacje
