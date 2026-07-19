@@ -710,12 +710,20 @@ main {
   line-height: 1;
   white-space: nowrap;
   box-shadow: 0 4px 14px rgba(13, 13, 13, 0.06);
-  transition: border-color 180ms ease, box-shadow 180ms ease;
+  transition: background 180ms ease, border-color 180ms ease, color 180ms ease,
+    box-shadow 180ms ease;
 }
 
+/* Po najechaniu przycisk zalewa się firmowym złotem, numer i słuchawka bieleją. */
 .phoneTop:hover {
   border-color: var(--gold);
-  box-shadow: 0 6px 18px rgba(13, 13, 13, 0.09);
+  background: var(--gold);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(201, 121, 28, 0.28);
+}
+
+.phoneTop:hover .phoneGlyph {
+  color: #fff;
 }
 
 /* WhatsApp w headerze — wirująca duga wokół rdzenia (dokładnie w połowie między
