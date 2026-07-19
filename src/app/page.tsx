@@ -709,18 +709,18 @@ export default function HomePage() {
               return (
                 <article className={`card serviceCard serviceCard--${service.slug}`} key={service.href}>
                   <div className="serviceImage">
-                    <Image src={visual.src} alt={visual.alt} fill sizes="(max-width: 700px) 100vw, 25vw" />
+                    <Image src={visual.src} alt={visual.alt} fill sizes="(max-width: 860px) 40vw, 150px" />
+                    <span className="serviceIcon" aria-hidden="true">
+                      <Image
+                        className="serviceIconImage"
+                        src={visual.iconSrc}
+                        alt=""
+                        width={160}
+                        height={160}
+                        sizes="44px"
+                      />
+                    </span>
                   </div>
-                  <span className="serviceIcon" aria-hidden="true">
-                    <Image
-                      className="serviceIconImage"
-                      src={visual.iconSrc}
-                      alt=""
-                      width={160}
-                      height={160}
-                      sizes="112px"
-                    />
-                  </span>
                   <div className="serviceCardBody">
                     <h3>{service.title}</h3>
                     <p>{service.copy}</p>
