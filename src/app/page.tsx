@@ -682,10 +682,10 @@ export default function HomePage() {
               )}
             >
               <span className="waCtaIcon" aria-hidden="true">
-                {/* viewBox wyśrodkowany na OKRĘGU dymka (16.04, 15.12), nie na bboxie —
-                    ogonek dymka rozciąga bbox i pierścień wychodził niewspółśrodkowo
-                    ze złotym kołem, a to oko łapie najszybciej. */}
-                <svg viewBox="0.04 -0.88 32 32" width="26" height="26">
+                {/* Offset zmierzony na rastrze: przy równych marginesach białego glifu
+                    w złotym kole. Glif jest narysowany niesymetrycznie (ogonek dymka),
+                    więc ani bbox, ani okrąg dymka same z siebie nie wystarczają. */}
+                <svg viewBox="0.4 -0.42 32 32" width="26" height="26">
                   <path
                     fill="currentColor"
                     d="M16.04 4C9.9 4 4.92 8.98 4.92 15.12c0 2.02.53 3.98 1.54 5.72L4.8 27.2l6.52-1.71c1.68.92 3.57 1.4 5.5 1.4h.01c6.14 0 11.12-4.98 11.12-11.12S22.18 4 16.04 4zm0 20.3c-1.74 0-3.44-.47-4.92-1.35l-.35-.21-3.87 1.02 1.03-3.77-.23-.39a9.16 9.16 0 0 1-1.4-4.88c0-5.08 4.13-9.21 9.21-9.21 2.46 0 4.77.96 6.51 2.7a9.14 9.14 0 0 1 2.7 6.51c0 5.08-4.13 9.2-9.2 9.2zm5.05-6.9c-.28-.14-1.64-.81-1.89-.9-.25-.09-.43-.14-.62.14-.18.28-.71.9-.87 1.08-.16.18-.32.2-.6.07-.28-.14-1.17-.43-2.23-1.38-.82-.73-1.38-1.64-1.54-1.92-.16-.28-.02-.43.12-.57.13-.13.28-.32.42-.49.14-.16.18-.28.28-.46.09-.18.05-.35-.02-.49-.07-.14-.62-1.5-.85-2.05-.22-.54-.45-.46-.62-.47l-.53-.01c-.18 0-.48.07-.73.35-.25.28-.96.94-.96 2.3s.98 2.66 1.12 2.85c.14.18 1.93 2.95 4.68 4.14.65.28 1.16.45 1.56.58.66.21 1.25.18 1.72.11.53-.08 1.64-.67 1.87-1.32.23-.65.23-1.2.16-1.32-.07-.12-.25-.19-.53-.33z"
