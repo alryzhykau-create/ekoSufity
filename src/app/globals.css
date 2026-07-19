@@ -46,8 +46,11 @@
   --radius-media: 14px; /* kafle ze zdjęciami */
   --radius-feature: 16px; /* karty korzyści */
   --radius-panel: 22px; /* duże panele, sekcja kontaktu */
-  --section-y: clamp(36px, 3.6vw, 52px);
-  --section-y-compact: clamp(36px, 3.6vw, 52px);
+  /* Pionowy oddech sekcji — system 8px, jeden punkt zmiany.
+     Progi niżej (1024px / 640px) nadpisują tylko tę zmienną. */
+  --section-padding-y: 72px;
+  --section-y: var(--section-padding-y);
+  --section-y-compact: var(--section-padding-y);
   --section-y-tight: clamp(24px, 2.6vw, 36px);
   --type-eyebrow: 0.8rem;
   --type-body-sm: 0.95rem;
@@ -61,6 +64,20 @@
   --font-display: var(--font-rubik), "Rubik", "Segoe UI", system-ui, -apple-system, sans-serif;
   --font-body: var(--font-inter), "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
   --font-signature: var(--font-caveat), "Caveat", cursive;
+}
+
+/* Tablet (640–1024px): sekcje oddychają ciaśniej. */
+@media (max-width: 1024px) {
+  :root {
+    --section-padding-y: 56px;
+  }
+}
+
+/* Telefon (<640px). */
+@media (max-width: 639px) {
+  :root {
+    --section-padding-y: 48px;
+  }
 }
 
 * {
