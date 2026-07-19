@@ -552,6 +552,12 @@ main {
   color: var(--text);
 }
 
+/* Znak WhatsApp w firmowej zieleni, tak samo jak przycisk w nagłówku.
+   Selektor musi przebić ogólne .btn svg.ctaIconSolid { fill: currentColor }. */
+.btn.heroWhatsappCta svg.ctaIconSolid {
+  fill: #25d366;
+}
+
 .btnSecondary {
   background: var(--surface);
   color: var(--text);
