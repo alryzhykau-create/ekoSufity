@@ -3958,20 +3958,6 @@ details.faqItem:not([open]) p {
   overflow-wrap: normal;
 }
 
-/* Lista miast ma zmieścić się w jednej linii — kropki rozdzielające trzymamy
-   wąsko (marginesem zamiast spacji), zamiast zmniejszać i tak drobny tekst. */
-.footerCitiesList {
-  margin: 0;
-  color: var(--footer-muted);
-  font-size: 0.78rem;
-  line-height: 1.7;
-}
-
-.footerCitiesDot::before {
-  content: "·";
-  margin: 0 2px;
-}
-
 .cityPill:hover {
   border-color: var(--gold);
   color: var(--gold-dark);
