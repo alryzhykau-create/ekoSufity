@@ -486,10 +486,11 @@ main {
   transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
 }
 
+/* 28px = 1:1 z viewBox, więc kreska trafia równo w piksel i nie mydli się. */
 .btn svg {
   flex: 0 0 auto;
-  width: 23px;
-  height: 23px;
+  width: 28px;
+  height: 28px;
   stroke: currentColor;
   stroke-width: 2.25;
   stroke-linecap: round;
