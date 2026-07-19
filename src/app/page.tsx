@@ -585,11 +585,7 @@ export default function HomePage() {
             </div>
             <p className="softLabel">
               Przykładowe realizacje z oświetleniem i dodatkami. Sam sufit liczony jest od 120
-              zł/m² — sprawdź w{" "}
-              <Link href="/ceny#kalkulator" className="inlineLink">
-                kalkulatorze
-              </Link>
-              .
+              zł/m²
             </p>
             <div className="priceExamplesActions">
               <Link className="sectionArrowLink" href="/realizacje">
