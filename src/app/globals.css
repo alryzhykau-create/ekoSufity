@@ -3882,11 +3882,14 @@ details.faqItem:not([open]) p {
   position: relative;
 }
 
+/* Cztery kolumny rozsunięte na całą szerokość — social media siedzą pod marką. */
 .footerPanel {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(100px, 0.56fr) minmax(160px, 0.78fr) minmax(225px, 0.96fr) minmax(250px, 0.95fr);
-  gap: 22px;
+  grid-template-columns: auto auto auto auto;
+  justify-content: space-between;
+  column-gap: 30px;
+  row-gap: 4px;
   border: 0;
   border-radius: 0;
   background: transparent;
@@ -3936,18 +3939,21 @@ details.faqItem:not([open]) p {
   font-style: normal;
 }
 
+/* Nagłówek kolumny ze złotym pionowym kreskowaniem z lewej — sygnatura projektu. */
 .footer h3 {
   margin: 0 0 10px;
+  padding-left: 10px;
+  border-left: 2px solid var(--gold);
   font-family: var(--font-display);
   color: var(--footer-text);
   font-size: 0.95rem;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.2;
 }
 
 .footerColumn ul {
   display: grid;
-  gap: 8px;
+  gap: 3px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -4012,53 +4018,32 @@ details.faqItem:not([open]) p {
 }
 
 .footerSocialList {
-  display: grid;
-  grid-template-columns: repeat(2, 62px);
-  gap: 12px 10px;
-  align-items: start;
-  justify-content: start;
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
 }
 
 .footerSocialLink {
-  display: flex;
-  width: 62px;
-  align-items: center;
-  flex-direction: column;
-  gap: 7px;
-  color: var(--footer-muted);
-  font-size: 11px;
-  line-height: 1.1;
-  text-align: center;
-  transition: color 180ms ease;
-}
-
-.footerSocialLink > span:last-child {
-  white-space: nowrap;
-}
-
-.footerSocialLink:hover {
-  color: var(--footer-accent-hover);
+  display: inline-flex;
 }
 
 .footerSocialIcon {
   display: grid;
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   place-items: center;
-  border: 1px solid var(--footer-accent-border);
   border-radius: 999px;
-  background: #fff;
-  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+  background: #f0e7da;
+  transition: background 180ms ease, transform 180ms ease;
 }
 
 .footerSocialIcon img {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   object-fit: contain;
 }
 
 .footerSocialLink:hover .footerSocialIcon {
-  border-color: transparent;
   transform: translateY(-3px);
 }
 
