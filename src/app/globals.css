@@ -2700,12 +2700,29 @@ a.miniCard:hover,
 }
 
 .processCards {
+  position: relative;
   list-style: none;
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 34px;
   margin: 58px 0 0;
   padding: 0;
+}
+
+/* Złota nitka biegnie za kartami i widać ją tylko w przerwach między nimi. */
+.processCards::before {
+  content: "";
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: 34px;
+  z-index: 0;
+  height: 2px;
+  background: #e0c9a6;
+}
+
+.processCard {
+  z-index: 1;
 }
 
 .processCard {
@@ -2719,16 +2736,6 @@ a.miniCard:hover,
   box-shadow: 0 16px 38px rgba(17, 24, 39, 0.045);
 }
 
-.processCard:not(:last-child)::after {
-  content: "→";
-  position: absolute;
-  top: 136px;
-  right: -30px;
-  color: var(--gold-dark);
-  font-size: 2rem;
-  font-weight: 500;
-  line-height: 1;
-}
 
 .processNumber {
   position: absolute;
@@ -2739,10 +2746,10 @@ a.miniCard:hover,
   width: 48px;
   height: 48px;
   place-items: center;
-  border: 1px solid rgba(201, 138, 58, 0.45);
+  border: 2px solid var(--gold);
   border-radius: 999px;
   background: #fff;
-  color: #c98a3a;
+  color: var(--gold);
   font-size: 20px;
   font-weight: 700;
   box-shadow: 0 8px 22px rgba(201, 138, 58, 0.12);
@@ -4596,14 +4603,15 @@ details.faqItem:not([open]) p {
     gap: 44px 24px;
   }
 
+  /* Nitka spina kroki tylko w jednym rzędzie; przy zawijaniu nie ma sensu. */
+  .processCards::before {
+    display: none;
+  }
+
   .processImage {
     width: 150px;
     height: 150px;
     transform: translateY(-2px) scale(1.22);
-  }
-
-  .processCard:not(:last-child)::after {
-    content: "";
   }
 
   .processCta {
@@ -4853,16 +4861,6 @@ details.faqItem:not([open]) p {
     width: 146px;
     height: 146px;
     transform: translateY(-1px) scale(1.18);
-  }
-
-  .processCard:not(:last-child)::after {
-    content: "↓";
-    top: auto;
-    right: auto;
-    bottom: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 1.45rem;
   }
 
   .processCta {
