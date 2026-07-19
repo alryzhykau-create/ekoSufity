@@ -7,13 +7,15 @@ type GalleryTile = {
   alt: string;
   kicker: string;
   title: string;
+  /* Klucz pomieszczenia — musi zgadzać się z roomLabels w visual-assets. */
+  room: string;
 };
 
 const galleryTiles: GalleryTile[] = [
-  { src: "/images/salon-22m2-photo.png", alt: visualAssets[0].alt, kicker: "Salon", title: "Salon z sufitem napinanym i linią LED" },
-  { src: visualAssets[1].src, alt: visualAssets[1].alt, kicker: "Kuchnia", title: "Kuchnia z czystym wykończeniem" },
-  { src: visualAssets[2].src, alt: visualAssets[2].alt, kicker: "Łazienka", title: "Łazienka i strefa wilgotna" },
-  { src: visualAssets[3].src, alt: visualAssets[3].alt, kicker: "Mieszkanie", title: "Mieszkanie z linią LED" }
+  { src: "/images/salon-22m2-photo.png", alt: visualAssets[0].alt, kicker: "Salon", title: "Salon z sufitem napinanym i linią LED", room: "salon" },
+  { src: visualAssets[1].src, alt: visualAssets[1].alt, kicker: "Kuchnia", title: "Kuchnia z czystym wykończeniem", room: "kuchnia" },
+  { src: visualAssets[2].src, alt: visualAssets[2].alt, kicker: "Łazienka", title: "Łazienka i strefa wilgotna", room: "łazienka" },
+  { src: visualAssets[3].src, alt: visualAssets[3].alt, kicker: "Mieszkanie", title: "Mieszkanie z linią LED", room: "mieszkanie" }
 ];
 
 // Wstęga jedzie płynnie, więc kafle renderujemy dwa razy — druga połowa jest
@@ -38,10 +40,14 @@ export function GallerySection() {
         <div className="insViewport">
           <div className="insRibbon">
           {marqueeTiles.map((tile, index) => (
-            <div
+            <Link
               className="insTile"
               key={`${tile.src}-${index}`}
+              href={`/realizacje?room=${encodeURIComponent(tile.room)}`}
+              /* Druga połowa to wizualna kopia pętli: klikalna, ale niewidoczna
+                 dla czytników i pomijana Tabem, żeby nie dublować linków. */
               aria-hidden={index >= galleryTiles.length ? true : undefined}
+              tabIndex={index >= galleryTiles.length ? -1 : undefined}
             >
               <Image
                 src={tile.src}
@@ -55,7 +61,7 @@ export function GallerySection() {
                 <span className="insKicker">{tile.kicker}</span>
                 <h3>{tile.title}</h3>
               </div>
-            </div>
+            </Link>
           ))}
           </div>
         </div>
