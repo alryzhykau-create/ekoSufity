@@ -65,12 +65,6 @@ export function GallerySection() {
           ))}
           </div>
         </div>
-
-        <div style={{ marginTop: 24, textAlign: "center" }}>
-          <Link className="sectionArrowLink" href="/realizacje">
-            Zobacz wszystkie realizacje
-          </Link>
-        </div>
       </div>
     </section>
   );
