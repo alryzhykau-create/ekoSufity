@@ -5,7 +5,6 @@ export const runtime = "nodejs";
 type ContactPayload = {
   name: string;
   phone: string;
-  city: string;
   message: string;
 };
 
@@ -28,8 +27,7 @@ function formatTelegramMessage(payload: ContactPayload) {
     "",
     `Imię i nazwisko: ${payload.name}`,
     `Telefon: ${payload.phone}`,
-    `Miasto: ${payload.city || "nie podano"}`,
-    `Informacje: ${payload.message || "brak"}`
+    `Wiadomość: ${payload.message || "brak"}`
   ];
 
   return lines.join("\n");
@@ -41,8 +39,7 @@ function formatEmailHtml(payload: ContactPayload) {
       <h2>Nowe zapytanie z formularza EkoSufity</h2>
       <p><strong>Imię i nazwisko:</strong> ${escapeHtml(payload.name)}</p>
       <p><strong>Telefon:</strong> ${escapeHtml(payload.phone)}</p>
-      <p><strong>Miasto:</strong> ${escapeHtml(payload.city || "nie podano")}</p>
-      <p><strong>Dodatkowe informacje:</strong><br>${escapeHtml(payload.message || "brak").replaceAll("\n", "<br>")}</p>
+      <p><strong>Wiadomość:</strong><br>${escapeHtml(payload.message || "brak").replaceAll("\n", "<br>")}</p>
     </div>
   `;
 }
@@ -108,7 +105,6 @@ export async function POST(request: Request) {
   const payload: ContactPayload = {
     name: clean(formData.get("name")),
     phone: clean(formData.get("phone")),
-    city: clean(formData.get("city")),
     message: clean(formData.get("message"))
   };
   const rodo = clean(formData.get("rodo"));
@@ -120,7 +116,7 @@ export async function POST(request: Request) {
     );
   }
 
-  if (payload.name.length > 120 || payload.phone.length > 40 || payload.city.length > 120 || payload.message.length > 1200) {
+  if (payload.name.length > 120 || payload.phone.length > 40 || payload.message.length > 1200) {
     return NextResponse.json({ ok: false, error: "Formularz zawiera zbyt długie dane." }, { status: 400 });
   }
 

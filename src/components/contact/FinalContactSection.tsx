@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { FormEvent, useState } from "react";
 import { siteConfig } from "@/content/site";
 
@@ -71,24 +72,24 @@ export function FinalContactSection() {
             <input name="phone" type="tel" placeholder="Numer telefonu" required autoComplete="tel" />
           </label>
           <label className="contactField">
-            <span className="fieldIcon contactIconMask contactIconPin" aria-hidden="true" />
-            <input name="city" type="text" placeholder="Miasto / miejscowość" autoComplete="address-level2" />
-          </label>
-          <label className="contactField">
             <span className="fieldIcon contactIconMask contactIconMessage" aria-hidden="true" />
-            <textarea name="message" placeholder="Dodatkowe informacje (opcjonalnie)" rows={3} />
+            <textarea
+              name="message"
+              placeholder="Wiadomość — opisz pomieszczenie (np. Wrocław, salon 25 m², LED)"
+              rows={3}
+            />
           </label>
           <label className="rodoField">
             <input name="rodo" type="checkbox" required />
-            <span>Wyrażam zgodę na kontakt w sprawie pomiaru i wyceny sufitu napinanego.</span>
+            <span>
+              Wyrażam zgodę na kontakt w sprawie pomiaru i wyceny sufitu napinanego.{" "}
+              <Link href="/polityka-prywatnosci">Polityka prywatności</Link>.
+            </span>
           </label>
           <button className="contactSubmit" type="submit" disabled={state === "loading"}>
             {state === "loading" ? "Wysyłanie..." : "Poproś o kontakt"}
             <span className="buttonArrow contactIconMask contactIconArrow" aria-hidden="true" />
           </button>
-          <a className="contactCallButton" href={siteConfig.contacts.phoneHref}>
-            Zadzwoń teraz {siteConfig.contacts.phoneDisplay}
-          </a>
           {state === "error" ? <p className="formError">{errorMessage}</p> : null}
         </form>
       </div>

@@ -3660,6 +3660,15 @@ details.faqItem:not([open]) p {
   line-height: 1.35;
 }
 
+.rodoField a {
+  color: var(--contact-accent);
+  font-weight: 700;
+}
+
+.rodoField a:hover {
+  color: var(--contact-accent-hover);
+}
+
 .rodoField input {
   width: 18px;
   height: 18px;
@@ -3668,7 +3677,6 @@ details.faqItem:not([open]) p {
 }
 
 .contactSubmit,
-.contactCallButton,
 .successModal button {
   min-height: 60px;
   border: 0;
@@ -3706,23 +3714,6 @@ details.faqItem:not([open]) p {
 .buttonArrow {
   width: 18px;
   height: 18px;
-}
-
-.contactCallButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(201, 121, 28, 0.38);
-  background: #fff;
-  color: var(--contact-text);
-  transition:
-    border-color 180ms ease,
-    background 180ms ease;
-}
-
-.contactCallButton:hover {
-  border-color: var(--contact-accent);
-  background: var(--contact-accent-soft);
 }
 
 .formError {
