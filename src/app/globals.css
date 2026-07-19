@@ -2717,15 +2717,15 @@ a.miniCard:hover,
 /* Jasny przycisk WhatsApp z pulsującym złotym kółkiem — na hover zielenieje. */
 .waCta {
   display: inline-flex;
-  min-height: 62px;
+  min-height: 71px;
   align-items: center;
-  gap: 14px;
-  padding: 11px 28px 11px 12px;
+  gap: 16px;
+  padding: 13px 32px 13px 14px;
   border: 1px solid #eadfd2;
   border-radius: var(--radius);
   background: #fffdf9;
   color: #1c1916;
-  font-size: 1.06rem;
+  font-size: 1.22rem;
   font-weight: 650;
   box-shadow: 0 12px 26px rgba(17, 24, 39, 0.07);
   transition: border-color 200ms ease;
@@ -2733,8 +2733,8 @@ a.miniCard:hover,
 
 .waCtaIcon {
   display: grid;
-  width: 42px;
-  height: 42px;
+  width: 48px;
+  height: 48px;
   place-items: center;
   overflow: visible;
   border-radius: 50%;
@@ -2744,15 +2744,21 @@ a.miniCard:hover,
   transition: background 200ms ease;
 }
 
+.waCtaIcon svg {
+  width: 30px;
+  height: 30px;
+}
+
 .waCtaLabel {
   display: flex;
   flex-direction: column;
+  gap: 5px;
   line-height: 1.15;
 }
 
 .waCtaSub {
   color: var(--gold);
-  font-size: 0.78rem;
+  font-size: 0.9rem;
   font-weight: 600;
   transition: color 200ms ease;
 }
