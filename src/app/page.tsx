@@ -741,7 +741,7 @@ export default function HomePage() {
             </div>
             <span className="servicesCtaDivider" aria-hidden="true" />
             <div className="servicesCtaCopy">
-              <h3>Nie wiesz, które rozwiązanie wybrać?</h3>
+              <h3>Obserwuj nas w social media</h3>
               <p>
                 Zobacz nasze realizacje, filmy i porady w social media. Pokażemy, co sprawdza się
                 najlepiej w prawdziwych wnętrzach.
@@ -757,14 +757,16 @@ export default function HomePage() {
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  <Image
-                    className="servicesCtaSocialIcon"
-                    src={socialChoiceIconSrc[item.label]}
-                    alt=""
-                    width={68}
-                    height={68}
-                    sizes="68px"
-                  />
+                  <span className="servicesCtaSocialCircle" aria-hidden="true">
+                    <Image
+                      className="servicesCtaSocialIcon"
+                      src={socialChoiceIconSrc[item.label]}
+                      alt=""
+                      width={68}
+                      height={68}
+                      sizes="42px"
+                    />
+                  </span>
                   <span>{item.label}</span>
                 </Link>
               ))}
