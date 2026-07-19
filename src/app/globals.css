@@ -1815,7 +1815,7 @@ main {
    kolumnach wypadają na tej samej linii, bez pustki między nimi a linkiem. */
 .priceTableCard > .softLabel,
 .priceExamplesPanel > .softLabel {
-  margin-top: auto;
+  margin: auto 0 0;
   padding-top: 22px;
 }
 
@@ -1823,7 +1823,14 @@ main {
   display: flex;
   justify-content: flex-start;
   margin-top: 0;
-  padding-top: 10px;
+  padding-top: 2px;
+}
+
+/* Bez bocznego paddingu tekst linku stoi w tej samej osi co podpis nad nim. */
+.priceExamplesActions .sectionArrowLink {
+  min-height: 44px;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .priceCard {
