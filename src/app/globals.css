@@ -1,6 +1,8 @@
 :root {
   --bg: #fbfaf7;
   --bg-alt: #f7f4ee;
+  /* Jeden kremowy do naprzemiennych sekcji — różnica z bielą celowo subtelna. */
+  --section-alt-bg: #fbfaf7;
   --surface: #ffffff;
   --text: #0d0d0d;
   --muted: #56524d;
@@ -24,7 +26,6 @@
   --footer-accent-soft: #f8ebdd;
   --footer-accent-border: rgba(201, 121, 28, 0.28);
   --footer-divider: rgba(92, 85, 78, 0.16);
-  --contact-page-bg: #f9f7f4;
   --contact-card-bg: #ffffff;
   --contact-text: #111111;
   --contact-muted: #5c554e;
@@ -137,6 +138,18 @@ main {
 
 .section {
   padding: var(--section-y) 0;
+}
+
+/* Zebra sekcji strony głównej: biel i krem na przemian, od sekcji pod hero
+   do bloku kontaktu. Hero i ciemna karta kontaktu zostają nietknięte.
+   Kolejność: path / pricing / audience / gallery / process / services /
+   owner / reviews / faq. */
+.pathSection {
+  background: #fff;
+}
+
+.reviewsBlock {
+  background: var(--section-alt-bg);
 }
 
 .sectionAlt {
@@ -1264,7 +1277,7 @@ main {
 }
 
 .pricingSection {
-  background: #fff;
+  background: var(--section-alt-bg);
   padding: var(--section-y-compact) 0;
 }
 
@@ -1923,7 +1936,7 @@ main {
 .servicesSection {
   background:
     radial-gradient(circle at 50% 15%, rgba(201, 121, 28, 0.08), transparent 30rem),
-    linear-gradient(180deg, #fbfaf7 0%, #f8f5ef 100%);
+    var(--section-alt-bg);
   padding: var(--section-y) 0;
 }
 
@@ -1964,12 +1977,7 @@ main {
 }
 
 .audienceSection {
-  background: linear-gradient(
-    180deg,
-    #ffffff 0%,
-    #fbfaf7 45%,
-    #ffffff 100%
-  );
+  background: #fff;
   padding: var(--section-y) 0;
 }
 
@@ -2535,9 +2543,8 @@ a.miniCard:hover,
   margin-left: 8px;
 }
 
-/* Sekcja bez własnego tła — ciepły gradient strony ma prześwitywać. */
 .gallerySection {
-  background: transparent;
+  background: var(--section-alt-bg);
   padding: var(--section-y) 0;
 }
 
@@ -2645,7 +2652,7 @@ a.miniCard:hover,
 }
 
 .processSection {
-  background: var(--bg);
+  background: #fff;
   padding: var(--section-y) 0;
 }
 
@@ -2940,7 +2947,7 @@ a.miniCard:hover,
 }
 
 .ownerSection {
-  background: var(--bg);
+  background: #fff;
   padding-top: var(--section-y);
   padding-bottom: var(--section-y);
 }
@@ -3304,7 +3311,7 @@ a.miniCard:hover,
 }
 
 .faqSection {
-  background: var(--bg);
+  background: #fff;
   padding: var(--section-y-compact) 0;
 }
 
@@ -3412,7 +3419,7 @@ details.faqItem:not([open]) p {
 }
 
 .finalCtaSection {
-  background: var(--contact-page-bg);
+  background: var(--section-alt-bg);
   padding: var(--section-y-compact) 0;
 }
 

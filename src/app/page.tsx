@@ -507,7 +507,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section pathSection">
         <div className="container">
           <SectionHeader eyebrow="Od czego zacząć?" title="Wybierz swoją ścieżkę" />
           <div className="pathGrid">
