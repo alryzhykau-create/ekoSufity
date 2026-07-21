@@ -18,13 +18,32 @@ export const metadata: Metadata = {
   ...seoMeta("/sufity-napinane")
 };
 
-const ceilingTypes = [
-  ["Matowe", "Spokojny, równy efekt do mieszkań, domów i lokali po remoncie."],
-  ["Satynowe", "Delikatny połysk bez mocnego odbicia światła."],
-  ["Połysk", "Efekt odbicia i wizualnego powiększenia pomieszczenia."],
+// Trzeci element (opcjonalny) to podpowiedź „gdzie się sprawdza" dla osób,
+// które pierwszy raz wybierają fakturę.
+const ceilingTypes: Array<[string, string, string?]> = [
+  [
+    "Matowe",
+    "Spokojny, równy efekt do mieszkań, domów i lokali po remoncie.",
+    "Klasyka, która pasuje wszędzie. Najlepszy wybór, gdy nie chcesz kombinować — sprawdza się w salonie, sypialni i pokoju dziecka."
+  ],
+  [
+    "Satynowe",
+    "Delikatny połysk bez mocnego odbicia światła.",
+    "Złoty środek: delikatny połysk dodaje elegancji, ale bez efektu lustra. Dobre do wnętrz, które chcesz lekko rozjaśnić."
+  ],
+  [
+    "Połysk",
+    "Efekt odbicia i wizualnego powiększenia pomieszczenia.",
+    "Efekt lustra optycznie powiększa pomieszczenie. Najlepsze do małych i ciemnych wnętrz — łazienek, korytarzy, kawalerek."
+  ],
   ["Translucent", "Materiał do podświetlenia i efektu miękkiego światła."],
   ["Z LED", "Linie świetlne, światło obwodowe, punkty i scenariusze oświetlenia."],
-  ["Do stref wilgotnych", "Rozwiązania dobierane do łazienek, basenów i pomieszczeń z wilgocią."]
+  ["Do stref wilgotnych", "Rozwiązania dobierane do łazienek, basenów i pomieszczeń z wilgocią."],
+  [
+    "Z nadrukiem",
+    "Zdjęcie, wzór lub grafika nadrukowana na całej powierzchni sufitu.",
+    "Twoje zdjęcie, wzór lub niebo z chmurami na całej powierzchni. Gdy sufit ma być ozdobą albo elementem reklamowym w lokalu."
+  ]
 ];
 
 // Faktury z osobnymi podstronami — te karty prowadzą do /rozwiazania/folie/[slug].
@@ -32,7 +51,8 @@ const fakturaLinks: Record<string, string> = {
   Matowe: "/rozwiazania/folie/matowy",
   Satynowe: "/rozwiazania/folie/satynowy",
   Połysk: "/rozwiazania/folie/polysk",
-  Translucent: "/rozwiazania/folie/podswietlany"
+  Translucent: "/rozwiazania/folie/podswietlany",
+  "Z nadrukiem": "/rozwiazania/sufit-z-nadrukiem"
 };
 
 const folieCards = [
@@ -51,6 +71,26 @@ const folieCards = [
     copy: "Niemiecka marka z segmentu premium. Najwyższa półka jakościowa.",
     href: "/rozwiazania/folie#teqtum"
   }
+];
+
+// Obawy, które klienci zgłaszają najczęściej przed decyzją o montażu.
+const concerns: Array<[string, string]> = [
+  [
+    "Czy sufit się nie ugnie i nie obwiśnie?",
+    "Nie. Prawidłowo napięta folia pozostaje idealnie równa przez lata. A jeśli sąsiad z góry Cię zaleje — sufit zbierze wodę i ochroni wnętrze, wystarczy że ją odprowadzimy."
+  ],
+  [
+    "Czy to drogie?",
+    "Sufit napinany zwykle wychodzi taniej niż sufit z płyt karton-gips, a robi się go szybciej. Prosty sufit liczymy od 120 zł/m², a dokładną cenę podajemy po bezpłatnym pomiarze."
+  ],
+  [
+    "Ile to trwa i czy będzie bałagan?",
+    "Większość realizacji kończymy w 1–2 dni. Montaż jest czysty — nie skuwamy starego sufitu, nie ma gruzu, a po pracy sprzątamy po sobie. Mebli zwykle nie trzeba wynosić."
+  ],
+  [
+    "Czy stracę dużo wysokości?",
+    "Zwykle wystarczy obniżenie o około 3 cm. Trochę więcej miejsca potrzeba tylko tam, gdzie chowamy oświetlenie LED lub karnisz."
+  ]
 ];
 
 const comparisonRows = [
@@ -143,6 +183,17 @@ export default function StretchCeilingsPage() {
             więc widać tylko czysty efekt. Montaż jest szybki i czysty, zwykle zajmuje 1–2 dni i nie
             wymaga wynoszenia mebli.
           </p>
+          <p className="sectionLead sectionLead--wide">
+            Folia, z której robimy sufit, jest bezpieczna — nie wydziela zapachu, nie zawiera
+            szkodliwych substancji i ma atesty, więc spokojnie sprawdza się w sypialni czy pokoju
+            dziecka. Jest też trwała: dobrze napięty sufit zachowuje wygląd przez 15–20 lat, nie
+            żółknie i nie pęka.
+          </p>
+          <p className="sectionLead sectionLead--wide">
+            Codzienne utrzymanie jest proste — powierzchnię wystarczy przetrzeć wilgotną ściereczką z
+            odrobiną łagodnego detergentu. Nie trzeba jej malować ani odnawiać. Folia nie chłonie
+            wody, dlatego nadaje się także do łazienki, kuchni i pomieszczeń wilgotnych.
+          </p>
         </div>
       </section>
 
@@ -155,13 +206,14 @@ export default function StretchCeilingsPage() {
             lead="Dobór materiału zależy od pomieszczenia, światła, efektu wizualnego i planowanych dodatków."
           />
           <div className="grid3 sectionCards">
-            {ceilingTypes.map(([title, copy]) => {
+            {ceilingTypes.map(([title, copy, fit]) => {
               const href = fakturaLinks[title];
               if (href) {
                 return (
                   <Link className="card miniCard" href={href} key={title}>
                     <h3>{title}</h3>
                     <p>{copy}</p>
+                    {fit ? <p className="miniCardFit">{fit}</p> : null}
                     <p className="cardArrowText">Zobacz fakturę →</p>
                   </Link>
                 );
@@ -170,6 +222,7 @@ export default function StretchCeilingsPage() {
                 <article className="card miniCard" key={title}>
                   <h3>{title}</h3>
                   <p>{copy}</p>
+                  {fit ? <p className="miniCardFit">{fit}</p> : null}
                 </article>
               );
             })}
@@ -301,6 +354,21 @@ export default function StretchCeilingsPage() {
               ))}
             </div>
           </aside>
+        </div>
+      </section>
+
+      {/* 8b. Częste obawy */}
+      <section className="section sectionAlt">
+        <div className="container">
+          <SectionHeader eyebrow="Bez obaw" title="Częste obawy przed montażem" />
+          <div className="grid2 sectionCards">
+            {concerns.map(([question, answer]) => (
+              <article className="card miniCard" key={question}>
+                <h3>{question}</h3>
+                <p>{answer}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 

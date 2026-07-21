@@ -205,6 +205,16 @@ main {
 /* Strzałka-odnośnik w klikalnych kartach (np. "Zobacz fakturę →").
    margin-top:auto dosuwa ją do dołu karty (miniCard jest flex-kolumną),
    więc strzałki w rzędzie kart trzymają jedną linię. */
+/* Podpowiedź „gdzie się sprawdza" — cichsza od opisu, oddzielona kreską. */
+.miniCard p.miniCardFit {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
 .cardArrowText,
 .miniCard p.cardArrowText {
   margin-top: auto;
