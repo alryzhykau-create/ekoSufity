@@ -54,7 +54,7 @@ export default async function ProjectsPage({ searchParams }: PageProps) {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section sectionAlt">
         <div className="container">
           <SectionHeader
             eyebrow="Inspiracje"
@@ -65,7 +65,7 @@ export default async function ProjectsPage({ searchParams }: PageProps) {
         </div>
       </section>
 
-      <section className="section sectionAlt">
+      <section className="section">
         <div className="container">
           <SectionHeader title="Chcesz wiedzieć, jak powstaje taki efekt?" />
           <div className="buttonRow" style={{ marginTop: 24 }}>

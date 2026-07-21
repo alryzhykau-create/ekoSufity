@@ -136,8 +136,15 @@ main {
   margin: 0 auto;
 }
 
+ /* Zasada tła sekcji dla całego serwisu: sekcje są na przemian białe
+   i kremowe. Domyślnie biała, .sectionAlt przełącza na krem. */
 .section {
+  background: #fff;
   padding: var(--section-y) 0;
+}
+
+.sectionAlt {
+  background: var(--section-alt-bg);
 }
 
 /* Zebra sekcji strony głównej: biel i krem na przemian, od sekcji pod hero
@@ -148,13 +155,7 @@ main {
   background: #fff;
 }
 
-.reviewsBlock {
-  background: var(--section-alt-bg);
-}
 
-.sectionAlt {
-  background: var(--bg-alt);
-}
 
 .sectionDark {
   background: var(--black);
@@ -3311,7 +3312,6 @@ a.miniCard:hover,
 }
 
 .faqSection {
-  background: #fff;
   padding: var(--section-y-compact) 0;
 }
 

@@ -73,7 +73,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section sectionAlt">
         <div className="container">
           <SectionHeader
             eyebrow="Zasady pracy"
@@ -91,7 +91,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section sectionAlt">
+      <section className="section">
         <div className="container">
           <SectionHeader eyebrow="Konkrety" title="EkoSufity w pigułce" />
           <dl className="factRows">

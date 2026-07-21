@@ -111,7 +111,7 @@ export default function PricesPage() {
         </div>
       </section>
 
-      <section className="section sectionAlt">
+      <section className="section">
         <div className="container">
           <SectionHeader
             eyebrow="Cennik"
@@ -139,7 +139,7 @@ export default function PricesPage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section sectionAlt">
         <div className="container">
           <SectionHeader
             eyebrow="Zakres"
@@ -162,13 +162,13 @@ export default function PricesPage() {
         </div>
       </section>
 
-      <section className="section sectionAlt" id="kalkulator">
+      <section className="section" id="kalkulator">
         <div className="container">
           <Kalkulator />
         </div>
       </section>
 
-      <section className="section">
+      <section className="section sectionAlt">
         <div className="container">
           <SectionHeader
             eyebrow="Przykłady"

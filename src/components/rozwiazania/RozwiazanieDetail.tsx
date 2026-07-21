@@ -289,7 +289,7 @@ export function RozwiazanieDetail({ rozwiazanie }: RozwiazanieDetailProps) {
 
       {/* Bloki treści — z naprzemiennym tłem dla rytmu */}
       {blocks.map((block, index) => (
-        <section className={index % 2 === 0 ? "section" : "section sectionAlt"} key={index}>
+        <section className={(blocks.length - 1 - index) % 2 === 0 ? "section sectionAlt" : "section"} key={index}>
           {block}
         </section>
       ))}
@@ -328,7 +328,7 @@ export function RozwiazanieDetail({ rozwiazanie }: RozwiazanieDetailProps) {
 
       {/* Powiązane rozwiązania */}
       {relatedLinks.length > 0 ? (
-        <section className="section sectionAlt">
+        <section className="section">
           <div className="container">
             <SectionHeader eyebrow="Powiązane" title="Powiązane rozwiązania" />
             <div className="grid3 sectionCards">

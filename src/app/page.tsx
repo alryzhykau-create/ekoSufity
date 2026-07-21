@@ -823,7 +823,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <GoogleReviews />
+      <GoogleReviews alt />
 
       <section className="section faqSection">
         <div className="container faqShell">

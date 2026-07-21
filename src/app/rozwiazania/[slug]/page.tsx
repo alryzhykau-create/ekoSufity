@@ -299,7 +299,7 @@ export default async function SolutionPage({ params }: PageProps) {
         </div>
       </section>
 
-      <section className="section sectionAlt">
+      <section className="section">
         <div className="container">
           <SectionHeader eyebrow="O rozwiązaniu" title="Co to jest" />
           <p className="sectionLead sectionLead--wide">
@@ -308,7 +308,7 @@ export default async function SolutionPage({ params }: PageProps) {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section sectionAlt">
         <div className="container">
           <SectionHeader
             eyebrow="Możliwości"
@@ -326,7 +326,7 @@ export default async function SolutionPage({ params }: PageProps) {
         </div>
       </section>
 
-      <section className="section sectionAlt">
+      <section className="section">
         <div className="container pricePanel">
           <div>
             <SectionHeader
@@ -349,7 +349,7 @@ export default async function SolutionPage({ params }: PageProps) {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section sectionAlt">
         <div className="container">
           <SectionHeader
             eyebrow="Korzyści"

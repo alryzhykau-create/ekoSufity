@@ -53,9 +53,11 @@ function GoogleG({ size = 16 }: { size?: number }) {
   );
 }
 
-export function GoogleReviews() {
+/* `alt` przełącza sekcję na kremowe tło — strona sama decyduje, bo blok stoi
+   w różnych miejscach naprzemiennej zebry na stronie głównej i w kontakcie. */
+export function GoogleReviews({ alt = false }: { alt?: boolean }) {
   return (
-    <section className="section reviewsBlock">
+    <section className={`section reviewsBlock${alt ? " sectionAlt" : ""}`}>
       <div className="container">
         <SectionHeader eyebrow="Opinie" title="Co mówią klienci w Google" />
 

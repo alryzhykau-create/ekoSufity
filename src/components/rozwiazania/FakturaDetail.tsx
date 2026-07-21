@@ -152,7 +152,7 @@ export function FakturaDetail({ faktura }: FakturaDetailProps) {
 
       {/* Bloki treści — naprzemienne tło */}
       {blocks.map((block, index) => (
-        <section className={index % 2 === 0 ? "section" : "section sectionAlt"} key={index}>
+        <section className={(blocks.length - 1 - index) % 2 === 0 ? "section sectionAlt" : "section"} key={index}>
           {block}
         </section>
       ))}
@@ -188,7 +188,7 @@ export function FakturaDetail({ faktura }: FakturaDetailProps) {
       </section>
 
       {/* Inne faktury — przelinkowanie */}
-      <section className="section sectionAlt">
+      <section className="section">
         <div className="container">
           <SectionHeader eyebrow="Rodzaje faktur" title="Zobacz inne faktury" />
           <div className="grid3 sectionCards">
