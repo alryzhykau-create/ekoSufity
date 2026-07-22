@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { seoMeta } from "@/lib/seo/metadata";
 import { Kalkulator } from "@/components/ceny/Kalkulator";
 import { FinalContactSection } from "@/components/contact/FinalContactSection";
@@ -42,7 +41,12 @@ const addonPrices = [
   ["Ukryty karnisz z LED", "od 300 zł/mb"],
   ["Punkt oświetlenia", "od 100 zł/szt"],
   ["System magnetyczny 48 V", "od 300 zł/mb"],
-  ["Podświetlenie obwodowe", "od 170 zł/mb"]
+  ["Podświetlenie obwodowe", "od 170 zł/mb"],
+  ["Sufit dwupoziomowy z oświetleniem + LED", "od 290 zł/mb"],
+  ["Sufit translucent (podświetlany)", "od 250 zł/m²"],
+  ["Sufit z nadrukiem", "od 200 zł/m²"],
+  ["Sufit z efektem cienia", "od 120 zł/m²"],
+  ["Gwiazdne niebo", "od 550 zł/m²"]
 ];
 
 const priceExamples = [
@@ -259,39 +263,13 @@ export default function PricesPage() {
         </div>
       </section>
 
-      <section className="section finalCtaSection sectionAlt">
-        <div className="container finalCtaCard">
-          <div>
-            <span className="eyebrow">Bezpłatny pomiar</span>
-            <h2 className="sectionTitle">Chcesz znać dokładną cenę?</h2>
-            <p>
-              Wyślij zdjęcie pomieszczenia i metraż albo umów bezpłatny pomiar. Warianty LED,
-              karniszy i rodzaje sufitów znajdziesz w{" "}
-              <Link href="/rozwiazania" className="inlineLink">
-                rozwiązaniach
-              </Link>
-              .
-            </p>
-          </div>
-          <div className="buttonRow">
-            <Button href={siteConfig.contacts.phoneHref}>Zadzwoń i umów pomiar</Button>
-            <Button
-              href={whatsappUrl("Dzień dobry, chcę poznać dokładną cenę sufitu napinanego.")}
-              variant="secondary"
-            >
-              Napisz na WhatsApp
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
+      <section className="section sectionAlt">
         <div className="container">
           <SocialBanner />
         </div>
       </section>
 
-      <FinalContactSection />
+      <FinalContactSection alt={false} />
     </>
   );
 }

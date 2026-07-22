@@ -181,29 +181,13 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      <section className="section finalCtaSection sectionAlt">
-        <div className="container finalCtaCard">
-          <div>
-            <span className="eyebrow">Bezpłatny pomiar</span>
-            <h2 className="sectionTitle">Nie musisz znać technologii przed kontaktem</h2>
-            <p>Wyślij zdjęcie pomieszczenia, miasto i orientacyjny metraż. Podpowiemy, które rozwiązanie ma sens.</p>
-          </div>
-          <div className="buttonRow">
-            <Button href={siteConfig.contacts.phoneHref}>Zadzwoń</Button>
-            <Button href={whatsappUrl("Dzień dobry, chcę wysłać zdjęcie pomieszczenia do doboru rozwiązania.")} variant="secondary">
-              Wyślij zdjęcie
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
+      <section className="section sectionAlt">
         <div className="container">
           <SocialBanner />
         </div>
       </section>
 
-      <FinalContactSection />
+      <FinalContactSection alt={false} />
     </>
   );
 }
