@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { seoMeta } from "@/lib/seo/metadata";
+import { FinalContactSection } from "@/components/contact/FinalContactSection";
+import { SocialBanner } from "@/components/home/SocialBanner";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
-import { FaqList } from "@/components/ui/FaqList";
+import { CtaIcon } from "@/components/ui/CtaIcon";
+import { FaqTabs } from "@/components/ui/FaqTabs";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { homepageFaqs } from "@/content/faqs";
 import { siteConfig, whatsappUrl } from "@/content/site";
@@ -55,7 +59,37 @@ const extraFaqs = [
   }
 ];
 
-const pageFaqs = [...homepageFaqs, ...extraFaqs];
+const faqCategories = [
+  { key: "cena", label: "Cena i wycena" },
+  { key: "montaz", label: "Montaż i gwarancja" },
+  { key: "material", label: "Materiał i LED" }
+];
+
+// Kategoria per pytanie — tylko do zakładek. Treści zostają bez zmian,
+// dlatego przypisujemy je po tekście pytania, a nie kopiujemy pytań.
+const faqCategoryByQuestion: Record<string, string> = {
+  "Ile kosztuje sufit napinany?": "cena",
+  "Od czego zależy końcowa wycena?": "cena",
+  "Czy rodzaj materiału wpływa na cenę?": "cena",
+  "Czy pomiar i dojazd są bezpłatne?": "cena",
+  "Czy wymagana jest zaliczka?": "cena",
+  "Jakie są formy płatności?": "cena",
+  "Ile trwa montaż i czy trzeba robić remont?": "montaz",
+  "Ile miejsca zabiera sufit napinany?": "montaz",
+  "Jaka jest gwarancja?": "montaz",
+  "Czy LED, punkty i karnisz są w cenie?": "material",
+  "Czy sufit napinany się ugina?": "material",
+  "Czy sufit napinany można myć?": "material",
+  "Czy nadaje się do łazienki i kuchni?": "material"
+};
+
+// Kolejność z makiety: pytania pogrupowane kategoriami, żeby lista czytała
+// się spójnie także na zakładce „Wszystkie".
+const categoryOrder = faqCategories.map((c) => c.key);
+
+const pageFaqs = [...homepageFaqs, ...extraFaqs]
+  .map((faq) => ({ ...faq, category: faqCategoryByQuestion[faq.question] ?? "cena" }))
+  .sort((a, b) => categoryOrder.indexOf(a.category) - categoryOrder.indexOf(b.category));
 
 export default function FaqPage() {
   return (
@@ -63,41 +97,74 @@ export default function FaqPage() {
       <JsonLd data={[breadcrumbSchema([{ label: "FAQ", href: "/faq" }]), faqSchema(pageFaqs)]} />
 
       <section className="pageHero">
-        <div className="container">
-          <Breadcrumbs items={[{ label: "FAQ", href: "/faq" }]} />
-          <span className="eyebrow">FAQ</span>
-          <h1>Najczęstsze pytania o sufity napinane</h1>
-          <p className="pageLead">
-            Odpowiadamy na najważniejsze pytania o koszt, pomiar, dojazd, gwarancję i kontakt.
-          </p>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container">
-          <SectionHeader title="Pytania przed kontaktem" />
-          <FaqList items={pageFaqs} />
-        </div>
-      </section>
-
-      <section className="section finalCtaSection sectionAlt">
-        <div className="container finalCtaCard">
-          <div>
-            <span className="eyebrow">Nie znalazłeś odpowiedzi?</span>
-            <h2 className="sectionTitle">Zapytaj bezpośrednio</h2>
-            <p>
-              Odpowiadamy telefonicznie i na WhatsApp. Możesz od razu wysłać zdjęcie pomieszczenia,
-              miasto i orientacyjny metraż.
+        <div className="container splitHero">
+          <div className="pageHeroCopy">
+            <Breadcrumbs items={[{ label: "FAQ", href: "/faq" }]} />
+            <span className="eyebrow">FAQ</span>
+            <h1>Najczęstsze pytania o sufity napinane</h1>
+            <p className="pageLead">
+              Cena, pomiar, dojazd, gwarancja, LED i montaż — najważniejsze odpowiedzi w jednym
+              miejscu.
             </p>
+            <div className="buttonRow">
+              <Button className="heroPrimaryCta" href={siteConfig.contacts.phoneHref}>
+                <CtaIcon name="phone" />
+                Zadzwoń i umów pomiar
+              </Button>
+              <Button
+                className="heroWhatsappCta waHoverFill"
+                href={whatsappUrl("Dzień dobry, mam pytanie o sufity napinane.")}
+                variant="secondary"
+              >
+                <CtaIcon name="whatsapp" />
+                Napisz na WhatsApp
+              </Button>
+            </div>
           </div>
-          <div className="buttonRow">
-            <Button href={siteConfig.contacts.phoneHref}>Zadzwoń</Button>
-            <Button href={whatsappUrl("Dzień dobry, mam pytanie o sufity napinane.")} variant="secondary">
-              Napisz na WhatsApp
-            </Button>
+          <div className="pageHeroPhotos">
+            <div className="pageHeroPhotoMain">
+              <Image
+                src="/images/lazienka-6m2-photo.png"
+                alt="Sufit napinany w łazience z podświetleniem"
+                width={900}
+                height={675}
+                priority
+                sizes="(max-width: 900px) 100vw, 530px"
+              />
+            </div>
+            <div className="pageHeroPhotoSmall">
+              <Image
+                src="/images/kuchnia-10m2-photo.png"
+                alt="Sufit napinany w kuchni"
+                width={400}
+                height={400}
+                sizes="(max-width: 900px) 52vw, 235px"
+              />
+            </div>
           </div>
         </div>
       </section>
+
+      <section className="section faqSection">
+        <div className="container">
+          <div className="centerHeader">
+            <SectionHeader
+              eyebrow="FAQ"
+              title="Najczęstsze pytania o sufity napinane"
+              lead="Cena, pomiar, dojazd, gwarancja, LED i montaż — najważniejsze odpowiedzi w jednym miejscu."
+            />
+          </div>
+          <FaqTabs items={pageFaqs} categories={faqCategories} />
+        </div>
+      </section>
+
+      <section className="section sectionAlt">
+        <div className="container">
+          <SocialBanner />
+        </div>
+      </section>
+
+      <FinalContactSection alt={false} />
     </>
   );
 }

@@ -5026,6 +5026,94 @@ a.miniCard:hover {
   }
 }
 
+/* ————— Strona /faq — zakładki kategorii z Claude Design ————— */
+
+.faqTabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.faqTab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #e2d6c6;
+  border-radius: 999px;
+  background: var(--surface);
+  padding: 10px 18px;
+  color: #5c554e;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+.faqTab:hover {
+  border-color: var(--gold);
+  color: var(--black);
+}
+
+.faqTab.is-active {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: #fff;
+}
+
+.faqTabCount {
+  color: #8a8178;
+  font-size: 0.82rem;
+}
+
+.faqTab.is-active .faqTabCount {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Lista pytań na /faq — węższa kolumna, wyśrodkowana pod zakładkami. */
+.faqListNarrow {
+  max-width: 900px;
+  margin: 26px auto 0;
+}
+
+/* Ta sama ciepła karta pytania, co w blokach FAQ na innych stronach. */
+.faqListNarrow .faqItem {
+  border-color: #eee0cd;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #fffdfa, #fff8f0);
+}
+
+/* Znacznik: strzałka w kółku, po otwarciu złote tło i obrót o 180°. */
+.faqListNarrow details.faqItem summary::after {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 30px;
+  flex: none;
+  margin-left: auto;
+  border: 0;
+  border-radius: 50%;
+  background: #f3e2cc
+    url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23c9791c'%20stroke-width='3'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M6%209l6%206%206-6'/%3E%3C/svg%3E")
+    center / 14px no-repeat;
+  transform: none;
+  transition: transform 250ms ease, background 250ms ease;
+}
+
+.faqListNarrow details.faqItem[open] summary::after {
+  transform: rotate(180deg);
+  background: var(--gold)
+    url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23ffffff'%20stroke-width='3'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M6%209l6%206%206-6'/%3E%3C/svg%3E")
+    center / 14px no-repeat;
+}
+
+/* Odfiltrowane pytanie zostaje w DOM — chowamy je tylko wizualnie. */
+.faqItem.is-filtered {
+  display: none;
+}
+
 .mobileSticky {
   display: none;
 }
