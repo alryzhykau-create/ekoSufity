@@ -92,29 +92,30 @@ export function RealizacjeGallery({ initialRoom, initialFinish }: RealizacjeGall
       </div>
 
       {filtered.length > 0 ? (
-        <div className="galleryGrid sectionCards">
+        <div className="galleryGrid">
           {filtered.map((asset, index) => (
-            <article className="card galleryCard" key={asset.src}>
-              <div className="galleryImage">
-                <Image
-                  src={asset.src}
-                  alt={asset.alt}
-                  fill
-                  loading={index === 0 ? "eager" : "lazy"}
-                  sizes="(max-width: 700px) 100vw, 280px"
-                />
-              </div>
-              <div className="galleryContent">
+            <Link
+              className="galleryCard"
+              key={asset.src}
+              href={whatsappUrl(`Dzień dobry, interesuje mnie podobny efekt: ${asset.title}.`)}
+            >
+              <Image
+                src={asset.src}
+                alt={asset.alt}
+                fill
+                loading={index === 0 ? "eager" : "lazy"}
+                sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 400px"
+              />
+              {/* Uczciwe oznaczenie: to wizualizacja, nie zdjęcie z montażu. */}
+              <span className="galleryBadge" title={asset.label}>
+                Wizualizacja
+              </span>
+              <span className="galleryScrim" aria-hidden="true" />
+              <span className="galleryCaption">
                 <h3>{asset.title}</h3>
-                <p className="softLabel">{asset.meta}</p>
-                <Link
-                  className="galleryCta"
-                  href={whatsappUrl(`Dzień dobry, interesuje mnie podobny efekt: ${asset.title}.`)}
-                >
-                  Napisz na WhatsApp
-                </Link>
-              </div>
-            </article>
+                <span className="galleryMeta">{asset.meta}</span>
+              </span>
+            </Link>
           ))}
         </div>
       ) : (
