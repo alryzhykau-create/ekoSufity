@@ -100,6 +100,16 @@ const folieCards = [
   }
 ];
 
+// Etapy współpracy — te same kroki co wcześniej, ale z numerem i krótkim
+// podpisem, w rytmie sekcji „Jak wygląda współpraca?" ze strony głównej.
+const processFlow = [
+  { title: "Kontakt", copy: "Telefon lub WhatsApp — wystarczy zdjęcie i metraż." },
+  { title: "Bezpłatny pomiar", copy: "Przyjeżdżamy, mierzymy pomieszczenie i doradzamy na miejscu." },
+  { title: "Dobór materiału", copy: "Wybieramy fakturę, kolor i światło pod Twoje wnętrze." },
+  { title: "Wycena", copy: "Podajemy cenę po pomiarze i ustaleniu pełnego zakresu." },
+  { title: "Montaż", copy: "Montujemy zwykle w 1–2 dni i sprzątamy po sobie." }
+];
+
 // Miejsca montażu — kafle ze zdjęciem i podpisem.
 const placeTiles = [
   { title: "Mieszkania i domy", imageSrc: "/images/salon-22m2-photo.png" },
@@ -418,14 +428,17 @@ export default function StretchCeilingsPage() {
           </article>
           <aside className="card infoCard">
             <span className="priceKicker">Proces</span>
-            <div className="factorList">
-              {["Kontakt", "Bezpłatny pomiar", "Dobór materiału", "Wycena", "Montaż"].map((item) => (
-                <div className="factor" key={item}>
-                  <span className="check">✓</span>
-                  <span>{item}</span>
-                </div>
+            <ol className="stepFlow" aria-label="Etapy współpracy">
+              {processFlow.map((step, index) => (
+                <li className="stepFlowItem" key={step.title}>
+                  <span className="stepFlowNumber">{index + 1}</span>
+                  <div className="stepFlowBody">
+                    <h3>{step.title}</h3>
+                    <p>{step.copy}</p>
+                  </div>
+                </li>
               ))}
-            </div>
+            </ol>
           </aside>
         </div>
       </section>
