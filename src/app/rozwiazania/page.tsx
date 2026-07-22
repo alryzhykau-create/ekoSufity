@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import { seoMeta } from "@/lib/seo/metadata";
 import Image from "next/image";
 import Link from "next/link";
+import { FinalContactSection } from "@/components/contact/FinalContactSection";
+import { SocialBanner } from "@/components/home/SocialBanner";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
+import { CtaIcon } from "@/components/ui/CtaIcon";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { getSolutionCards } from "@/content/rozwiazania";
 import { siteConfig, whatsappUrl } from "@/content/site";
-import { visualAssets } from "@/content/visual-assets";
 import { breadcrumbSchema, serviceSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
@@ -63,33 +65,52 @@ export default function SolutionsPage() {
 
       <section className="pageHero">
         <div className="container splitHero">
-          <div>
+          <div className="pageHeroCopy">
             <Breadcrumbs items={[{ label: "Rozwiązania", href: "/rozwiazania" }]} />
             <span className="eyebrow">Rozwiązania</span>
-            <h1>Rozwiązania do sufitów napinanych</h1>
+            <h1>Rozwiązania i dodatki do sufitów napinanych</h1>
             <p className="pageLead">
-              Tu wybierasz nie tylko sufit, ale cały efekt: materiał, światło, linie LED, ukryty
-              karnisz i detale dopasowane do pomieszczenia.
+              Folie, oświetlenie LED, linie świetlne, system magnetyczny 48 V, podświetlenie,
+              gwiaździste niebo, nadruk, wentylacja i ukryte karnisze — planujemy je razem z
+              sufitem, na etapie pomiaru.
             </p>
             <div className="buttonRow">
-              <Button href={siteConfig.contacts.phoneHref}>Zadzwoń i umów pomiar</Button>
-              <Button href={whatsappUrl("Dzień dobry, chcę dobrać rozwiązanie do sufitu napinanego.")} variant="secondary">
+              <Button className="heroPrimaryCta" href={siteConfig.contacts.phoneHref}>
+                <CtaIcon name="phone" />
+                Zadzwoń i umów pomiar
+              </Button>
+              <Button
+                className="heroWhatsappCta waHoverFill"
+                href={whatsappUrl("Dzień dobry, chcę dobrać rozwiązanie do sufitu napinanego.")}
+                variant="secondary"
+              >
+                <CtaIcon name="whatsapp" />
                 Napisz na WhatsApp
               </Button>
             </div>
           </div>
-          <aside className="card pageVisualCard">
-            <Image
-              src={visualAssets[3].src}
-              alt={visualAssets[3].alt}
-              width={900}
-              height={760}
-              priority
-              loading="eager"
-              sizes="(max-width: 900px) 100vw, 420px"
-            />
-            <p className="softLabel">Wizualizacja przykładowego efektu sufitu z linią LED.</p>
-          </aside>
+          {/* Zdjęcia lustrzane wobec /sufity-napinane — mniejsze wychodzi w prawo. */}
+          <div className="pageHeroPhotos pageHeroPhotos--right">
+            <div className="pageHeroPhotoMain">
+              <Image
+                src="/images/mieszkanie-45m2-led-photo.png"
+                alt="Sufit napinany z liniami świetlnymi LED w salonie"
+                width={900}
+                height={675}
+                priority
+                sizes="(max-width: 900px) 100vw, 530px"
+              />
+            </div>
+            <div className="pageHeroPhotoSmall">
+              <Image
+                src="/images/salon-22m2-photo.png"
+                alt="Matowy sufit napinany ze światłem obwodowym"
+                width={400}
+                height={400}
+                sizes="(max-width: 900px) 52vw, 235px"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -98,7 +119,7 @@ export default function SolutionsPage() {
           <SectionHeader
             eyebrow="Zakres"
             title="Wybierz zakres, który chcesz omówić"
-            lead="Każda karta prowadzi do osobnej strony z wyjaśnieniem, dla kogo jest dane rozwiązanie, jak wygląda wycena i co ustalamy na pomiarze."
+            lead="Każda karta prowadzi do rozwiązania z wyjaśnieniem, dla kogo jest, jak wygląda wycena i co ustalamy na pomiarze."
           />
           <div className="solutionMosaic">
             {getSolutionCards().map((card) => (
@@ -141,25 +162,21 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      <section className="section processSection">
+      <section className="section">
         <div className="container">
-          <div className="centerHeader">
-            <SectionHeader
-              eyebrow="Logika projektu"
-              title="Jak układamy zakres przed wyceną?"
-              lead="Dzięki temu klient rozumie, co jest sufitem bazowym, a co dodatkowym rozwiązaniem."
-            />
-          </div>
-          <div className="processPanel">
-            <div className="stepList">
-              {process.map(([number, title, copy]) => (
-                <article className="card miniCard" key={title}>
-                  <span className="stepNumber">{number}</span>
-                  <h3>{title}</h3>
-                  <p>{copy}</p>
-                </article>
-              ))}
-            </div>
+          <SectionHeader
+            eyebrow="Logika projektu"
+            title="Jak układamy zakres przed wyceną?"
+            lead="Dzięki temu widać, co jest sufitem bazowym, a co dodatkowym rozwiązaniem."
+          />
+          <div className="stepList sectionCards">
+            {process.map(([number, title, copy]) => (
+              <article className="card miniCard" key={title}>
+                <span className="stepNumber">{number}</span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
@@ -179,6 +196,14 @@ export default function SolutionsPage() {
           </div>
         </div>
       </section>
+
+      <section className="section">
+        <div className="container">
+          <SocialBanner />
+        </div>
+      </section>
+
+      <FinalContactSection />
     </>
   );
 }
