@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import { seoMeta } from "@/lib/seo/metadata";
 import Image from "next/image";
 import Link from "next/link";
+import { FinalContactSection } from "@/components/contact/FinalContactSection";
+import { SocialBanner } from "@/components/home/SocialBanner";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
-import { FaqList } from "@/components/ui/FaqList";
+import { CtaIcon } from "@/components/ui/CtaIcon";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { siteConfig, whatsappUrl } from "@/content/site";
-import { visualAssets } from "@/content/visual-assets";
 import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
@@ -18,79 +19,92 @@ export const metadata: Metadata = {
   ...seoMeta("/sufity-napinane")
 };
 
-// Trzeci element (opcjonalny) to podpowiedź „gdzie się sprawdza" dla osób,
-// które pierwszy raz wybierają fakturę.
-const ceilingTypes: Array<[string, string, string?]> = [
-  [
-    "Matowe",
-    "Spokojny, równy efekt do mieszkań, domów i lokali po remoncie.",
-    "Klasyka, która pasuje wszędzie. Najlepszy wybór, gdy nie chcesz kombinować — sprawdza się w salonie, sypialni i pokoju dziecka."
-  ],
-  [
-    "Satynowe",
-    "Delikatny połysk bez mocnego odbicia światła.",
-    "Złoty środek: delikatny połysk dodaje elegancji, ale bez efektu lustra. Dobre do wnętrz, które chcesz lekko rozjaśnić."
-  ],
-  [
-    "Połysk",
-    "Efekt odbicia i wizualnego powiększenia pomieszczenia.",
-    "Efekt lustra optycznie powiększa pomieszczenie. Najlepsze do małych i ciemnych wnętrz — łazienek, korytarzy, kawalerek."
-  ],
-  ["Translucent", "Materiał do podświetlenia i efektu miękkiego światła."],
-  ["Z LED", "Linie świetlne, światło obwodowe, punkty i scenariusze oświetlenia."],
-  ["Do stref wilgotnych", "Rozwiązania dobierane do łazienek, basenów i pomieszczeń z wilgocią."],
-  [
-    "Z nadrukiem",
-    "Zdjęcie, wzór lub grafika nadrukowana na całej powierzchni sufitu.",
-    "Twoje zdjęcie, wzór lub niebo z chmurami na całej powierzchni. Gdy sufit ma być ozdobą albo elementem reklamowym w lokalu."
-  ]
+// Karty rodzajów: opis + „gdzie się sprawdza" + link. Etykieta strzałki
+// mówi, dokąd prowadzi karta: do podstrony faktury albo do rozwiązań.
+const ceilingTypes: Array<{
+  title: string;
+  copy: string;
+  fit: string;
+  href: string;
+  linkLabel: string;
+}> = [
+  {
+    title: "Matowe",
+    copy: "Spokojny, równy efekt do mieszkań, domów i lokali po remoncie.",
+    fit: "Klasyka, która pasuje wszędzie. Najlepszy wybór, gdy nie chcesz kombinować — sprawdza się w salonie, sypialni i pokoju dziecka.",
+    href: "/rozwiazania/folie/matowy",
+    linkLabel: "Zobacz fakturę →"
+  },
+  {
+    title: "Satynowe",
+    copy: "Delikatny połysk bez mocnego odbicia światła.",
+    fit: "Złoty środek: delikatny połysk dodaje elegancji, ale bez efektu lustra. Dobre do wnętrz, które chcesz lekko rozjaśnić.",
+    href: "/rozwiazania/folie/satynowy",
+    linkLabel: "Zobacz fakturę →"
+  },
+  {
+    title: "Połysk",
+    copy: "Efekt odbicia i wizualnego powiększenia pomieszczenia.",
+    fit: "Efekt lustra optycznie powiększa pomieszczenie. Najlepsze do małych i ciemnych wnętrz — łazienek, korytarzy, kawalerek.",
+    href: "/rozwiazania/folie/polysk",
+    linkLabel: "Zobacz fakturę →"
+  },
+  {
+    title: "Translucent",
+    copy: "Materiał do podświetlenia i efektu miękkiego światła.",
+    fit: "Świecąca płaszczyzna jako główne lub dekoracyjne światło — świetna do wnętrz bez okien i stref relaksu.",
+    href: "/rozwiazania/folie/podswietlany",
+    linkLabel: "Zobacz rozwiązania →"
+  },
+  {
+    title: "Z LED",
+    copy: "Linie świetlne, światło obwodowe, punkty i scenariusze oświetlenia.",
+    fit: "Światło planujemy razem z sufitem jako jeden projekt — profile i przewody chowamy pod membraną.",
+    href: "/rozwiazania/oswietlenie-led",
+    linkLabel: "Zobacz rozwiązania →"
+  },
+  {
+    title: "Do stref wilgotnych",
+    copy: "Rozwiązania dobierane do łazienek, basenów i pomieszczeń z wilgocią.",
+    fit: "Folia nie chłonie wody i wytrzymuje zalanie — wariant dobieramy po ocenie warunków w pomieszczeniu.",
+    href: "/rozwiazania",
+    linkLabel: "Zobacz rozwiązania →"
+  },
+  {
+    title: "Z nadrukiem",
+    copy: "Zdjęcie, wzór lub grafika nadrukowana na całej powierzchni sufitu.",
+    fit: "Twoje zdjęcie, wzór lub niebo z chmurami na całej powierzchni. Gdy sufit ma być ozdobą albo elementem reklamowym w lokalu.",
+    href: "/rozwiazania/sufit-z-nadrukiem",
+    linkLabel: "Zobacz fakturę →"
+  }
 ];
-
-// Faktury z osobnymi podstronami — te karty prowadzą do /rozwiazania/folie/[slug].
-const fakturaLinks: Record<string, string> = {
-  Matowe: "/rozwiazania/folie/matowy",
-  Satynowe: "/rozwiazania/folie/satynowy",
-  Połysk: "/rozwiazania/folie/polysk",
-  Translucent: "/rozwiazania/folie/podswietlany",
-  "Z nadrukiem": "/rozwiazania/sufit-z-nadrukiem"
-};
 
 const folieCards = [
   {
     title: "MSD",
     copy: "Najczęściej montowana folia, najlepszy stosunek jakości do ceny. Ponad 120 kolorów w linii Premium.",
-    href: "/rozwiazania/folie#msd"
+    href: "/rozwiazania/folie#msd",
+    imageSrc: "/images/salon-22m2-photo.png"
   },
   {
     title: "Bauf",
     copy: "Niemiecka marka i technologia, produkcja według europejskich norm.",
-    href: "/rozwiazania/folie#bauf"
+    href: "/rozwiazania/folie#bauf",
+    imageSrc: "/images/kuchnia-10m2-photo.png"
   },
   {
     title: "Teqtum",
     copy: "Niemiecka marka z segmentu premium. Najwyższa półka jakościowa.",
-    href: "/rozwiazania/folie#teqtum"
+    href: "/rozwiazania/folie#teqtum",
+    imageSrc: "/images/lazienka-6m2-photo.png"
   }
 ];
 
-// Obawy, które klienci zgłaszają najczęściej przed decyzją o montażu.
-const concerns: Array<[string, string]> = [
-  [
-    "Czy sufit się nie ugnie i nie obwiśnie?",
-    "Nie. Prawidłowo napięta folia pozostaje idealnie równa przez lata. A jeśli sąsiad z góry Cię zaleje — sufit zbierze wodę i ochroni wnętrze, wystarczy że ją odprowadzimy."
-  ],
-  [
-    "Czy to drogie?",
-    "Sufit napinany zwykle wychodzi taniej niż sufit z płyt karton-gips, a robi się go szybciej. Prosty sufit liczymy od 120 zł/m², a dokładną cenę podajemy po bezpłatnym pomiarze."
-  ],
-  [
-    "Ile to trwa i czy będzie bałagan?",
-    "Większość realizacji kończymy w 1–2 dni. Montaż jest czysty — nie skuwamy starego sufitu, nie ma gruzu, a po pracy sprzątamy po sobie. Mebli zwykle nie trzeba wynosić."
-  ],
-  [
-    "Czy stracę dużo wysokości?",
-    "Zwykle wystarczy obniżenie o około 3 cm. Trochę więcej miejsca potrzeba tylko tam, gdzie chowamy oświetlenie LED lub karnisz."
-  ]
+// Miejsca montażu — kafle ze zdjęciem i podpisem.
+const placeTiles = [
+  { title: "Mieszkania i domy", imageSrc: "/images/salon-22m2-photo.png" },
+  { title: "Łazienki i kuchnie", imageSrc: "/images/lazienka-6m2-photo.png" },
+  { title: "Lokale komercyjne", imageSrc: "/images/mieszkanie-45m2-led-photo.png" }
 ];
 
 const comparisonRows = [
@@ -111,19 +125,38 @@ const useCases = [
   ["Wnętrza komercyjne", "Gdy sufit ma wyglądać schludnie i pasować do charakteru lokalu."]
 ];
 
+// FAQ łączy dawne „częste obawy" z pytaniami praktycznymi — jedna lista,
+// te same treści trafiają do FAQPage w JSON-LD.
 const faqs = [
   {
-    question: "Czy sufit napinany nadaje się do mieszkania?",
-    answer: "Tak. Najczęściej stosuje się go w salonach, kuchniach, łazienkach, korytarzach i nowych mieszkaniach po odbiorze."
+    question: "Czy sufit się nie ugnie i nie obwiśnie?",
+    answer:
+      "Nie. Prawidłowo napięta folia pozostaje idealnie równa przez lata. A jeśli sąsiad z góry Cię zaleje — sufit zbierze wodę i ochroni wnętrze, wystarczy że ją odprowadzimy."
   },
   {
-    question: "Czy każdy sufit napinany kosztuje tyle samo?",
+    question: "Czy to drogie?",
     answer:
-      "Nie. Cena zależy od materiału, metrażu, liczby narożników, LED, profili i dodatkowych detali. Dla prostego sufitu MSD przyjmujemy średnio ok. 120 zł/m² jako punkt odniesienia."
+      "Sufit napinany zwykle wychodzi taniej niż sufit z płyt karton-gips, a robi się go szybciej. Prosty sufit liczymy od 120 zł/m², a dokładną cenę podajemy po bezpłatnym pomiarze."
+  },
+  {
+    question: "Ile to trwa i czy będzie bałagan?",
+    answer:
+      "Większość realizacji kończymy w 1–2 dni. Montaż jest czysty — nie skuwamy starego sufitu, nie ma gruzu, a po pracy sprzątamy po sobie. Mebli zwykle nie trzeba wynosić."
+  },
+  {
+    question: "Czy stracę dużo wysokości?",
+    answer:
+      "Zwykle wystarczy obniżenie o około 3 cm. Trochę więcej miejsca potrzeba tylko tam, gdzie chowamy oświetlenie LED lub karnisz."
   },
   {
     question: "Czy można połączyć sufit z oświetleniem?",
-    answer: "Tak. Można zaplanować punkty, linie świetlne, światło obwodowe albo materiał translucent."
+    answer:
+      "Tak. Można zaplanować punkty, linie świetlne, światło obwodowe albo materiał translucent, który rozprasza światło na całej powierzchni sufitu."
+  },
+  {
+    question: "Jak dbać o sufit napinany?",
+    answer:
+      "Wystarczy przetrzeć powierzchnię wilgotną ściereczką z odrobiną łagodnego detergentu. Folia nie żółknie i nie wymaga malowania ani odnawiania."
   }
 ];
 
@@ -141,39 +174,56 @@ export default function StretchCeilingsPage() {
       {/* 1. Hero */}
       <section className="pageHero">
         <div className="container splitHero">
-          <div>
+          <div className="pageHeroCopy">
             <Breadcrumbs items={[{ label: "Sufity napinane", href: "/sufity-napinane" }]} />
             <span className="eyebrow">Sufity napinane</span>
             <h1>Sufity napinane - rodzaje, efekty i montaż</h1>
             <p className="pageLead">
-              Sufit napinany to lekka membrana montowana na profilach, która pozwala uzyskać równą
-              powierzchnię sufitu i połączyć ją z oświetleniem LED, liniami świetlnymi albo ukrytym
-              karniszem.
+              Sufit napinany to lekka membrana na profilach — idealnie równa powierzchnia, ukryte
+              LED-y i montaż w 1–2 dni bez kucia i gruzu.
             </p>
             <div className="buttonRow">
-              <Button href={siteConfig.contacts.phoneHref}>Zadzwoń i umów pomiar</Button>
-              <Button href={whatsappUrl("Dzień dobry, chcę dobrać rodzaj sufitu napinanego.")} variant="secondary">
+              <Button href={siteConfig.contacts.phoneHref} className="heroPrimaryCta">
+                <CtaIcon name="phone" />
+                Zadzwoń i umów pomiar
+              </Button>
+              <Button
+                href={whatsappUrl("Dzień dobry, chcę dobrać rodzaj sufitu napinanego.")}
+                variant="secondary"
+                className="heroWhatsappCta waHoverFill"
+              >
+                <CtaIcon name="whatsapp" />
                 Napisz na WhatsApp
               </Button>
             </div>
           </div>
-          <aside className="card pageVisualCard">
-            <Image
-              src={visualAssets[0].src}
-              alt={visualAssets[0].alt}
-              width={900}
-              height={760}
-              priority
-              loading="eager"
-              sizes="(max-width: 900px) 100vw, 420px"
-            />
-            <p className="softLabel">Wizualizacja przykładowego efektu sufitu matowego z linią LED.</p>
-          </aside>
+          <div className="pageHeroPhotos">
+            <div className="pageHeroPhotoMain">
+              <Image
+                src="/images/salon-22m2-photo.png"
+                alt="Salon z sufitem napinanym i linią LED"
+                width={900}
+                height={675}
+                priority
+                loading="eager"
+                sizes="(max-width: 900px) 100vw, 530px"
+              />
+            </div>
+            <div className="pageHeroPhotoSmall">
+              <Image
+                src="/images/lazienka-6m2-photo.png"
+                alt="Łazienka z sufitem napinanym"
+                width={400}
+                height={400}
+                sizes="(max-width: 900px) 44vw, 230px"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
       {/* 2. Co to jest */}
-      <section className="section sectionAlt">
+      <section className="section">
         <div className="container">
           <SectionHeader eyebrow="Co to jest" title="Co to jest sufit napinany?" />
           <p className="sectionLead sectionLead--wide">
@@ -198,7 +248,7 @@ export default function StretchCeilingsPage() {
       </section>
 
       {/* 3. Rodzaje */}
-      <section className="section">
+      <section className="section sectionAlt">
         <div className="container">
           <SectionHeader
             eyebrow="Rodzaje"
@@ -206,32 +256,20 @@ export default function StretchCeilingsPage() {
             lead="Dobór materiału zależy od pomieszczenia, światła, efektu wizualnego i planowanych dodatków."
           />
           <div className="grid3 sectionCards">
-            {ceilingTypes.map(([title, copy, fit]) => {
-              const href = fakturaLinks[title];
-              if (href) {
-                return (
-                  <Link className="card miniCard" href={href} key={title}>
-                    <h3>{title}</h3>
-                    <p>{copy}</p>
-                    {fit ? <p className="miniCardFit">{fit}</p> : null}
-                    <p className="cardArrowText">Zobacz fakturę →</p>
-                  </Link>
-                );
-              }
-              return (
-                <article className="card miniCard" key={title}>
-                  <h3>{title}</h3>
-                  <p>{copy}</p>
-                  {fit ? <p className="miniCardFit">{fit}</p> : null}
-                </article>
-              );
-            })}
+            {ceilingTypes.map((type) => (
+              <Link className="card miniCard" href={type.href} key={type.title}>
+                <h3>{type.title}</h3>
+                <p>{type.copy}</p>
+                <p className="miniCardFit">{type.fit}</p>
+                <p className="cardArrowText">{type.linkLabel}</p>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
       {/* 3b. Folie */}
-      <section className="section sectionAlt">
+      <section className="section">
         <div className="container">
           <SectionHeader
             eyebrow="Producenci"
@@ -241,6 +279,15 @@ export default function StretchCeilingsPage() {
           <div className="grid3 sectionCards">
             {folieCards.map((card) => (
               <Link className="card miniCard" href={card.href} key={card.href}>
+                <div className="miniCardImg">
+                  <Image
+                    src={card.imageSrc}
+                    alt=""
+                    width={480}
+                    height={320}
+                    sizes="(max-width: 900px) 100vw, 400px"
+                  />
+                </div>
                 <h3>{card.title}</h3>
                 <p>{card.copy}</p>
                 <p className="cardArrowText">Poznaj folię →</p>
@@ -251,21 +298,32 @@ export default function StretchCeilingsPage() {
       </section>
 
       {/* 4. Oświetlenie */}
-      <section className="section">
-        <div className="container">
-          <SectionHeader eyebrow="Oświetlenie" title="Oświetlenie w suficie napinanym" />
-          <p className="sectionLead sectionLead--wide">
-            Sufit napinany łączymy z dowolnym oświetleniem — planujemy je razem, jako jeden projekt.
-            Montujemy linie świetlne LED, światło obwodowe, punkty, a także dowolne oprawy: halogeny,
-            lampy i żyrandole. Zakładamy też system magnetyczny 48 V i podświetlenie translucent, gdy
-            świecić ma cała powierzchnia. Profile, zasilacze i przewody chowamy pod membraną — widać
-            tylko efekt końcowy.
-          </p>
+      <section className="section sectionAlt">
+        <div className="container altSplit">
+          <div>
+            <SectionHeader eyebrow="Oświetlenie" title="Oświetlenie w suficie napinanym" />
+            <p className="sectionLead sectionLead--wide">
+              Sufit napinany łączymy z dowolnym oświetleniem — planujemy je razem, jako jeden
+              projekt. Montujemy linie świetlne LED, światło obwodowe, punkty, a także dowolne
+              oprawy: halogeny, lampy i żyrandole. Zakładamy też system magnetyczny 48 V i
+              podświetlenie translucent, gdy świecić ma cała powierzchnia. Profile, zasilacze i
+              przewody chowamy pod membraną — widać tylko efekt końcowy.
+            </p>
+          </div>
+          <div className="altSplitPhoto">
+            <Image
+              src="/images/kuchnia-10m2-photo.png"
+              alt="Linie świetlne LED w suficie napinanym"
+              width={800}
+              height={640}
+              sizes="(max-width: 900px) 100vw, 500px"
+            />
+          </div>
         </div>
       </section>
 
       {/* 5. Gdzie */}
-      <section className="section sectionAlt">
+      <section className="section">
         <div className="container">
           <SectionHeader eyebrow="Gdzie" title="Gdzie montujemy sufity napinane" />
           <p className="sectionLead sectionLead--wide">
@@ -275,11 +333,26 @@ export default function StretchCeilingsPage() {
             sobie też z nietypowymi warunkami — pomieszczeniami wilgotnymi, basenami oraz skosami
             dachu na poddaszu.
           </p>
+          <div className="placeTiles">
+            {placeTiles.map((tile) => (
+              <div className="placeTile" key={tile.title}>
+                <Image
+                  src={tile.imageSrc}
+                  alt={tile.title}
+                  width={640}
+                  height={480}
+                  sizes="(max-width: 900px) 100vw, 410px"
+                />
+                <div className="placeTileScrim" aria-hidden="true" />
+                <h3>{tile.title}</h3>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* 6. Porównanie */}
-      <section className="section">
+      <section className="section sectionAlt">
         <div className="container">
           <SectionHeader
             eyebrow="Porównanie"
@@ -310,7 +383,7 @@ export default function StretchCeilingsPage() {
       </section>
 
       {/* 7. Kiedy sufit napinany ma największy sens */}
-      <section className="section sectionAlt">
+      <section className="section">
         <div className="container">
           <SectionHeader
             eyebrow="Zastosowanie"
@@ -329,21 +402,21 @@ export default function StretchCeilingsPage() {
       </section>
 
       {/* 8. Cena */}
-      <section className="section">
-        <div className="container pricingDeck">
-          <article className="card priceTableCard">
+      <section className="section sectionAlt">
+        <div className="container infoDeck">
+          <article className="card infoCard">
             <span className="eyebrow">Cena</span>
-            <h2 className="priceCardTitle">Ile kosztuje sufit napinany?</h2>
+            <h2 className="infoCardTitle">Ile kosztuje sufit napinany?</h2>
             <p>
               Dla prostego sufitu MSD w prostokątnym pomieszczeniu z 4 narożnikami przyjmujemy
               średnio ok. 120 zł/m² jako punkt odniesienia. Dokładna cena zależy od materiału,
               profili, LED i detali.
             </p>
             <Button href="/ceny" variant="secondary">
-              Zobacz stronę cen
+              Zobacz stronę cen →
             </Button>
           </article>
-          <aside className="card priceExplainCard">
+          <aside className="card infoCard">
             <span className="priceKicker">Proces</span>
             <div className="factorList">
               {["Kontakt", "Bezpłatny pomiar", "Dobór materiału", "Wycena", "Montaż"].map((item) => (
@@ -357,53 +430,43 @@ export default function StretchCeilingsPage() {
         </div>
       </section>
 
-      {/* 8b. Częste obawy */}
+      {/* 9. FAQ — dawne „częste obawy" wchodzą do tej listy */}
+      <section className="section faqSection">
+        <div className="container">
+          <div className="faqWrap">
+            <aside className="faqAside">
+              <span className="eyebrow">FAQ</span>
+              <h2 className="sectionTitle">Najczęstsze pytania przed pomiarem</h2>
+              <p className="sectionLead">Krótko wyjaśniamy cenę, pomiar, LED, montaż i pielęgnację.</p>
+              <div className="faqNoAnswer">
+                <p className="faqNoAnswerTitle">Nie znalazłeś odpowiedzi?</p>
+                <p>Zadzwoń albo umów bezpłatny pomiar — odpowiemy na wszystkie pytania.</p>
+                <Button href="/kontakt">Umów pomiar</Button>
+              </div>
+            </aside>
+            <div className="faqList faqListSingle">
+              {faqs.map((item, index) => (
+                <details className="faqItem" key={item.question} open={index === 0}>
+                  <summary>
+                    <span>{item.question}</span>
+                  </summary>
+                  <p>{item.answer}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 10. Social media */}
       <section className="section sectionAlt">
         <div className="container">
-          <SectionHeader eyebrow="Bez obaw" title="Częste obawy przed montażem" />
-          <div className="grid2 sectionCards">
-            {concerns.map(([question, answer]) => (
-              <article className="card miniCard" key={question}>
-                <h3>{question}</h3>
-                <p>{answer}</p>
-              </article>
-            ))}
-          </div>
+          <SocialBanner />
         </div>
       </section>
 
-      {/* 9. FAQ */}
-      <section className="section faqSection">
-        <div className="container faqShell">
-          <div className="centerHeader">
-            <SectionHeader eyebrow="FAQ" title="Pytania o sufity napinane" />
-          </div>
-          <FaqList items={faqs} />
-          <div className="faqCta">
-            <p>Chcesz dobrać rodzaj sufitu do wnętrza?</p>
-            <Button href={whatsappUrl("Dzień dobry, chcę dobrać sufit napinany do pomieszczenia.")} variant="dark">
-              Napisz na WhatsApp
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* 10. Zobacz LED, linie świetlne i ukryte karnisze */}
-      <section className="section finalCtaSection">
-        <div className="container finalCtaCard">
-          <div>
-            <span className="eyebrow">Rozwiązania</span>
-            <h2 className="sectionTitle">Zobacz LED, linie świetlne i ukryte karnisze</h2>
-            <p>Jeśli interesują Cię konkretne dodatki, przejdź do rozwiązań i wybierz zakres.</p>
-          </div>
-          <div className="buttonRow">
-            <Button href="/rozwiazania">Przejdź do rozwiązań</Button>
-            <Button href="/realizacje" variant="secondary">
-              Zobacz efekty
-            </Button>
-          </div>
-        </div>
-      </section>
+      {/* 11. Kontakt */}
+      <FinalContactSection alt={false} />
     </>
   );
 }

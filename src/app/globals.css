@@ -219,13 +219,12 @@ main {
 /* Strzałka-odnośnik w klikalnych kartach (np. "Zobacz fakturę →").
    margin-top:auto dosuwa ją do dołu karty (miniCard jest flex-kolumną),
    więc strzałki w rzędzie kart trzymają jedną linię. */
-/* Podpowiedź „gdzie się sprawdza" — cichsza od opisu, oddzielona kreską. */
+/* Podpowiedź „gdzie się sprawdza" — cichsza od opisu, kursywą. */
 .miniCard p.miniCardFit {
-  margin-top: 12px;
-  padding-top: 12px;
-  border-top: 1px solid var(--border);
-  color: var(--muted);
-  font-size: 0.88rem;
+  margin-top: 10px;
+  color: #8a8178;
+  font-size: 0.86rem;
+  font-style: italic;
   line-height: 1.5;
 }
 
@@ -3419,7 +3418,6 @@ details.faqItem:not([open]) p {
 }
 
 .finalCtaSection {
-  background: var(--section-alt-bg);
   padding: var(--section-y-compact) 0;
 }
 
@@ -3804,11 +3802,11 @@ details.faqItem:not([open]) p {
   color: #fff;
 }
 
-/* 120px u góry mieści stały nagłówek (80px) i daje oddech; 56px u dołu to
-   ten sam krok co rytm sekcji na tablecie — całość siada na siatce 8px. */
+/* 128px u góry mieści stały nagłówek (80px) i daje oddech; kremowe tło
+   otwiera zebrę podstron — pierwsza sekcja treści pod hero jest biała. */
 .pageHero {
-  padding: 120px 0 56px;
-  background: linear-gradient(180deg, var(--bg), var(--bg-alt));
+  padding: 128px 0 64px;
+  background: var(--section-alt-bg);
 }
 
 /* Okruszki: lista <ol>, separator z CSS, bieżąca strona bez linku. */
@@ -3847,7 +3845,7 @@ details.faqItem:not([open]) p {
 
 .splitHero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.62fr);
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.82fr);
   gap: 48px;
   align-items: center;
 }
@@ -4280,6 +4278,296 @@ details.faqItem:not([open]) p {
 .privacyContactCard {
   position: sticky;
   top: 104px;
+}
+
+/* ————— Strona /sufity-napinane — układ z Claude Design ————— */
+
+/* Hero: duże zdjęcie 4:3 + mniejsze kwadratowe nachodzące od dołu-lewej.
+   Padding rezerwuje miejsce, w które „wychodzi" małe zdjęcie. */
+.pageHeroPhotos {
+  position: relative;
+  padding: 0 0 34px 34px;
+}
+
+.pageHeroPhotoMain {
+  overflow: hidden;
+  border-radius: 18px;
+  aspect-ratio: 4 / 3;
+  box-shadow: 0 22px 50px rgba(20, 18, 16, 0.18);
+}
+
+.pageHeroPhotoSmall {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 44%;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  border-radius: 14px;
+  border: 5px solid var(--section-alt-bg);
+  box-shadow: 0 16px 34px rgba(20, 18, 16, 0.2);
+}
+
+.pageHeroPhotoMain img,
+.pageHeroPhotoSmall img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* CTA WhatsApp: hover wypełnia przycisk firmową zielenią komunikatora. */
+.btn.waHoverFill:hover {
+  background: #25d366;
+  border-color: #25d366;
+  color: #fff;
+}
+
+.btn.waHoverFill:hover svg.ctaIconOutline {
+  stroke: #fff;
+}
+
+/* Karty rodzajów: łagodniejszy narożnik, hover w kolorze marki. */
+.miniCard {
+  border-radius: 16px;
+}
+
+.miniCard h3 {
+  font-size: 1.08rem;
+  font-weight: 600;
+}
+
+.miniCard p {
+  font-size: 0.92rem;
+}
+
+a.miniCard:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold);
+}
+
+/* Zdjęcie na górze karty — wyciągnięte do krawędzi ponad padding karty. */
+.miniCardImg {
+  height: 160px;
+  margin: -24px -24px 16px;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+}
+
+.miniCardImg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Sekcja Oświetlenie: tekst po lewej, zdjęcie po prawej. */
+.altSplit {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
+}
+
+.altSplitPhoto {
+  overflow: hidden;
+  border-radius: 16px;
+  aspect-ratio: 5 / 4;
+  box-shadow: 0 20px 50px rgba(20, 18, 16, 0.16);
+}
+
+.altSplitPhoto img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Gdzie montujemy: kafle ze zdjęciem, scrimem i podpisem. */
+.placeTiles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 34px;
+}
+
+.placeTile {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  aspect-ratio: 4 / 3;
+}
+
+.placeTile img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.placeTileScrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(20, 18, 16, 0.82), transparent 62%);
+}
+
+.placeTile h3 {
+  position: absolute;
+  left: 20px;
+  bottom: 18px;
+  margin: 0;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+/* Cena + proces: dwie karty w jednym rzędzie. */
+.infoDeck {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.9fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.infoCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 16px;
+  padding: 34px;
+}
+
+.infoCardTitle {
+  margin: 10px 0 0;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.infoCard > p {
+  margin: 14px 0 20px;
+  color: var(--muted);
+}
+
+.infoCard .factorList {
+  margin-top: 20px;
+}
+
+.infoCard .check {
+  flex-basis: 26px;
+  width: 26px;
+  height: 26px;
+  background: #f0e7da;
+  color: var(--gold-dark);
+}
+
+.infoCard .factor span:last-child {
+  font-size: 0.98rem;
+  font-weight: 600;
+}
+
+/* FAQ: opis i karta „nie znalazłeś odpowiedzi" po lewej, lista po prawej. */
+.faqWrap {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: 48px;
+  align-items: start;
+}
+
+.faqAside {
+  position: sticky;
+  top: 96px;
+}
+
+.faqAside .sectionTitle,
+.faqAside .sectionLead {
+  margin-top: 12px;
+}
+
+.faqNoAnswer {
+  margin-top: 28px;
+  padding: 26px;
+  border: 1px solid #eee0cd;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #fffdfa, #fff8f0);
+}
+
+.faqNoAnswerTitle {
+  margin: 0;
+  color: var(--black);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.faqNoAnswer p:not(.faqNoAnswerTitle) {
+  margin: 8px 0 18px;
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
+.faqListSingle {
+  grid-template-columns: minmax(0, 1fr);
+  margin-top: 0;
+}
+
+.faqWrap .faqItem {
+  border-color: #eee0cd;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #fffdfa, #fff8f0);
+}
+
+/* Znacznik kółko-plus zamiast strzałki; po otwarciu złote tło i obrót w ×. */
+.faqWrap details.faqItem summary::after {
+  content: "+";
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 50%;
+  background: #f3e2cc;
+  color: var(--gold-dark);
+  font-size: 1.1rem;
+  font-weight: 700;
+  transform: none;
+  transition: transform 250ms ease, background 250ms ease, color 250ms ease;
+}
+
+.faqWrap details.faqItem[open] summary::after {
+  background: var(--gold);
+  color: #fff;
+  transform: rotate(45deg);
+}
+
+@media (max-width: 900px) {
+  .pageHeroPhotos {
+    padding: 0;
+  }
+
+  .pageHeroPhotoSmall {
+    position: static;
+    width: 52%;
+    margin: -40px 0 0 auto;
+  }
+
+  .altSplit,
+  .placeTiles,
+  .infoDeck,
+  .faqWrap {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .altSplit {
+    gap: 28px;
+  }
+
+  .faqAside {
+    position: static;
+  }
 }
 
 .mobileSticky {

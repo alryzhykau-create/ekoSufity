@@ -6,7 +6,9 @@ import { siteConfig } from "@/content/site";
 
 type SubmitState = "idle" | "loading" | "success" | "error";
 
-export function FinalContactSection() {
+/* `alt` steruje tłem sekcji w naprzemiennej zebrze — domyślnie krem,
+   strona przekazuje false, gdy jej rytm kończy się na bieli. */
+export function FinalContactSection({ alt = true }: { alt?: boolean }) {
   const [state, setState] = useState<SubmitState>("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -40,7 +42,7 @@ export function FinalContactSection() {
   }
 
   return (
-    <section className="section finalCtaSection">
+    <section className={`section finalCtaSection${alt ? " sectionAlt" : ""}`}>
       <div className="container finalContactCard">
         <div className="finalContactCopy">
           <span className="eyebrow">Kontakt z fachowcem</span>

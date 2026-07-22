@@ -132,7 +132,7 @@ export function FolieDetail() {
         </div>
       </section>
 
-      <section className="section finalCtaSection">
+      <section className="section finalCtaSection sectionAlt">
         <div className="container finalCtaCard">
           <div>
             <span className="eyebrow">Bezpłatny pomiar</span>

@@ -4,12 +4,13 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { FinalContactSection } from "@/components/contact/FinalContactSection";
 import { GallerySection } from "@/components/home/GallerySection";
+import { SocialBanner } from "@/components/home/SocialBanner";
 import { GoogleReviews } from "@/components/reviews/GoogleReviews";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { homepageFaqs } from "@/content/faqs";
 import { services } from "@/content/services";
-import { siteConfig, socialLinks, whatsappUrl } from "@/content/site";
+import { siteConfig, whatsappUrl } from "@/content/site";
 import { visualAssets } from "@/content/visual-assets";
 import { seoMeta } from "@/lib/seo/metadata";
 import { serviceSchema } from "@/lib/seo/schema";
@@ -47,13 +48,6 @@ const trustItems = [
     imageSrc: "/icon/trust-final/swiatlo-klimat.webp"
   }
 ] as const;
-
-const socialChoiceIconSrc = {
-  Instagram: "/icon/footer-social/instagram.svg",
-  TikTok: "/icon/footer-social/tiktok.svg",
-  Facebook: "/icon/footer-social/facebook.svg",
-  YouTube: "/icon/footer-social/youtube.svg"
-} as const;
 
 type TrustIconName = (typeof trustItems)[number]["icon"];
 
@@ -727,58 +721,7 @@ export default function HomePage() {
               Zobacz wszystkie rozwiązania
             </Link>
           </div>
-          <div className="servicesCta">
-            <div className="servicesCtaIcon" aria-hidden="true">
-              <Image
-                src="/icon/social-choice/phone-social-illustration.svg"
-                alt=""
-                width={112}
-                height={112}
-                sizes="112px"
-              />
-            </div>
-            <span className="servicesCtaDivider" aria-hidden="true" />
-            <div className="servicesCtaCopy">
-              <h3>Obserwuj nas w social media</h3>
-              <p>
-                Zobacz nasze realizacje, filmy i porady w social media. Pokażemy, co sprawdza się
-                najlepiej w prawdziwych wnętrzach.
-              </p>
-            </div>
-            <div className="servicesCtaSocial" aria-label="Social media EkoSufity">
-              {socialLinks.map((item) => (
-                <Link
-                  aria-label={`${item.label} EkoSufity`}
-                  className="servicesCtaSocialLink"
-                  href={item.href}
-                  key={item.label}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  <span className="servicesCtaSocialCircle" aria-hidden="true">
-                    {item.label === "YouTube" ? (
-                      // Inline SVG: na hover prostokąt i trójkąt trzeba przemalować
-                      // osobno, filtrem oba zbielałyby i trójkąt by zniknął.
-                      <svg className="servicesCtaYtIcon" width="42" height="42" viewBox="0 0 24 24">
-                        <rect x="2" y="5.7" width="20" height="12.6" rx="3.8" />
-                        <path d="M10 9.15 15.1 12 10 14.85z" />
-                      </svg>
-                    ) : (
-                      <Image
-                        className="servicesCtaSocialIcon"
-                        src={socialChoiceIconSrc[item.label]}
-                        alt=""
-                        width={68}
-                        height={68}
-                        sizes="42px"
-                      />
-                    )}
-                  </span>
-                  <span>{item.label}</span>
-                </Link>
-              ))}
-            </div>
-          </div>
+          <SocialBanner />
         </div>
       </section>
 

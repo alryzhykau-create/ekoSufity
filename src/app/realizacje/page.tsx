@@ -77,7 +77,7 @@ export default async function ProjectsPage({ searchParams }: PageProps) {
         </div>
       </section>
 
-      <section className="section finalCtaSection">
+      <section className="section finalCtaSection sectionAlt">
         <div className="container finalCtaCard">
           <div>
             <span className="eyebrow">Twój projekt</span>
