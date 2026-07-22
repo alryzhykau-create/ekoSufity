@@ -66,6 +66,15 @@ export function Kalkulator() {
 
   const hasArea = area > 0;
 
+  // Rozbicie kosztu — wyłącznie prezentacja policzonych wyżej wartości.
+  const breakdown: Array<[string, number]> = [];
+  if (sufitCost > 0) breakdown.push([`Sufit ${area} m²`, sufitCost]);
+  if (cornersCost > 0) breakdown.push([`Dodatkowe narożniki (${corners - PRICES.freeNarozniki})`, cornersCost]);
+  if (ledCost > 0) breakdown.push([`Linie LED ${led} mb`, ledCost]);
+  if (pointsCost > 0) breakdown.push([`Punkty światła ${points} szt.`, pointsCost]);
+  if (curtainCost > 0) breakdown.push([`Ukryty karnisz ${curtain} mb`, curtainCost]);
+  if (hasArea && rawSum < PRICES.minOrder) breakdown.push(["Minimalne zamówienie", PRICES.minOrder]);
+
   // Wiadomość na WhatsApp z aktualnych wartości kalkulatora — tylko wypełnione pola.
   const waLines = [
     "Dzień dobry! Interesuje mnie wycena sufitu napinanego.",
@@ -83,95 +92,129 @@ export function Kalkulator() {
     <>
       <SectionHeader eyebrow="Kalkulator" title="Oblicz orientacyjny koszt" />
 
-      <div className="kalkulator" style={{ marginTop: 34 }}>
+      <div className="kalkulator">
         <div className="card kalkulatorForm">
           <div className="kalkulatorFields">
             <label className="kalkulatorField kalkulatorField--full">
-              <span className="kalkulatorLabel">Powierzchnia pomieszczenia (m²)</span>
-              <input
-                className="kalkulatorInput"
-                type="number"
-                inputMode="decimal"
-                min="0"
-                step="0.5"
-                placeholder="np. 20"
-                value={powierzchnia}
-                onChange={handleChange(setPowierzchnia)}
-              />
+              <span className="kalkulatorLabel">Powierzchnia pomieszczenia</span>
+              <span className="kalkulatorInputWrap">
+                <input
+                  className="kalkulatorInput"
+                  type="number"
+                  inputMode="decimal"
+                  min="0"
+                  step="0.5"
+                  placeholder="np. 20"
+                  value={powierzchnia}
+                  onChange={handleChange(setPowierzchnia)}
+                />
+                <span className="kalkulatorUnit" aria-hidden="true">
+                  m²
+                </span>
+              </span>
             </label>
 
             <label className="kalkulatorField">
               <span className="kalkulatorLabel">Liczba narożników</span>
-              <input
-                className="kalkulatorInput"
-                type="number"
-                inputMode="numeric"
-                min="0"
-                step="1"
-                value={narozniki}
-                onChange={handleChange(setNarozniki)}
-              />
+              <span className="kalkulatorInputWrap">
+                <input
+                  className="kalkulatorInput"
+                  type="number"
+                  inputMode="numeric"
+                  min="0"
+                  step="1"
+                  value={narozniki}
+                  onChange={handleChange(setNarozniki)}
+                />
+                <span className="kalkulatorUnit" aria-hidden="true">
+                  szt.
+                </span>
+              </span>
               <span className="kalkulatorHint">4 narożniki w cenie, każdy dodatkowy +30 zł</span>
             </label>
 
             <label className="kalkulatorField">
-              <span className="kalkulatorLabel">Linie świetlne LED (mb)</span>
-              <input
-                className="kalkulatorInput"
-                type="number"
-                inputMode="decimal"
-                min="0"
-                step="0.5"
-                value={linieLed}
-                onChange={handleChange(setLinieLed)}
-              />
+              <span className="kalkulatorLabel">Linie świetlne LED</span>
+              <span className="kalkulatorInputWrap">
+                <input
+                  className="kalkulatorInput"
+                  type="number"
+                  inputMode="decimal"
+                  min="0"
+                  step="0.5"
+                  value={linieLed}
+                  onChange={handleChange(setLinieLed)}
+                />
+                <span className="kalkulatorUnit" aria-hidden="true">
+                  mb
+                </span>
+              </span>
             </label>
 
             <label className="kalkulatorField">
-              <span className="kalkulatorLabel">Punkty światła (szt.)</span>
-              <input
-                className="kalkulatorInput"
-                type="number"
-                inputMode="numeric"
-                min="0"
-                step="1"
-                value={punkty}
-                onChange={handleChange(setPunkty)}
-              />
+              <span className="kalkulatorLabel">Punkty światła</span>
+              <span className="kalkulatorInputWrap">
+                <input
+                  className="kalkulatorInput"
+                  type="number"
+                  inputMode="numeric"
+                  min="0"
+                  step="1"
+                  value={punkty}
+                  onChange={handleChange(setPunkty)}
+                />
+                <span className="kalkulatorUnit" aria-hidden="true">
+                  szt.
+                </span>
+              </span>
               <span className="kalkulatorHint">oprawy, lampy, żyrandol</span>
             </label>
 
             <label className="kalkulatorField">
-              <span className="kalkulatorLabel">Ukryty karnisz z LED (mb)</span>
-              <input
-                className="kalkulatorInput"
-                type="number"
-                inputMode="decimal"
-                min="0"
-                step="0.5"
-                value={karnisz}
-                onChange={handleChange(setKarnisz)}
-              />
+              <span className="kalkulatorLabel">Ukryty karnisz z LED</span>
+              <span className="kalkulatorInputWrap">
+                <input
+                  className="kalkulatorInput"
+                  type="number"
+                  inputMode="decimal"
+                  min="0"
+                  step="0.5"
+                  value={karnisz}
+                  onChange={handleChange(setKarnisz)}
+                />
+                <span className="kalkulatorUnit" aria-hidden="true">
+                  mb
+                </span>
+              </span>
             </label>
           </div>
         </div>
 
-        <aside className="card kalkulatorResult">
-          <span className="softLabel">Szacunkowy koszt</span>
+        <aside className="kalkulatorResult">
+          <span className="priceKicker">Szacunkowy koszt</span>
           <div className="kalkulatorResultValue">
             {hasArea ? (
               <>
-                Orientacyjnie: {formatZl(lower)} – {formatZl(upper)} zł
+                <strong>{formatZl(lower)}</strong>
+                <span className="kalkulatorResultRange">– {formatZl(upper)} zł</span>
               </>
             ) : (
-              "Podaj powierzchnię"
+              <span className="kalkulatorResultEmpty">Podaj powierzchnię</span>
             )}
           </div>
-          <p className="kalkulatorResultNote">
-            To wstępny szacunek dla typowego pomieszczenia. Minimalne zamówienie 1200 zł. Dokładną
-            cenę podajemy po bezpłatnym pomiarze.
-          </p>
-          <div className="buttonRow">
+
+          {breakdown.length > 0 ? (
+            <div className="kalkulatorLines">
+              {breakdown.map(([label, value]) => (
+                <div className="kalkulatorLine" key={label}>
+                  <span>{label}</span>
+                  <span>{formatZl(value)} zł</span>
+                </div>
+              ))}
+            </div>
+          ) : null}
+
+          <div className="kalkulatorActions">
             {hasArea ? (
               <Button href={whatsappUrl(waMessage)}>Wyślij wyliczenie na WhatsApp</Button>
             ) : (
@@ -189,6 +232,11 @@ export function Kalkulator() {
           </div>
         </aside>
       </div>
+
+      <p className="kalkulatorResultNote">
+        Wstępny szacunek dla typowego pomieszczenia. Minimalne zamówienie 1200 zł. Dokładną cenę
+        podajemy po bezpłatnym pomiarze.
+      </p>
     </>
   );
 }

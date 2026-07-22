@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { seoMeta } from "@/lib/seo/metadata";
 import { Kalkulator } from "@/components/ceny/Kalkulator";
+import { FinalContactSection } from "@/components/contact/FinalContactSection";
+import { SocialBanner } from "@/components/home/SocialBanner";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
-import { FaqList } from "@/components/ui/FaqList";
+import { CtaIcon } from "@/components/ui/CtaIcon";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { siteConfig, whatsappUrl } from "@/content/site";
 import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/seo/schema";
@@ -18,16 +21,23 @@ export const metadata: Metadata = {
 };
 
 const factors = [
-  ["Większa liczba narożników", "Wymaga dokładniejszego pomiaru, cięcia i montażu profilu."],
-  ["Nietypowy kształt pomieszczenia", "Zwiększa złożoność przygotowania i montażu."],
-  ["Oświetlenie LED", "Linie świetlne, punkty, zasilacze i sterowanie są dodatkowym zakresem."],
-  ["Ukryty karnisz", "Wymaga dodatkowego rozwiązania przy oknie."],
-  ["Translucent / podświetlenie", "Wymaga dobrania materiału i światła do efektu."],
-  ["Pomieszczenia wilgotne", "Wymagają oceny warunków i właściwego doboru rozwiązania."]
+  ["Więcej narożników", "Dokładniejszy pomiar, cięcie i montaż profilu."],
+  ["Nietypowy kształt", "Większa złożoność przygotowania i montażu."],
+  ["Oświetlenie LED", "Linie, punkty, zasilacze i sterowanie osobno."],
+  ["Ukryty karnisz", "Dodatkowe rozwiązanie przy oknie."],
+  ["Translucent / podświetlenie", "Dobór materiału i światła do efektu."],
+  ["Pomieszczenia wilgotne", "Ocena warunków i właściwy dobór rozwiązania."]
 ];
 
-const basePrices = [
-  ["Sufit napinany", "od 120 zł/m²"],
+// Cena bazowa idzie na kartę ze zdjęciem, reszta pozycji na kafelki obok.
+const basePrice = {
+  title: "Sufit napinany",
+  price: "od 120 zł",
+  unit: "/m²",
+  note: "Prosty sufit MSD, 4 narożniki, bez dodatków. Dokładna cena po bezpłatnym pomiarze."
+};
+
+const addonPrices = [
   ["Linie świetlne LED", "od 250 zł/mb"],
   ["Ukryty karnisz z LED", "od 300 zł/mb"],
   ["Punkt oświetlenia", "od 100 zł/szt"],
@@ -84,30 +94,52 @@ export default function PricesPage() {
 
       <section className="pageHero">
         <div className="container splitHero">
-          <div>
+          <div className="pageHeroCopy">
             <Breadcrumbs items={[{ label: "Ceny", href: "/ceny" }]} />
             <span className="eyebrow">Cena i wycena</span>
-            <h1>Sufity napinane cena - od czego zależy koszt?</h1>
+            <h1>Sufity napinane cena — od czego zależy koszt?</h1>
             <p className="pageLead">
-              Cena sufitu napinanego zależy od metrażu, liczby narożników, materiału i dodatków —
-              takich jak LED czy ukryty karnisz. Orientacyjne stawki są w cenniku niżej, a dokładną
-              cenę podajemy po bezpłatnym pomiarze.
+              Cena sufitu napinanego zaczyna się od ok. 120 zł/m² dla prostego sufitu MSD w
+              prostokątnym pomieszczeniu z 4 narożnikami, bez dodatkowych elementów. Dokładną cenę
+              podajemy po bezpłatnym pomiarze.
             </p>
             <div className="buttonRow">
-              <Button href={siteConfig.contacts.phoneHref}>Zadzwoń i umów pomiar</Button>
-              <Button href={whatsappUrl("Dzień dobry, chcę zapytać o wycenę sufitu napinanego.")} variant="secondary">
+              <Button className="heroPrimaryCta" href={siteConfig.contacts.phoneHref}>
+                <CtaIcon name="phone" />
+                Zadzwoń i umów pomiar
+              </Button>
+              <Button
+                className="heroWhatsappCta waHoverFill"
+                href={whatsappUrl("Dzień dobry, chcę zapytać o wycenę sufitu napinanego.")}
+                variant="secondary"
+              >
+                <CtaIcon name="whatsapp" />
                 Napisz na WhatsApp
               </Button>
             </div>
           </div>
-          <aside className="card priceCard">
-            <span className="softLabel">Cena orientacyjna</span>
-            <div className="priceValue">średnio ok. 120 zł/m²</div>
-            <p>
-              Sufit MSD, zwykły prostokąt, 4 narożniki, bez oświetlenia LED, karniszy, dodatkowych
-              profili i nietypowych przejść. Końcowa cena zależy od wybranego materiału.
-            </p>
-          </aside>
+          {/* Trzeci wariant pary zdjęć — mniejsze wychodzi w lewo u góry. */}
+          <div className="pageHeroPhotos pageHeroPhotos--topLeft">
+            <div className="pageHeroPhotoMain">
+              <Image
+                src="/images/kuchnia-10m2-photo.png"
+                alt="Sufit napinany w kuchni z oświetleniem LED"
+                width={900}
+                height={675}
+                priority
+                sizes="(max-width: 900px) 100vw, 530px"
+              />
+            </div>
+            <div className="pageHeroPhotoSmall">
+              <Image
+                src="/images/lazienka-6m2-photo.png"
+                alt="Sufit napinany w łazience"
+                width={400}
+                height={400}
+                sizes="(max-width: 900px) 52vw, 235px"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -118,23 +150,34 @@ export default function PricesPage() {
             title="Podstawowe ceny"
             lead="Ceny orientacyjne. Dokładną wycenę podajemy po bezpłatnym pomiarze."
           />
-          <div className="comparisonScroll">
-            <table className="comparisonTable comparisonTable--compact">
-              <thead>
-                <tr>
-                  <th>Pozycja</th>
-                  <th>Cena</th>
-                </tr>
-              </thead>
-              <tbody>
-                {basePrices.map(([position, price]) => (
-                  <tr key={position}>
-                    <th scope="row">{position}</th>
-                    <td>{price}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="priceDeck">
+            <article className="priceBaseCard">
+              <Image
+                src="/images/salon-22m2-photo.png"
+                alt=""
+                width={640}
+                height={800}
+                sizes="(max-width: 900px) 100vw, 420px"
+              />
+              <span className="priceBaseScrim" aria-hidden="true" />
+              <div className="priceBaseCopy">
+                <span className="priceBaseKicker">Cena bazowa</span>
+                <h3>{basePrice.title}</h3>
+                <p>{basePrice.note}</p>
+              </div>
+              <strong className="priceBaseValue">
+                {basePrice.price}
+                <span>{basePrice.unit}</span>
+              </strong>
+            </article>
+            <div className="priceChips">
+              {addonPrices.map(([position, price]) => (
+                <div className="priceChip" key={position}>
+                  <span>{position}</span>
+                  <strong>{price}</strong>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -144,7 +187,7 @@ export default function PricesPage() {
           <SectionHeader
             eyebrow="Zakres"
             title="Co zwiększa cenę?"
-            lead="Nie ukrywamy, że cena zależy od złożoności. Dlatego pokazujemy orientacyjną średnią z warunkami, a dokładną wycenę robimy po pomiarze."
+            lead="Nie ukrywamy, że cena zależy od złożoności — pokazujemy orientacyjną średnią z warunkami, a dokładną wycenę robimy po pomiarze."
           />
           <div className="priceFactorList">
             {factors.map(([title, copy]) => (
@@ -173,7 +216,7 @@ export default function PricesPage() {
           <SectionHeader
             eyebrow="Przykłady"
             title="Ile kosztują typowe realizacje?"
-            lead="Poniżej orientacyjne koszty typowych realizacji z oświetleniem i dodatkami. Sam sufit liczymy od 120 zł/m² — dokładną cenę podajemy po pomiarze."
+            lead="Orientacyjne koszty typowych realizacji z oświetleniem i dodatkami. Sam sufit liczymy od 120 zł/m² — dokładną cenę podajemy po pomiarze."
           />
           <div className="grid4 sectionCards">
             {priceExamples.map(([title, price, desc]) => (
@@ -187,10 +230,32 @@ export default function PricesPage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section faqSection">
         <div className="container">
-          <SectionHeader eyebrow="FAQ" title="Pytania o cenę sufitu napinanego" />
-          <FaqList items={faqs} />
+          <div className="faqWrap">
+            <aside className="faqAside">
+              <span className="eyebrow">FAQ</span>
+              <h2 className="sectionTitle">Pytania o cenę sufitu napinanego</h2>
+              <p className="sectionLead">
+                Krótko wyjaśniamy z czego składa się cena i jak liczymy wycenę.
+              </p>
+              <div className="faqNoAnswer">
+                <p className="faqNoAnswerTitle">Nie znalazłeś odpowiedzi?</p>
+                <p>Zadzwoń albo umów bezpłatny pomiar — podamy dokładną cenę.</p>
+                <Button href="/kontakt">Umów pomiar</Button>
+              </div>
+            </aside>
+            <div className="faqList faqListSingle">
+              {faqs.map((item, index) => (
+                <details className="faqItem" key={item.question} open={index === 0}>
+                  <summary>
+                    <span>{item.question}</span>
+                  </summary>
+                  <p>{item.answer}</p>
+                </details>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -219,6 +284,14 @@ export default function PricesPage() {
           </div>
         </div>
       </section>
+
+      <section className="section">
+        <div className="container">
+          <SocialBanner />
+        </div>
+      </section>
+
+      <FinalContactSection />
     </>
   );
 }
