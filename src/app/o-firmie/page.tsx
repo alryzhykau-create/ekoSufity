@@ -44,7 +44,7 @@ export default function AboutPage() {
 
       <section className="pageHero">
         <div className="container splitHero">
-          <div>
+          <div className="pageHeroCopy">
             <Breadcrumbs items={[{ label: "O firmie", href: "/o-firmie" }]} />
             <span className="eyebrow">Poznaj nas</span>
             <h1>O EkoSufity</h1>

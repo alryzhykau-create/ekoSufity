@@ -52,7 +52,7 @@ export default function LocationsPage() {
       {/* 1. Hero */}
       <section className="pageHero">
         <div className="container splitHero">
-          <div>
+          <div className="pageHeroCopy">
             <Breadcrumbs items={[{ label: "Lokalizacje", href: "/lokalizacje" }]} />
             <span className="eyebrow">Obszar działania</span>
             <h1>Sufity napinane — Wrocław i Dolny Śląsk</h1>

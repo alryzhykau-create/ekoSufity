@@ -83,7 +83,7 @@ export default async function CityPage({ params }: PageProps) {
 
       <section className="pageHero">
         <div className="container splitHero">
-          <div>
+          <div className="pageHeroCopy">
             <Breadcrumbs
               items={[
                 { label: "Lokalizacje", href: "/lokalizacje" },

@@ -3816,6 +3816,31 @@ details.faqItem:not([open]) p {
   background: var(--section-alt-bg);
 }
 
+/* Kolumna tekstu w hero podstron — jeden rytm na wszystkich stronach:
+   równy odstęp 36px między okruszkami, eyebrow, H1, leadem i przyciskami
+   (tak jak w makietach Claude Design). Własne marginesy dzieci zerujemy,
+   żeby nie dokładały się do gapa. */
+.pageHeroCopy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 36px;
+  /* Kolumna trzyma się góry siatki — inaczej wyższe zdjęcie lub karta obok
+     spychałaby okruszki w dół i każda podstrona zaczynałaby się inaczej. */
+  align-self: start;
+}
+
+.pageHeroCopy > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  .pageHeroCopy {
+    gap: 24px;
+  }
+}
+
 /* Okruszki: lista <ol>, separator z CSS, bieżąca strona bez linku. */
 .breadcrumbs ol {
   display: flex;

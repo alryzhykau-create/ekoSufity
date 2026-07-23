@@ -11,7 +11,7 @@ export default function NotFound() {
   return (
     <>
       <section className="pageHero">
-        <div className="container">
+        <div className="container pageHeroCopy">
           <span className="eyebrow">Błąd 404</span>
           <h1>Nie znaleźliśmy tej strony</h1>
           <p className="pageLead">

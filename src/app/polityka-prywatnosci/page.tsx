@@ -43,7 +43,7 @@ export default function PrivacyPolicyPage() {
       <JsonLd data={breadcrumbSchema([{ label: "Polityka prywatności", href: "/polityka-prywatnosci" }])} />
 
       <section className="pageHero">
-        <div className="container">
+        <div className="container pageHeroCopy">
           <Breadcrumbs items={[{ label: "Polityka prywatności", href: "/polityka-prywatnosci" }]} />
           <span className="eyebrow">Dokument</span>
           <h1>Polityka prywatności</h1>

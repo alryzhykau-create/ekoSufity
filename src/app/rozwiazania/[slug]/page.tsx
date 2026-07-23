@@ -264,7 +264,7 @@ export default async function SolutionPage({ params }: PageProps) {
 
       <section className="pageHero">
         <div className="container splitHero">
-          <div>
+          <div className="pageHeroCopy">
             <Breadcrumbs
               items={[
                 { label: "Rozwiązania", href: "/rozwiazania" },

@@ -253,7 +253,7 @@ export function RozwiazanieDetail({ rozwiazanie }: RozwiazanieDetailProps) {
       {/* Hero */}
       <section className="pageHero">
         <div className="container splitHero">
-          <div>
+          <div className="pageHeroCopy">
             <Breadcrumbs
               items={[
                 { label: "Rozwiązania", href: "/rozwiazania" },
