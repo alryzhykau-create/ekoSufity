@@ -67,7 +67,7 @@ export function FinalContactSection({ alt = true }: { alt?: boolean }) {
         <form className="contactFormPanel" onSubmit={handleSubmit}>
           <label className="contactField">
             <span className="fieldIcon contactIconMask contactIconUser" aria-hidden="true" />
-            <input name="name" type="text" placeholder="Imię i nazwisko" required autoComplete="name" />
+            <input name="name" type="text" placeholder="Imię i Nazwisko" required autoComplete="name" />
           </label>
           <label className="contactField">
             <span className="fieldIcon contactIconMask contactIconPhone" aria-hidden="true" />
