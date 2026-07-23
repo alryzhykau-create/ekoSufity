@@ -525,13 +525,23 @@ main {
   stroke-linejoin: round;
 }
 
-/* Pełne glify (telefon, WhatsApp) — mniejsze i bez obrysu, który pogrubiał je
-   przy regule .btn svg. */
+/* Pełne glify (telefon, WhatsApp) — bez obrysu, który pogrubiał je przy regule
+   .btn svg. Telefon jest litą bryłą, więc przy tej samej ramce wygląda cięższy
+   niż konturowy WhatsApp — dlatego dajemy mu odrobinę mniejszy rozmiar, żeby
+   optycznie oba znaki były równe. */
 .btn svg.ctaIconPhone,
 .btn svg.ctaIconWa {
-  width: 22px;
   height: 22px;
   stroke: none;
+}
+
+.btn svg.ctaIconWa {
+  width: 22px;
+}
+
+.btn svg.ctaIconPhone {
+  width: 20px;
+  height: 20px;
 }
 
 .btn:hover {
