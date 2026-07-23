@@ -105,7 +105,11 @@ export function Footer() {
               {siteConfig.contacts.phoneDisplay}
             </Link>
             <Link href={`mailto:${siteConfig.contacts.email}`}>
-              <span aria-hidden="true">@</span>
+              <span className="footerPhoneGlyph" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
+                  <path d="M2 6c0-1.1.9-2 2-2h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6Zm2.4.4L12 11.6l7.6-5.2H4.4ZM20 8.9l-7.5 5.1a1 1 0 0 1-1 0L4 8.9V18h16V8.9Z" />
+                </svg>
+              </span>
               {siteConfig.contacts.email}
             </Link>
             <span className="footerContactText">
