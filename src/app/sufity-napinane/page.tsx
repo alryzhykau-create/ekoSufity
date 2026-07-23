@@ -318,12 +318,20 @@ export default function StretchCeilingsPage() {
               projekt. Montujemy linie świetlne LED, światło obwodowe, punkty, a także dowolne
               oprawy: halogeny, lampy i żyrandole. Zakładamy też system magnetyczny 48 V i
               podświetlenie translucent, gdy świecić ma cała powierzchnia. Profile, zasilacze i
-              przewody chowamy pod membraną — widać tylko efekt końcowy. Barwę i jasność światła
-              dobieramy do funkcji pomieszczenia — cieplejsze w sypialni, jaśniejsze w kuchni i nad
-              blatem roboczym. Oświetlenie możemy podzielić na strefy albo dodać ściemnianie, żeby
-              jednym wnętrzem sterować inaczej rano, a inaczej wieczorem. Cały układ świateł
-              ustalamy na bezpłatnym pomiarze, razem z sufitem, więc na montażu nie trzeba już nic
-              przerabiać.
+              przewody chowamy pod membraną — widać tylko efekt końcowy.
+            </p>
+            <p className="sectionLead sectionLead--wide">
+              Barwę i jasność światła dobieramy do funkcji pomieszczenia — cieplejsze w sypialni,
+              jaśniejsze w kuchni i nad blatem roboczym. Oświetlenie możemy podzielić na strefy albo
+              dodać ściemnianie, żeby jednym wnętrzem sterować inaczej rano, a inaczej wieczorem.
+            </p>
+            <p className="sectionLead sectionLead--wide">
+              Cały układ świateł ustalamy na bezpłatnym pomiarze, razem z sufitem, więc na montażu
+              nie trzeba już nic przerabiać. Szczegóły znajdziesz na stronie{" "}
+              <Link href="/rozwiazania/oswietlenie-led" className="inlineLink">
+                oświetlenie LED w rozwiązaniach
+              </Link>
+              .
             </p>
           </div>
           <div className="altSplitPhoto">
