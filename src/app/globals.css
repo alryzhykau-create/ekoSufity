@@ -554,7 +554,7 @@ main {
 
 .btnPrimary {
   background: var(--gold);
-  color: var(--black);
+  color: #fff;
 }
 
 .btnPrimary:hover {
