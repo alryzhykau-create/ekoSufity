@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { FinalContactSection } from "@/components/contact/FinalContactSection";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -227,27 +228,7 @@ export default async function CityPage({ params }: PageProps) {
         </div>
       </section>
 
-      <section className="section finalCtaSection sectionAlt">
-        <div className="container finalCtaCard">
-          <div>
-            <span className="eyebrow">Bezpłatny pomiar</span>
-            <h2 className="sectionTitle">Umów pomiar {city.locative}</h2>
-            <p>
-              Zadzwoń albo wyślij zdjęcie pomieszczenia i orientacyjny metraż — ustalimy termin
-              bezpłatnego pomiaru. Pomiar i dojazd są gratis.
-            </p>
-          </div>
-          <div className="buttonRow">
-            <Button href={siteConfig.contacts.phoneHref}>Zadzwoń i umów pomiar</Button>
-            <Button
-              href={whatsappUrl(`Dzień dobry, chcę umówić bezpłatny pomiar. Miasto: ${city.name}.`)}
-              variant="secondary"
-            >
-              Napisz na WhatsApp
-            </Button>
-          </div>
-        </div>
-      </section>
+      <FinalContactSection />
     </>
   );
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { FinalContactSection } from "@/components/contact/FinalContactSection";
 import { seoMeta } from "@/lib/seo/metadata";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
@@ -145,27 +146,7 @@ export default function LocationsPage() {
       </section>
 
       {/* 7. Finalne CTA */}
-      <section className="section finalCtaSection sectionAlt">
-        <div className="container finalCtaCard">
-          <div>
-            <span className="eyebrow">Bezpłatny pomiar</span>
-            <h2 className="sectionTitle">Umów pomiar w swojej miejscowości</h2>
-            <p>
-              Zadzwoń albo wyślij zdjęcie pomieszczenia i metraż — ustalimy termin bezpłatnego
-              pomiaru. Pomiar i dojazd są gratis.
-            </p>
-          </div>
-          <div className="buttonRow">
-            <Button href={siteConfig.contacts.phoneHref}>Zadzwoń</Button>
-            <Button
-              href={whatsappUrl("Dzień dobry, chcę umówić bezpłatny pomiar. Region: Dolny Śląsk.")}
-              variant="secondary"
-            >
-              Napisz na WhatsApp
-            </Button>
-          </div>
-        </div>
-      </section>
+      <FinalContactSection />
     </>
   );
 }

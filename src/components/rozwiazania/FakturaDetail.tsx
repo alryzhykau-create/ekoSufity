@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { FinalContactSection } from "@/components/contact/FinalContactSection";
 import Link from "next/link";
 import { SolutionDiagram } from "@/components/rozwiazania/SolutionDiagram";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
@@ -168,24 +169,7 @@ export function FakturaDetail({ faktura }: FakturaDetailProps) {
       </section>
 
       {/* CTA */}
-      <section className="section finalCtaSection sectionAlt">
-        <div className="container finalCtaCard">
-          <div>
-            <span className="eyebrow">Bezpłatny pomiar</span>
-            <h2 className="sectionTitle">Dobierzemy fakturę do Twojego wnętrza</h2>
-            <p>Na pomiarze pokazujemy próbki i doradzamy fakturę pod światło, pomieszczenie i efekt.</p>
-          </div>
-          <div className="buttonRow">
-            <Button href={siteConfig.contacts.phoneHref}>Zadzwoń i umów pomiar</Button>
-            <Button
-              href={whatsappUrl(`Dzień dobry, chcę dobrać fakturę folii (${lower}) do sufitu napinanego.`)}
-              variant="secondary"
-            >
-              Napisz na WhatsApp
-            </Button>
-          </div>
-        </div>
-      </section>
+      <FinalContactSection />
 
       {/* Inne faktury — przelinkowanie */}
       <section className="section">

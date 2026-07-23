@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { FinalContactSection } from "@/components/contact/FinalContactSection";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { RozwiazanieDetail } from "@/components/rozwiazania/RozwiazanieDetail";
@@ -382,26 +383,7 @@ export default async function SolutionPage({ params }: PageProps) {
         </div>
       </section>
 
-      <section className="section finalCtaSection sectionAlt">
-        <div className="container finalCtaCard">
-          <div>
-            <span className="eyebrow">Bezpłatny pomiar</span>
-            <h2 className="sectionTitle">Dobierzemy rozwiązanie do wnętrza</h2>
-            <p>{finalCta.text}</p>
-          </div>
-          <div className="buttonRow">
-            <Button href={siteConfig.contacts.phoneHref}>Zadzwoń i umów pomiar</Button>
-            <Button
-              href={whatsappUrl(
-                `Dzień dobry, interesuje mnie: ${service.title}. Chcę umówić bezpłatny pomiar.`
-              )}
-              variant="secondary"
-            >
-              Napisz na WhatsApp
-            </Button>
-          </div>
-        </div>
-      </section>
+      <FinalContactSection />
     </>
   );
 }

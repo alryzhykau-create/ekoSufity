@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { FinalContactSection } from "@/components/contact/FinalContactSection";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -132,24 +133,7 @@ export function FolieDetail() {
         </div>
       </section>
 
-      <section className="section finalCtaSection sectionAlt">
-        <div className="container finalCtaCard">
-          <div>
-            <span className="eyebrow">Bezpłatny pomiar</span>
-            <h2 className="sectionTitle">Nie wiesz, którą folię wybrać?</h2>
-            <p>Na pomiarze doradzamy markę i materiał pod wnętrze, efekt i budżet.</p>
-          </div>
-          <div className="buttonRow">
-            <Button href={siteConfig.contacts.phoneHref}>Zadzwoń i umów pomiar</Button>
-            <Button
-              href={whatsappUrl("Dzień dobry, chcę dobrać folię do sufitu napinanego.")}
-              variant="secondary"
-            >
-              Napisz na WhatsApp
-            </Button>
-          </div>
-        </div>
-      </section>
+      <FinalContactSection />
     </>
   );
 }

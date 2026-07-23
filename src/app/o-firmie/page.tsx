@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { FinalContactSection } from "@/components/contact/FinalContactSection";
 import { seoMeta } from "@/lib/seo/metadata";
 import Image from "next/image";
 import Link from "next/link";
@@ -127,24 +128,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section finalCtaSection sectionAlt">
-        <div className="container finalCtaCard">
-          <div>
-            <span className="eyebrow">Bezpłatny pomiar</span>
-            <h2 className="sectionTitle">Porozmawiajmy o Twoim suficie</h2>
-            <p>
-              Wyślij zdjęcie pomieszczenia, miasto i orientacyjny metraż albo po prostu zadzwoń —
-              doradzimy konkretnie.
-            </p>
-          </div>
-          <div className="buttonRow">
-            <Button href={siteConfig.contacts.phoneHref}>Zadzwoń i umów pomiar</Button>
-            <Button href={whatsappUrl()} variant="secondary">
-              Napisz na WhatsApp
-            </Button>
-          </div>
-        </div>
-      </section>
+      <FinalContactSection />
     </>
   );
 }

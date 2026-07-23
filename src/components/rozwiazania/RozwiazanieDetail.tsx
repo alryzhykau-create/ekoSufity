@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FinalContactSection } from "@/components/contact/FinalContactSection";
 import { PlaceholderImage } from "@/components/rozwiazania/PlaceholderImage";
 import { hasDiagram, SolutionDiagram } from "@/components/rozwiazania/SolutionDiagram";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
@@ -305,26 +306,7 @@ export function RozwiazanieDetail({ rozwiazanie }: RozwiazanieDetailProps) {
       </section>
 
       {/* CTA */}
-      <section className="section finalCtaSection sectionAlt">
-        <div className="container finalCtaCard">
-          <div>
-            <span className="eyebrow">Bezpłatny pomiar</span>
-            <h2 className="sectionTitle">Dobierzemy rozwiązanie do wnętrza</h2>
-            <p>{finalCta.text}</p>
-          </div>
-          <div className="buttonRow">
-            <Button href={siteConfig.contacts.phoneHref}>Zadzwoń i umów pomiar</Button>
-            <Button
-              href={whatsappUrl(
-                `Dzień dobry, interesuje mnie rozwiązanie: ${rozwiazanie.shortTitle}. Chcę umówić bezpłatny pomiar.`
-              )}
-              variant="secondary"
-            >
-              Napisz na WhatsApp
-            </Button>
-          </div>
-        </div>
-      </section>
+      <FinalContactSection />
 
       {/* Powiązane rozwiązania */}
       {relatedLinks.length > 0 ? (
