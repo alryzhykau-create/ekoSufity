@@ -77,7 +77,7 @@ export function FinalContactSection({ alt = true }: { alt?: boolean }) {
             <span className="fieldIcon contactIconMask contactIconMessage" aria-hidden="true" />
             <textarea
               name="message"
-              placeholder="Wiadomość — opisz pomieszczenie (np. Wrocław, salon 25 m², LED)"
+              placeholder={"Wiadomość — opisz pomieszczenie\n(np. Wrocław, salon 25 m², LED)"}
               rows={3}
             />
           </label>
