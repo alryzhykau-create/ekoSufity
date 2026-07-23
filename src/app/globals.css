@@ -3586,8 +3586,8 @@ details.faqItem:not([open]) p {
 }
 
 .contactChipPhone img {
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
   filter: brightness(0) invert(1);
 }
 
