@@ -3603,6 +3603,13 @@ details.faqItem:not([open]) p {
   font-size: 1rem;
 }
 
+/* Zegar tej samej wielkości co ikona telefonu w chipie obok. */
+.contactChipHoursIcon {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+}
+
 .contactIconMask {
   display: inline-block;
   flex: 0 0 auto;
