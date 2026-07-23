@@ -90,6 +90,26 @@ export default function PrivacyPolicyPage() {
                 Możesz poprosić o dostęp do swoich danych, ich poprawienie, usunięcie lub
                 ograniczenie przetwarzania, jeżeli wynika to z obowiązujących przepisów.
               </p>
+              <h2>Wykorzystane materiały</h2>
+              <p>
+                Ikona WhatsApp: „logotyp WhatsApp Značok" autorstwa Rebin Infotech,{" "}
+                <Link
+                  href="https://icon-icons.com/ru/authors/290-rebin-infotech"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Icon-Icons.com
+                </Link>
+                , licencja{" "}
+                <Link
+                  href="https://creativecommons.org/licenses/by/4.0/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  CC BY 4.0
+                </Link>
+                .
+              </p>
             </article>
           </div>
 
