@@ -575,9 +575,11 @@ main {
   color: var(--text);
 }
 
-/* Znak WhatsApp: pełny, czarny glif. */
-.btn.heroWhatsappCta svg.ctaIconWa {
-  fill: #0d0d0d;
+/* Znak WhatsApp: sam zielony kontur, bez wypełnienia — zieleń ta sama
+   co przy przycisku WhatsApp w nagłówku. */
+.btn.heroWhatsappCta svg.ctaIconOutline {
+  fill: none;
+  stroke: #25d366;
 }
 
 .btnSecondary {
@@ -4421,8 +4423,8 @@ details.faqItem:not([open]) p {
   color: #fff;
 }
 
-.btn.waHoverFill:hover svg.ctaIconWa {
-  fill: #fff;
+.btn.waHoverFill:hover svg.ctaIconOutline {
+  stroke: #fff;
 }
 
 /* Karty rodzajów: łagodniejszy narożnik, hover w kolorze marki. */
