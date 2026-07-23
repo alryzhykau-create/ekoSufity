@@ -121,6 +121,17 @@ export default function PrivacyPolicyPage() {
                 </Link>
                 .
               </p>
+              <p>
+                Ikona wiadomości: „разговор речь воздушный шар чат" autorstwa Egor Rumyantsev,{" "}
+                <Link
+                  href="https://icon-icons.com/ru/authors/779-egor-rumyantsev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Icon-Icons.com
+                </Link>
+                .
+              </p>
             </article>
           </div>
 
