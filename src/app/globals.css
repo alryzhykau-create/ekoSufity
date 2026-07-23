@@ -3478,7 +3478,7 @@ details.faqItem:not([open]) p {
   min-height: 520px;
   grid-template-columns: minmax(0, 1fr) minmax(360px, 420px);
   gap: 52px;
-  align-items: end;
+  align-items: center;
   border-radius: 22px;
   background: #111 url("/images/contact/contact-bg-interior.webp") center right / cover no-repeat;
   color: #fff;
@@ -3509,12 +3509,6 @@ details.faqItem:not([open]) p {
 .contactFormPanel {
   position: relative;
   z-index: 1;
-}
-
-/* Kolumny wyrównane do dołu; formularz opuszczamy o swój dolny padding,
-   żeby przycisk „Poproś o kontakt" stanął w jednej linii z chipami po lewej. */
-.finalContactCard .contactFormPanel {
-  margin-bottom: -30px;
 }
 
 .finalContactCopy h2 {
@@ -5729,10 +5723,6 @@ a.contactCard:hover {
 
   .contactFormPanel {
     width: min(100%, 460px);
-  }
-
-  .finalContactCard .contactFormPanel {
-    margin-bottom: 0;
   }
 
   .reviewsIntro {
