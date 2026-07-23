@@ -2,8 +2,8 @@
 // kolor nadaje CSS przycisku.
 export function CtaIcon({ name }: { name: "phone" | "whatsapp" }) {
   const iconProps = {
-    width: 28,
-    height: 28,
+    width: 22,
+    height: 22,
     xmlns: "http://www.w3.org/2000/svg",
     "aria-hidden": true
   } as const;
