@@ -264,6 +264,7 @@ export default function StretchCeilingsPage() {
             eyebrow="Rodzaje"
             title="Najczęściej wybierane rodzaje sufitów napinanych"
             lead="Dobór materiału zależy od pomieszczenia, światła, efektu wizualnego i planowanych dodatków."
+            leadClassName="sectionLead--wide"
           />
           <div className="grid3 sectionCards">
             {ceilingTypes.map((type) => (
