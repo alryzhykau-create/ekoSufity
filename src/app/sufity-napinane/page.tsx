@@ -332,7 +332,7 @@ export default function StretchCeilingsPage() {
             <Link
               href="/rozwiazania/oswietlenie-led"
               className="cardArrowText"
-              style={{ marginTop: 20 }}
+              style={{ display: "inline-block", marginTop: 24 }}
             >
               Poznaj oświetlenie w sufitach napinanych →
             </Link>
