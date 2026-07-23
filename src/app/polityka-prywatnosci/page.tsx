@@ -110,6 +110,17 @@ export default function PrivacyPolicyPage() {
                 </Link>
                 .
               </p>
+              <p>
+                Ikona telefonu: „telefon ручка силуэт" autorstwa Dave Gandy,{" "}
+                <Link
+                  href="https://icon-icons.com/ru/authors/370-dave-gandy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Icon-Icons.com
+                </Link>
+                .
+              </p>
             </article>
           </div>
 
