@@ -525,6 +525,15 @@ main {
   stroke-linejoin: round;
 }
 
+/* Pełne glify (telefon, WhatsApp) — mniejsze i bez obrysu, który pogrubiał je
+   przy regule .btn svg. */
+.btn svg.ctaIconPhone,
+.btn svg.ctaIconWa {
+  width: 22px;
+  height: 22px;
+  stroke: none;
+}
+
 .btn:hover {
   transform: translateY(-1px);
 }
