@@ -4621,27 +4621,28 @@ a.miniCard:hover {
   background: linear-gradient(180deg, #fffdfa, #fff8f0);
 }
 
-/* Znacznik kółko-plus zamiast strzałki; po otwarciu złote tło i obrót w ×. */
+/* Znacznik: strzałka w kółku (jak w makiecie), po otwarciu złote tło i obrót. */
 .faqWrap details.faqItem summary::after {
-  content: "+";
-  display: grid;
-  place-items: center;
+  content: "";
+  display: block;
   width: 30px;
   height: 30px;
+  flex: none;
+  margin-left: auto;
   border: 0;
   border-radius: 50%;
-  background: #f3e2cc;
-  color: var(--gold-dark);
-  font-size: 1.1rem;
-  font-weight: 700;
+  background: #f3e2cc
+    url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23c9791c'%20stroke-width='3'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M6%209l6%206%206-6'/%3E%3C/svg%3E")
+    center / 14px no-repeat;
   transform: none;
-  transition: transform 250ms ease, background 250ms ease, color 250ms ease;
+  transition: transform 250ms ease, background 250ms ease;
 }
 
 .faqWrap details.faqItem[open] summary::after {
-  background: var(--gold);
-  color: #fff;
-  transform: rotate(45deg);
+  transform: rotate(180deg);
+  background: var(--gold)
+    url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23ffffff'%20stroke-width='3'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M6%209l6%206%206-6'/%3E%3C/svg%3E")
+    center / 14px no-repeat;
 }
 
 @media (max-width: 900px) {

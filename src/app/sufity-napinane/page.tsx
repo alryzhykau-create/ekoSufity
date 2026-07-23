@@ -471,7 +471,7 @@ export default function StretchCeilingsPage() {
             </aside>
             <div className="faqList faqListSingle">
               {faqs.map((item, index) => (
-                <details className="faqItem" key={item.question} open={index === 0}>
+                <details className="faqItem" key={item.question}>
                   <summary>
                     <span>{item.question}</span>
                   </summary>
