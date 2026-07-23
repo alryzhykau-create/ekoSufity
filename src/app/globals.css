@@ -3512,7 +3512,6 @@ details.faqItem:not([open]) p {
 }
 
 .finalContactCopy h2 {
-  max-width: 560px;
   margin: 16px 0 0;
   color: #fff;
   font-family: var(--font-display);
