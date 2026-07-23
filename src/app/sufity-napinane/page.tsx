@@ -369,6 +369,7 @@ export default function StretchCeilingsPage() {
             eyebrow="Porównanie"
             title="Sufit napinany czy karton-gips?"
             lead="Sufit napinany i sufit z płyt karton-gips (G-K) to dwa różne rozwiązania. Poniżej porównanie, które pomaga zdecydować."
+            leadClassName="sectionLead--full"
           />
           <div className="comparisonScroll">
             <table className="comparisonTable">
@@ -400,6 +401,7 @@ export default function StretchCeilingsPage() {
             eyebrow="Zastosowanie"
             title="Kiedy sufit napinany ma największy sens?"
             lead="To rozwiązanie jest szczególnie praktyczne tam, gdzie liczy się estetyka, czysty efekt i możliwość połączenia sufitu ze światłem."
+            leadClassName="sectionLead--full"
           />
           <div className="grid4 sectionCards">
             {useCases.map(([title, copy]) => (
