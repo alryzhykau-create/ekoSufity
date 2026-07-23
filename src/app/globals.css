@@ -3550,12 +3550,13 @@ details.faqItem:not([open]) p {
 .contactChipPhone {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 18px;
+  gap: 12px;
+  padding: 15px 24px;
   border: 1px solid rgba(201, 121, 28, 0.5);
   border-radius: 12px;
   background: rgba(201, 121, 28, 0.18);
   color: #fff;
+  font-size: 1.15rem;
   font-weight: 700;
   transition: background 180ms ease;
 }
@@ -3566,8 +3567,8 @@ details.faqItem:not([open]) p {
 }
 
 .contactChipPhone img {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   filter: brightness(0) invert(1);
 }
 
@@ -3575,11 +3576,11 @@ details.faqItem:not([open]) p {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 18px;
+  padding: 15px 24px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
 }
 
 .contactIconMask {
