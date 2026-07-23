@@ -4413,12 +4413,13 @@ a.miniCard:hover {
   object-fit: cover;
 }
 
-/* Sekcja Oświetlenie: tekst po lewej, zdjęcie po prawej. */
+/* Sekcja Oświetlenie: tekst po lewej, zdjęcie po prawej. Obie kolumny
+   startują od góry, więc nagłówek trzyma równą linię z krawędzią zdjęcia. */
 .altSplit {
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
   gap: 48px;
-  align-items: center;
+  align-items: start;
 }
 
 .altSplitPhoto {

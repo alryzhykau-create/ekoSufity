@@ -337,7 +337,7 @@ export default function StretchCeilingsPage() {
       <section className="section">
         <div className="container">
           <SectionHeader eyebrow="Gdzie" title="Gdzie montujemy sufity napinane" />
-          <p className="sectionLead sectionLead--wide">
+          <p className="sectionLead sectionLead--full">
             Sufity napinane sprawdzają się niemal w każdym pomieszczeniu. Montujemy je w mieszkaniach
             i domach — w salonach, kuchniach, sypialniach, łazienkach i na korytarzach. Wykonujemy je
             również w lokalach komercyjnych: restauracjach, gabinetach, sklepach i biurach. Radzimy
