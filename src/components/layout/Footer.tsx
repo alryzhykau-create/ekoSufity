@@ -109,7 +109,11 @@ export function Footer() {
               {siteConfig.contacts.email}
             </Link>
             <span className="footerContactText">
-              <span aria-hidden="true">⌖</span>
+              <span className="footerPhoneGlyph" aria-hidden="true">
+                <svg viewBox="0 0 32 32" fill="currentColor" width="14" height="14">
+                  <path d="M16,2c-5.51,0-10,4.49-10,10,0,1.55.35,3.04,1.05,4.45.01.02.02.04.03.06.24.46,6.24,10.08,8.07,13.02.18.29.5.47.85.47s.67-.18.85-.47c1.83-2.94,7.83-12.55,8.02-12.93l.04-.07c.04-.07.08-.14.1-.21.66-1.37.99-2.82.99-4.32,0-5.51-4.49-10-10-10ZM16,16c-2.21,0-4-1.79-4-4s1.79-4,4-4,4,1.79,4,4-1.79,4-4,4Z" />
+                </svg>
+              </span>
               Wrocław i okolice
             </span>
             <span className="footerContactNote">Do 100 km dojazd gratis</span>
