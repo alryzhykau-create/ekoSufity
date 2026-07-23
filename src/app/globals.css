@@ -203,6 +203,12 @@ main {
   max-width: 900px;
 }
 
+/* Akapit na pełną szerokość kontenera (1280px) — bez własnego ograniczenia. */
+.sectionLead--full {
+  margin-top: 18px;
+  max-width: none;
+}
+
 /* Link w ciągu tekstu — czytelny kolor + podkreślenie (nie tylko kolor). */
 .inlineLink {
   color: var(--gold-dark);

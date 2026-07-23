@@ -236,20 +236,20 @@ export default function StretchCeilingsPage() {
       <section className="section">
         <div className="container">
           <SectionHeader eyebrow="Co to jest" title="Co to jest sufit napinany?" />
-          <p className="sectionLead sectionLead--wide">
+          <p className="sectionLead sectionLead--full">
             Sufit napinany to cienka, wytrzymała membrana rozpięta na profilach zamontowanych przy
             suficie lub ścianach. Powstaje idealnie równa powierzchnia — bez gładzenia, malowania i
             mokrych prac. Pod membraną chowamy oświetlenie, przewody i nierówności starego sufitu,
             więc widać tylko czysty efekt. Montaż jest szybki i czysty, zwykle zajmuje 1–2 dni i nie
             wymaga wynoszenia mebli.
           </p>
-          <p className="sectionLead sectionLead--wide">
+          <p className="sectionLead sectionLead--full">
             Folia, z której robimy sufit, jest bezpieczna — nie wydziela zapachu, nie zawiera
             szkodliwych substancji i ma atesty, więc spokojnie sprawdza się w sypialni czy pokoju
             dziecka. Jest też trwała: dobrze napięty sufit zachowuje wygląd przez 15–20 lat, nie
             żółknie i nie pęka.
           </p>
-          <p className="sectionLead sectionLead--wide">
+          <p className="sectionLead sectionLead--full">
             Codzienne utrzymanie jest proste — powierzchnię wystarczy przetrzeć wilgotną ściereczką z
             odrobiną łagodnego detergentu. Nie trzeba jej malować ani odnawiać. Folia nie chłonie
             wody, dlatego nadaje się także do łazienki, kuchni i pomieszczeń wilgotnych.
