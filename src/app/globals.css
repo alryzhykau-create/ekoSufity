@@ -1288,53 +1288,74 @@ main {
 }
 
 .comparisonScroll {
-  margin-top: 34px;
+  margin-top: 26px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  border-radius: var(--radius);
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(13, 13, 13, 0.06);
 }
 
 .comparisonTable {
   width: 100%;
-  min-width: 640px;
+  min-width: 560px;
   border-collapse: collapse;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  overflow: hidden;
-  background: var(--surface);
-  font-size: 0.95rem;
+  border: 1px solid #e7e1d8;
+  background: #fff;
 }
 
+/* Cienkie linie między wszystkimi komórkami — jak w makiecie Claude Design. */
 .comparisonTable th,
 .comparisonTable td {
   padding: 14px 18px;
   text-align: left;
   vertical-align: top;
+  font-size: 0.94rem;
   line-height: 1.45;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid #eee5d8;
+  border-right: 1px solid #e7dcc9;
+}
+
+.comparisonTable th:last-child,
+.comparisonTable td:last-child {
+  border-right: 0;
 }
 
 .comparisonTable thead th {
+  position: sticky;
+  top: 0;
   font-family: var(--font-display);
-  font-weight: 700;
-  color: var(--text);
-  background: var(--bg-alt);
+  font-weight: 600;
+  color: var(--black);
+  background: #faf7f2;
+}
+
+/* Kolumna „sufit napinany" — nagłówek na złoto. */
+.comparisonTable thead th:nth-child(2) {
+  color: var(--gold);
 }
 
 .comparisonTable tbody th {
   width: 30%;
-  font-weight: 700;
-  color: var(--text);
+  font-weight: 600;
+  color: var(--black);
 }
 
 .comparisonTable tbody td {
+  width: 35%;
   color: var(--muted);
 }
 
+/* Środkowa kolumna: delikatne tło i złote pionowe krawędzie, a jej wartości
+   ciemne i pogrubione — to nasza opcja, więc wyróżniamy ją mocniej. */
 .comparisonTable th:nth-child(2),
 .comparisonTable td:nth-child(2) {
-  background: var(--accent-soft);
-  color: var(--text);
+  background: rgba(201, 121, 28, 0.05);
+  border-right: 2px solid var(--gold);
+  border-left: 2px solid var(--gold);
+}
+
+.comparisonTable tbody td:nth-child(2) {
+  color: var(--black);
   font-weight: 600;
 }
 
