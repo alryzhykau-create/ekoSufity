@@ -569,10 +569,11 @@ main {
   box-shadow: 0 10px 24px rgba(17, 17, 17, 0.04);
 }
 
+/* Hover WhatsApp: tło zostaje białe, a ramka, tekst i znak robią się zielone. */
 .heroWhatsappCta:hover {
-  border-color: var(--accent);
+  border-color: #51c85d;
   background: #fff;
-  color: var(--text);
+  color: #51c85d;
 }
 
 /* Znak WhatsApp: pełny, zielony glif. */
@@ -4414,16 +4415,8 @@ details.faqItem:not([open]) p {
   object-fit: cover;
 }
 
-/* CTA WhatsApp: hover wypełnia przycisk firmową zielenią komunikatora. */
-.btn.waHoverFill:hover {
-  background: #25d366;
-  border-color: #25d366;
-  color: #fff;
-}
-
-.btn.waHoverFill:hover svg.ctaIconWa {
-  color: #fff;
-}
+/* Hover WhatsApp wyprowadzony do .heroWhatsappCta:hover (zielony obrys/tekst,
+   białe tło) — .waHoverFill nie dokłada już własnego wypełnienia. */
 
 /* Karty rodzajów: łagodniejszy narożnik, hover w kolorze marki. */
 .miniCard {
