@@ -92,9 +92,9 @@ export default function PrivacyPolicyPage() {
               </p>
               <h2>Wykorzystane materiały</h2>
               <p>
-                Ikona WhatsApp: „logotyp WhatsApp Značok" autorstwa Rebin Infotech,{" "}
+                Ikona WhatsApp: „logotyp WhatsApp” autorstwa Rebin Infotech,{" "}
                 <Link
-                  href="https://icon-icons.com/ru/authors/290-rebin-infotech"
+                  href="https://icon-icons.com/authors/290-rebin-infotech"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -111,9 +111,9 @@ export default function PrivacyPolicyPage() {
                 .
               </p>
               <p>
-                Ikona telefonu: „telefon ручка силуэт" autorstwa Dave Gandy,{" "}
+                Ikona telefonu: „telefon — sylwetka słuchawki” autorstwa Dave Gandy,{" "}
                 <Link
-                  href="https://icon-icons.com/ru/authors/370-dave-gandy"
+                  href="https://icon-icons.com/authors/370-dave-gandy"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -122,9 +122,9 @@ export default function PrivacyPolicyPage() {
                 .
               </p>
               <p>
-                Ikona wiadomości: „разговор речь воздушный шар чат" autorstwa Egor Rumyantsev,{" "}
+                Ikona wiadomości: „dymek rozmowy — czat” autorstwa Egor Rumyantsev,{" "}
                 <Link
-                  href="https://icon-icons.com/ru/authors/779-egor-rumyantsev"
+                  href="https://icon-icons.com/authors/779-egor-rumyantsev"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

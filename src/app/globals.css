@@ -1533,6 +1533,12 @@ main {
   gap: 12px;
 }
 
+/* Bez tego flex ściska logo Google w poziomie (28px deklarowane → ~13px). */
+.reviewsSummaryScore svg,
+.reviewsGoogleLink svg {
+  flex: 0 0 auto;
+}
+
 .reviewsGoogleLink {
   display: inline-flex;
   min-height: 44px;
@@ -2408,7 +2414,7 @@ a.miniCard:hover,
   width: fit-content;
   align-items: center;
   gap: 8px;
-  color: #c9791c;
+  color: var(--gold-dark);
   transition: color 160ms ease;
 }
 
@@ -3866,7 +3872,7 @@ details.faqItem:not([open]) p {
 .successModal a {
   display: inline-block;
   margin-top: 2px;
-  color: #c9791c;
+  color: var(--gold-dark);
   font-size: 1.3rem;
   text-decoration: underline;
 }
