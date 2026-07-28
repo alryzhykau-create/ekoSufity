@@ -9,3 +9,10 @@ dist/
 .playwright-cli/
 tsconfig.tsbuildinfo
 .vercel
+
+# Lokalne skille agentów — trzymane poza repozytorium.
+# .claude/launch.json zostaje śledzony, więc ignorujemy tylko podkatalog skills.
+.claude/skills/
+.agents/
+claude/
+skills-lock.json
