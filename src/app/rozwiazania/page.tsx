@@ -28,6 +28,10 @@ const largeTiles = new Set([
   "sufit-podswietlany"
 ]);
 
+// Ostatni kafel (karnisze-sufitowe) zajmuje 2 kolumny, żeby wypełnić puste
+// miejsce po prawej w ostatnim rzędzie mozaiki.
+const wideTiles = new Set(["karnisze-sufitowe"]);
+
 // Tła kafli: wizualizacja tam, gdzie mamy pasujące zdjęcie, dla reszty
 // gradient nawiązujący do tematu (zamiast jednego gradientu na 11 kaflach).
 const tileBackgrounds: Record<string, string> = {
@@ -126,7 +130,9 @@ export default function SolutionsPage() {
               <Link
                 key={card.href}
                 href={card.href}
-                className={`mosaicTile${largeTiles.has(card.slug) ? " mosaicTile--large" : ""}`}
+                className={`mosaicTile${largeTiles.has(card.slug) ? " mosaicTile--large" : ""}${
+                  wideTiles.has(card.slug) ? " mosaicTile--wide" : ""
+                }`}
                 style={
                   tileBackgrounds[card.slug]
                     ? { backgroundImage: tileBackgrounds[card.slug] }

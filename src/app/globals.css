@@ -1711,6 +1711,10 @@ main {
   grid-row: span 2;
 }
 
+.mosaicTile--wide {
+  grid-column: span 2;
+}
+
 /* Przyciemnienie od dołu — tekst czytelny nad zdjęciem. */
 .mosaicTile::after {
   content: "";
@@ -1778,6 +1782,10 @@ main {
   .mosaicTile--large {
     grid-row: auto;
     min-height: 200px;
+  }
+
+  .mosaicTile--wide {
+    grid-column: auto;
   }
 }
 
