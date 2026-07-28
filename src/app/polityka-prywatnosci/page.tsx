@@ -51,7 +51,7 @@ export default function PrivacyPolicyPage() {
 
       <section className="section">
         <div className="container privacyGrid">
-          <aside>
+          <aside className="privacyAside">
             <PrivacyToc items={tocItems} />
             <div className="privacyTocCard">
               <p>Masz pytanie o dane?</p>

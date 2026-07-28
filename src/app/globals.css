@@ -4416,9 +4416,19 @@ details.faqItem:not([open]) p {
   align-items: start;
 }
 
-.privacyToc {
+/* Sticky obejmuje całą kolumnę (spis + karta) — przyklejenie samego spisu
+   sprawiało, że karta „Masz pytanie o dane?" nasuwała się na jego pozycje.
+   Na niskich ekranach kolumna jest wyższa niż okno, więc dostaje własne
+   przewijanie zamiast chować przycisk poza kadrem. */
+.privacyAside {
   position: sticky;
   top: 104px;
+  max-height: calc(100vh - 124px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.privacyToc {
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -4572,9 +4582,11 @@ details.faqItem:not([open]) p {
     gap: 28px;
   }
 
-  .privacyToc {
+  .privacyAside {
     position: static;
     top: auto;
+    max-height: none;
+    overflow-y: visible;
   }
 }
 
