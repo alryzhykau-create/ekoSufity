@@ -128,7 +128,12 @@ img {
 }
 
 main {
-  overflow: hidden;
+  /* clip, nie hidden/auto — hidden na jednej osi dolicza drugiej "auto"
+     (reguła CSS o mieszanym overflow), co robi z <main> kontener scrolla
+     i łamie nawigację do kotwic (przeglądarka zmienia hash, ale nie
+     przewija — bo zatrzymuje się na <main>, które nic nie ma do przewinięcia).
+     clip nie tworzy scrollportu, więc tego problemu nie ma. */
+  overflow-x: clip;
 }
 
 .container {
@@ -4393,6 +4398,184 @@ details.faqItem:not([open]) p {
 .privacyContactCard {
   position: sticky;
   top: 104px;
+}
+
+/* ————— Strona /polityka-prywatnosci — spis treści + treść RODO ————— */
+
+.privacyHeroBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.privacyGrid {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 48px;
+  align-items: start;
+}
+
+.privacyToc {
+  position: sticky;
+  top: 104px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.privacyTocLabel {
+  display: block;
+  padding: 0 12px 10px;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.privacyTocLink {
+  display: block;
+  padding: 9px 12px;
+  border-radius: 9px;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.35;
+  font-weight: 500;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.privacyTocLink:hover {
+  background: #fff8f0;
+  color: var(--gold);
+}
+
+.privacyTocLink.is-active {
+  background: var(--gold);
+  color: #fff;
+  font-weight: 700;
+}
+
+.privacyTocLink.is-active:hover {
+  color: #fff;
+}
+
+.privacyTocCard {
+  margin-top: 20px;
+  padding: 20px;
+  background: linear-gradient(180deg, #fffdfa, #fff8f0);
+  border: 1px solid #eee0cd;
+  border-radius: 14px;
+}
+
+.privacyTocCard p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.privacyTocCard p:first-child {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: var(--black);
+}
+
+.privacyTocCard a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  margin-top: 14px;
+  padding: 0 20px;
+  border-radius: 9px;
+  background: var(--gold);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: background 160ms ease;
+}
+
+.privacyTocCard a:hover {
+  background: var(--gold-dark);
+  color: #fff;
+}
+
+.privacyMain {
+  display: grid;
+  gap: 32px;
+  min-width: 0;
+}
+
+.privacyBlock {
+  scroll-margin-top: 96px;
+}
+
+.privacyBlock h2 {
+  margin: 0 0 12px;
+  font-family: var(--font-display);
+  font-size: 1.22rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--black);
+}
+
+.privacyBlock p,
+.privacyBlock li {
+  margin: 0;
+  color: #3d3833;
+  font-size: 0.97rem;
+  line-height: 1.68;
+}
+
+.privacyBlock p + p {
+  margin-top: 12px;
+}
+
+.privacyBlock ul {
+  margin: 12px 0 0;
+  padding-left: 20px;
+}
+
+.privacyBlock ul + p {
+  margin-top: 12px;
+}
+
+.privacyBlock li + li {
+  margin-top: 5px;
+}
+
+.privacyBlock a {
+  color: var(--gold-dark);
+  font-weight: 700;
+}
+
+.privacyAttribution {
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.privacyAttribution p {
+  color: var(--muted);
+}
+
+.privacyAttribution p + p {
+  margin-top: 8px;
+}
+
+@media (max-width: 900px) {
+  .privacyGrid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .privacyToc {
+    position: static;
+    top: auto;
+  }
 }
 
 /* ————— Strona /sufity-napinane — układ z Claude Design ————— */
