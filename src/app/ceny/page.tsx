@@ -31,7 +31,7 @@ const factors = [
 // Cena bazowa idzie na kartę ze zdjęciem, reszta pozycji na kafelki obok.
 const basePrice = {
   title: "Sufit napinany",
-  price: "od 120 zł",
+  price: "średnio 120 zł",
   unit: "/m²",
   note: "Prosty sufit MSD, 4 narożniki, bez dodatków. Dokładna cena po bezpłatnym pomiarze."
 };
@@ -103,7 +103,7 @@ export default function PricesPage() {
             <span className="eyebrow">Cena i wycena</span>
             <h1>Sufity napinane cena — od czego zależy koszt?</h1>
             <p className="pageLead">
-              Cena sufitu napinanego zaczyna się od ok. 120 zł/m² dla prostego sufitu MSD w
+              Cena sufitu napinanego to średnio ok. 120 zł/m² dla prostego sufitu MSD w
               prostokątnym pomieszczeniu z 4 narożnikami, bez dodatkowych elementów. Dokładną cenę
               podajemy po bezpłatnym pomiarze.
             </p>
@@ -220,7 +220,7 @@ export default function PricesPage() {
           <SectionHeader
             eyebrow="Przykłady"
             title="Ile kosztują typowe realizacje?"
-            lead="Orientacyjne koszty typowych realizacji z oświetleniem i dodatkami. Sam sufit liczymy od 120 zł/m² — dokładną cenę podajemy po pomiarze."
+            lead="Orientacyjne koszty typowych realizacji z oświetleniem i dodatkami. Sam sufit liczymy średnio ok. 120 zł/m² — dokładną cenę podajemy po pomiarze."
           />
           <div className="grid4 sectionCards">
             {priceExamples.map(([title, price, desc]) => (

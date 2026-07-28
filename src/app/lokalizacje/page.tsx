@@ -14,7 +14,7 @@ import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/seo/schema";
 export const metadata: Metadata = {
   title: "Sufity napinane — Wrocław i Dolny Śląsk",
   description:
-    "Montaż sufitów napinanych w całym Dolnym Śląsku, do 100 km od Wrocławia. Bezpłatny pomiar i dojazd, cena od 120 zł/m².",
+    "Montaż sufitów napinanych w całym Dolnym Śląsku, do 100 km od Wrocławia. Bezpłatny pomiar i dojazd, cena średnio ok. 120 zł/m².",
   ...seoMeta("/lokalizacje")
 };
 

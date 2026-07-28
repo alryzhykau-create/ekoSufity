@@ -226,7 +226,7 @@ const solutionVisuals = {
 } satisfies Record<ServiceSlug, { src: string; alt: string; iconSrc: string }>;
 
 const priceRows = [
-  ["Sufit napinany", "od 120 zł/m²"],
+  ["Sufit napinany", "średnio ok. 120 zł/m²"],
   ["Linie świetlne LED", "od 250 zł/mb"],
   ["Ukryty karnisz z LED", "od 300 zł/mb"],
   ["Punkt oświetlenia", "od 100 zł/szt."]
@@ -575,7 +575,7 @@ export default function HomePage() {
               ))}
             </div>
             <p className="softLabel">
-              Przykładowe realizacje z oświetleniem i dodatkami. Sam sufit liczony jest od 120
+              Przykładowe realizacje z oświetleniem i dodatkami. Sam sufit liczymy średnio ok. 120
               zł/m²
             </p>
             <div className="priceExamplesActions">

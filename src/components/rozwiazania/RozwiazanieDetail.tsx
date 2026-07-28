@@ -169,7 +169,7 @@ export function RozwiazanieDetail({ rozwiazanie }: RozwiazanieDetailProps) {
         <div>
           <SectionHeader eyebrow="Wycena" title="Cena zależy od zakresu" lead={rozwiazanie.priceCopy} />
           <p className="softLabel" style={{ marginTop: 16 }}>
-            Punktem odniesienia jest sam sufit od 120 zł/m² — orientacyjny koszt można policzyć w{" "}
+            Punktem odniesienia jest sam sufit — średnio ok. 120 zł/m² — orientacyjny koszt można policzyć w{" "}
             <Link href="/ceny#kalkulator" className="inlineLink">
               kalkulatorze
             </Link>
@@ -194,7 +194,7 @@ export function RozwiazanieDetail({ rozwiazanie }: RozwiazanieDetailProps) {
       <div className="container">
         <SectionHeader eyebrow="Wycena" title="Cena zależy od zakresu" lead={rozwiazanie.priceCopy} />
         <p className="softLabel" style={{ marginTop: 16, maxWidth: 760 }}>
-          Punktem odniesienia jest sam sufit od 120 zł/m² — orientacyjny koszt można policzyć w{" "}
+          Punktem odniesienia jest sam sufit — średnio ok. 120 zł/m² — orientacyjny koszt można policzyć w{" "}
           <Link href="/ceny#kalkulator" className="inlineLink">
             kalkulatorze
           </Link>

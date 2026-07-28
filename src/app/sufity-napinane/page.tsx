@@ -112,7 +112,7 @@ const placeTiles = [
 ];
 
 const comparisonRows = [
-  ["Koszt z materiałem", "od 120 zł/m²", "od 250 zł/m²"],
+  ["Koszt z materiałem", "średnio ok. 120 zł/m²", "od 250 zł/m²"],
   ["Czas montażu", "1–2 dni", "3–5 dni"],
   ["Podczas montażu", "Bez wynoszenia mebli, bez kurzu i brudu", "Wynoszenie mebli, kurz, bałagan"],
   ["Odporność na wodę", "Nie boi się wody, wytrzymuje zalanie", "Chłonie wodę, odkształca się, pęka"],
@@ -140,7 +140,7 @@ const faqs = [
   {
     question: "Czy to drogie?",
     answer:
-      "Sufit napinany zwykle wychodzi taniej niż sufit z płyt karton-gips, a robi się go szybciej. Prosty sufit liczymy od 120 zł/m², a dokładną cenę podajemy po bezpłatnym pomiarze."
+      "Sufit napinany zwykle wychodzi taniej niż sufit z płyt karton-gips, a robi się go szybciej. Prosty sufit liczymy średnio ok. 120 zł/m², a dokładną cenę podajemy po bezpłatnym pomiarze."
   },
   {
     question: "Ile to trwa i czy będzie bałagan?",
