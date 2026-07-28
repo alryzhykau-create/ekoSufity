@@ -3,6 +3,7 @@ import { seoMeta } from "@/lib/seo/metadata";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { CopyEmailButton } from "@/components/legal/CopyEmailButton";
 import { PrivacyToc } from "@/components/legal/PrivacyToc";
 import { siteConfig } from "@/content/site";
 import { breadcrumbSchema } from "@/lib/seo/schema";
@@ -56,7 +57,7 @@ export default function PrivacyPolicyPage() {
             <div className="privacyTocCard">
               <p>Masz pytanie o dane?</p>
               <p>Napisz — odpowiemy w ciągu 30 dni.</p>
-              <Link href={`mailto:${siteConfig.contacts.email}`}>Napisz do nas</Link>
+              <CopyEmailButton email={siteConfig.contacts.email} />
             </div>
           </aside>
 

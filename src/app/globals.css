@@ -4493,25 +4493,53 @@ details.faqItem:not([open]) p {
   color: var(--black);
 }
 
-.privacyTocCard a {
+.privacyCopyButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   min-height: 46px;
   margin-top: 14px;
   padding: 0 20px;
+  border: 0;
   border-radius: 9px;
   background: var(--gold);
   color: #fff;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 0.9rem;
+  cursor: pointer;
   transition: background 160ms ease;
 }
 
-.privacyTocCard a:hover {
+.privacyCopyButton:hover {
   background: var(--gold-dark);
-  color: #fff;
+}
+
+.privacyCopyButton:focus-visible {
+  outline: 2px solid var(--gold-dark);
+  outline-offset: 2px;
+}
+
+.privacyCopyButton svg {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+}
+
+/* Komunikat dla czytników ekranu i wzrokowo — pusty, dopóki nic nie
+   skopiowano, więc nie rezerwuje miejsca w karcie. Selektor musi być
+   mocniejszy niż `.privacyTocCard p` (margin/kolor akapitów karty). */
+.privacyTocCard .privacyCopyStatus {
+  margin-top: 10px;
+  color: var(--gold-dark);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.privacyTocCard .privacyCopyStatus:empty {
+  display: none;
 }
 
 .privacyMain {
