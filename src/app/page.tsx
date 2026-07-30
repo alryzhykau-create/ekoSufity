@@ -770,23 +770,28 @@ export default function HomePage() {
       <GoogleReviews alt />
 
       <section className="section faqSection">
-        <div className="container faqShell">
-          <div className="faqHeader">
-            <SectionHeader
-              eyebrow="FAQ"
-              title="Najczęstsze pytania przed pomiarem"
-              lead="Krótko wyjaśniamy cenę, pomiar, LED, montaż i gwarancję."
-            />
-          </div>
-          <div className="faqList">
-            {homepageFaqs.map((item) => (
-              <details className="faqItem" key={item.question}>
-                <summary>
-                  <span>{item.question}</span>
-                </summary>
-                <p>{item.answer}</p>
-              </details>
-            ))}
+        <div className="container">
+          <div className="faqWrap">
+            <aside className="faqAside">
+              <span className="eyebrow">FAQ</span>
+              <h2 className="sectionTitle">Najczęstsze pytania przed pomiarem</h2>
+              <p className="sectionLead">Krótko wyjaśniamy cenę, pomiar, LED, montaż i gwarancję.</p>
+              <div className="faqNoAnswer">
+                <p className="faqNoAnswerTitle">Nie znalazłeś odpowiedzi?</p>
+                <p>Zadzwoń albo umów bezpłatny pomiar — odpowiemy na wszystkie pytania.</p>
+                <Button href="/kontakt">Umów pomiar</Button>
+              </div>
+            </aside>
+            <div className="faqList faqListSingle">
+              {homepageFaqs.map((item) => (
+                <details className="faqItem" key={item.question}>
+                  <summary>
+                    <span>{item.question}</span>
+                  </summary>
+                  <p>{item.answer}</p>
+                </details>
+              ))}
+            </div>
           </div>
         </div>
       </section>
