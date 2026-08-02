@@ -452,7 +452,12 @@ main {
   margin-top: 28px;
 }
 
+/* Karta producenta: opis po lewej, zdjęcie folii po prawej. */
 .producentCard {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 28px;
+  align-items: center;
   padding: 26px 28px;
 }
 
@@ -466,6 +471,29 @@ main {
   margin: 0;
   max-width: 900px;
   color: var(--muted);
+}
+
+.producentCardImg {
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.producentCardImg img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 900px) {
+  .producentCard {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  /* Na wąskim ekranie zdjęcie idzie nad tekstem — jak w kartach na innych stronach. */
+  .producentCardImg {
+    order: -1;
+  }
 }
 
 .grid2 {

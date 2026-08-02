@@ -16,17 +16,20 @@ const producers = [
   {
     id: "msd",
     title: "MSD",
-    text: "MSD to chińska marka i jeden z największych producentów folii do sufitów napinanych na świecie. To nasz podstawowy materiał — najlepszy stosunek jakości do ceny. Linia Premium daje ponad 120 kolorów oraz faktury mat, satyna i połysk, a także wydruk, transparent i efekty dekoracyjne. Folia ma oznaczenia chroniące przed podróbką, klasę ognioodporności B1 i certyfikaty ekologiczne."
+    text: "MSD to chińska marka i jeden z największych producentów folii do sufitów napinanych na świecie. To nasz podstawowy materiał — najlepszy stosunek jakości do ceny. Linia Premium daje ponad 120 kolorów oraz faktury mat, satyna i połysk, a także wydruk, transparent i efekty dekoracyjne. Folia ma oznaczenia chroniące przed podróbką, klasę ognioodporności B1 i certyfikaty ekologiczne.",
+    imageSrc: "/images/marka-msd.jpg"
   },
   {
     id: "bauf",
     title: "Bauf",
-    text: "Bauf to niemiecka marka i technologia — folia produkowana według europejskich norm. Dostępna w kilku seriach różniących się grubością i gęstością materiału. Każde 100 cm oznaczone jest zabezpieczeniem przed podróbką, a materiał ma wysoką klasę emisji A+. Dobry wybór, gdy zależy na niemieckim standardzie jakości."
+    text: "Bauf to niemiecka marka i technologia — folia produkowana według europejskich norm. Dostępna w kilku seriach różniących się grubością i gęstością materiału. Każde 100 cm oznaczone jest zabezpieczeniem przed podróbką, a materiał ma wysoką klasę emisji A+. Dobry wybór, gdy zależy na niemieckim standardzie jakości.",
+    imageSrc: "/images/marka-bauf.jpg"
   },
   {
     id: "teqtum",
     title: "Teqtum",
-    text: "Teqtum to niemiecka marka z segmentu premium — najwyższa półka jakościowa. Materiał dla najbardziej wymagających realizacji, gdzie liczy się najlepsza jakość wykonania i wykończenia. Polecamy go do prestiżowych wnętrz i projektów, w których sufit ma być elementem najwyższej klasy."
+    text: "Teqtum to niemiecka marka z segmentu premium — najwyższa półka jakościowa. Materiał dla najbardziej wymagających realizacji, gdzie liczy się najlepsza jakość wykonania i wykończenia. Polecamy go do prestiżowych wnętrz i projektów, w których sufit ma być elementem najwyższej klasy.",
+    imageSrc: "/images/marka-teqtum.jpg"
   }
 ];
 
@@ -125,8 +128,19 @@ export function FolieDetail() {
                 key={producer.id}
                 style={{ scrollMarginTop: 90 }}
               >
-                <h3>{producer.title}</h3>
-                <p>{producer.text}</p>
+                <div className="producentCardBody">
+                  <h3>{producer.title}</h3>
+                  <p>{producer.text}</p>
+                </div>
+                <div className="producentCardImg">
+                  <Image
+                    src={producer.imageSrc}
+                    alt={`Folia ${producer.title}`}
+                    width={512}
+                    height={200}
+                    sizes="(max-width: 900px) 100vw, 320px"
+                  />
+                </div>
               </article>
             ))}
           </div>
