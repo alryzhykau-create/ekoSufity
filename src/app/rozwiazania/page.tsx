@@ -48,11 +48,28 @@ const tileBackgrounds: Record<string, string> = {
   "karnisze-sufitowe": "linear-gradient(150deg, #746753, #35291a)"
 };
 
-const scenarios = [
-  ["Salon i mieszkanie", "Równy matowy sufit, delikatne światło obwodowe i ukryte prowadzenie detali."],
-  ["Kuchnia", "Czyste wykończenie, punkty świetlne i materiał dobrany do codziennego użytkowania."],
-  ["Łazienka i wilgoć", "Rozwiązanie dobierane po ocenie warunków pomieszczenia i wentylacji."],
-  ["Lokal komercyjny", "Efekt wizualny, który ma wyglądać schludnie i wspierać charakter miejsca."]
+// Zdjęcia wnętrz w kartach — te same pliki, co w kaflach na /sufity-napinane.
+const scenarios: Array<{ title: string; copy: string; imageSrc: string }> = [
+  {
+    title: "Salon i mieszkanie",
+    copy: "Równy matowy sufit, delikatne światło obwodowe i ukryte prowadzenie detali.",
+    imageSrc: "/images/salon-22m2-photo.png"
+  },
+  {
+    title: "Kuchnia",
+    copy: "Czyste wykończenie, punkty świetlne i materiał dobrany do codziennego użytkowania.",
+    imageSrc: "/images/kuchnia-10m2-photo.png"
+  },
+  {
+    title: "Łazienka i wilgoć",
+    copy: "Rozwiązanie dobierane po ocenie warunków pomieszczenia i wentylacji.",
+    imageSrc: "/images/lazienka-6m2-photo.png"
+  },
+  {
+    title: "Lokal komercyjny",
+    copy: "Efekt wizualny, który ma wyglądać schludnie i wspierać charakter miejsca.",
+    imageSrc: "/images/mieszkanie-45m2-led-photo.png"
+  }
 ];
 
 const process = [
@@ -124,6 +141,7 @@ export default function SolutionsPage() {
             eyebrow="Zakres"
             title="Wybierz zakres, który chcesz omówić"
             lead="Każda karta prowadzi do rozwiązania z wyjaśnieniem, dla kogo jest, jak wygląda wycena i co ustalamy na pomiarze."
+            leadClassName="sectionLead--full"
           />
           <div className="solutionMosaic">
             {getSolutionCards().map((card) => (
@@ -158,10 +176,19 @@ export default function SolutionsPage() {
             lead="Inaczej planuje się sufit do salonu, inaczej do łazienki, a inaczej do lokalu usługowego."
           />
           <div className="grid4 sectionCards">
-            {scenarios.map(([title, copy]) => (
-              <article className="card miniCard" key={title}>
-                <h3>{title}</h3>
-                <p>{copy}</p>
+            {scenarios.map((scenario) => (
+              <article className="card miniCard" key={scenario.title}>
+                <div className="miniCardImg">
+                  <Image
+                    src={scenario.imageSrc}
+                    alt=""
+                    width={480}
+                    height={320}
+                    sizes="(max-width: 900px) 100vw, 300px"
+                  />
+                </div>
+                <h3>{scenario.title}</h3>
+                <p>{scenario.copy}</p>
               </article>
             ))}
           </div>
@@ -175,15 +202,18 @@ export default function SolutionsPage() {
             title="Jak układamy zakres przed wyceną?"
             lead="Dzięki temu widać, co jest sufitem bazowym, a co dodatkowym rozwiązaniem."
           />
-          <div className="stepList sectionCards">
+          {/* Ten sam układ co „Kiedy sufit ma sens" na /sufity-napinane. */}
+          <ol className="useCaseList sectionCards">
             {process.map(([number, title, copy]) => (
-              <article className="card miniCard" key={title}>
-                <span className="stepNumber">{number}</span>
+              <li className="useCaseItem" key={title}>
+                <span className="useCaseNumber" aria-hidden="true">
+                  {number.padStart(2, "0")}
+                </span>
                 <h3>{title}</h3>
                 <p>{copy}</p>
-              </article>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 

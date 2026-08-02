@@ -2773,28 +2773,6 @@ a.miniCard:hover,
   }
 }
 
-.stepList {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
-}
-
-.stepNumber {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  margin-bottom: 14px;
-  border-radius: 999px;
-  background: var(--accent-soft);
-  color: var(--gold-dark);
-  font-family: var(--font-display);
-  font-size: 0.95rem;
-  font-weight: 700;
-  line-height: 1;
-}
-
 .centerHeader {
   max-width: 820px;
   margin: 0 auto;
@@ -3149,7 +3127,8 @@ a.miniCard:hover,
 .ownerSignature strong {
   display: inline-block;
   justify-self: start;
-  color: var(--gold);
+  /* Czarny, nie złoty — złoto na tej stronie znaczy „link", a podpis nie klika. */
+  color: var(--text);
   font-family: var(--font-signature);
   font-size: 2.3rem;
   font-style: normal;
@@ -6133,8 +6112,7 @@ a.contactCard:hover {
 
   .grid4,
   .grid3,
-  .priceExampleGrid,
-  .stepList {
+  .priceExampleGrid {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -6262,7 +6240,6 @@ a.contactCard:hover {
   .grid4,
   .grid3,
   .priceExampleGrid,
-  .stepList,
   .footerPanel {
     grid-template-columns: 1fr;
   }

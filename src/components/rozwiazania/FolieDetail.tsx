@@ -5,7 +5,12 @@ import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { faktury, fakturaCardCopy } from "@/content/folie-faktury";
+import {
+  faktury,
+  fakturaCardCopy,
+  fakturaCardFit,
+  fakturaCardImage
+} from "@/content/folie-faktury";
 import { siteConfig, whatsappUrl } from "@/content/site";
 import { visualAssets } from "@/content/visual-assets";
 import { breadcrumbSchema, serviceSchema } from "@/lib/seo/schema";
@@ -83,9 +88,6 @@ export function FolieDetail() {
               loading="eager"
               sizes="(max-width: 900px) 100vw, 420px"
             />
-            <p className="softLabel">
-              {image.label}. Ostateczny efekt zależy od wybranej folii i pomieszczenia.
-            </p>
           </aside>
         </div>
       </section>
@@ -100,12 +102,23 @@ export function FolieDetail() {
           <div className="grid4 sectionCards">
             {faktury.map((faktura) => (
               <Link
-                className="card miniCard"
+                className={`card miniCard${
+                  fakturaCardImage[faktura.slug] ? " miniCard--photo" : ""
+                }`}
                 href={`/rozwiazania/folie/${faktura.slug}`}
                 key={faktura.slug}
               >
+                {fakturaCardImage[faktura.slug] ? (
+                  <img
+                    className="miniCardBg"
+                    src={fakturaCardImage[faktura.slug]}
+                    alt=""
+                    aria-hidden="true"
+                  />
+                ) : null}
                 <h3>{faktura.name}</h3>
                 <p>{fakturaCardCopy[faktura.slug]}</p>
+                <p className="miniCardFit">{fakturaCardFit[faktura.slug]}</p>
                 <p className="cardArrowText">Zobacz fakturę →</p>
               </Link>
             ))}

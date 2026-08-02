@@ -290,11 +290,32 @@ export const faktury: Faktura[] = [
 ];
 
 // Krótkie opisy do kart „Rodzaje faktur” (na /rozwiazania/folie i /sufity-napinane).
+// Zdjęcia faktur do kart — te same pliki co w kartach na /sufity-napinane,
+// żeby oba miejsca wyglądały jak jedna rodzina.
+export const fakturaCardImage: Record<string, string> = {
+  matowy: "/images/faktura-matowy.jpg",
+  satynowy: "/images/faktura-satynowy.jpg",
+  polysk: "/images/faktura-polysk.jpg",
+  podswietlany: "/images/faktura-translucent.jpg"
+};
+
 export const fakturaCardCopy: Record<string, string> = {
-  matowy: "Klasyczny, bez odbić. Najczęściej wybierany.",
-  satynowy: "Delikatny, perłowy połysk. Złoty środek.",
-  polysk: "Efekt lustra (lustrzany), optycznie powiększa wnętrze.",
-  podswietlany: "Świeci całą powierzchnią."
+  matowy: "Spokojny, równy efekt do mieszkań, domów i lokali po remoncie.",
+  satynowy: "Delikatny połysk bez mocnego odbicia światła.",
+  polysk: "Efekt odbicia i wizualnego powiększenia pomieszczenia.",
+  podswietlany: "Materiał do podświetlenia i efektu miękkiego światła."
+};
+
+// Druga linia karty — „gdzie się sprawdza". Ten sam tekst co na /sufity-napinane.
+export const fakturaCardFit: Record<string, string> = {
+  matowy:
+    "Klasyka, która pasuje wszędzie. Najlepszy wybór, gdy nie chcesz kombinować — sprawdza się w salonie, sypialni i pokoju dziecka.",
+  satynowy:
+    "Złoty środek: delikatny połysk dodaje elegancji, ale bez efektu lustra. Dobre do wnętrz, które chcesz lekko rozjaśnić.",
+  polysk:
+    "Efekt lustra optycznie powiększa pomieszczenie. Najlepsze do małych i ciemnych wnętrz — łazienek, korytarzy, kawalerek.",
+  podswietlany:
+    "Świecąca płaszczyzna jako główne lub dekoracyjne światło — świetna do wnętrz bez okien i stref relaksu."
 };
 
 export function getFaktura(slug: string) {

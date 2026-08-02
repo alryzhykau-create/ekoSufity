@@ -741,14 +741,15 @@ export default function HomePage() {
             <div className="ownerCopy">
               <h2 className="sectionTitle">Osobiście odpowiadam za jakość Twojego sufitu</h2>
               <p>{siteConfig.owner.description}</p>
+              <p style={{ marginTop: 14 }}>
+                <Link href="/o-firmie" className="inlineLink">
+                  Więcej o mnie i firmie →
+                </Link>
+              </p>
+              {/* Podpis zamyka blok — margin-top: auto dosuwa go do dołu kolumny. */}
               <p className="softLabel ownerSignature">
                 <strong>Aleks</strong>
                 <span>Specjalista od sufitów napinanych</span>
-              </p>
-              <p style={{ marginTop: 14 }}>
-                <Link href="/o-firmie" className="inlineLink">
-                  Poznaj nas bliżej →
-                </Link>
               </p>
             </div>
             <aside className="ownerArea">
