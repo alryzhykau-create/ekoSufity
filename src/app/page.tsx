@@ -518,7 +518,7 @@ export default function HomePage() {
             <article className="pathCard pathCard--project">
               <img
                 className="pathCardSketch"
-                src="/images/solutions/sufity-napinane-sketch.png"
+                src="/images/pomiar-rzut-mieszkania.png"
                 alt=""
                 aria-hidden="true"
               />

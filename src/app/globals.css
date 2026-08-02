@@ -2108,8 +2108,8 @@ main {
 }
 
 .pathCard--project .pathCardSketch {
-  width: 320px;
-  opacity: 0.2;
+  width: 360px;
+  opacity: 0.5;
 }
 
 .pathCardBody {
