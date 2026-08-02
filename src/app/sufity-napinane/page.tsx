@@ -27,55 +27,66 @@ const ceilingTypes: Array<{
   fit: string;
   href: string;
   linkLabel: string;
+  /* Zdjęcie faktury po prawej stronie karty — opcjonalne, dokładamy stopniowo. */
+  bgSrc?: string;
+  /* Karta na całą szerokość rzędu — zdjęcie po prawej, tekst po lewej. */
+  wide?: boolean;
 }> = [
   {
     title: "Matowe",
     copy: "Spokojny, równy efekt do mieszkań, domów i lokali po remoncie.",
     fit: "Klasyka, która pasuje wszędzie. Najlepszy wybór, gdy nie chcesz kombinować — sprawdza się w salonie, sypialni i pokoju dziecka.",
     href: "/rozwiazania/folie/matowy",
-    linkLabel: "Zobacz fakturę →"
+    linkLabel: "Zobacz fakturę →",
+    bgSrc: "/images/faktura-matowy.jpg"
   },
   {
     title: "Satynowe",
     copy: "Delikatny połysk bez mocnego odbicia światła.",
     fit: "Złoty środek: delikatny połysk dodaje elegancji, ale bez efektu lustra. Dobre do wnętrz, które chcesz lekko rozjaśnić.",
     href: "/rozwiazania/folie/satynowy",
-    linkLabel: "Zobacz fakturę →"
+    linkLabel: "Zobacz fakturę →",
+    bgSrc: "/images/faktura-satynowy.jpg"
   },
   {
     title: "Połysk",
     copy: "Efekt odbicia i wizualnego powiększenia pomieszczenia.",
     fit: "Efekt lustra optycznie powiększa pomieszczenie. Najlepsze do małych i ciemnych wnętrz — łazienek, korytarzy, kawalerek.",
     href: "/rozwiazania/folie/polysk",
-    linkLabel: "Zobacz fakturę →"
+    linkLabel: "Zobacz fakturę →",
+    bgSrc: "/images/faktura-polysk.jpg"
   },
   {
     title: "Translucent",
     copy: "Materiał do podświetlenia i efektu miękkiego światła.",
     fit: "Świecąca płaszczyzna jako główne lub dekoracyjne światło — świetna do wnętrz bez okien i stref relaksu.",
     href: "/rozwiazania/folie/podswietlany",
-    linkLabel: "Zobacz rozwiązania →"
+    linkLabel: "Zobacz rozwiązania →",
+    bgSrc: "/images/faktura-translucent.jpg"
   },
   {
     title: "Z LED",
     copy: "Linie świetlne, światło obwodowe, punkty i scenariusze oświetlenia.",
     fit: "Światło planujemy razem z sufitem jako jeden projekt — profile i przewody chowamy pod membraną.",
     href: "/rozwiazania/oswietlenie-led",
-    linkLabel: "Zobacz rozwiązania →"
+    linkLabel: "Zobacz rozwiązania →",
+    bgSrc: "/images/faktura-led-disc.jpg"
   },
   {
     title: "Do stref wilgotnych",
     copy: "Rozwiązania dobierane do łazienek, basenów i pomieszczeń z wilgocią.",
     fit: "Folia nie chłonie wody i wytrzymuje zalanie — wariant dobieramy po ocenie warunków w pomieszczeniu.",
     href: "/rozwiazania",
-    linkLabel: "Zobacz rozwiązania →"
+    linkLabel: "Zobacz rozwiązania →",
+    bgSrc: "/images/faktura-wilgoc.jpg"
   },
   {
     title: "Z nadrukiem",
     copy: "Zdjęcie, wzór lub grafika nadrukowana na całej powierzchni sufitu.",
     fit: "Twoje zdjęcie, wzór lub niebo z chmurami na całej powierzchni. Gdy sufit ma być ozdobą albo elementem reklamowym w lokalu.",
     href: "/rozwiazania/sufit-z-nadrukiem",
-    linkLabel: "Zobacz fakturę →"
+    linkLabel: "Zobacz fakturę →",
+    wide: true
   }
 ];
 
@@ -262,7 +273,16 @@ export default function StretchCeilingsPage() {
           />
           <div className="grid3 sectionCards">
             {ceilingTypes.map((type) => (
-              <Link className="card miniCard" href={type.href} key={type.title}>
+              <Link
+                className={`card miniCard${type.bgSrc ? " miniCard--photo" : ""}${
+                  type.wide ? " miniCard--wide" : ""
+                }`}
+                href={type.href}
+                key={type.title}
+              >
+                {type.bgSrc ? (
+                  <img className="miniCardBg" src={type.bgSrc} alt="" aria-hidden="true" />
+                ) : null}
                 <h3>{type.title}</h3>
                 <p>{type.copy}</p>
                 <p className="miniCardFit">{type.fit}</p>
@@ -413,14 +433,18 @@ export default function StretchCeilingsPage() {
             lead="To rozwiązanie jest szczególnie praktyczne tam, gdzie liczy się estetyka, czysty efekt i możliwość połączenia sufitu ze światłem."
             leadClassName="sectionLead--full"
           />
-          <div className="grid4 sectionCards">
-            {useCases.map(([title, copy]) => (
-              <article className="card miniCard" key={title}>
+          <ol className="useCaseList sectionCards">
+            {useCases.map(([title, copy], index) => (
+              <li className="useCaseItem" key={title}>
+                {/* Numer jest dekoracją porządkującą, nie treścią — stąd aria-hidden. */}
+                <span className="useCaseNumber" aria-hidden="true">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
                 <h3>{title}</h3>
                 <p>{copy}</p>
-              </article>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 
@@ -442,9 +466,14 @@ export default function StretchCeilingsPage() {
           <aside className="card infoCard">
             <span className="priceKicker">Proces</span>
             <ol className="stepFlow" aria-label="Etapy współpracy">
-              {processFlow.map((title, index) => (
+              {processFlow.map((title) => (
                 <li className="stepFlowItem" key={title}>
-                  <span className="stepFlowNumber">{index + 1}</span>
+                  {/* Kolejność niesie już <ol>, więc znacznik jest tylko ozdobą. */}
+                  <span className="stepFlowMark" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                      <path d="m5 12.5 4.5 4.5L19 7.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </span>
                   <div className="stepFlowBody">
                     <h3>{title}</h3>
                   </div>

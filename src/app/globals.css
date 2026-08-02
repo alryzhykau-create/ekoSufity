@@ -233,7 +233,8 @@ main {
 /* Podpowiedź „gdzie się sprawdza" — cichsza od opisu, kursywą. */
 .miniCard p.miniCardFit {
   margin-top: 10px;
-  color: #8a8178;
+  /* Poprzedni #8a8178 dawał tylko 3,8:1 na bieli — poniżej progu WCAG AA. */
+  color: #665e55;
   font-size: 0.86rem;
   font-style: italic;
   line-height: 1.5;
@@ -4773,6 +4774,122 @@ a.miniCard:hover {
   border-color: var(--gold);
 }
 
+/* Karta ze zdjęciem faktury w tle — tekst zostaje nad obrazem.
+   Układ zależy od szerokości samej karty, nie okna: przy trzech kolumnach
+   na laptopie karta bywa węższa niż przy jednej kolumnie na telefonie. */
+.miniCard--photo {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  container-type: inline-size;
+}
+
+.miniCardBg {
+  position: absolute;
+  inset: 0;
+  /* Niżej niż welon (::before, -1) — inaczej zdjęcie zakrywa welon,
+     bo pseudoelement rysuje się przed elementem img w drzewie. */
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Kadrujemy od lewej — dysk odsuwa się w prawo, dalej od kolumny z tekstem. */
+  object-position: left center;
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+/* Wąska karta: welon od góry, tekst na całą szerokość — na kolumnie węższej
+   niż 380 px układ obok siebie zostawiłby dwa słowa w wierszu. */
+.miniCard--photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.88) 55%,
+    rgba(255, 255, 255, 0.86) 100%
+  );
+}
+
+/* Szeroka karta: lewa strona to czysta biel pod tekst, dysk wynurza się
+   z niej po prawej — ten sam układ co w szerokiej karcie „Z nadrukiem". */
+/* Próg liczy się od pola treści karty (bez paddingu) — 340px to karta ~380px. */
+@container (min-width: 340px) {
+  .miniCard--photo::before {
+    background: linear-gradient(
+      to right,
+      #fff 0%,
+      #fff 58%,
+      rgba(255, 255, 255, 0) 90%
+    );
+  }
+
+  .miniCard--photo > :not(.miniCardBg) {
+    max-width: 52%;
+  }
+}
+
+/* „Z nadrukiem" — karta na cały rząd: zdjęcie po prawej, tekst po lewej.
+   background-position: right — przy zwężaniu ucina się puste lewe pole,
+   a talerz z chmurami zostaje w kadrze. */
+.miniCard--wide {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  grid-column: span 3;
+  min-height: 280px;
+  justify-content: center;
+  background-image: url("/images/nadruk-card-bg-v2.webp");
+  background-size: cover;
+  background-position: right center;
+  background-repeat: no-repeat;
+}
+
+.miniCard--wide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(to right, #fff 0%, #fff 38%, rgba(255, 255, 255, 0) 72%);
+}
+
+.miniCard--wide > * {
+  position: relative;
+  z-index: 1;
+  max-width: 420px;
+}
+
+/* Węższa karta → gęstszy gradient, żeby tekst nie wchodził na chmury. */
+@media (max-width: 980px) {
+  .miniCard--wide {
+    grid-column: span 2;
+  }
+
+  .miniCard--wide::before {
+    background: linear-gradient(to right, #fff 0%, #fff 55%, rgba(255, 255, 255, 0) 88%);
+  }
+}
+
+@media (max-width: 640px) {
+  .miniCard--wide {
+    grid-column: span 1;
+    min-height: 240px;
+  }
+
+  .miniCard--wide::before {
+    background: linear-gradient(
+      to right,
+      #fff 0%,
+      #fff 72%,
+      rgba(255, 255, 255, 0.72) 100%
+    );
+  }
+}
+
+
 /* Zdjęcie na górze karty — wyciągnięte do krawędzi ponad padding karty. */
 .miniCardImg {
   height: 160px;
@@ -5536,7 +5653,7 @@ a.contactCard:hover {
 .stepFlow {
   position: relative;
   display: grid;
-  gap: 18px;
+  gap: 14px;
   margin: 20px 0 0;
   padding: 0;
   list-style: none;
@@ -5545,39 +5662,98 @@ a.contactCard:hover {
 .stepFlowItem {
   position: relative;
   display: grid;
-  grid-template-columns: 40px minmax(0, 1fr);
-  gap: 14px;
-  align-items: start;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
 }
 
-/* Nitka biegnie od krążka do następnego kroku; ostatni jej nie rysuje. */
-.stepFlowItem:not(:last-child)::before {
-  content: "";
-  position: absolute;
-  left: 19px;
-  top: 40px;
-  bottom: -18px;
-  width: 2px;
-  background: #e0c9a6;
-}
-
-.stepFlowNumber {
+/* „Kiedy sufit ma sens" — kolumny z dużym numerem, rozdzielone cienką linią.
+   Bez ramek kart: numer i pionowa kreska same porządkują listę. */
+.useCaseList {
   display: grid;
-  width: 40px;
-  height: 40px;
-  place-items: center;
-  border: 2px solid var(--gold);
-  border-radius: 999px;
-  background: #fff;
-  color: var(--gold);
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.useCaseItem {
+  padding: 0 30px;
+  border-left: 1px solid var(--border);
+}
+
+.useCaseItem:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.useCaseNumber {
+  display: block;
+  margin-bottom: 14px;
+  color: #e8d7b6;
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.useCaseItem h3 {
+  margin: 0;
   font-family: var(--font-display);
   font-size: 1rem;
   font-weight: 700;
-  box-shadow: 0 8px 22px rgba(201, 138, 58, 0.12);
+  line-height: 1.3;
+}
+
+.useCaseItem p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: var(--type-body-sm);
+  line-height: 1.55;
+}
+
+@media (max-width: 980px) {
+  .useCaseList {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 30px;
+  }
+
+  .useCaseItem:nth-child(odd) {
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .useCaseList {
+    grid-template-columns: 1fr;
+    row-gap: 26px;
+  }
+
+  .useCaseItem {
+    padding: 0;
+    border-left: 0;
+  }
+}
+
+/* Krok procesu: miękkie piaskowe kółko z ptaszkiem zamiast numeru w obwódce. */
+.stepFlowMark {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border-radius: 999px;
+  background: #f7e7d3;
+  color: var(--gold-dark);
+}
+
+.stepFlowMark svg {
+  width: 15px;
+  height: 15px;
 }
 
 .stepFlowBody {
-  padding-top: 7px;
+  padding-top: 1px;
 }
 
 .stepFlowBody h3 {
