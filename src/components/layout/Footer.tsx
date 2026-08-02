@@ -2,21 +2,29 @@ import Link from "next/link";
 import { cities } from "@/content/cities";
 import { siteConfig, socialLinks } from "@/content/site";
 
+// Kolejność jak w menu górnym (navigation.ts) + „O firmie" przed „Kontakt",
+// bo poza stopką nic do niej nie linkuje.
 const offerLinks = [
   { href: "/", label: "Strona główna" },
   { href: "/sufity-napinane", label: "Sufity napinane" },
+  { href: "/rozwiazania", label: "Rozwiązania" },
+  { href: "/ceny", label: "Ceny" },
   { href: "/realizacje", label: "Realizacje" },
+  { href: "/faq", label: "FAQ" },
   { href: "/o-firmie", label: "O firmie" },
-  { href: siteConfig.contacts.googleBusinessProfileHref, label: "Opinie", external: true },
   { href: "/kontakt", label: "Kontakt" }
 ];
 
+// Rodzaje sufitów wg faktury — etykiety zgodne z adresami docelowymi.
 const serviceLinks = [
   { href: "/rozwiazania/folie", label: "Folie" },
-  { href: "/rozwiazania/oswietlenie-led", label: "Sufity podświetlane LED" },
   { href: "/rozwiazania/folie/matowy", label: "Sufity matowe" },
+  { href: "/rozwiazania/folie/satynowy", label: "Sufity satynowe" },
   { href: "/rozwiazania/folie/polysk", label: "Sufity błyszczące" },
-  { href: "/rozwiazania/sufit-z-nadrukiem", label: "Sufity z nadrukiem" }
+  { href: "/rozwiazania/folie/podswietlany", label: "Sufity podświetlane" },
+  { href: "/rozwiazania/sufit-z-nadrukiem", label: "Sufity z nadrukiem" },
+  { href: "/rozwiazania/oswietlenie-led", label: "Oświetlenie LED" },
+  { href: "/rozwiazania/karnisze-sufitowe", label: "Ukryte karnisze" }
 ];
 
 const footerSocialOrder = ["Facebook", "Instagram", "TikTok", "YouTube"] as const;
@@ -71,13 +79,7 @@ export function Footer() {
             <ul>
               {offerLinks.map((item) => (
                 <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    target={item.external ? "_blank" : undefined}
-                    rel={item.external ? "noopener noreferrer" : undefined}
-                  >
-                    {item.label}
-                  </Link>
+                  <Link href={item.href}>{item.label}</Link>
                 </li>
               ))}
             </ul>
