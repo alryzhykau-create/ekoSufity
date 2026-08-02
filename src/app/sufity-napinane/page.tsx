@@ -84,19 +84,19 @@ const folieCards = [
     title: "MSD",
     copy: "Najczęściej montowana folia, najlepszy stosunek jakości do ceny. Ponad 120 kolorów w linii Premium.",
     href: "/rozwiazania/folie#msd",
-    imageSrc: "/images/salon-22m2-photo.png"
+    imageSrc: "/images/marka-msd.jpg"
   },
   {
     title: "Bauf",
     copy: "Niemiecka marka i technologia, produkcja według europejskich norm.",
     href: "/rozwiazania/folie#bauf",
-    imageSrc: "/images/kuchnia-10m2-photo.png"
+    imageSrc: "/images/marka-bauf.jpg"
   },
   {
     title: "Teqtum",
     copy: "Niemiecka marka z segmentu premium. Najwyższa półka jakościowa.",
     href: "/rozwiazania/folie#teqtum",
-    imageSrc: "/images/lazienka-6m2-photo.png"
+    imageSrc: "/images/marka-teqtum.jpg"
   }
 ];
 
