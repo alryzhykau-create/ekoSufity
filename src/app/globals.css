@@ -2107,9 +2107,14 @@ main {
   pointer-events: none;
 }
 
+/* Szkic rzutu leży pod tekstem jako znak wodny: obrócony o 38° w lewo,
+   zajmuje ok. 2/3 karty. Tekst (.pathCardBody) jest nad nim. */
 .pathCard--project .pathCardSketch {
-  width: 360px;
-  opacity: 0.5;
+  width: 68%;
+  right: -4%;
+  top: 50%;
+  opacity: 0.26;
+  transform: translateY(-50%) rotate(-38deg);
 }
 
 .pathCardBody {

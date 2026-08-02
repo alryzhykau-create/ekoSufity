@@ -518,7 +518,7 @@ export default function HomePage() {
             <article className="pathCard pathCard--project">
               <img
                 className="pathCardSketch"
-                src="/images/pomiar-rzut-mieszkania.png"
+                src="/images/pomiar-rzut-mieszkania.jpg"
                 alt=""
                 aria-hidden="true"
               />
@@ -683,7 +683,7 @@ export default function HomePage() {
         <div className="container">
           <div className="servicesHeader">
             <span className="eyebrow">Rozwiązania</span>
-            <h2 className="sectionTitle">Sufit, światło i detale w jednym projekcie</h2>
+            <h2 className="sectionTitle">Sufit i światło w jednym projekcie</h2>
             <p className="sectionLead">
               Zaczynamy od sufitu, ale od razu myślimy o świetle, karniszach i detalach, które
               wpływają na finalny efekt.
