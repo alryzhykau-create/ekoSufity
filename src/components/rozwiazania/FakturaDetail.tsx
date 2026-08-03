@@ -55,7 +55,7 @@ export function FakturaDetail({ faktura }: FakturaDetailProps) {
   blocks.push(
     <div className="container">
       <SectionHeader eyebrow="Dobrze wiedzieć" title="O czym warto wiedzieć" />
-      <article className="card" style={{ marginTop: 24, maxWidth: 860 }}>
+      <article className="card sectionCards" style={{ maxWidth: 860 }}>
         <p style={{ margin: 0 }}>{faktura.warto}</p>
       </article>
       {faktura.bridge ? (

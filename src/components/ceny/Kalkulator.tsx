@@ -2,6 +2,7 @@
 
 import { useState, type ChangeEvent } from "react";
 import { Button } from "@/components/ui/Button";
+import { CtaIcon } from "@/components/ui/CtaIcon";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { siteConfig, whatsappUrl } from "@/content/site";
 
@@ -18,8 +19,9 @@ const PRICES = {
 } as const;
 
 // Pusty / niepoprawny / ujemny ciąg traktujemy jako 0.
+// Kalkulator liczy w pełnych jednostkach, więc bierzemy liczbę całkowitą.
 function toNumber(value: string): number {
-  const parsed = Number.parseFloat(value);
+  const parsed = Number.parseInt(value, 10);
   return Number.isFinite(parsed) && parsed > 0 ? parsed : 0;
 }
 
@@ -37,13 +39,11 @@ export function Kalkulator() {
   const [punkty, setPunkty] = useState("0");
   const [karnisz, setKarnisz] = useState("0");
 
-  // Nie pozwalamy wpisać wartości ujemnej.
+  // Same cyfry: bez minusa i bez części dziesiętnej — „11,5 m²" staje się „11".
   const handleChange =
     (setter: (value: string) => void) => (event: ChangeEvent<HTMLInputElement>) => {
-      const next = event.target.value;
-      if (next === "" || Number.parseFloat(next) >= 0) {
-        setter(next);
-      }
+      const [whole] = event.target.value.split(/[.,]/);
+      setter(whole.replace(/\D/g, ""));
     };
 
   const area = toNumber(powierzchnia);
@@ -101,9 +101,9 @@ export function Kalkulator() {
                 <input
                   className="kalkulatorInput"
                   type="number"
-                  inputMode="decimal"
+                  inputMode="numeric"
                   min="0"
-                  step="0.5"
+                  step="1"
                   placeholder="np. 20"
                   value={powierzchnia}
                   onChange={handleChange(setPowierzchnia)}
@@ -139,9 +139,9 @@ export function Kalkulator() {
                 <input
                   className="kalkulatorInput"
                   type="number"
-                  inputMode="decimal"
+                  inputMode="numeric"
                   min="0"
-                  step="0.5"
+                  step="1"
                   value={linieLed}
                   onChange={handleChange(setLinieLed)}
                 />
@@ -176,9 +176,9 @@ export function Kalkulator() {
                 <input
                   className="kalkulatorInput"
                   type="number"
-                  inputMode="decimal"
+                  inputMode="numeric"
                   min="0"
-                  step="0.5"
+                  step="1"
                   value={karnisz}
                   onChange={handleChange(setKarnisz)}
                 />
@@ -216,17 +216,25 @@ export function Kalkulator() {
 
           <div className="kalkulatorActions">
             {hasArea ? (
-              <Button href={whatsappUrl(waMessage)}>Wyślij wyliczenie na WhatsApp</Button>
+              <Button className="kalkulatorWaCta" href={whatsappUrl(waMessage)}>
+                <CtaIcon name="whatsapp" />
+                Wyślij wyliczenie na WhatsApp
+              </Button>
             ) : (
+              /* Bez metrażu nie ma czego wysyłać, więc zostaje ogólna wiadomość —
+                 ale napis dalej mówi wprost, że przycisk prowadzi na WhatsApp. */
               <Button
+                className="kalkulatorWaCta"
                 href={whatsappUrl(
                   "Dzień dobry, chcę umówić bezpłatny pomiar sufitu napinanego."
                 )}
               >
-                Umów bezpłatny pomiar
+                <CtaIcon name="whatsapp" />
+                Napisz na WhatsApp
               </Button>
             )}
             <Button href={siteConfig.contacts.phoneHref} variant="secondary">
+              <CtaIcon name="phone" />
               Zadzwoń
             </Button>
           </div>

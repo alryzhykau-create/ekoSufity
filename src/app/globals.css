@@ -50,6 +50,8 @@
   /* Pionowy oddech sekcji — system 8px, jeden punkt zmiany.
      Progi niżej (1024px / 640px) nadpisują tylko tę zmienną. */
   --section-padding-y: 72px;
+  /* Odstęp między nagłówkiem sekcji a jej treścią — jeden dla całego serwisu. */
+  --section-gap: 34px;
   --section-y: var(--section-padding-y);
   --section-y-compact: var(--section-padding-y);
   --type-eyebrow: 0.8rem;
@@ -263,7 +265,7 @@ main {
 .filterBar {
   display: grid;
   gap: 12px;
-  margin-top: 28px;
+  margin-top: var(--section-gap);
 }
 
 .filterGroup {
@@ -388,7 +390,7 @@ main {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0 56px;
-  margin-top: 34px;
+  margin-top: var(--section-gap);
 }
 
 .priceFactor {
@@ -409,9 +411,12 @@ main {
   border-radius: 999px;
   background: var(--accent-soft);
   color: var(--gold-dark);
-  font-size: 1.1rem;
-  font-weight: 700;
   line-height: 1;
+}
+
+.priceFactorMark svg {
+  width: 17px;
+  height: 17px;
 }
 
 .priceFactor h3 {
@@ -450,7 +455,7 @@ main {
 .producentList {
   display: grid;
   gap: 18px;
-  margin-top: 28px;
+  margin-top: var(--section-gap);
 }
 
 /* Karta producenta: opis po lewej, zdjęcie folii po prawej. */
@@ -1349,7 +1354,7 @@ main {
 }
 
 .comparisonScroll {
-  margin-top: 26px;
+  margin-top: var(--section-gap);
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   border-radius: 16px;
@@ -1566,7 +1571,7 @@ main {
   align-items: center;
   justify-content: space-between;
   gap: 14px;
-  margin-top: 20px;
+  margin-top: var(--section-gap);
   margin-bottom: 16px;
 }
 
@@ -1731,7 +1736,7 @@ main {
   grid-auto-rows: 188px;
   grid-auto-flow: row dense;
   gap: 16px;
-  margin-top: 28px;
+  margin-top: var(--section-gap);
 }
 
 .mosaicTile {
@@ -2199,7 +2204,7 @@ main {
   display: flex;
   gap: 12px;
   height: 360px;
-  margin-top: 24px;
+  margin-top: var(--section-gap);
 }
 
 .dkaccItem {
@@ -2343,7 +2348,7 @@ main {
 }
 
 .sectionCards {
-  margin-top: 34px;
+  margin-top: var(--section-gap);
 }
 
 .miniCard {
@@ -2490,6 +2495,12 @@ a.miniCard:hover,
 
 .serviceCard:hover a::after {
   transform: translateX(4px);
+}
+
+/* Gdy baner stoi sam w sekcji, jego własny margines dokładałby się do
+   paddingu sekcji — wtedy go zerujemy. */
+.container > .servicesCta:first-child {
+  margin-top: 0;
 }
 
 .servicesCta {
@@ -2683,7 +2694,7 @@ a.miniCard:hover,
 /* Wstęga trzyma się kontenera 1280px, tak samo jak wstęga opinii. */
 .insViewport {
   position: relative;
-  margin-top: 28px;
+  margin-top: var(--section-gap);
   overflow: hidden;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
   mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
@@ -2802,7 +2813,7 @@ a.miniCard:hover,
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 34px;
-  margin: 58px 0 0;
+  margin: var(--section-gap) 0 0;
   padding: 0;
 }
 
@@ -4078,7 +4089,7 @@ details.faqItem:not([open]) p {
   grid-template-columns: minmax(0, 1fr) 280px;
   gap: 34px;
   align-items: center;
-  margin-top: 34px;
+  margin-top: var(--section-gap);
   padding: 30px;
 }
 
@@ -4086,8 +4097,9 @@ details.faqItem:not([open]) p {
   margin: 0;
 }
 
+/* Akapit trzyma tę samą krawędź co pigułki miast pod nim — bez własnego
+   ograniczenia szerokości wyglądał jak urwany w połowie kolumny. */
 .contactAreaCard p {
-  max-width: 720px;
   color: var(--muted);
 }
 
@@ -4096,6 +4108,16 @@ details.faqItem:not([open]) p {
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 22px;
+}
+
+/* Gdy pigułki są treścią sekcji, a nie ciągiem dalszym akapitu w karcie. */
+.cityPillGrid.sectionCards {
+  margin-top: var(--section-gap);
+}
+
+/* Odnośnik do pełnej listy stoi pod pigułkami, nie w nagłówku sekcji. */
+.cityPillLink {
+  margin-top: 6px;
 }
 
 .cityPill {
@@ -5077,7 +5099,7 @@ a.miniCard:hover {
   display: grid;
   grid-template-columns: minmax(0, 0.62fr) minmax(0, 1.38fr);
   gap: 20px;
-  margin-top: 28px;
+  margin-top: var(--section-gap);
 }
 
 .priceBaseCard {
@@ -5150,6 +5172,136 @@ a.miniCard:hover {
   font-weight: 500;
 }
 
+/* CTA kalkulatora prowadzi na WhatsApp, więc hover jest taki sam jak przy
+   „Napisz na WhatsApp": białe tło, a ramka, napis i glif w zieleni #51c85d. */
+.btn.kalkulatorWaCta:hover {
+  border-color: #51c85d;
+  background: #fff;
+  color: #51c85d;
+}
+
+/* Przykładowe realizacje: jeden duży kadr po lewej, trzy wąskie wiersze obok. */
+.exampleDeck {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 20px;
+}
+
+.exampleFeature {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 340px;
+  overflow: hidden;
+  border-radius: 16px;
+  padding: 28px 26px;
+  color: #fff;
+}
+
+.exampleFeature img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Przyciemnienie tylko u dołu — góra kadru zostaje czysta. */
+.exampleFeatureScrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 12, 8, 0) 40%, rgba(15, 12, 8, 0.85) 100%);
+}
+
+.exampleFeatureCopy {
+  position: relative;
+  z-index: 1;
+}
+
+.exampleFeature h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.exampleFeature .examplePrice {
+  margin: 6px 0 4px;
+  color: #f0c98a;
+  font-size: 1.8rem;
+}
+
+.exampleFeature p {
+  margin: 0;
+  color: #e7e2d8;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.exampleList {
+  display: grid;
+  grid-auto-rows: 1fr;
+  gap: 18px;
+}
+
+.exampleRow {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: 20px;
+  align-items: center;
+  overflow: hidden;
+  padding-right: 22px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+}
+
+.exampleRowImg {
+  height: 100%;
+  min-height: 96px;
+}
+
+.exampleRowImg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.exampleRowBody {
+  padding: 16px 0;
+}
+
+.exampleRow h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.exampleRow .examplePrice {
+  margin: 4px 0 3px;
+  font-size: 1.3rem;
+}
+
+.exampleRow p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 900px) {
+  .exampleDeck {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .exampleFeature {
+    min-height: 260px;
+  }
+}
+
 .priceChips {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -5185,11 +5337,11 @@ a.miniCard:hover {
   white-space: nowrap;
 }
 
-/* Czynniki ceny — trzy kolumny kart zamiast dwukolumnowej listy. */
-.priceFactorList {
+/* Czynniki ceny — trzy kolumny kart zamiast dwukolumno.priceFactorList {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
-  margin-top: 28px;
+  margin-top: var(--section-gap);
+}n-top: 28px;
 }
 
 .priceFactor {
@@ -5224,7 +5376,7 @@ a.miniCard:hover {
   grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.85fr);
   gap: 24px;
   align-items: stretch;
-  margin-top: 28px;
+  margin-top: var(--section-gap);
 }
 
 .kalkulatorForm {
@@ -5408,7 +5560,7 @@ a.miniCard:hover {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
-  margin-top: 28px;
+  margin-top: var(--section-gap);
 }
 
 .galleryCard {
@@ -5498,9 +5650,10 @@ a.miniCard:hover {
 .faqTabs {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  /* Nagłówek sekcji stoi po lewej, więc chipy trzymają tę samą krawędź. */
+  justify-content: flex-start;
   gap: 10px;
-  margin-top: 26px;
+  margin-top: var(--section-gap);
 }
 
 .faqTab {
@@ -5540,9 +5693,9 @@ a.miniCard:hover {
 }
 
 /* Lista pytań na /faq — węższa kolumna, wyśrodkowana pod zakładkami. */
+/* Lista idzie na całą szerokość kontenera (1280px), tak jak nagłówek. */
 .faqListNarrow {
-  max-width: 900px;
-  margin: 26px auto 0;
+  margin: 26px 0 0;
 }
 
 /* Odfiltrowane pytanie zostaje w DOM — chowamy je tylko wizualnie. */
@@ -5556,7 +5709,7 @@ a.miniCard:hover {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
-  margin-top: 28px;
+  margin-top: var(--section-gap);
 }
 
 .contactCard {
@@ -5570,9 +5723,64 @@ a.miniCard:hover {
   transition: border-color 160ms ease, transform 160ms ease;
 }
 
-a.contactCard:hover {
+a.contactCard:hover,
+button.contactCard:hover {
   border-color: var(--gold);
   transform: translateY(-3px);
+}
+
+/* „Co warto przygotować" — to samo ciepłe wypełnienie co kafelki kontaktowe
+   nad nimi, żeby obie siatki czytały się jako jeden blok. */
+.prepCard {
+  border-color: #eee0cd;
+  background: linear-gradient(180deg, #fffdfa, #fff8f0);
+}
+
+/* Kafelek WhatsApp trzyma zieleń komunikatora, tak jak przyciski CTA. */
+a.contactCard[href^="https://wa.me"]:hover {
+  border-color: #51c85d;
+}
+
+a.contactCard[href^="https://wa.me"]:hover .contactCardValue {
+  color: #51c85d;
+}
+
+/* Kafelek e-mail jest przyciskiem — zerujemy domyślny wygląd buttona. */
+button.contactCard {
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+/* Znak kopiowania w rogu — nie zajmuje wiersza, więc kafelek zostaje
+   tej samej wysokości co sąsiednie. */
+.contactCardCopyIcon {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(201, 121, 28, 0.1);
+  color: var(--gold-dark);
+}
+
+.contactCardCopyIcon svg {
+  width: 15px;
+  height: 15px;
+}
+
+button.contactCard:hover .contactCardCopyIcon {
+  background: rgba(201, 121, 28, 0.18);
+}
+
+/* Adres nie może wejść pod znak kopiowania. */
+button.contactCard .contactCardValue {
+  padding-right: 34px;
 }
 
 .contactCardValue {

@@ -3,6 +3,8 @@ import Image from "next/image";
 import { seoMeta } from "@/lib/seo/metadata";
 import { FinalContactSection } from "@/components/contact/FinalContactSection";
 import { SocialBanner } from "@/components/home/SocialBanner";
+import { ProducenciSection } from "@/components/rozwiazania/ProducenciSection";
+import { ComparisonSection } from "@/components/sufity/ComparisonSection";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
@@ -147,16 +149,19 @@ export default function FaqPage() {
 
       <section className="section faqSection">
         <div className="container">
-          <div className="centerHeader">
-            <SectionHeader
-              eyebrow="FAQ"
-              title="Najczęstsze pytania o sufity napinane"
-              lead="Cena, pomiar, dojazd, gwarancja, LED i montaż — najważniejsze odpowiedzi w jednym miejscu."
-            />
-          </div>
+          <SectionHeader
+            eyebrow="FAQ"
+            title="Najczęstsze pytania o sufity napinane"
+            lead="Cena, pomiar, dojazd, gwarancja, LED i montaż — najważniejsze odpowiedzi w jednym miejscu."
+            leadClassName="sectionLead--full"
+          />
           <FaqTabs items={pageFaqs} categories={faqCategories} />
         </div>
       </section>
+
+      <ProducenciSection alt />
+
+      <ComparisonSection alt={false} />
 
       <section className="section sectionAlt">
         <div className="container">

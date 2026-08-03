@@ -10,6 +10,7 @@ import { SocialBanner } from "@/components/home/SocialBanner";
 import { Button } from "@/components/ui/Button";
 import { CtaIcon } from "@/components/ui/CtaIcon";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { CopyEmailCard } from "@/components/contact/CopyEmailCard";
 import { cities } from "@/content/cities";
 import { siteConfig, whatsappUrl } from "@/content/site";
 import { breadcrumbSchema } from "@/lib/seo/schema";
@@ -29,6 +30,8 @@ const contactCards: Array<{
   note: string;
   href?: string;
   external?: boolean;
+  /* E-mail nie prowadzi do mailto — kliknięcie kopiuje adres. */
+  copyEmail?: boolean;
 }> = [
   {
     value: siteConfig.contacts.phoneDisplay,
@@ -47,7 +50,7 @@ const contactCards: Array<{
     value: siteConfig.contacts.email,
     label: "E-mail",
     note: "Napisz, jeśli wolisz kontakt pisemny.",
-    href: `mailto:${siteConfig.contacts.email}`
+    copyEmail: true
   },
   {
     value: "9:00–20:00",
@@ -130,6 +133,17 @@ export default function ContactPage() {
                 </>
               );
 
+              if (card.copyEmail) {
+                return (
+                  <CopyEmailCard
+                    email={card.value}
+                    key={card.label}
+                    label={card.label}
+                    note={card.note}
+                  />
+                );
+              }
+
               return card.href ? (
                 <Link
                   className="contactCard"
@@ -156,24 +170,14 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="section sectionAlt">
+      <section className="section sectionAlt" id="lokalizacje">
         <div className="container">
-          <SocialBanner />
-        </div>
-      </section>
-
-      <section className="section" id="lokalizacje">
-        <div className="container">
-          <div className="sectionSplitHeader">
-            <SectionHeader
-              eyebrow="Lokalizacje"
-              title="Dojazd do 100 km od Wrocławia"
-              lead="Obsługujemy Wrocław i miejscowości do 100 km. Wybierz swoją lokalizację, aby zobaczyć szczegóły montażu w okolicy."
-            />
-            <Link className="sectionArrowLink" href="/lokalizacje">
-              Zobacz wszystkie lokalizacje
-            </Link>
-          </div>
+          <SectionHeader
+            eyebrow="Lokalizacje"
+            title="Dojazd do 100 km od Wrocławia"
+            lead="Obsługujemy Wrocław i miejscowości do 100 km. Wybierz swoją lokalizację, aby zobaczyć szczegóły montażu w okolicy."
+            leadClassName="sectionLead--full"
+          />
           <div className="card contactAreaCard">
             <div>
               <h3>Obsługiwane miejscowości</h3>
@@ -188,6 +192,9 @@ export default function ContactPage() {
                   </Link>
                 ))}
               </div>
+              <Link className="sectionArrowLink cityPillLink" href="/lokalizacje">
+                Zobacz wszystkie lokalizacje
+              </Link>
             </div>
             <div className="contactMap">
               <Image
@@ -202,7 +209,14 @@ export default function ContactPage() {
         </div>
       </section>
 
+      <section className="section">
+        <div className="container">
+          <SocialBanner />
+        </div>
+      </section>
+
       <GoogleReviews alt />
+
 
       <section className="section">
         <div className="container">
@@ -218,7 +232,7 @@ export default function ContactPage() {
               ["Zdjęcie pomieszczenia", "Widać kształt, narożniki i sytuację w pokoju."],
               ["Oświetlenie LED", "Światło wyceniamy jako osobny zakres."]
             ].map(([title, copy]) => (
-              <article className="card miniCard" key={title}>
+              <article className="card miniCard prepCard" key={title}>
                 <h3>{title}</h3>
                 <p>{copy}</p>
               </article>

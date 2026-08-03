@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { FinalContactSection } from "@/components/contact/FinalContactSection";
 import { SocialBanner } from "@/components/home/SocialBanner";
+import { ProducenciSection } from "@/components/rozwiazania/ProducenciSection";
+import { ComparisonSection } from "@/components/sufity/ComparisonSection";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
@@ -90,26 +92,6 @@ const ceilingTypes: Array<{
   }
 ];
 
-const folieCards = [
-  {
-    title: "MSD",
-    copy: "Najczęściej montowana folia, najlepszy stosunek jakości do ceny. Ponad 120 kolorów w linii Premium.",
-    href: "/rozwiazania/folie#msd",
-    imageSrc: "/images/marka-msd.jpg"
-  },
-  {
-    title: "Bauf",
-    copy: "Niemiecka marka i technologia, produkcja według europejskich norm.",
-    href: "/rozwiazania/folie#bauf",
-    imageSrc: "/images/marka-bauf.jpg"
-  },
-  {
-    title: "Teqtum",
-    copy: "Niemiecka marka z segmentu premium. Najwyższa półka jakościowa.",
-    href: "/rozwiazania/folie#teqtum",
-    imageSrc: "/images/marka-teqtum.jpg"
-  }
-];
 
 // Etapy współpracy — te same kroki co wcześniej, ale z numerem i krótkim
 // podpisem, w rytmie sekcji „Jak wygląda współpraca?" ze strony głównej.
@@ -122,16 +104,6 @@ const placeTiles = [
   { title: "Lokale komercyjne", imageSrc: "/images/mieszkanie-45m2-led-photo.png" }
 ];
 
-const comparisonRows = [
-  ["Koszt z materiałem", "średnio ok. 120 zł/m²", "od 250 zł/m²"],
-  ["Czas montażu", "1–2 dni", "3–5 dni"],
-  ["Podczas montażu", "Bez wynoszenia mebli, bez kurzu i brudu", "Wynoszenie mebli, kurz, bałagan"],
-  ["Odporność na wodę", "Nie boi się wody, wytrzymuje zalanie", "Chłonie wodę, odkształca się, pęka"],
-  ["Pielęgnacja", "Można myć wodą lub łagodnym detergentem", "Wymaga przemalowania lub odnowienia"],
-  ["Obniżenie sufitu", "Już od 3 cm", "Od 7–10 cm (konstrukcja ramy)"],
-  ["Trwałość", "15–20 lat bez utraty wyglądu", "Z czasem pęknięcia i odpryski"],
-  ["Konserwacja", "Nie wymaga dodatkowego wykończenia", "Wymaga okresowych napraw"]
-];
 
 const useCases = [
   ["Szybkie wyrównanie sufitu", "Gdy stary sufit jest nierówny, popękany albo trudny do estetycznego odnowienia."],
@@ -294,33 +266,7 @@ export default function StretchCeilingsPage() {
       </section>
 
       {/* 3b. Folie */}
-      <section className="section">
-        <div className="container">
-          <SectionHeader
-            eyebrow="Producenci"
-            title="Folie sprawdzonych producentów"
-            lead="Materiał dobieramy pod projekt, efekt i budżet."
-          />
-          <div className="grid3 sectionCards">
-            {folieCards.map((card) => (
-              <Link className="card miniCard" href={card.href} key={card.href}>
-                <div className="miniCardImg">
-                  <Image
-                    src={card.imageSrc}
-                    alt=""
-                    width={480}
-                    height={320}
-                    sizes="(max-width: 900px) 100vw, 400px"
-                  />
-                </div>
-                <h3>{card.title}</h3>
-                <p>{card.copy}</p>
-                <p className="cardArrowText">Poznaj folię →</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ProducenciSection />
 
       {/* 4. Oświetlenie */}
       <section className="section sectionAlt">
@@ -393,36 +339,7 @@ export default function StretchCeilingsPage() {
       </section>
 
       {/* 6. Porównanie */}
-      <section className="section sectionAlt">
-        <div className="container">
-          <SectionHeader
-            eyebrow="Porównanie"
-            title="Sufit napinany czy karton-gips?"
-            lead="Sufit napinany i sufit z płyt karton-gips (G-K) to dwa różne rozwiązania. Poniżej porównanie, które pomaga zdecydować."
-            leadClassName="sectionLead--full"
-          />
-          <div className="comparisonScroll">
-            <table className="comparisonTable">
-              <thead>
-                <tr>
-                  <th>Właściwość</th>
-                  <th>Sufit napinany</th>
-                  <th>Sufit z płyt G-K</th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparisonRows.map(([property, stretch, gk]) => (
-                  <tr key={property}>
-                    <th scope="row">{property}</th>
-                    <td data-label="Napinany">{stretch}</td>
-                    <td data-label="Płyty G-K">{gk}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
+      <ComparisonSection />
 
       {/* 7. Kiedy sufit napinany ma największy sens */}
       <section className="section">

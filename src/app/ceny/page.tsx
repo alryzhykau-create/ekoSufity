@@ -19,13 +19,29 @@ export const metadata: Metadata = {
   ...seoMeta("/ceny")
 };
 
-const factors = [
-  ["Więcej narożników", "Dokładniejszy pomiar, cięcie i montaż profilu."],
-  ["Nietypowy kształt", "Większa złożoność przygotowania i montażu."],
-  ["Oświetlenie LED", "Linie, punkty, zasilacze i sterowanie osobno."],
-  ["Ukryty karnisz", "Dodatkowe rozwiązanie przy oknie."],
-  ["Translucent / podświetlenie", "Dobór materiału i światła do efektu."],
-  ["Pomieszczenia wilgotne", "Ocena warunków i właściwy dobór rozwiązania."]
+// Ikony czynników ceny — jedna rodzina: kontur, ta sama grubość linii,
+// bez wypełnienia. Rysowane w viewBox 24x24.
+const factorIcons = {
+  narozniki: <path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" />,
+  ksztalt: <path d="M12 3 21 9v6l-9 6-9-6V9z" />,
+  led: <path d="M4 8h16M4 12h16M4 16h10" />,
+  karnisz: <path d="M3 5h18M6 5v14M18 5v14M9 5v9M15 5v9" />,
+  swiatlo: (
+    <>
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19" />
+    </>
+  ),
+  wilgoc: <path d="M12 3s6 6.5 6 10a6 6 0 0 1-12 0c0-3.5 6-10 6-10z" />
+} as const;
+
+const factors: Array<[keyof typeof factorIcons, string, string]> = [
+  ["narozniki", "Więcej narożników", "Dokładniejszy pomiar, cięcie i montaż profilu."],
+  ["ksztalt", "Nietypowy kształt", "Większa złożoność przygotowania i montażu."],
+  ["led", "Oświetlenie LED", "Linie, punkty, zasilacze i sterowanie osobno."],
+  ["karnisz", "Ukryty karnisz", "Dodatkowe rozwiązanie przy oknie."],
+  ["swiatlo", "Translucent / podświetlenie", "Dobór materiału i światła do efektu."],
+  ["wilgoc", "Pomieszczenia wilgotne", "Ocena warunków i właściwy dobór rozwiązania."]
 ];
 
 // Cena bazowa idzie na kartę ze zdjęciem, reszta pozycji na kafelki obok.
@@ -42,18 +58,40 @@ const addonPrices = [
   ["Punkt oświetlenia", "od 100 zł/szt"],
   ["System magnetyczny 48 V", "od 300 zł/mb"],
   ["Podświetlenie obwodowe", "od 170 zł/mb"],
-  ["Sufit dwupoziomowy z oświetleniem + LED", "od 290 zł/mb"],
+  ["Sufit dwupoziomowy z LED", "od 290 zł/mb"],
   ["Sufit translucent (podświetlany)", "od 250 zł/m²"],
   ["Sufit z nadrukiem", "od 200 zł/m²"],
   ["Sufit z efektem cienia", "od 120 zł/m²"],
   ["Gwiazdne niebo", "od 550 zł/m²"]
 ];
 
+// Salon idzie na duże zdjęcie po lewej, reszta na wąskie wiersze obok.
+const priceExampleFeature = {
+  title: "Salon 22 m²",
+  price: "od 7200 zł",
+  desc: "sufit dwupoziomowy z podświetleniem",
+  imageSrc: "/images/salon-22m2-photo.png"
+};
+
 const priceExamples = [
-  ["Łazienka 6 m²", "od 1800 zł", "sufit z linią LED i punktami świetlnymi"],
-  ["Kuchnia 10 m²", "od 3000 zł", "sufit z szyną magnetyczną"],
-  ["Salon 22 m²", "od 7200 zł", "sufit dwupoziomowy z podświetleniem"],
-  ["Mieszkanie 45 m²", "od 9350 zł", "sufit z LED w kilku pomieszczeniach"]
+  {
+    title: "Łazienka 6 m²",
+    price: "od 1800 zł",
+    desc: "sufit z linią LED i punktami świetlnymi",
+    imageSrc: "/images/lazienka-6m2-photo.png"
+  },
+  {
+    title: "Kuchnia 10 m²",
+    price: "od 3000 zł",
+    desc: "sufit z szyną magnetyczną",
+    imageSrc: "/images/kuchnia-10m2-photo.png"
+  },
+  {
+    title: "Mieszkanie 45 m²",
+    price: "od 9350 zł",
+    desc: "sufit z LED w kilku pomieszczeniach",
+    imageSrc: "/images/mieszkanie-45m2-led-photo.png"
+  }
 ];
 
 const faqs = [
@@ -192,12 +230,22 @@ export default function PricesPage() {
             eyebrow="Zakres"
             title="Co zwiększa cenę?"
             lead="Nie ukrywamy, że cena zależy od złożoności — pokazujemy orientacyjną średnią z warunkami, a dokładną wycenę robimy po pomiarze."
+            leadClassName="sectionLead--full"
           />
           <div className="priceFactorList">
-            {factors.map(([title, copy]) => (
+            {factors.map(([icon, title, copy]) => (
               <article className="priceFactor" key={title}>
                 <span className="priceFactorMark" aria-hidden="true">
-                  +
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    {factorIcons[icon]}
+                  </svg>
                 </span>
                 <div>
                   <h3>{title}</h3>
@@ -221,15 +269,39 @@ export default function PricesPage() {
             eyebrow="Przykłady"
             title="Ile kosztują typowe realizacje?"
             lead="Orientacyjne koszty typowych realizacji z oświetleniem i dodatkami. Sam sufit liczymy średnio ok. 120 zł/m² — dokładną cenę podajemy po pomiarze."
+            leadClassName="sectionLead--full"
           />
-          <div className="grid4 sectionCards">
-            {priceExamples.map(([title, price, desc]) => (
-              <article className="card miniCard" key={title}>
-                <h3>{title}</h3>
-                <strong className="examplePrice">{price}</strong>
-                <p>{desc}</p>
-              </article>
-            ))}
+          <div className="exampleDeck sectionCards">
+            <article className="exampleFeature">
+              <Image
+                src={priceExampleFeature.imageSrc}
+                alt=""
+                width={900}
+                height={700}
+                sizes="(max-width: 900px) 100vw, 620px"
+              />
+              <span className="exampleFeatureScrim" aria-hidden="true" />
+              <div className="exampleFeatureCopy">
+                <h3>{priceExampleFeature.title}</h3>
+                <strong className="examplePrice">{priceExampleFeature.price}</strong>
+                <p>{priceExampleFeature.desc}</p>
+              </div>
+            </article>
+
+            <div className="exampleList">
+              {priceExamples.map((item) => (
+                <article className="exampleRow" key={item.title}>
+                  <div className="exampleRowImg">
+                    <Image src={item.imageSrc} alt="" width={320} height={320} sizes="130px" />
+                  </div>
+                  <div className="exampleRowBody">
+                    <h3>{item.title}</h3>
+                    <strong className="examplePrice">{item.price}</strong>
+                    <p>{item.desc}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -250,8 +322,8 @@ export default function PricesPage() {
               </div>
             </aside>
             <div className="faqList faqListSingle">
-              {faqs.map((item, index) => (
-                <details className="faqItem" key={item.question} open={index === 0}>
+              {faqs.map((item) => (
+                <details className="faqItem" key={item.question}>
                   <summary>
                     <span>{item.question}</span>
                   </summary>
