@@ -6785,24 +6785,28 @@ button.contactCard .contactCardValue {
   line-height: 1.7;
 }
 
-/* Spis treści po lewej, tekst po prawej — odwrotnie niż w polityce. */
-.artykulLayout {
-  display: grid;
-  grid-template-columns: 300px minmax(0, 1fr);
-  gap: 48px;
-  align-items: start;
-  margin-top: var(--section-gap);
+/* Spis treści to blok nad tekstem — czytelnik widzi plan artykułu, zanim
+   zacznie czytać, a tekst i tabele biorą pełną szerokość kontenera. */
+.artykulToc {
+  margin-top: 22px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--bg-alt);
+  padding: 20px 24px;
 }
 
-.artykulAside {
-  position: sticky;
-  top: 104px;
-  max-height: calc(100vh - 124px);
-  overflow-y: auto;
-  overscroll-behavior: contain;
+.artykulToc .privacyToc {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2px 24px;
+}
+
+.artykulToc .privacyTocLabel {
+  grid-column: 1 / -1;
 }
 
 .artykulProse {
+  margin-top: var(--section-gap);
   font-size: 1.125rem;
   line-height: 1.8;
 }
@@ -6921,15 +6925,9 @@ button.contactCard .contactCardValue {
   font-weight: 700;
 }
 
-@media (max-width: 980px) {
-  .artykulLayout {
+@media (max-width: 640px) {
+  .artykulToc .privacyToc {
     grid-template-columns: minmax(0, 1fr);
-    gap: 28px;
-  }
-
-  .artykulAside {
-    position: static;
-    max-height: none;
   }
 }
 

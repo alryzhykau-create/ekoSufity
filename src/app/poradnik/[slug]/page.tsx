@@ -125,12 +125,13 @@ export default async function ArtykulPage({ params }: PageProps) {
             {shortAnswer}
           </div>
 
-          <div className="artykulLayout">
-            <aside className="artykulAside">
-              <StickyToc items={toc} />
-            </aside>
+          {/* Spis treści stoi nad tekstem, żeby czytelnik zobaczył plan artykułu
+              zanim zacznie czytać — a tekst i tabele biorą pełną szerokość. */}
+          <div className="artykulToc">
+            <StickyToc items={toc} />
+          </div>
 
-            <div className="artykulProse">
+          <div className="artykulProse">
               {body.map((blok, i) => (
                 <div className="artykulBlok" key={`blok-${i}`}>
                   {i === indeksCta ? (
@@ -148,7 +149,6 @@ export default async function ArtykulPage({ params }: PageProps) {
                   {blok.node}
                 </div>
               ))}
-            </div>
           </div>
         </div>
       </section>
