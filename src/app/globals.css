@@ -6803,7 +6803,6 @@ button.contactCard .contactCardValue {
 }
 
 .artykulProse {
-  max-width: 720px;
   font-size: 1.125rem;
   line-height: 1.8;
 }
@@ -6898,7 +6897,6 @@ button.contactCard .contactCardValue {
   grid-template-columns: 120px minmax(0, 1fr);
   gap: 24px;
   align-items: center;
-  max-width: 720px;
   padding: 24px;
 }
 
@@ -6955,6 +6953,19 @@ button.contactCard .contactCardValue {
   margin: 22px 0 0;
   color: var(--muted);
   font-size: 0.95rem;
+}
+
+/* Numer telefonu w treści artykułu — ikona zamiast emoji. */
+.artykulPhone {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.artykulPhoneIcon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
 }
 
 /* Wyjście do poradnika pod nagłówkiem sekcji — jedna linia, bez ozdób. */
