@@ -168,23 +168,6 @@ function tabela(blok: string, klucz: string): ReactNode {
   );
 }
 
-// Wiersz „📞 **numer** — Aleks, EkoSufity": emoji zastępujemy ikoną telefonu
-// używaną w reszcie serwisu. Plik .md zostaje nietknięty.
-function telefon(blok: string, klucz: string): ReactNode {
-  const reszta = blok.replace(/^📞\s*/, "");
-  return (
-    <p className="artykulPhone" key={klucz}>
-      <img
-        alt=""
-        aria-hidden="true"
-        className="artykulPhoneIcon"
-        src="/icon/contact-block/phone.svg"
-      />
-      {inline(reszta, klucz)}
-    </p>
-  );
-}
-
 // „**Pytanie?**\nOdpowiedź" w sekcji FAQ — do rozbicia na dane strukturalne.
 function czyPytanie(blok: string): FaqItem | null {
   const linie = blok.split("\n");
@@ -222,8 +205,9 @@ export function parseArticle(markdown: string): ParsedArticle {
       return;
     }
 
+    // Wiersz „📞 numer — Aleks, EkoSufity" powtarza kartę autora i stopkę
+    // kontaktową pod artykułem, więc go nie renderujemy.
     if (blok.startsWith("📞")) {
-      body.push({ node: telefon(blok, klucz) });
       return;
     }
 

@@ -6955,19 +6955,6 @@ button.contactCard .contactCardValue {
   font-size: 0.95rem;
 }
 
-/* Numer telefonu w treści artykułu — ikona zamiast emoji. */
-.artykulPhone {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.artykulPhoneIcon {
-  width: 18px;
-  height: 18px;
-  flex: 0 0 auto;
-}
-
 /* Wyjście do poradnika pod nagłówkiem sekcji — jedna linia, bez ozdób. */
 .poradnikHint {
   margin: 14px 0 0;
