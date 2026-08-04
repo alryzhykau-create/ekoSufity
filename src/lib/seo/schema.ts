@@ -70,3 +70,40 @@ export function faqSchema(items: { question: string; answer: string }[]) {
     }))
   };
 }
+
+// Artykuł poradnika. Autor to konkretna osoba, bo cała treść jest pisana
+// w pierwszej osobie — to samo nazwisko widnieje w karcie autora na stronie.
+export function articleSchema(input: {
+  path: string;
+  headline: string;
+  description: string;
+  image: string;
+  datePublished: string;
+  dateModified: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: input.headline,
+    description: input.description,
+    image: absoluteUrl(input.image),
+    datePublished: input.datePublished,
+    dateModified: input.dateModified,
+    inLanguage: "pl-PL",
+    author: {
+      "@type": "Person",
+      name: "Aleks",
+      jobTitle: "Specjalista od sufitów napinanych",
+      worksFor: { "@type": "Organization", name: siteConfig.brand }
+    },
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.brand,
+      url: siteConfig.baseUrl
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": absoluteUrl(input.path)
+    }
+  };
+}

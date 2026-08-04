@@ -188,6 +188,11 @@ export default async function CityPage({ params }: PageProps) {
           <div>
             <SectionHeader eyebrow="FAQ lokalne" title={`Pytania o montaż w lokalizacji ${city.name}`} />
             <FaqList items={localFaqs} />
+            <p className="poradnikHint">
+              <Link className="inlineLink" href="/poradnik/czy-montaz-sufitu-brudzi">
+                Czy montaż brudzi i ile trwa — cały przebieg krok po kroku →
+              </Link>
+            </p>
           </div>
           <aside className="card">
             <h3>Pobliskie lokalizacje</h3>

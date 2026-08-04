@@ -10,6 +10,7 @@ const offerLinks = [
   { href: "/rozwiazania", label: "Rozwiązania" },
   { href: "/ceny", label: "Ceny" },
   { href: "/realizacje", label: "Realizacje" },
+  { href: "/poradnik", label: "Poradnik" },
   { href: "/faq", label: "FAQ" },
   { href: "/o-firmie", label: "O firmie" },
   { href: "/kontakt", label: "Kontakt" }

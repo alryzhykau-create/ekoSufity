@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { CopyEmailButton } from "@/components/legal/CopyEmailButton";
-import { PrivacyToc } from "@/components/legal/PrivacyToc";
+import { StickyToc } from "@/components/ui/StickyToc";
 import { siteConfig } from "@/content/site";
 import { breadcrumbSchema } from "@/lib/seo/schema";
 
@@ -53,7 +53,7 @@ export default function PrivacyPolicyPage() {
       <section className="section">
         <div className="container privacyGrid">
           <aside className="privacyAside">
-            <PrivacyToc items={tocItems} />
+            <StickyToc items={tocItems} />
             <div className="privacyTocCard">
               <p>Masz pytanie o dane?</p>
               <p>Napisz — odpowiemy w ciągu 30 dni.</p>

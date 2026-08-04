@@ -58,6 +58,13 @@ export function FakturaDetail({ faktura }: FakturaDetailProps) {
       <article className="card sectionCards" style={{ maxWidth: 860 }}>
         <p style={{ margin: 0 }}>{faktura.warto}</p>
       </article>
+      {["matowy", "polysk"].includes(faktura.slug) ? (
+        <p className="poradnikHint">
+          <Link className="inlineLink" href="/poradnik/matowy-satynowy-czy-polysk">
+            Porównanie wszystkich faktur w poradniku →
+          </Link>
+        </p>
+      ) : null}
       {faktura.bridge ? (
         <p style={{ marginTop: 16 }}>
           <Link href={faktura.bridge.href} className="inlineLink">

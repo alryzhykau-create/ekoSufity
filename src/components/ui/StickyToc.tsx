@@ -2,19 +2,20 @@
 
 import { useEffect, useState } from "react";
 
-export type PrivacyTocItem = {
+export type StickyTocItem = {
   id: string;
   label: string;
 };
 
-type PrivacyTocProps = {
-  items: ReadonlyArray<PrivacyTocItem>;
+type StickyTocProps = {
+  items: ReadonlyArray<StickyTocItem>;
 };
 
+// Wspólny spis treści (polityka prywatności + poradnik).
 // Podświetla w spisie treści sekcję, której nagłówek minął górną krawędź
 // widoku (ten sam próg co przewijanie do kotwicy — patrz scroll-margin-top
 // sekcji w globals.css).
-export function PrivacyToc({ items }: PrivacyTocProps) {
+export function StickyToc({ items }: StickyTocProps) {
   const [activeId, setActiveId] = useState(items[0]?.id ?? "");
 
   useEffect(() => {

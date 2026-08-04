@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type ChangeEvent } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { CtaIcon } from "@/components/ui/CtaIcon";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -243,7 +244,10 @@ export function Kalkulator() {
 
       <p className="kalkulatorResultNote">
         Wstępny szacunek dla typowego pomieszczenia. Minimalne zamówienie 1200 zł. Dokładną cenę
-        podajemy po bezpłatnym pomiarze.
+        podajemy po bezpłatnym pomiarze.{" "}
+        <Link className="inlineLink" href="/poradnik/ile-kosztuje-sufit-napinany">
+          Z czego składa się cena →
+        </Link>
       </p>
     </>
   );

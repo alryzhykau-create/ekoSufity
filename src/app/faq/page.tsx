@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Image from "next/image";
 import { seoMeta } from "@/lib/seo/metadata";
 import { FinalContactSection } from "@/components/contact/FinalContactSection";
@@ -156,6 +157,13 @@ export default function FaqPage() {
             leadClassName="sectionLead--full"
           />
           <FaqTabs items={pageFaqs} categories={faqCategories} />
+          {/* Jedno wyjście do poradnika — pytanie o cenę pada tu najczęściej. */}
+          <p className="faqPoradnikLink">
+            Cena rozbita na czynniki, z cennikiem i przykładami wycen:{" "}
+            <Link className="inlineLink" href="/poradnik/ile-kosztuje-sufit-napinany">
+              Ile kosztuje sufit napinany →
+            </Link>
+          </p>
         </div>
       </section>
 

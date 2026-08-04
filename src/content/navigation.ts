@@ -4,6 +4,7 @@ export const navigation = [
   { label: "Rozwiązania", href: "/rozwiazania" },
   { label: "Ceny", href: "/ceny" },
   { label: "Realizacje", href: "/realizacje" },
+  { label: "Poradnik", href: "/poradnik" },
   { label: "FAQ", href: "/faq" },
   { label: "Kontakt", href: "/kontakt" }
 ] as const;

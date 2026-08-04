@@ -99,6 +99,11 @@ export function FolieDetail() {
             title="Rodzaje faktur"
             lead="Każda faktura daje inny efekt — od klasycznego matu po lustrzany połysk i świecący sufit. Zobacz szczegóły."
           />
+          <p className="poradnikHint">
+            <Link className="inlineLink" href="/poradnik/matowy-satynowy-czy-polysk">
+              Matowy, satynowy czy połysk — jak wybrać fakturę →
+            </Link>
+          </p>
           <div className="grid4 sectionCards">
             {faktury.map((faktura) => (
               <Link

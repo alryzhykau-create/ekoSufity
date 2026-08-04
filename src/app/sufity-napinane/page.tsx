@@ -231,6 +231,11 @@ export default function StretchCeilingsPage() {
             odrobiną łagodnego detergentu. Nie trzeba jej malować ani odnawiać. Folia nie chłonie
             wody, dlatego nadaje się także do łazienki, kuchni i pomieszczeń wilgotnych.
           </p>
+          <p className="sectionLead sectionLead--full">
+            <Link className="inlineLink" href="/poradnik/minusy-sufitow-napinanych">
+              Jakie są minusy sufitów napinanych — szczera odpowiedź montażysty →
+            </Link>
+          </p>
         </div>
       </section>
 
@@ -393,6 +398,11 @@ export default function StretchCeilingsPage() {
                   </span>
                   <div className="stepFlowBody">
                     <h3>{title}</h3>
+                    {title === "Montaż" ? (
+                      <Link className="inlineLink" href="/poradnik/czy-montaz-sufitu-brudzi">
+                        Czy montaż brudzi? →
+                      </Link>
+                    ) : null}
                   </div>
                 </li>
               ))}
