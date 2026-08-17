@@ -140,6 +140,12 @@ export function FolieDetail() {
             title="Producenci folii"
             lead="Montujemy folie sprawdzonych producentów — dobieramy je do efektu i budżetu."
           />
+          {/* Cena zależy od producenta, więc z opisów prowadzimy prosto do cennika. */}
+          <p className="poradnikHint">
+            <Link className="inlineLink" href="/ceny#ceny-folii">
+              Ceny folii MSD, Bauf i Teqtum →
+            </Link>
+          </p>
           <div className="producentList">
             {producers.map((producer) => (
               <article
