@@ -5671,6 +5671,62 @@ a.miniCard:hover {
   white-space: nowrap;
 }
 
+/* Wybór folii: nazwa i stawka od razu widoczne, wybrana karta na kremowo. */
+.kalkulatorFolie {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.kalkulatorFoliaBtn {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border: 1.5px solid #e6d8c7;
+  border-radius: 12px;
+  background: #fdfbf8;
+  padding: 12px 14px;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 160ms ease, background 160ms ease;
+}
+
+.kalkulatorFoliaBtn strong {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.kalkulatorFoliaBtn span {
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.kalkulatorFoliaBtn:hover {
+  border-color: rgba(201, 121, 28, 0.5);
+}
+
+.kalkulatorFoliaBtn.is-active {
+  border-color: var(--gold);
+  background: #fdf3e6;
+}
+
+.kalkulatorFoliaBtn.is-active span {
+  color: var(--gold-dark);
+  font-weight: 600;
+}
+
+
+
+
+
+@media (max-width: 700px) {
+  .kalkulatorFolie {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 /* Przyciski trzymają się dołu panelu, niezależnie od liczby pozycji. */
 .kalkulatorActions {
   display: flex;

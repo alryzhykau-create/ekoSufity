@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { znajdzFolie } from "@/content/folie-ceny";
 
 // Karty producentów folii — sekcja używana na /sufity-napinane i /faq,
 // więc dane i układ trzymamy w jednym miejscu.
@@ -10,21 +11,21 @@ const folieCards = [
     copy: "Najczęściej montowana folia, najlepszy stosunek jakości do ceny. Ponad 120 kolorów w linii Premium.",
     href: "/rozwiazania/folie#msd",
     imageSrc: "/images/marka-msd.jpg",
-    cena: "120 zł"
+    cena: `${znajdzFolie("msd").cenaM2} zł`
   },
   {
     title: "Bauf",
     copy: "Niemiecka marka i technologia, produkcja według europejskich norm.",
     href: "/rozwiazania/folie#bauf",
     imageSrc: "/images/marka-bauf.jpg",
-    cena: "135 zł"
+    cena: `${znajdzFolie("bauf").cenaM2} zł`
   },
   {
     title: "Teqtum",
     copy: "Niemiecka marka z segmentu premium. Najwyższa półka jakościowa.",
     href: "/rozwiazania/folie#teqtum",
     imageSrc: "/images/marka-teqtum.jpg",
-    cena: "170 zł"
+    cena: `${znajdzFolie("teqtum").cenaM2} zł`
   }
 ];
 

@@ -5,11 +5,12 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { CtaIcon } from "@/components/ui/CtaIcon";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { folieCeny, znajdzFolie } from "@/content/folie-ceny";
 import { siteConfig, whatsappUrl } from "@/content/site";
 
 // Ceny jednostkowe — trzymane w jednym miejscu, żeby łatwo je zmienić.
+// Stawka za m² zależy od producenta folii i siedzi w src/content/folie-ceny.ts.
 const PRICES = {
-  sufitPerM2: 120,
   freeNarozniki: 4,
   extraNaroznik: 30,
   ledLiniaPerMb: 250,
@@ -34,6 +35,7 @@ function formatZl(value: number): string {
 }
 
 export function Kalkulator() {
+  const [folia, setFolia] = useState<string>(folieCeny[0].id);
   const [powierzchnia, setPowierzchnia] = useState("");
   const [narozniki, setNarozniki] = useState("4");
   const [linieLed, setLinieLed] = useState("0");
@@ -47,13 +49,14 @@ export function Kalkulator() {
       setter(whole.replace(/\D/g, ""));
     };
 
+  const wybranaFolia = znajdzFolie(folia);
   const area = toNumber(powierzchnia);
   const corners = toNumber(narozniki);
   const led = toNumber(linieLed);
   const points = toNumber(punkty);
   const curtain = toNumber(karnisz);
 
-  const sufitCost = area * PRICES.sufitPerM2;
+  const sufitCost = area * wybranaFolia.cenaM2;
   const cornersCost =
     corners > PRICES.freeNarozniki ? (corners - PRICES.freeNarozniki) * PRICES.extraNaroznik : 0;
   const ledCost = led * PRICES.ledLiniaPerMb;
@@ -69,8 +72,9 @@ export function Kalkulator() {
 
   // Rozbicie kosztu — wyłącznie prezentacja policzonych wyżej wartości.
   const breakdown: Array<[string, number]> = [];
-  if (sufitCost > 0) breakdown.push([`Sufit ${area} m²`, sufitCost]);
-  if (cornersCost > 0) breakdown.push([`Dodatkowe narożniki (${corners - PRICES.freeNarozniki})`, cornersCost]);
+  if (sufitCost > 0) breakdown.push([`Sufit ${area} m² · ${wybranaFolia.nazwa}`, sufitCost]);
+  if (cornersCost > 0)
+    breakdown.push([`Dodatkowe narożniki (${corners - PRICES.freeNarozniki})`, cornersCost]);
   if (ledCost > 0) breakdown.push([`Linie LED ${led} mb`, ledCost]);
   if (pointsCost > 0) breakdown.push([`Punkty światła ${points} szt.`, pointsCost]);
   if (curtainCost > 0) breakdown.push([`Ukryty karnisz ${curtain} mb`, curtainCost]);
@@ -79,7 +83,8 @@ export function Kalkulator() {
   // Wiadomość na WhatsApp z aktualnych wartości kalkulatora — tylko wypełnione pola.
   const waLines = [
     "Dzień dobry! Interesuje mnie wycena sufitu napinanego.",
-    `Powierzchnia: ${area} m²`
+    `Powierzchnia: ${area} m²`,
+    `Folia: ${wybranaFolia.nazwa} (${wybranaFolia.cenaM2} zł/m²)`
   ];
   if (corners > 0) waLines.push(`Narożniki: ${corners}`);
   if (led > 0) waLines.push(`Linie LED: ${led} mb`);
@@ -96,6 +101,32 @@ export function Kalkulator() {
       <div className="kalkulator">
         <div className="card kalkulatorForm">
           <div className="kalkulatorFields">
+            {/* Rodzaj folii nad metrażem: stawka za m² zależy od producenta,
+                więc wybór musi być przed liczbami. */}
+            <div className="kalkulatorField kalkulatorField--full">
+              <span className="kalkulatorLabel">Rodzaj folii</span>
+              <div aria-label="Rodzaj folii" className="kalkulatorFolie" role="radiogroup">
+                {folieCeny.map((item) => (
+                  <button
+                    aria-checked={item.id === wybranaFolia.id}
+                    className={`kalkulatorFoliaBtn${
+                      item.id === wybranaFolia.id ? " is-active" : ""
+                    }`}
+                    key={item.id}
+                    onClick={() => setFolia(item.id)}
+                    role="radio"
+                    type="button"
+                  >
+                    <strong>{item.nazwa}</strong>
+                    <span>{item.cenaM2} zł/m²</span>
+                  </button>
+                ))}
+              </div>
+              <span className="kalkulatorHint">
+                {wybranaFolia.nazwa} — {wybranaFolia.opis}
+              </span>
+            </div>
+
             <label className="kalkulatorField kalkulatorField--full">
               <span className="kalkulatorLabel">Powierzchnia pomieszczenia</span>
               <span className="kalkulatorInputWrap">
