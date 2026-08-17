@@ -1932,8 +1932,13 @@ main {
   margin-top: 22px;
 }
 
+/* Kolumna flex, żeby opis mógł się rozciągnąć, a cena stanęła u dołu karty —
+   wtedy kwoty we wszystkich kartach leżą na jednej linii, niezależnie od tego,
+   czy zakres prac zajmuje dwie linijki, czy trzy. */
 .priceExampleItem {
+  display: flex;
   overflow: hidden;
+  flex-direction: column;
   border: 1px solid var(--border);
   border-radius: 16px;
   background: var(--surface);
@@ -1958,6 +1963,7 @@ main {
 
 .priceExampleBody {
   display: flex;
+  flex: 1;
   flex-direction: column;
   align-items: center;
   gap: 4px;
@@ -1978,13 +1984,15 @@ main {
 
 .priceExampleBody p {
   margin: 0;
-  min-height: 3.2em;
   color: var(--muted);
   font-size: 0.8rem;
   line-height: 1.4;
 }
 
+/* Cena dosunięta do dołu karty — jedna linia we wszystkich czterech. */
 .priceExampleBody strong {
+  margin-top: auto;
+  padding-top: 6px;
   color: var(--gold);
   font-size: 1.05rem;
   line-height: 1.2;
