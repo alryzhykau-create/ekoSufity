@@ -6,6 +6,7 @@ import { FinalContactSection } from "@/components/contact/FinalContactSection";
 import { SocialBanner } from "@/components/home/SocialBanner";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { ProducenciSection } from "@/components/rozwiazania/ProducenciSection";
 import { Button } from "@/components/ui/Button";
 import { CtaIcon } from "@/components/ui/CtaIcon";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -221,6 +222,10 @@ export default function PricesPage() {
               ))}
             </div>
           </div>
+
+          {/* Ceny folii wchodzą w tę samą sekcję co cennik — inaczej trzeba by
+              przestawić naprzemienne tła wszystkich sekcji poniżej. */}
+          <ProducenciSection bezSekcji zCenami />
         </div>
       </section>
 
