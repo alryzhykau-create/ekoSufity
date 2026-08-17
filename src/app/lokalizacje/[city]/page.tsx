@@ -106,42 +106,44 @@ export default async function CityPage({ params }: PageProps) {
               </Button>
             </div>
           </div>
-          {/* Zdjęcie miasta z medalionem — ten sam kadr 425px co w nagłówkach
-              pozostałych stron. Bez zdjęcia zostaje karta z ceną, więc miasta
-              bez materiału nie mają pustego miejsca. */}
-          {city.photo ? (
-            <div className="cityHeroPhoto">
-              <Image
-                src={city.photo}
-                alt={`${city.name} — sufity napinane z montażem`}
-                width={1200}
-                height={900}
-                priority
-                sizes="(max-width: 980px) 100vw, 520px"
-              />
-              <div className="cityHeroBadge">
-                {city.herb ? (
-                  <Image
-                    className="cityHeroHerb"
-                    src={city.herb}
-                    alt={`Herb ${city.name}`}
-                    width={92}
-                    height={92}
-                  />
-                ) : null}
-                <span>{city.name}</span>
+          {/* Kadr 425px jak w nagłówkach pozostałych stron. Zdjęć miast nie mamy,
+              więc do czasu ich dostarczenia stoi tu plansza z nazwą miasta i
+              mapą zasięgu w tle — a gdy zdjęcie się pojawi, wchodzi na jej
+              miejsce razem z medalionem. */}
+          <div className="cityHeroPhoto">
+            {city.photo ? (
+              <>
+                <Image
+                  src={city.photo}
+                  alt={`${city.name} — sufity napinane z montażem`}
+                  width={1200}
+                  height={900}
+                  priority
+                  sizes="(max-width: 980px) 100vw, 520px"
+                />
+                <div className="cityHeroBadge">
+                  <span>{city.name}</span>
+                </div>
+              </>
+            ) : (
+              <div className="cityHeroPlate">
+                <Image
+                  className="cityHeroPlateMap"
+                  src="/images/mapa-dzialamy-do-100-km.png"
+                  alt=""
+                  aria-hidden="true"
+                  width={420}
+                  height={420}
+                />
+                <span className="softLabel">Sufity napinane</span>
+                <strong>{city.name}</strong>
+                {/* Cena lokalna zostaje w nagłówku — była na karcie, którą
+                    plansza zastąpiła. */}
+                <span className="cityHeroPlatePrice">średnio ok. 120 zł/m²</span>
+                <p>Bezpłatny pomiar i dojazd · do 100 km od Wrocławia</p>
               </div>
-            </div>
-          ) : (
-            <aside className="card priceCard">
-              <span className="softLabel">Cena lokalna</span>
-              <div className="priceValue">średnio ok. 120 zł/m²</div>
-              <p>
-                Dla sufitu MSD w prostym prostokątnym pomieszczeniu z 4 narożnikami, bez dodatkowych
-                elementów. Wycena po pomiarze.
-              </p>
-            </aside>
-          )}
+            )}
+          </div>
         </div>
       </section>
 

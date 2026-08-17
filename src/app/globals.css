@@ -6855,6 +6855,10 @@ button.contactCard .contactCardValue {
   overflow: hidden;
   height: 425px;
   border-radius: 18px;
+}
+
+/* Cień tylko pod zdjęciem — plansza ma własną, lekką ramkę. */
+.cityHeroPhoto:has(img:not(.cityHeroPlateMap)) {
   box-shadow: 0 22px 50px rgba(20, 18, 16, 0.18);
 }
 
@@ -6880,18 +6884,61 @@ button.contactCard .contactCardValue {
   font-weight: 700;
 }
 
-/* Bez herbu medalion zwęża się do samej nazwy. */
-.cityHeroBadge:not(:has(.cityHeroHerb)) {
-  padding: 10px 20px;
+/* Plansza zastępcza — dopóki nie ma zdjęć miast. Nazwa miasta na firmowym
+   kremie, w tle bardzo delikatna mapa zasięgu. */
+.cityHeroPlate {
+  position: relative;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: linear-gradient(160deg, #ffffff 0%, var(--section-alt-bg) 55%, #f6ece0 100%);
+  padding: 32px;
+  text-align: center;
 }
 
-.cityHeroPhoto .cityHeroHerb {
-  width: 46px;
-  height: 46px;
-  flex: 0 0 auto;
-  border-radius: 999px;
-  object-fit: contain;
-  background: #fff;
+.cityHeroPlate .cityHeroPlateMap {
+  position: absolute;
+  right: -40px;
+  bottom: -40px;
+  width: 320px;
+  height: auto;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.cityHeroPlate strong {
+  position: relative;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.4vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.cityHeroPlatePrice {
+  position: relative;
+  margin-top: 4px;
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.cityHeroPlate p {
+  position: relative;
+  margin: 6px 0 0;
+  max-width: 320px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.cityHeroPlate .softLabel {
+  position: relative;
 }
 
 /* Wąski ekran: kolumny hero stoją jedna pod drugą, więc sztywna wysokość

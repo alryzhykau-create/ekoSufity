@@ -12,9 +12,6 @@ export type City = {
   /* Zdjęcie miasta do nagłówka — 1200×900. Dopóki go nie ma, nagłówek
      pokazuje kartę z ceną, więc strona nigdy nie zostaje z pustym kadrem. */
   photo?: string;
-  /* Herb albo inny znak miasta w medalionie na zdjęciu. Bez niego medalion
-     pokazuje samą nazwę miasta. */
-  herb?: string;
 };
 
 const cityNames = {
