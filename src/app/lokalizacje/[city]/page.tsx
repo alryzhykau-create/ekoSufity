@@ -106,14 +106,42 @@ export default async function CityPage({ params }: PageProps) {
               </Button>
             </div>
           </div>
-          <aside className="card priceCard">
-            <span className="softLabel">Cena lokalna</span>
-            <div className="priceValue">średnio ok. 120 zł/m²</div>
-            <p>
-              Dla sufitu MSD w prostym prostokątnym pomieszczeniu z 4 narożnikami, bez dodatkowych
-              elementów. Wycena po pomiarze.
-            </p>
-          </aside>
+          {/* Zdjęcie miasta z medalionem — ten sam kadr 425px co w nagłówkach
+              pozostałych stron. Bez zdjęcia zostaje karta z ceną, więc miasta
+              bez materiału nie mają pustego miejsca. */}
+          {city.photo ? (
+            <div className="cityHeroPhoto">
+              <Image
+                src={city.photo}
+                alt={`${city.name} — sufity napinane z montażem`}
+                width={1200}
+                height={900}
+                priority
+                sizes="(max-width: 980px) 100vw, 520px"
+              />
+              <div className="cityHeroBadge">
+                {city.herb ? (
+                  <Image
+                    className="cityHeroHerb"
+                    src={city.herb}
+                    alt={`Herb ${city.name}`}
+                    width={92}
+                    height={92}
+                  />
+                ) : null}
+                <span>{city.name}</span>
+              </div>
+            </div>
+          ) : (
+            <aside className="card priceCard">
+              <span className="softLabel">Cena lokalna</span>
+              <div className="priceValue">średnio ok. 120 zł/m²</div>
+              <p>
+                Dla sufitu MSD w prostym prostokątnym pomieszczeniu z 4 narożnikami, bez dodatkowych
+                elementów. Wycena po pomiarze.
+              </p>
+            </aside>
+          )}
         </div>
       </section>
 

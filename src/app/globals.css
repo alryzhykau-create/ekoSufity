@@ -6846,6 +6846,54 @@ button.contactCard .contactCardValue {
   font-size: 0.95rem;
 }
 
+/* ——— Nagłówek strony miasta: zdjęcie miasta z medalionem ———
+   Kadr trzyma tę samą wysokość co pozostałe nagłówki (patrz .pageVisualCard).
+   Medalion siedzi na zdjęciu i pokazuje herb z nazwą miasta, a gdy herbu nie
+   ma — samą nazwę. */
+.cityHeroPhoto {
+  position: relative;
+  overflow: hidden;
+  height: 425px;
+  border-radius: 18px;
+  box-shadow: 0 22px 50px rgba(20, 18, 16, 0.18);
+}
+
+.cityHeroPhoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cityHeroBadge {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  padding: 8px 20px 8px 8px;
+  box-shadow: 0 10px 24px rgba(20, 18, 16, 0.18);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+/* Bez herbu medalion zwęża się do samej nazwy. */
+.cityHeroBadge:not(:has(.cityHeroHerb)) {
+  padding: 10px 20px;
+}
+
+.cityHeroPhoto .cityHeroHerb {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  object-fit: contain;
+  background: #fff;
+}
+
 /* Wąski ekran: kolumny hero stoją jedna pod drugą, więc sztywna wysokość
    prawej karty nie ma sensu — zdjęcie dobiera ją do proporcji. Blok musi
    stać na końcu pliku: reguły .pageVisualCard i .artykulHeroPhoto są niżej
@@ -6854,6 +6902,11 @@ button.contactCard .contactCardValue {
   .pageVisualCard,
   .artykulHeroPhoto {
     height: auto;
+  }
+
+  .cityHeroPhoto {
+    height: auto;
+    aspect-ratio: 16 / 10;
   }
 
   /* height: auto jest konieczne — next/image wypisuje atrybuty width/height,
