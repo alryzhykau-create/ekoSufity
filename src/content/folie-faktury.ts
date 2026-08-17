@@ -225,7 +225,7 @@ export const faktury: Faktura[] = [
     ]
   },
   {
-    slug: "podswietlany",
+    slug: "translucent",
     name: "Translucent",
     eyebrow: "Rodzaj folii",
     h1: "Folia translucent (podświetlana)",
@@ -296,14 +296,14 @@ export const fakturaCardImage: Record<string, string> = {
   matowy: "/images/faktura-matowy.jpg",
   satynowy: "/images/faktura-satynowy.jpg",
   polysk: "/images/faktura-polysk.jpg",
-  podswietlany: "/images/faktura-translucent.jpg"
+  translucent: "/images/faktura-translucent.jpg"
 };
 
 export const fakturaCardCopy: Record<string, string> = {
   matowy: "Spokojny, równy efekt do mieszkań, domów i lokali po remoncie.",
   satynowy: "Delikatny połysk bez mocnego odbicia światła.",
   polysk: "Efekt odbicia i wizualnego powiększenia pomieszczenia.",
-  podswietlany: "Materiał do podświetlenia i efektu miękkiego światła."
+  translucent: "Materiał do podświetlenia i efektu miękkiego światła."
 };
 
 // Druga linia karty — „gdzie się sprawdza". Ten sam tekst co na /sufity-napinane.
@@ -314,7 +314,7 @@ export const fakturaCardFit: Record<string, string> = {
     "Złoty środek: delikatny połysk dodaje elegancji, ale bez efektu lustra. Dobre do wnętrz, które chcesz lekko rozjaśnić.",
   polysk:
     "Efekt lustra optycznie powiększa pomieszczenie. Najlepsze do małych i ciemnych wnętrz — łazienek, korytarzy, kawalerek.",
-  podswietlany:
+  translucent:
     "Świecąca płaszczyzna jako główne lub dekoracyjne światło — świetna do wnętrz bez okien i stref relaksu."
 };
 

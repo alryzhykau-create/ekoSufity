@@ -65,7 +65,7 @@ const ceilingTypes: Array<{
     title: "Translucent",
     copy: "Materiał do podświetlenia i efektu miękkiego światła.",
     fit: "Świecąca płaszczyzna jako główne lub dekoracyjne światło — świetna do wnętrz bez okien i stref relaksu.",
-    href: "/rozwiazania/folie/podswietlany",
+    href: "/rozwiazania/folie/translucent",
     linkLabel: "Zobacz rozwiązania →",
     bgSrc: "/images/faktura-translucent.jpg"
   },

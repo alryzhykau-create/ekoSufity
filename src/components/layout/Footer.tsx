@@ -22,7 +22,7 @@ const serviceLinks = [
   { href: "/rozwiazania/folie/matowy", label: "Sufity matowe" },
   { href: "/rozwiazania/folie/satynowy", label: "Sufity satynowe" },
   { href: "/rozwiazania/folie/polysk", label: "Sufity błyszczące" },
-  { href: "/rozwiazania/folie/podswietlany", label: "Sufity podświetlane" },
+  { href: "/rozwiazania/sufit-podswietlany", label: "Sufity podświetlane" },
   { href: "/rozwiazania/sufit-z-nadrukiem", label: "Sufity z nadrukiem" },
   { href: "/rozwiazania/oswietlenie-led", label: "Oświetlenie LED" },
   { href: "/rozwiazania/karnisze-sufitowe", label: "Ukryte karnisze" }

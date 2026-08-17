@@ -592,7 +592,7 @@ export const rozwiazania: Rozwiazanie[] = [
     },
     whatIs:
       "Sufit podświetlany to gotowe rozwiązanie oparte na folii translucent i oświetleniu LED. Światło umieszczone nad membraną prześwituje przez nią, dając efekt świecącej płaszczyzny. To nie tylko dekoracja — taki sufit może pełnić funkcję głównego źródła światła w pomieszczeniu.",
-    bridge: { text: "Materiał: folia translucent", href: "/rozwiazania/folie/podswietlany" },
+    bridge: { text: "Materiał: folia translucent", href: "/rozwiazania/folie/translucent" },
     planTitle: "Warianty podświetlenia",
     planCards: [
       {
