@@ -1965,18 +1965,23 @@ main {
   text-align: center;
 }
 
-/* Nazwa pomieszczenia jest cicha, cena — złota; hierarchia jak w projekcie. */
+/* Nazwa pomieszczenia, pod nią zakres prac, na końcu cena — czytelnik widzi
+   od razu, za co jest ta kwota. */
 .priceExampleBody h3 {
-  display: flex;
-  min-height: 2.3em;
-  align-items: center;
-  justify-content: center;
   margin: 0;
-  color: var(--muted);
+  color: var(--text);
   font-family: var(--font-display);
   font-size: 0.95rem;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.2;
+}
+
+.priceExampleBody p {
+  margin: 0;
+  min-height: 3.2em;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.4;
 }
 
 .priceExampleBody strong {
@@ -4815,16 +4820,47 @@ a.miniCard:hover {
   );
 }
 
+/* Na zdjęciu połysku dysk leży niżej niż na pozostałych fakturach —
+   trzymamy kadr dolną krawędzią i podnosimy go, żeby dysk był na tej samej
+   wysokości co w innych kartach. */
+.miniCard--photoDark .miniCardBg {
+  top: auto;
+  bottom: 0;
+  height: 110%;
+}
+
 /* Szeroka karta: lewa strona to czysta biel pod tekst, dysk wynurza się
    z niej po prawej — ten sam układ co w szerokiej karcie „Z nadrukiem". */
 /* Próg liczy się od pola treści karty (bez paddingu) — 340px to karta ~380px. */
 @container (min-width: 340px) {
+  /* Długie, rozciągnięte przejście: biel trzyma tylko start karty, dalej
+     zdjęcie odsłania się stopniowo aż do prawej krawędzi. */
+  /* Stopnie dobrane pomiarem: na najszerszej karcie (626px, dwie kolumny
+     na /rozwiazania/folie) satyna spadała do 4,44:1 — poniżej progu AA. */
   .miniCard--photo::before {
     background: linear-gradient(
       to right,
       #fff 0%,
-      #fff 58%,
-      rgba(255, 255, 255, 0) 90%
+      #fff 25%,
+      rgba(255, 255, 255, 0.86) 48%,
+      rgba(255, 255, 255, 0.5) 70%,
+      rgba(255, 255, 255, 0.12) 90%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+
+  /* Karta z czarnym połyskiem: welon trzyma biel dłużej pod tekstem, ale
+     kończy się już na 78% — dalej zdjęcie idzie bez rozjaśnienia, żeby dysk
+     był naprawdę czarny. Bez tego lustrzana faktura gubiła się na bieli. */
+  .miniCard--photoDark::before {
+    background: linear-gradient(
+      to right,
+      #fff 0%,
+      #fff 30%,
+      rgba(255, 255, 255, 0.95) 48%,
+      rgba(255, 255, 255, 0.7) 58%,
+      rgba(255, 255, 255, 0.2) 70%,
+      rgba(255, 255, 255, 0) 78%
     );
   }
 
@@ -6741,11 +6777,14 @@ button.contactCard .contactCardValue {
   gap: 10px;
   margin: 16px 0 0;
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: 1rem;
 }
 
+/* Nazwisko autora ma być czytelne od razu, nie ginąć w drobnym wierszu. */
 .artykulMeta strong {
   color: var(--text);
+  font-family: var(--font-display);
+  font-size: 1.12rem;
 }
 
 .artykulHeroPhoto {
@@ -6785,24 +6824,148 @@ button.contactCard .contactCardValue {
   line-height: 1.7;
 }
 
+/* Cennik w artykule: pozycja po lewej, kwota po prawej, kropkowany łącznik
+   między nimi. Bez ramek — w ciągu tekstu tabela ciążyła. */
+.artykulCennik {
+  display: grid;
+  gap: 2px;
+  margin: 0 0 26px;
+}
+
+.artykulCennik > div {
+  display: grid;
+  grid-template-columns: auto minmax(24px, 1fr) auto;
+  align-items: baseline;
+  gap: 10px;
+  padding: 12px 0;
+}
+
+.artykulCennik > div + div {
+  border-top: 1px solid var(--border);
+}
+
+.artykulCennik dt {
+  margin: 0;
+  font-size: 1.02rem;
+}
+
+.artykulCennik > div > span {
+  border-bottom: 1px dotted #cfc6b8;
+  transform: translateY(-4px);
+}
+
+.artykulCennik dd {
+  margin: 0;
+  color: var(--gold-dark);
+  font-size: 1.02rem;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+/* W pliku .md kwoty są pogrubione — w cenniku pogrubienie tylko szumi,
+   bo cała kolumna to kwoty. Zostaje sam kolor. */
+.artykulCennik dd strong {
+  font-weight: inherit;
+}
+
+@media (max-width: 640px) {
+  .artykulCennik > div {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .artykulCennik > div > span {
+    display: none;
+  }
+}
+
+/* Poradnik: rysunek jest treścią, nie ozdobą, więc kolumna ze szkicem
+   dostaje więcej miejsca niż standardowe 0.82fr. Tylko od 981px — niżej
+   nagłówek składa się do jednej kolumny i ta reguła nie może tego psuć. */
+@media (min-width: 981px) {
+  .splitHero--poradnik {
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 1.05fr);
+    gap: 40px;
+  }
+}
+
+/* Poradnik: w nagłówku stoją rysunki na białym tle, a nie zdjęcia wnętrz —
+   kadry trzymają proporcje rysunków, żeby nic nie było ucinane. */
+.pageHeroPhotos--sketch {
+  padding: 0 0 30px 26px;
+}
+
+.pageHeroPhotos--sketch .pageHeroPhotoMain {
+  aspect-ratio: 16 / 9;
+  background: #fff;
+  box-shadow: 0 18px 40px rgba(20, 18, 16, 0.1);
+}
+
+.pageHeroPhotos--sketch .pageHeroPhotoSmall {
+  width: 46%;
+  aspect-ratio: 4 / 3;
+  /* Czarny obrys zamiast kremowego — rysunek na białym tle inaczej zlewa
+     się z kadrem pod spodem. */
+  border: 3px solid var(--text);
+  background: #fff;
+  box-shadow: 0 14px 28px rgba(20, 18, 16, 0.12);
+}
+
+/* Okładki poradnika są rysunkami 16:9 — kadr trzyma proporcję, żeby dół
+   kompozycji (meble, podłoga) nie był ucinany. */
+.poradnikCardImg {
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
 /* Spis treści to blok nad tekstem — czytelnik widzi plan artykułu, zanim
-   zacznie czytać, a tekst i tabele biorą pełną szerokość kontenera. */
+   zacznie czytać, a tekst i tabele biorą pełną szerokość kontenera.
+   Etykieta stoi w bocznej kolumnie, więc blok jest niższy. */
 .artykulToc {
   margin-top: 22px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(201, 121, 28, 0.35);
+  border-left: 4px solid var(--gold);
   border-radius: 16px;
-  background: var(--bg-alt);
-  padding: 20px 24px;
+  background: linear-gradient(180deg, #fffdfa, #fff6ec);
+  padding: 24px 28px;
 }
 
 .artykulToc .privacyToc {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 2px 24px;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 32px;
 }
 
 .artykulToc .privacyTocLabel {
-  grid-column: 1 / -1;
+  padding: 0;
+  color: var(--gold-dark);
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+}
+
+.artykulToc .privacyTocList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 40px;
+}
+
+.artykulToc .privacyTocLink {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(201, 121, 28, 0.18);
+  border-radius: 0;
+  color: var(--text);
+  font-size: 0.98rem;
+  font-weight: 500;
+}
+
+.artykulToc .privacyTocLink:hover {
+  background: none;
+  color: var(--gold-dark);
+}
+
+.artykulToc .privacyTocLink.is-active {
+  background: none;
+  color: var(--gold-dark);
+  font-weight: 700;
 }
 
 .artykulProse {
@@ -6846,54 +7009,91 @@ button.contactCard .contactCardValue {
   margin-bottom: 10px;
 }
 
+/* Zestawienie w artykule porównuje równorzędne opcje, a nie „my kontra oni"
+   jak na /ceny — więc bez wyróżnionej kolumny, za to z równymi szerokościami. */
 .artykulTable {
   margin: 0 0 24px;
 }
 
 .artykulTable .comparisonTable {
+  table-layout: fixed;
   font-size: 0.98rem;
 }
 
-/* Plansza w połowie tekstu — ma nie przerywać czytania, więc bez krzyku. */
+/* Przy table-layout: fixed szerokości bierze się z pierwszego wiersza,
+   więc ustawiamy je na nagłówkach: wąska kolumna opisu, reszta równo. */
+.artykulTable .comparisonTable thead th:first-child {
+  width: 22%;
+}
+
+.artykulTable .comparisonTable tbody th,
+.artykulTable .comparisonTable tbody td {
+  width: auto;
+}
+
+.artykulTable .comparisonTable thead th:nth-child(2) {
+  color: var(--black);
+  background: #faf7f2;
+}
+
+.artykulTable .comparisonTable th:nth-child(2),
+.artykulTable .comparisonTable td:nth-child(2) {
+  border-right: 1px solid #e7dcc9;
+  border-left: 0;
+}
+
+.artykulTable .comparisonTable tbody td:nth-child(2) {
+  background: none;
+}
+
+/* Na telefonie tabela zamienia się w karty — pionowa kreska po drugiej
+   kolumnie zostawała wtedy wisieć przy krawędzi. */
+@media (max-width: 700px) {
+  .artykulTable .comparisonTable th:nth-child(2),
+  .artykulTable .comparisonTable td:nth-child(2) {
+    border-right: 0;
+  }
+}
+
+.artykulTable .comparisonTable tbody td:nth-child(2) {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* Plansza w połowie tekstu — ma nie przerywać czytania, więc bez krzyku,
+   ale tekst w rozmiarze reszty artykułu, a numer jako zwykły przycisk. */
 .artykulCta {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 16px 24px;
+  gap: 18px 28px;
   margin: 8px 0 32px;
   border: 1px solid var(--border);
   border-radius: 14px;
   background: var(--bg-alt);
-  padding: 20px 24px;
+  padding: 24px 28px;
 }
 
-.artykulCtaTitle {
-  margin: 0 0 4px !important;
+/* Z typem elementu, bo .artykulCta p przegrywałoby specyficznością
+   i tytuł zostawał w rozmiarze opisu. */
+.artykulCta p.artykulCtaTitle {
+  margin: 0 0 4px;
   font-family: var(--font-display);
+  font-size: 1.18rem;
   font-weight: 700;
 }
 
 .artykulCta p {
   margin: 0 !important;
-  font-size: 0.95rem;
-  line-height: 1.5;
+  font-size: 1rem;
+  line-height: 1.55;
 }
 
-.artykulCtaPhone {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--gold-dark);
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 700;
-  white-space: nowrap;
-}
-
-.artykulCtaPhone svg {
-  width: 18px;
-  height: 18px;
+.artykulCtaLink {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 1rem;
 }
 
 .artykulAuthor {
@@ -6918,16 +7118,22 @@ button.contactCard .contactCardValue {
   line-height: 1.55;
 }
 
-.artykulAuthorName {
-  color: var(--text) !important;
+/* Selektor z typem elementu, bo samo .artykulAuthorName przegrywało
+   specyficznością z regułą .artykulAuthor p i nazwa zostawała mała. */
+.artykulAuthor p.artykulAuthorName {
+  margin-bottom: 8px;
+  color: var(--text);
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   font-weight: 700;
+  line-height: 1.2;
 }
 
-@media (max-width: 640px) {
-  .artykulToc .privacyToc {
+@media (max-width: 900px) {
+  .artykulToc .privacyToc,
+  .artykulToc .privacyTocList {
     grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
   }
 }
 

@@ -27,8 +27,8 @@ export const artykuly: Artykul[] = [
     cardTitle: "Ile kosztuje sufit napinany?",
     cardCopy:
       "Stawki na 2026 rok, pełny cennik dodatków i cztery przykłady realnych wycen — od łazienki po całe mieszkanie.",
-    imageSrc: "/images/pomiar-rzut-mieszkania.jpg",
-    imageAlt: "Rzut mieszkania z pomiarami do wyceny sufitu napinanego",
+    imageSrc: "/images/poradnik/ile-kosztuje.webp",
+    imageAlt: "Szkic pomieszczenia ze strzałkami wymiarowymi — pomiar do wyceny sufitu napinanego",
     datePublished: "2026-08-04",
     dateModified: "2026-08-04"
   },
@@ -41,8 +41,8 @@ export const artykuly: Artykul[] = [
     cardTitle: "Jakie są minusy sufitów napinanych?",
     cardCopy:
       "Cztery realne wady bez owijania w bawełnę — i lista rzeczy, które wadami nie są, choć często się o nich pisze.",
-    imageSrc: "/images/mieszkanie-45m2-led-photo.png",
-    imageAlt: "Mieszkanie z sufitem napinanym i linią LED",
+    imageSrc: "/images/poradnik/minusy.webp",
+    imageAlt: "Szkic przekroju sufitu napinanego ze strzałką pokazującą obniżenie o kilka centymetrów",
     datePublished: "2026-08-04",
     dateModified: "2026-08-04"
   },
@@ -55,8 +55,8 @@ export const artykuly: Artykul[] = [
     cardTitle: "Matowy, satynowy czy połysk?",
     cardCopy:
       "Każda faktura z jej mocną stroną i wadą, tabela porównawcza i trzy pytania, po których decyzja zajmuje pięć minut.",
-    imageSrc: "/images/faktura-satynowy.jpg",
-    imageAlt: "Próbka folii satynowej do sufitu napinanego",
+    imageSrc: "/images/poradnik/faktury.webp",
+    imageAlt: "Szkic sufitu napinanego z odbiciami światła — różnice między fakturami",
     datePublished: "2026-08-04",
     dateModified: "2026-08-04"
   },
@@ -69,8 +69,8 @@ export const artykuly: Artykul[] = [
     cardTitle: "Czy montaż sufitu brudzi?",
     cardCopy:
       "Przebieg montażu krok po kroku, ile realnie trwa, co przygotować i dlaczego meble lepiej wnieść przed montażem.",
-    imageSrc: "/images/hero.png",
-    imageAlt: "Salon z kuchnią po montażu sufitu napinanego",
+    imageSrc: "/images/poradnik/montaz.webp",
+    imageAlt: "Szkic pokoju podczas montażu — meble przykryte folią i drabina",
     datePublished: "2026-08-04",
     dateModified: "2026-08-04"
   }

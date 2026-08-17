@@ -7,7 +7,13 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
 import { FaqList } from "@/components/ui/FaqList";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { faktury, fakturaCardCopy, type Faktura } from "@/content/folie-faktury";
+import {
+  faktury,
+  fakturaCardCopy,
+  fakturaCardFit,
+  fakturaCardImage,
+  type Faktura
+} from "@/content/folie-faktury";
 import { siteConfig, whatsappUrl } from "@/content/site";
 import { visualAssets } from "@/content/visual-assets";
 import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/seo/schema";
@@ -182,11 +188,28 @@ export function FakturaDetail({ faktura }: FakturaDetailProps) {
       <section className="section">
         <div className="container">
           <SectionHeader eyebrow="Rodzaje faktur" title="Zobacz inne faktury" />
+          {/* Te same karty ze zdjęciem faktury co na /sufity-napinane. */}
           <div className="grid3 sectionCards">
             {others.map((item) => (
-              <Link className="card miniCard" href={`/rozwiazania/folie/${item.slug}`} key={item.slug}>
+              <Link
+                className={`card miniCard${
+                  fakturaCardImage[item.slug] ? " miniCard--photo" : ""
+                }${item.slug === "polysk" ? " miniCard--photoDark" : ""}`}
+                href={`/rozwiazania/folie/${item.slug}`}
+                key={item.slug}
+              >
+                {fakturaCardImage[item.slug] ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    className="miniCardBg"
+                    src={fakturaCardImage[item.slug]}
+                    alt=""
+                    aria-hidden="true"
+                  />
+                ) : null}
                 <h3>{item.name}</h3>
                 <p>{fakturaCardCopy[item.slug]}</p>
+                <p className="miniCardFit">{fakturaCardFit[item.slug]}</p>
                 <p className="cardArrowText">Zobacz fakturę →</p>
               </Link>
             ))}

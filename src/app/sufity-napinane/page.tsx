@@ -31,6 +31,8 @@ const ceilingTypes: Array<{
   linkLabel: string;
   /* Zdjęcie faktury po prawej stronie karty — opcjonalne, dokładamy stopniowo. */
   bgSrc?: string;
+  /* Ciemne zdjęcie — welon pod tekstem musi być mocniejszy. */
+  darkBg?: boolean;
   /* Karta na całą szerokość rzędu — zdjęcie po prawej, tekst po lewej. */
   wide?: boolean;
 }> = [
@@ -56,7 +58,8 @@ const ceilingTypes: Array<{
     fit: "Efekt lustra optycznie powiększa pomieszczenie. Najlepsze do małych i ciemnych wnętrz — łazienek, korytarzy, kawalerek.",
     href: "/rozwiazania/folie/polysk",
     linkLabel: "Zobacz fakturę →",
-    bgSrc: "/images/faktura-polysk.jpg"
+    bgSrc: "/images/faktura-polysk.jpg",
+    darkBg: true
   },
   {
     title: "Translucent",
@@ -252,8 +255,8 @@ export default function StretchCeilingsPage() {
             {ceilingTypes.map((type) => (
               <Link
                 className={`card miniCard${type.bgSrc ? " miniCard--photo" : ""}${
-                  type.wide ? " miniCard--wide" : ""
-                }`}
+                  type.darkBg ? " miniCard--photoDark" : ""
+                }${type.wide ? " miniCard--wide" : ""}`}
                 href={type.href}
                 key={type.title}
               >

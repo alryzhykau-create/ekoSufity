@@ -1,6 +1,6 @@
 # Ile kosztuje sufit napinany? Ceny 2026 — Wrocław i okolice
 
-**Krótko:** prosty sufit napinany kosztuje średnio **ok. 120 zł/m²** — i jest to cena razem z materiałem i montażem, nie sama robocizna. Dla łazienki 6 m² wychodzi to od 1800 zł, dla salonu 22 m² od 7200 zł. Dokładna kwota zależy od metrażu, liczby narożników i tego, czy w suficie chowamy oświetlenie.
+**Krótko:** prosty sufit napinany kosztuje średnio **ok. 120 zł/m²** — i jest to cena razem z materiałem i montażem, nie sama robocizna. Dokładna kwota zależy od metrażu, liczby narożników i tego, czy w suficie chowamy oświetlenie. Minimalna wartość zamówienia to **1200 zł**.
 
 Nazywam się Aleks, od 2020 roku montuję sufity napinane we Wrocławiu i okolicach. Poniżej podaję konkretne stawki, z którymi pracuję — bez „cena zależy od wielu czynników" i bez wyciągania numeru telefonu, żeby poznać widełki.
 
@@ -46,17 +46,17 @@ Minimalna wartość zamówienia to **1200 zł** — dotyczy głównie bardzo ma�
 
 Pytanie „ile wyjdzie u mnie" najlepiej pokazać na liczbach z rzeczywistych wycen:
 
-**Łazienka 6 m² — od 1800 zł**
-Sufit napinany, kilka punktów oświetlenia. Materiał odporny na wilgoć.
+**Łazienka 6 m² — 1800 zł**
+Sufit napinany odporny na wilgoć, linia LED, cztery punkty świetlne i rewizja wentylacyjna.
 
-**Kuchnia 10 m² — od 3000 zł**
-Sufit z punktami LED nad blatem roboczym.
+**Kuchnia 10 m² — 3000 zł**
+Sufit napinany z szyną magnetyczną.
 
-**Salon 22 m² — od 7200 zł**
-Większa powierzchnia z oświetleniem i dodatkami.
+**Salon 22 m² — 7200 zł**
+Sufit dwupoziomowy z podświetleniem i oprawami punktowymi.
 
-**Mieszkanie 45 m² z linią LED — od 9350 zł**
-Kilka pomieszczeń, wspólny projekt oświetlenia.
+**Mieszkanie 45 m² — 9350 zł**
+Kilka pomieszczeń z liniami LED, wspólny projekt oświetlenia.
 
 Uwaga: to realizacje **z oświetleniem i dodatkami**. Sam sufit bez dodatków liczymy średnio ok. 120 zł/m² — czyli salon 22 m² to od strony samej membrany około 2600 zł, a reszta kwoty to LED, profile i detale.
 

@@ -104,12 +104,14 @@ export function FolieDetail() {
               Matowy, satynowy czy połysk — jak wybrać fakturę →
             </Link>
           </p>
-          <div className="grid4 sectionCards">
+          {/* Dwie kolumny, nie cztery: przy czterech karta ma 307px i welon
+              przełącza się na wariant wąski, w którym zdjęcia faktury nie widać. */}
+          <div className="grid2 sectionCards">
             {faktury.map((faktura) => (
               <Link
                 className={`card miniCard${
                   fakturaCardImage[faktura.slug] ? " miniCard--photo" : ""
-                }`}
+                }${faktura.slug === "polysk" ? " miniCard--photoDark" : ""}`}
                 href={`/rozwiazania/folie/${faktura.slug}`}
                 key={faktura.slug}
               >

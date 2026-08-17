@@ -9,13 +9,16 @@ export type StickyTocItem = {
 
 type StickyTocProps = {
   items: ReadonlyArray<StickyTocItem>;
+  /* „split" opakowuje linki w kontener — do układu z etykietą w bocznej
+     kolumnie (poradnik). Domyślna kolumna zostaje jak w polityce. */
+  layout?: "column" | "split";
 };
 
 // Wspólny spis treści (polityka prywatności + poradnik).
 // Podświetla w spisie treści sekcję, której nagłówek minął górną krawędź
 // widoku (ten sam próg co przewijanie do kotwicy — patrz scroll-margin-top
 // sekcji w globals.css).
-export function StickyToc({ items }: StickyTocProps) {
+export function StickyToc({ items, layout = "column" }: StickyTocProps) {
   const [activeId, setActiveId] = useState(items[0]?.id ?? "");
 
   useEffect(() => {
@@ -42,18 +45,20 @@ export function StickyToc({ items }: StickyTocProps) {
     return () => window.removeEventListener("scroll", onScroll);
   }, [items]);
 
+  const linki = items.map((item) => (
+    <a
+      key={item.id}
+      href={`#${item.id}`}
+      className={`privacyTocLink${activeId === item.id ? " is-active" : ""}`}
+    >
+      {item.label}
+    </a>
+  ));
+
   return (
     <nav className="privacyToc" aria-label="Spis treści">
       <span className="privacyTocLabel">Spis treści</span>
-      {items.map((item) => (
-        <a
-          key={item.id}
-          href={`#${item.id}`}
-          className={`privacyTocLink${activeId === item.id ? " is-active" : ""}`}
-        >
-          {item.label}
-        </a>
-      ))}
+      {layout === "split" ? <div className="privacyTocList">{linki}</div> : linki}
     </nav>
   );
 }

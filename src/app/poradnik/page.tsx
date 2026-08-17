@@ -24,7 +24,7 @@ export default function PoradnikPage() {
       <JsonLd data={[breadcrumbSchema([{ label: "Poradnik", href: "/poradnik" }])]} />
 
       <section className="pageHero">
-        <div className="container splitHero">
+        <div className="container splitHero splitHero--poradnik">
           <div className="pageHeroCopy">
             <Breadcrumbs items={[{ label: "Poradnik", href: "/poradnik" }]} />
             <span className="eyebrow">Poradnik</span>
@@ -48,15 +48,28 @@ export default function PoradnikPage() {
               </Button>
             </div>
           </div>
-          <div className="card artykulHeroPhoto">
-            <Image
-              src="/images/salon-22m2-photo.png"
-              alt="Salon z sufitem napinanym i oświetleniem LED"
-              width={900}
-              height={620}
-              priority
-              sizes="(max-width: 900px) 100vw, 520px"
-            />
+          {/* Para rysunków jak w nagłówkach pozostałych stron: duży kadr
+              i mniejszy, wychodzący poza jego krawędź. */}
+          <div className="pageHeroPhotos pageHeroPhotos--sketch">
+            <div className="pageHeroPhotoMain">
+              <Image
+                src="/images/poradnik/hub-hero-v2.webp"
+                alt="Szkic budowy sufitu napinanego — strop, profil i napięta membrana nad pokojem"
+                width={1600}
+                height={900}
+                priority
+                sizes="(max-width: 900px) 100vw, 620px"
+              />
+            </div>
+            <div className="pageHeroPhotoSmall">
+              <Image
+                src="/images/poradnik/hub-pomiar.webp"
+                alt="Szkicownik z rysunkiem sufitu, miarka i rzut mieszkania"
+                width={1200}
+                height={900}
+                sizes="(max-width: 900px) 52vw, 260px"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -66,7 +79,7 @@ export default function PoradnikPage() {
           <div className="grid2 sectionCards">
             {artykuly.map((artykul) => (
               <Link className="card miniCard" href={`/poradnik/${artykul.slug}`} key={artykul.slug}>
-                <div className="miniCardImg">
+                <div className="miniCardImg poradnikCardImg">
                   <Image
                     src={artykul.imageSrc}
                     alt=""

@@ -225,35 +225,43 @@ const solutionVisuals = {
   }
 } satisfies Record<ServiceSlug, { src: string; alt: string; iconSrc: string }>;
 
+// Wyciąg z cennika na /ceny — te same stawki.
 const priceRows = [
   ["Sufit napinany MSD", "120 zł/m²"],
   ["Linie świetlne LED", "od 250 zł/mb"],
   ["Ukryty karnisz z LED", "od 300 zł/mb"],
-  ["Punkt oświetlenia", "od 100 zł/szt."]
+  ["Punkt oświetlenia", "od 100 zł/szt."],
+  ["Sufit z nadrukiem", "od 200 zł/m²"]
 ];
 
+// Kwoty są z konkretnych realizacji, dlatego bez „od" — te same liczby
+// i ten sam zakres prac co na /ceny i w poradniku.
 const priceExamples = [
   {
     title: "Łazienka 6 m²",
-    price: "od 1800 zł",
+    desc: "linia LED, cztery punkty świetlne i rewizja wentylacyjna",
+    price: "1800 zł",
     image: "/images/lazienka-6m2-photo.png",
     alt: "Łazienka z sufitem napinanym"
   },
   {
     title: "Kuchnia 10 m²",
-    price: "od 3000 zł",
+    desc: "sufit napinany z szyną magnetyczną",
+    price: "3000 zł",
     image: "/images/kuchnia-10m2-photo.png",
     alt: "Kuchnia z sufitem napinanym"
   },
   {
     title: "Salon 22 m²",
-    price: "od 7200 zł",
+    desc: "sufit dwupoziomowy z podświetleniem i oprawami punktowymi",
+    price: "7200 zł",
     image: "/images/salon-22m2-photo.png",
     alt: "Salon z sufitem napinanym"
   },
   {
-    title: "Mieszkanie 45 m² z LED",
-    price: "od 9350 zł",
+    title: "Mieszkanie 45 m²",
+    desc: "kilka pomieszczeń z liniami LED, wspólny projekt oświetlenia",
+    price: "9350 zł",
     image: "/images/mieszkanie-45m2-led-photo.png",
     alt: "Mieszkanie z sufitem napinanym i linią LED"
   }
@@ -569,6 +577,7 @@ export default function HomePage() {
                   </div>
                   <div className="priceExampleBody">
                     <h3>{example.title}</h3>
+                    <p>{example.desc}</p>
                     <strong>{example.price}</strong>
                   </div>
                 </article>

@@ -128,7 +128,7 @@ export default async function ArtykulPage({ params }: PageProps) {
           {/* Spis treści stoi nad tekstem, żeby czytelnik zobaczył plan artykułu
               zanim zacznie czytać — a tekst i tabele biorą pełną szerokość. */}
           <div className="artykulToc">
-            <StickyToc items={toc} />
+            <StickyToc items={toc} layout="split" />
           </div>
 
           <div className="artykulProse">
@@ -139,8 +139,13 @@ export default async function ArtykulPage({ params }: PageProps) {
                       <div>
                         <p className="artykulCtaTitle">Chcesz dokładną wycenę?</p>
                         <p>Pomiar i dojazd są bezpłatne w promieniu do 100 km od Wrocławia.</p>
+                        {/* Jedyne wyjście z artykułu na cennik — stoi tam, gdzie
+                            czytelnik i tak myśli o pieniądzach. */}
+                        <Link className="inlineLink artykulCtaLink" href="/ceny">
+                          Zobacz cennik →
+                        </Link>
                       </div>
-                      <a className="artykulCtaPhone" href={siteConfig.contacts.phoneHref}>
+                      <a className="btn btnPrimary" href={siteConfig.contacts.phoneHref}>
                         <CtaIcon name="phone" />
                         {siteConfig.contacts.phoneDisplay}
                       </a>
@@ -180,7 +185,7 @@ export default async function ArtykulPage({ params }: PageProps) {
           <div className="grid3 sectionCards">
             {inne.map((item) => (
               <Link className="card miniCard" href={`/poradnik/${item.slug}`} key={item.slug}>
-                <div className="miniCardImg">
+                <div className="miniCardImg poradnikCardImg">
                   <Image
                     src={item.imageSrc}
                     alt=""

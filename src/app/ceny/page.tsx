@@ -68,28 +68,28 @@ const addonPrices = [
 // Salon idzie na duże zdjęcie po lewej, reszta na wąskie wiersze obok.
 const priceExampleFeature = {
   title: "Salon 22 m²",
-  price: "od 7200 zł",
-  desc: "sufit dwupoziomowy z podświetleniem",
+  price: "7200 zł",
+  desc: "sufit dwupoziomowy z podświetleniem i oprawami punktowymi",
   imageSrc: "/images/salon-22m2-photo.png"
 };
 
 const priceExamples = [
   {
     title: "Łazienka 6 m²",
-    price: "od 1800 zł",
-    desc: "sufit z linią LED i punktami świetlnymi",
+    price: "1800 zł",
+    desc: "linia LED, cztery punkty świetlne i rewizja wentylacyjna",
     imageSrc: "/images/lazienka-6m2-photo.png"
   },
   {
     title: "Kuchnia 10 m²",
-    price: "od 3000 zł",
-    desc: "sufit z szyną magnetyczną",
+    price: "3000 zł",
+    desc: "sufit napinany z szyną magnetyczną",
     imageSrc: "/images/kuchnia-10m2-photo.png"
   },
   {
     title: "Mieszkanie 45 m²",
-    price: "od 9350 zł",
-    desc: "sufit z LED w kilku pomieszczeniach",
+    price: "9350 zł",
+    desc: "kilka pomieszczeń z liniami LED, wspólny projekt oświetlenia",
     imageSrc: "/images/mieszkanie-45m2-led-photo.png"
   }
 ];
@@ -268,7 +268,7 @@ export default function PricesPage() {
           <SectionHeader
             eyebrow="Przykłady"
             title="Ile kosztują typowe realizacje?"
-            lead="Orientacyjne koszty typowych realizacji z oświetleniem i dodatkami. Sam sufit liczymy średnio ok. 120 zł/m² — dokładną cenę podajemy po pomiarze."
+            lead="Koszty czterech naszych realizacji z oświetleniem i dodatkami. Sam sufit liczymy średnio ok. 120 zł/m² — dokładną cenę Twojego pomieszczenia podajemy po pomiarze."
             leadClassName="sectionLead--full"
           />
           <div className="exampleDeck sectionCards">

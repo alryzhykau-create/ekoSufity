@@ -127,12 +127,32 @@ function komorki(linia: string): string[] {
     .map((komorka) => komorka.trim());
 }
 
-// Tabela w stylu tabeli porównawczej z /ceny — z poziomym przewijaniem.
+// Cennik (dwie kolumny: pozycja i kwota) czyta się lepiej jako lista par
+// z kropkowanym łącznikiem niż jako tabela — wzrok biegnie prosto do kwoty.
+function cennik(wiersze: string[][], naglowki: string[], klucz: string): ReactNode {
+  return (
+    <dl className="artykulCennik" key={klucz}>
+      {wiersze.map((wiersz, i) => (
+        <div key={`${klucz}-r-${i}`}>
+          <dt>{inline(wiersz[0], `${klucz}-n-${i}`)}</dt>
+          <span aria-hidden="true" />
+          <dd aria-label={naglowki[1] || undefined}>{inline(wiersz[1], `${klucz}-c-${i}`)}</dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
+// Szersze zestawienia zostają tabelą w stylu porównania z /ceny.
 function tabela(blok: string, klucz: string): ReactNode {
   const linie = blok.split("\n").filter(Boolean);
   const naglowki = komorki(linie[0]);
   const wiersze = linie.slice(2).map(komorki);
   const pustyNaglowek = naglowki.every((komorka) => komorka === "");
+
+  if (naglowki.length === 2) {
+    return cennik(wiersze, naglowki, klucz);
+  }
 
   return (
     <div className="comparisonScroll artykulTable" key={klucz}>
@@ -237,8 +257,14 @@ export function parseArticle(markdown: string): ParsedArticle {
       return;
     }
 
-    if (blok.startsWith("- ")) {
-      body.push({ node: lista(blok, klucz) });
+    // Blok bywa mieszany: zdanie wprowadzające, a pod nim punkty listy.
+    const pierwszyPunkt = blok.split("\n").findIndex((linia) => linia.startsWith("- "));
+    if (pierwszyPunkt !== -1) {
+      const linie = blok.split("\n");
+      if (pierwszyPunkt > 0) {
+        body.push({ node: akapit(linie.slice(0, pierwszyPunkt).join("\n"), `${klucz}-p`) });
+      }
+      body.push({ node: lista(linie.slice(pierwszyPunkt).join("\n"), klucz) });
       return;
     }
 
