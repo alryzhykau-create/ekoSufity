@@ -634,13 +634,16 @@ main {
   color: #fff;
 }
 
+/* Ten sam rozmiar pisma i te same odstępy co w przycisku telefonu — obie
+   kończówki w nagłówku mają wyglądać jak jedna para. */
 .heroWhatsappCta {
   min-height: 60px;
   border-color: rgba(201, 121, 28, 0.42);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.92);
   color: var(--text);
-  padding: 0 24px;
+  font-size: 1rem;
+  padding: 0 26px;
   box-shadow: 0 10px 24px rgba(17, 17, 17, 0.04);
 }
 
