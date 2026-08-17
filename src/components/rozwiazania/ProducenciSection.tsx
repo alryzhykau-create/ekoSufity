@@ -54,15 +54,6 @@ export function ProducenciSection({
             : "Materiał dobieramy pod projekt, efekt i budżet."
         }
       />
-      {/* Na /ceny kwoty stoją na kartach, w pozostałych miejscach prowadzimy
-          do cennika — cena zależy od producenta i ludzie o to pytają. */}
-      {zCenami ? null : (
-        <p className="poradnikHint">
-          <Link className="inlineLink" href="/ceny#ceny-folii">
-            Ceny folii MSD, Bauf i Teqtum →
-          </Link>
-        </p>
-      )}
       <div className="grid3 sectionCards">
         {folieCards.map((card) => (
           <Link className="card miniCard" href={card.href} key={card.href}>
