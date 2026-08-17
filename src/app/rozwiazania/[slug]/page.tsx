@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { FinalContactSection } from "@/components/contact/FinalContactSection";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { RozwiazanieDetail } from "@/components/rozwiazania/RozwiazanieDetail";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
@@ -365,6 +366,12 @@ export default async function SolutionPage({ params }: PageProps) {
               </article>
             ))}
           </div>
+          {/* To samo wyjście co na pozostałych stronach rozwiązań. */}
+          <p className="poradnikHint">
+            <Link className="inlineLink" href="/realizacje">
+              Zobacz, jak to wygląda w realizacjach →
+            </Link>
+          </p>
         </div>
       </section>
 

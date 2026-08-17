@@ -181,7 +181,14 @@ export default async function ArtykulPage({ params }: PageProps) {
 
       <section className="section">
         <div className="container">
-          <h2 className="sectionTitle">Przeczytaj też</h2>
+          {/* Nagłówek z wyjściem do całego działu: czytelnik skończył artykuł,
+              więc obok propozycji sąsiednich pokazujemy też cały Poradnik. */}
+          <div className="sectionSplitHeader">
+            <h2 className="sectionTitle">Przeczytaj też</h2>
+            <Link className="sectionArrowLink" href="/poradnik">
+              Wszystkie artykuły
+            </Link>
+          </div>
           <div className="grid3 sectionCards">
             {inne.map((item) => (
               <Link className="card miniCard" href={`/poradnik/${item.slug}`} key={item.slug}>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { seoMeta } from "@/lib/seo/metadata";
 import { Kalkulator } from "@/components/ceny/Kalkulator";
 import { FinalContactSection } from "@/components/contact/FinalContactSection";
@@ -53,17 +54,35 @@ const basePrice = {
   note: "Prosty sufit MSD, 4 narożniki, bez dodatków. Dokładna cena po bezpłatnym pomiarze."
 };
 
-const addonPrices = [
-  ["Linie świetlne LED", "od 250 zł/mb"],
-  ["Ukryty karnisz z LED", "od 300 zł/mb"],
-  ["Punkt oświetlenia", "od 100 zł/szt"],
-  ["System magnetyczny 48 V", "od 300 zł/mb"],
-  ["Podświetlenie obwodowe", "od 170 zł/mb"],
-  ["Sufit dwupoziomowy z LED", "od 290 zł/mb"],
-  ["Sufit translucent (podświetlany)", "od 250 zł/m²"],
-  ["Sufit z nadrukiem", "od 200 zł/m²"],
-  ["Sufit z efektem cienia", "od 120 zł/m²"],
-  ["Gwiazdne niebo", "od 550 zł/m²"]
+// Pozycje, które mają własną podstronę, są klikalne: czytelnik widzi kwotę
+// i od razu może sprawdzić, co się pod nią kryje.
+const addonPrices: Array<{ label: string; price: string; href?: string }> = [
+  { label: "Linie świetlne LED", price: "od 250 zł/mb" },
+  { label: "Ukryty karnisz z LED", price: "od 300 zł/mb", href: "/rozwiazania/karnisze-sufitowe" },
+  { label: "Punkt oświetlenia", price: "od 100 zł/szt" },
+  {
+    label: "System magnetyczny 48 V",
+    price: "od 300 zł/mb",
+    href: "/rozwiazania/system-magnetyczny"
+  },
+  { label: "Podświetlenie obwodowe", price: "od 170 zł/mb" },
+  {
+    label: "Sufit dwupoziomowy z LED",
+    price: "od 290 zł/mb",
+    href: "/rozwiazania/sufity-wielopoziomowe"
+  },
+  {
+    label: "Sufit translucent (podświetlany)",
+    price: "od 250 zł/m²",
+    href: "/rozwiazania/sufit-podswietlany"
+  },
+  { label: "Sufit z nadrukiem", price: "od 200 zł/m²", href: "/rozwiazania/sufit-z-nadrukiem" },
+  {
+    label: "Sufit z efektem cienia",
+    price: "od 120 zł/m²",
+    href: "/rozwiazania/szczelina-cienia"
+  },
+  { label: "Gwiazdne niebo", price: "od 550 zł/m²", href: "/rozwiazania/gwiazdne-niebo" }
 ];
 
 // Salon idzie na duże zdjęcie po lewej, reszta na wąskie wiersze obok.
@@ -214,12 +233,19 @@ export default function PricesPage() {
               </strong>
             </article>
             <div className="priceChips">
-              {addonPrices.map(([position, price]) => (
-                <div className="priceChip" key={position}>
-                  <span>{position}</span>
-                  <strong>{price}</strong>
-                </div>
-              ))}
+              {addonPrices.map(({ label, price, href }) =>
+                href ? (
+                  <Link className="priceChip priceChip--link" href={href} key={label}>
+                    <span>{label}</span>
+                    <strong>{price}</strong>
+                  </Link>
+                ) : (
+                  <div className="priceChip" key={label}>
+                    <span>{label}</span>
+                    <strong>{price}</strong>
+                  </div>
+                )
+              )}
             </div>
           </div>
 

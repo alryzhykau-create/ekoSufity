@@ -238,6 +238,12 @@ export default function ContactPage() {
               </article>
             ))}
           </div>
+          {/* Tuż przed formularzem — połowę pytań można odhaczyć od razu. */}
+          <p className="poradnikHint">
+            <Link className="inlineLink" href="/faq">
+              Zanim napiszesz — najczęstsze pytania →
+            </Link>
+          </p>
         </div>
       </section>
 

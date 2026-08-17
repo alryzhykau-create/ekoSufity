@@ -25,6 +25,17 @@ export function RozwiazanieDetail({ rozwiazanie }: RozwiazanieDetailProps) {
   // Dzięki temu każda strona ma inny zestaw sekcji — nie wygląda jak kopia szablonu.
   const blocks: React.ReactNode[] = [];
 
+  // Wyjście do realizacji stawiamy raz: po sekcji „Zastosowanie", a gdy strona
+  // jej nie ma — zaraz po opisie „Co to jest". Nigdy dwa razy na jednej stronie.
+  const maZastosowanie = Boolean(rozwiazanie.whereFitsText || rozwiazanie.whereFits);
+  const linkDoRealizacji = (
+    <p className="poradnikHint">
+      <Link className="inlineLink" href="/realizacje">
+        Zobacz, jak to wygląda w realizacjach →
+      </Link>
+    </p>
+  );
+
   // 1. Co to jest (zawsze)
   blocks.push(
     <div className="container">
@@ -39,6 +50,7 @@ export function RozwiazanieDetail({ rozwiazanie }: RozwiazanieDetailProps) {
           </Link>
         </p>
       ) : null}
+      {maZastosowanie ? null : linkDoRealizacji}
     </div>
   );
 
@@ -105,6 +117,7 @@ export function RozwiazanieDetail({ rozwiazanie }: RozwiazanieDetailProps) {
         <p className="sectionLead sectionLead--wide">
           {rozwiazanie.whereFitsText}
         </p>
+        {linkDoRealizacji}
       </div>
     );
   }
@@ -126,6 +139,7 @@ export function RozwiazanieDetail({ rozwiazanie }: RozwiazanieDetailProps) {
             </article>
           ))}
         </div>
+        {linkDoRealizacji}
       </div>
     );
   }

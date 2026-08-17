@@ -764,6 +764,13 @@ export default function HomePage() {
             <aside className="ownerArea">
               <p className="ownerAreaTitle">Działamy we Wrocławiu i okolicy do 100 km</p>
               <p>Wrocław, Oława, Oleśnica, Legnica, Wałbrzych, Świdnica i inne miejscowości.</p>
+              {/* Wyliczenie miast bez linku było ślepym zaułkiem — stąd wyjście
+                  na listę lokalizacji. */}
+              <p className="ownerAreaLink">
+                <Link className="inlineLink" href="/lokalizacje">
+                  Gdzie pracujemy →
+                </Link>
+              </p>
               <Image
                 src="/images/mapa-dzialamy-do-100-km.png"
                 alt="Mapa obszaru działania EkoSufity do 100 km od Wrocławia"
