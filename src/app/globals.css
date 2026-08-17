@@ -3791,18 +3791,29 @@ details.faqItem:not([open]) p {
   align-items: center;
 }
 
+/* Prawa kolumna hero ma wszędzie tę samą wysokość co para zdjęć na stronach
+   głównych (425px) — inaczej nagłówek skakał od 565 do 862px przy przejściu
+   między działami. Zdjęcie bierze resztę wysokości i kadruje się przez cover,
+   podpis zostaje na dole karty. */
 .pageVisualCard {
+  display: flex;
   overflow: hidden;
+  flex-direction: column;
+  height: 425px;
   padding: 0;
 }
 
-.pageVisualCard img {
-  width: 100%;
-  height: auto;
+.pageVisualCard img,
+.pageVisualCard > svg {
   display: block;
+  width: 100%;
+  min-height: 0;
+  flex: 1;
+  object-fit: cover;
 }
 
 .pageVisualCard p {
+  flex: 0 0 auto;
   padding: 18px 22px 22px;
 }
 
@@ -6455,8 +6466,10 @@ button.contactCard .contactCardValue {
   font-size: 1.12rem;
 }
 
+/* Ta sama wysokość co w pozostałych nagłówkach — patrz .pageVisualCard. */
 .artykulHeroPhoto {
   overflow: hidden;
+  height: 425px;
   padding: 0;
 }
 
@@ -6831,4 +6844,25 @@ button.contactCard .contactCardValue {
 .poradnikHint {
   margin: 14px 0 0;
   font-size: 0.95rem;
+}
+
+/* Wąski ekran: kolumny hero stoją jedna pod drugą, więc sztywna wysokość
+   prawej karty nie ma sensu — zdjęcie dobiera ją do proporcji. Blok musi
+   stać na końcu pliku: reguły .pageVisualCard i .artykulHeroPhoto są niżej
+   niż pozostałe media queries i wygrałyby kolejnością. */
+@media (max-width: 980px) {
+  .pageVisualCard,
+  .artykulHeroPhoto {
+    height: auto;
+  }
+
+  /* height: auto jest konieczne — next/image wypisuje atrybuty width/height,
+     a przy obu wymiarach podanych przeglądarka ignoruje aspect-ratio. */
+  .pageVisualCard img,
+  .pageVisualCard > svg,
+  .artykulHeroPhoto img {
+    flex: 0 0 auto;
+    height: auto;
+    aspect-ratio: 16 / 10;
+  }
 }
