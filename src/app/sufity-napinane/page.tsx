@@ -384,9 +384,11 @@ export default function StretchCeilingsPage() {
               średnio ok. 120 zł/m² jako punkt odniesienia. Dokładna cena zależy od materiału,
               profili, LED i detali.
             </p>
-            <Button href="/ceny" variant="secondary">
+            {/* Zwykły link tekstowy, nie przycisk — w karcie z ceną to odnośnik
+                do strony, a nie akcja w rodzaju „zadzwoń". */}
+            <Link className="inlineLink" href="/ceny">
               Zobacz stronę cen →
-            </Button>
+            </Link>
           </article>
           <aside className="card infoCard">
             <span className="priceKicker">Proces</span>
