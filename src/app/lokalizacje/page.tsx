@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
+import { CtaIcon } from "@/components/ui/CtaIcon";
 import { FaqList } from "@/components/ui/FaqList";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { cities } from "@/content/cities";
@@ -63,11 +64,16 @@ export default function LocationsPage() {
               są bezpłatne.
             </p>
             <div className="buttonRow">
-              <Button href={siteConfig.contacts.phoneHref}>Zadzwoń i umów pomiar</Button>
+              <Button className="heroPrimaryCta" href={siteConfig.contacts.phoneHref}>
+                <CtaIcon name="phone" />
+                Zadzwoń i umów pomiar
+              </Button>
               <Button
+                className="heroWhatsappCta waHoverFill"
                 href={whatsappUrl("Dzień dobry, interesuje mnie sufit napinany. Region: Dolny Śląsk.")}
                 variant="secondary"
               >
+                <CtaIcon name="whatsapp" />
                 Napisz na WhatsApp
               </Button>
             </div>

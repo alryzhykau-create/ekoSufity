@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
+import { CtaIcon } from "@/components/ui/CtaIcon";
 import { FaqList } from "@/components/ui/FaqList";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { cities, getCity } from "@/content/cities";
@@ -95,13 +96,16 @@ export default async function CityPage({ params }: PageProps) {
             <h1>{city.h1}</h1>
             <p className="pageLead">{city.intro}</p>
             <div className="buttonRow">
-              <Button href={siteConfig.contacts.phoneHref}>
+              <Button className="heroPrimaryCta" href={siteConfig.contacts.phoneHref}>
+                <CtaIcon name="phone" />
                 Zadzwoń i umów pomiar {city.locative}
               </Button>
               <Button
+                className="heroWhatsappCta waHoverFill"
                 href={whatsappUrl(`Dzień dobry, interesuje mnie sufit napinany. Miasto: ${city.name}.`)}
                 variant="secondary"
               >
+                <CtaIcon name="whatsapp" />
                 Napisz na WhatsApp
               </Button>
             </div>

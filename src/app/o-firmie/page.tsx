@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
+import { CtaIcon } from "@/components/ui/CtaIcon";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { siteConfig, whatsappUrl } from "@/content/site";
 import { breadcrumbSchema } from "@/lib/seo/schema";
@@ -51,8 +52,12 @@ export default function AboutPage() {
             <h1>O EkoSufity</h1>
             <p className="pageLead">{siteConfig.owner.description}</p>
             <div className="buttonRow">
-              <Button href={siteConfig.contacts.phoneHref}>Zadzwoń i umów pomiar</Button>
-              <Button href={whatsappUrl()} variant="secondary">
+              <Button className="heroPrimaryCta" href={siteConfig.contacts.phoneHref}>
+                <CtaIcon name="phone" />
+                Zadzwoń i umów pomiar
+              </Button>
+              <Button className="heroWhatsappCta waHoverFill" href={whatsappUrl()} variant="secondary">
+                <CtaIcon name="whatsapp" />
                 Napisz na WhatsApp
               </Button>
             </div>

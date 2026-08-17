@@ -469,7 +469,7 @@ export default function HomePage() {
                   "Dzień dobry, chcę zapytać o sufit napinany. Mogę wysłać zdjęcie i metraż."
                 )}
                 variant="secondary"
-                className="heroWhatsappCta"
+                className="heroWhatsappCta waHoverFill"
               >
                 <CtaIcon name="whatsapp" />
                 Napisz na WhatsApp
