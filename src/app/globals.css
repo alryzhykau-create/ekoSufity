@@ -556,10 +556,6 @@ main {
   box-shadow: var(--shadow-card);
 }
 
-.cardMuted {
-  background: rgba(255, 255, 255, 0.72);
-}
-
 .buttonRow {
   display: flex;
   flex-wrap: wrap;
@@ -1106,41 +1102,6 @@ main {
   object-position: center;
 }
 
-.heroImageFrame {
-  position: relative;
-  height: 468px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-media);
-  background: var(--bg-alt);
-  box-shadow: var(--shadow);
-}
-
-.heroImageFrame img {
-  object-fit: cover;
-}
-
-.floatingPrice {
-  position: absolute;
-  left: -26px;
-  bottom: 18px;
-  width: min(340px, calc(100% - 20px));
-  border: 1px solid rgba(201, 121, 28, 0.72);
-  border-radius: var(--radius);
-  background: var(--black);
-  color: var(--cream);
-  padding: 22px;
-  box-shadow: var(--shadow);
-}
-
-.floatingPrice strong {
-  display: block;
-  color: var(--gold);
-  font-family: var(--font-display);
-  font-size: 2.2rem;
-  line-height: 1;
-}
-
 .imageCaption {
   position: absolute;
   top: 18px;
@@ -1521,18 +1482,6 @@ main {
   }
 }
 
-/* Wariant kompaktowy (2 kolumny) — mieści się na telefonie bez przewijania. */
-/* Cennik dwukolumnowy: bez ograniczenia rozjeżdża się na 1240px
-   i między pozycją a ceną robi się pusty pas. */
-.comparisonTable--compact {
-  min-width: 0;
-  max-width: 720px;
-}
-
-.comparisonTable--compact tbody th {
-  width: auto;
-}
-
 /* Social media na stronie kontaktu — te same ikony co w stopce, ale większe. */
 .contactSocialRow {
   display: flex;
@@ -1542,52 +1491,7 @@ main {
   margin-top: 30px;
 }
 
-.contactSocialLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  padding: 12px 24px 12px 12px;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text);
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.05rem;
-  box-shadow: var(--shadow-card);
-  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
-}
-
-.contactSocialLink:hover {
-  transform: translateY(-2px);
-  border-color: var(--accent);
-  box-shadow: var(--shadow);
-}
-
-.contactSocialIcon {
-  display: grid;
-  place-items: center;
-  width: 52px;
-  height: 52px;
-  border-radius: 999px;
-  background: var(--accent-soft);
-}
-
-.contactSocialIcon img {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
-}
-
 @media (max-width: 560px) {
-  .contactSocialRow {
-    flex-direction: column;
-  }
-
-  .contactSocialLink {
-    width: 100%;
-    justify-content: flex-start;
-  }
 }
 
 /* Opinie w stylu Google (wspólny blok na stronie głównej i kontakcie). */
@@ -1937,11 +1841,6 @@ main {
 .priceRow strong {
   text-align: right;
   font-size: 0.82rem;
-}
-
-.priceExplainCard {
-  background: linear-gradient(160deg, #ffffff, var(--accent-soft));
-  border-color: rgba(201, 121, 28, 0.45);
 }
 
 .priceExplainCard p,
@@ -3323,11 +3222,6 @@ a.card:hover .cardArrowText {
   object-fit: contain;
 }
 
-
-.reviewsDeck {
-  display: grid;
-}
-
 .reviewsNote {
   display: grid;
   gap: 22px;
@@ -3348,208 +3242,6 @@ a.card:hover .cardArrowText {
   color: var(--muted);
   font-size: 1rem;
   line-height: 1.6;
-}
-
-.googleSummaryCard {
-  border: 1px solid #dadce0;
-  border-radius: 12px;
-  background: #fff;
-  padding: 20px;
-}
-
-.googleSummaryBrand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.googleMark {
-  display: grid;
-  width: 42px;
-  height: 42px;
-  flex: 0 0 auto;
-  place-items: center;
-  border: 1px solid #dadce0;
-  border-radius: 50%;
-  background: #fff;
-  color: #1a73e8;
-  font-family: Arial, sans-serif;
-  font-size: 1.65rem;
-  font-weight: 700;
-  line-height: 1;
-}
-
-.googleSummaryBrand strong {
-  display: block;
-  color: #202124;
-  font-size: 1.1rem;
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.googleSummaryBrand span:not(.googleMark) {
-  display: block;
-  color: #5f6368;
-  font-size: 0.83rem;
-}
-
-.googleRatingLine {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-.googleRatingLine span:first-child {
-  color: #202124;
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 700;
-}
-
-.googleReviewStars {
-  color: #fbbc04;
-  letter-spacing: 0.08em;
-  line-height: 1;
-}
-
-.googleSummaryCard p {
-  margin: 0;
-  color: #5f6368;
-  font-size: 0.86rem;
-  line-height: 1.45;
-}
-
-.googleProfilePreview {
-  display: grid;
-  grid-template-columns: 72px minmax(0, 1fr) auto;
-  gap: 18px;
-  align-items: center;
-  border: 1px solid #dadce0;
-  border-radius: 14px;
-  background: #fff;
-  padding: 22px;
-}
-
-.googlePreviewMark {
-  display: grid;
-  width: 72px;
-  height: 72px;
-  place-items: center;
-  border: 1px solid #dadce0;
-  border-radius: 50%;
-  background: #fff;
-  color: #1a73e8;
-  font-family: Arial, sans-serif;
-  font-size: 2.4rem;
-  font-weight: 700;
-  line-height: 1;
-}
-
-.googleProfilePreview h3 {
-  margin: 0 0 6px;
-  color: #202124;
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 700;
-  line-height: 1.18;
-}
-
-.googleProfilePreview p {
-  max-width: 650px;
-  margin: 0;
-  color: #5f6368;
-  font-size: 0.96rem;
-  line-height: 1.55;
-}
-
-.googleReviewsGrid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.googleReviewCard {
-  min-height: 206px;
-  border: 1px solid #dadce0;
-  border-radius: 12px;
-  background: #fff;
-  padding: 18px;
-}
-
-.googleReviewHead {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-
-.googleReviewAvatar {
-  display: grid;
-  width: 42px;
-  height: 42px;
-  flex: 0 0 auto;
-  place-items: center;
-  border-radius: 50%;
-  background: #e8f0fe;
-  color: #1a73e8;
-  font-weight: 700;
-}
-
-.googleReviewHead h3 {
-  margin: 0;
-  color: #202124;
-  font-size: 1rem;
-  font-weight: 700;
-  line-height: 1.18;
-}
-
-.googleReviewHead p {
-  margin: 2px 0 0;
-  color: #5f6368;
-  font-size: 0.82rem;
-}
-
-.googleReviewStars {
-  margin-bottom: 12px;
-  font-size: 1.05rem;
-}
-
-.googleReviewCard > p {
-  margin: 0;
-  color: #3c4043;
-  font-size: 0.93rem;
-  line-height: 1.55;
-}
-
-.reviewsFooter {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  border-top: 1px solid var(--border);
-  padding-top: 20px;
-}
-
-.reviewsFooter p {
-  max-width: 680px;
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.92rem;
-  line-height: 1.5;
-}
-
-.googleProfileButton {
-  background: #1a73e8;
-  color: #fff;
-  box-shadow: 0 12px 28px rgba(26, 115, 232, 0.18);
-}
-
-.googleProfileButton:hover {
-  background: #1558b0;
-  color: #fff;
 }
 
 .faqList {
@@ -4182,62 +3874,6 @@ details.faqItem:not([open]) p {
   padding: 18px 22px 22px;
 }
 
-.contactPanel {
-  display: grid;
-  gap: 14px;
-  padding: 28px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-panel);
-  background: var(--surface);
-}
-
-.contactLine {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--border);
-}
-
-.contactLine:last-child {
-  border-bottom: 0;
-  padding-bottom: 0;
-}
-
-.contactPanelSocial {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-
-.contactPanelSocialLabel {
-  color: var(--muted);
-  font-size: var(--type-body-sm);
-}
-
-.contactPanelSocialRow {
-  display: flex;
-  gap: 8px;
-}
-
-.contactPanelSocialIcon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: #fff;
-  transition: border-color 160ms ease, transform 160ms ease;
-}
-
-.contactPanelSocialIcon:hover {
-  border-color: var(--gold);
-  transform: translateY(-1px);
-}
-
 .contactAreaCard {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 280px;
@@ -4562,50 +4198,6 @@ details.faqItem:not([open]) p {
 .footerLegalLinks a {
   color: var(--footer-muted);
   transition: color 160ms ease;
-}
-
-.privacyLayout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 340px;
-  gap: 28px;
-  align-items: start;
-}
-
-.privacyContent {
-  min-width: 0;
-}
-
-.privacyTextCard {
-  margin-top: 28px;
-}
-
-.privacyTextCard h2,
-.privacyContactCard h2 {
-  margin: 0 0 10px;
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  line-height: 1.2;
-}
-
-.privacyTextCard h2:not(:first-child) {
-  margin-top: 26px;
-}
-
-.privacyTextCard p,
-.privacyContactCard p {
-  margin: 0;
-  color: var(--muted);
-}
-
-.privacyTextCard a,
-.privacyContactCard a {
-  color: var(--text);
-  font-weight: 700;
-}
-
-.privacyContactCard {
-  position: sticky;
-  top: 104px;
 }
 
 /* ————— Strona /polityka-prywatnosci — spis treści + treść RODO ————— */
@@ -5535,18 +5127,17 @@ a.miniCard:hover {
   background: #fdf3e6;
 }
 
-/* Czynniki ceny — trzy kolumny kart zamiast dwukolumno.priceFactorList {
+/* Czynniki ceny — trzy kolumny kart zamiast dwukolumnowej listy. */
+.priceFactorList {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
   margin-top: var(--section-gap);
-}n-top: 28px;
 }
 
 .priceFactor {
   grid-template-columns: 36px minmax(0, 1fr);
   align-items: start;
   border: 1px solid #eee0cd;
-  border-bottom: 1px solid #eee0cd;
   border-radius: 12px;
   background: var(--surface);
   padding: 18px;
@@ -6376,10 +5967,6 @@ button.contactCard .contactCardValue {
     stroke-linejoin: round;
   }
 
-  .mobileMenuChevron {
-    color: var(--muted);
-  }
-
   .mobileMenuContact {
     display: grid;
     gap: 12px;
@@ -6503,10 +6090,6 @@ button.contactCard .contactCardValue {
       "area";
   }
 
-  .privacyContactCard {
-    position: static;
-  }
-
   .heroShell {
     min-height: auto;
     padding-top: 102px;
@@ -6614,29 +6197,6 @@ button.contactCard .contactCardValue {
     grid-template-columns: 1fr;
   }
 
-  .googleReviewsGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .googleProfilePreview {
-    grid-template-columns: 1fr;
-  }
-
-  .googlePreviewMark {
-    width: 58px;
-    height: 58px;
-    font-size: 2rem;
-  }
-
-  .reviewsFooter {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
-  .googleProfileButton {
-    width: 100%;
-  }
-
   .sectionSplitHeader {
     align-items: start;
     flex-direction: column;
@@ -6647,11 +6207,6 @@ button.contactCard .contactCardValue {
     border-top: 1px solid var(--border);
     padding-top: 24px;
     padding-left: 0;
-  }
-
-  .floatingPrice {
-    left: 16px;
-    right: 16px;
   }
 
   .trustBar {
@@ -6791,12 +6346,6 @@ button.contactCard .contactCardValue {
     padding: 22px;
   }
 
-  .googleSummaryCard,
-  .googleReviewCard,
-  .googleProfilePreview {
-    padding: 16px;
-  }
-
   .ownerPhoto,
   .ownerPhoto img {
     min-height: 260px;
@@ -6837,19 +6386,6 @@ button.contactCard .contactCardValue {
 
   .pageHero {
     padding: 112px 0 58px;
-  }
-
-  .heroImageFrame {
-    height: 342px;
-  }
-
-  .floatingPrice {
-    position: relative;
-    left: auto;
-    right: auto;
-    bottom: auto;
-    width: 100%;
-    margin-top: 16px;
   }
 
   .ownerBlock {
