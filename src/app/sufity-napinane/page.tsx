@@ -297,13 +297,13 @@ export default function StretchCeilingsPage() {
               Cały układ świateł ustalamy na bezpłatnym pomiarze, razem z sufitem, więc na montażu
               nie trzeba już nic przerabiać.
             </p>
-            <Link
-              href="/rozwiazania/oswietlenie-led"
-              className="cardArrowText"
-              style={{ display: "inline-block", marginTop: 24 }}
-            >
-              Poznaj oświetlenie w sufitach napinanych →
-            </Link>
+            {/* Zwykły link tekstowy — cardArrowText jest etykietą wewnątrz
+                klikalnej karty i sam z siebie nie reaguje na hover. */}
+            <p className="poradnikHint">
+              <Link className="inlineLink" href="/rozwiazania/oswietlenie-led">
+                Poznaj oświetlenie w sufitach napinanych →
+              </Link>
+            </p>
           </div>
           <div className="altSplitPhoto">
             <Image

@@ -2638,7 +2638,10 @@ a.miniCard:hover,
 .serviceCard a:hover,
 .serviceCard:hover a,
 a.miniCard:hover .cardArrowText,
-a.card:hover .cardArrowText {
+a.card:hover .cardArrowText,
+/* Gdy sama strzałka jest linkiem, a nie etykietą w klikalnej karcie. */
+a.cardArrowText:hover,
+a.cardArrowText:focus-visible {
   background-size: 100% 2px;
   color: var(--accent-hover);
 }
