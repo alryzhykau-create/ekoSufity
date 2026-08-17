@@ -401,11 +401,6 @@ export default function StretchCeilingsPage() {
                   </span>
                   <div className="stepFlowBody">
                     <h3>{title}</h3>
-                    {title === "Montaż" ? (
-                      <Link className="inlineLink" href="/poradnik/czy-montaz-sufitu-brudzi">
-                        Czy montaż brudzi? →
-                      </Link>
-                    ) : null}
                   </div>
                 </li>
               ))}
