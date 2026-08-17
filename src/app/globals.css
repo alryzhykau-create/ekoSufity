@@ -1808,11 +1808,31 @@ main {
 }
 
 /* Strzałka w jasnym złocie — na ciemnym kaflu czytelniejsza niż #c9791c. */
+/* Kafle mozaiki stoją na ciemnym zdjęciu, więc kolor zostaje jaśniejszy —
+   ale zachowanie jest to samo co w pozostałych linkach: kreska wyjeżdża
+   od lewej, gdy kursor jest na kafelku. */
 .mosaicTileLink {
+  width: fit-content;
   margin-top: 12px;
-  font-size: 0.85rem;
-  font-weight: 700;
+  font-size: 0.95rem;
+  font-weight: 600;
   color: #f0c98a;
+  background-image: linear-gradient(#f0c98a, #f0c98a);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0 2px;
+  transition: background-size 200ms ease;
+}
+
+.mosaicTile:hover .mosaicTileLink,
+.mosaicTile:focus-visible .mosaicTileLink {
+  background-size: 100% 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mosaicTileLink {
+    transition: none;
+  }
 }
 
 @media (max-width: 900px) {
@@ -2497,7 +2517,8 @@ a.miniCard:hover,
 
 .servicesSection .serviceCard a {
   padding-top: 14px;
-  font-size: 0.98rem;
+  /* 1rem tak jak wszystkie linki tekstowe — patrz blok „jeden styl linków". */
+  font-size: 1rem;
 }
 
 .serviceCard a::after {
@@ -2685,6 +2706,94 @@ a.miniCard:hover,
 .sectionArrowLink::after {
   content: "→";
   margin-left: 8px;
+}
+
+/* ——— Jeden styl linków tekstowych (wariant F) ———
+   Wcześniej każdy kontekst wyglądał inaczej: link w akapicie miał stałe
+   podkreślenie i wagę 600, link sekcji nie miał linii i miał wagę 700, a link
+   w karcie był mniejszy. Teraz wszystkie mają złoto, wagę 600 i 1 rem, a w
+   spoczynku żadnej linii — na hover złota kreska 2px wyjeżdża od lewej.
+   Kreska jest tłem, nie pseudoelementem: link w akapicie może się złamać na
+   dwie linie, a tło poprawnie rysuje się pod każdym fragmentem. */
+.inlineLink,
+.serviceCard a,
+.cardArrowText,
+.miniCard p.cardArrowText {
+  color: var(--gold-dark);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  background-image: linear-gradient(var(--gold), var(--gold));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0 2px;
+  transition: color 160ms ease, background-size 200ms ease;
+}
+
+/* Kreska ma być pod tekstem, nie pod całą szerokością karty. */
+.serviceCard a,
+.miniCard p.cardArrowText {
+  width: fit-content;
+}
+
+.inlineLink:hover,
+.inlineLink:focus-visible,
+.serviceCard a:hover,
+.serviceCard:hover a,
+a.miniCard:hover .cardArrowText,
+a.card:hover .cardArrowText {
+  background-size: 100% 2px;
+  color: var(--accent-hover);
+}
+
+.sectionArrowLink:hover,
+.sectionArrowLink:focus-visible {
+  color: var(--accent-hover);
+}
+
+/* Link sekcji zachowuje wysoki obszar klikania (48px), więc kreskę rysujemy
+   pseudoelementem tuż pod tekstem — tło trafiłoby na dół całego pola. */
+.sectionArrowLink {
+  position: relative;
+  color: var(--gold-dark);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.sectionArrowLink::before {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 10px;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 200ms ease;
+}
+
+.priceExamplesActions .sectionArrowLink::before,
+.sectionArrowLink[style*="padding: 0"]::before {
+  left: 0;
+  right: 0;
+  bottom: 9px;
+}
+
+.sectionArrowLink:hover::before,
+.sectionArrowLink:focus-visible::before {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .inlineLink,
+  .serviceCard a,
+  .cardArrowText,
+  .miniCard p.cardArrowText,
+  .sectionArrowLink::before {
+    transition: none;
+  }
 }
 
 .gallerySection {
