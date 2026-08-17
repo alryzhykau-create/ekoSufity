@@ -162,13 +162,6 @@ main {
   background: #fff;
 }
 
-
-
-.sectionDark {
-  background: var(--black);
-  color: var(--cream);
-}
-
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -1360,7 +1353,7 @@ main {
 
 /* Cienkie linie między wszystkimi komórkami — jak w makiecie Claude Design. */
 .comparisonTable th,
-.comparisonTable td {
+  .comparisonTable td {
   padding: 14px 18px;
   text-align: left;
   vertical-align: top;
@@ -1389,7 +1382,7 @@ main {
   color: var(--gold);
 }
 
-.comparisonTable tbody th {
+  .comparisonTable tbody th {
   width: 30%;
   font-weight: 600;
   color: var(--black);
@@ -1423,21 +1416,21 @@ main {
    (obcinało tekst w połowie słowa) każdy wiersz staje się blokiem
    "cecha → dwie podpisane wartości". Podpisy z data-label w komórkach. */
 @media (max-width: 640px) {
-  .comparisonTable:not(.comparisonTable--compact) {
+  .comparisonTable {
     display: block;
     min-width: 0;
     border: 0;
     background: none;
   }
 
-  .comparisonTable:not(.comparisonTable--compact) thead {
+  .comparisonTable thead {
     display: none;
   }
 
-  .comparisonTable:not(.comparisonTable--compact) tbody,
-  .comparisonTable:not(.comparisonTable--compact) tr,
-  .comparisonTable:not(.comparisonTable--compact) tbody th,
-  .comparisonTable:not(.comparisonTable--compact) td {
+  .comparisonTable tbody,
+  .comparisonTable tr,
+  .comparisonTable tbody th,
+  .comparisonTable td {
     display: block;
     width: auto;
     padding: 0;
@@ -1445,23 +1438,23 @@ main {
     background: none;
   }
 
-  .comparisonTable:not(.comparisonTable--compact) tr {
+  .comparisonTable tr {
     padding: 16px 0;
     border-bottom: 1px solid var(--border);
   }
 
-  .comparisonTable:not(.comparisonTable--compact) tbody tr:last-child {
+  .comparisonTable tbody tr:last-child {
     border-bottom: 0;
   }
 
-  .comparisonTable:not(.comparisonTable--compact) tbody th {
+  .comparisonTable tbody th {
     margin-bottom: 10px;
     font-family: var(--font-display);
     font-size: 1rem;
     font-weight: 700;
   }
 
-  .comparisonTable:not(.comparisonTable--compact) td {
+  .comparisonTable td {
     display: grid;
     grid-template-columns: 104px minmax(0, 1fr);
     gap: 10px;
@@ -1471,7 +1464,7 @@ main {
     color: var(--muted);
   }
 
-  .comparisonTable:not(.comparisonTable--compact) td::before {
+  .comparisonTable td::before {
     content: attr(data-label);
     color: var(--gold-dark);
     font-size: 0.7rem;
@@ -1480,18 +1473,6 @@ main {
     line-height: 2;
     text-transform: uppercase;
   }
-}
-
-/* Social media na stronie kontaktu — te same ikony co w stopce, ale większe. */
-.contactSocialRow {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 30px;
-}
-
-@media (max-width: 560px) {
 }
 
 /* Opinie w stylu Google (wspólny blok na stronie głównej i kontakcie). */
@@ -1544,12 +1525,6 @@ main {
   color: #202124;
   font-size: 1.15rem;
   font-weight: 700;
-}
-
-.reviewsSummaryMeta {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
 }
 
 .reviewsStars {
@@ -1648,7 +1623,6 @@ main {
   letter-spacing: 1px;
 }
 
-
 .reviewText {
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -1659,7 +1633,6 @@ main {
   font-size: 0.88rem;
   line-height: 1.5;
 }
-
 
 /* Mozaika rozwiązań — kafle różnej wielkości, gotowe pod zdjęcie w tle. */
 .solutionMosaic {
@@ -1797,7 +1770,6 @@ main {
 }
 
 .priceTableCard,
-.priceExplainCard,
 .priceExamplesPanel {
   padding: 28px;
   border-radius: var(--radius);
@@ -1841,11 +1813,6 @@ main {
 .priceRow strong {
   text-align: right;
   font-size: 0.82rem;
-}
-
-.priceExplainCard p,
-.priceExplainCard .factor {
-  color: var(--muted);
 }
 
 .priceKicker {
@@ -2893,7 +2860,6 @@ a.card:hover .cardArrowText {
   box-shadow: 0 16px 38px rgba(17, 24, 39, 0.045);
 }
 
-
 .processNumber {
   position: absolute;
   top: -24px;
@@ -3222,28 +3188,6 @@ a.card:hover .cardArrowText {
   object-fit: contain;
 }
 
-.reviewsNote {
-  display: grid;
-  gap: 22px;
-  align-items: stretch;
-  padding: 30px;
-}
-
-.reviewsIntro {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 340px;
-  gap: 28px;
-  align-items: start;
-}
-
-.reviewsIntro > div > p {
-  max-width: 760px;
-  margin: 14px 0 0;
-  color: var(--muted);
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
 .faqList {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -3536,20 +3480,8 @@ details.faqItem:not([open]) p {
   --icon-url: url("/icon/contact-block/phone.svg");
 }
 
-.contactIconPin {
-  --icon-url: url("/icon/contact-block/map-pin.svg");
-}
-
 .contactIconMessage {
   --icon-url: url("/icon/contact-block/message.svg");
-}
-
-.contactIconCalendar {
-  --icon-url: url("/icon/contact-block/calendar.svg");
-}
-
-.contactIconShield {
-  --icon-url: url("/icon/contact-block/shield-check.svg");
 }
 
 .contactIconArrow {
@@ -4044,8 +3976,7 @@ details.faqItem:not([open]) p {
   list-style: none;
 }
 
-.footer a,
-.sectionDark a {
+.footer a {
   color: inherit;
 }
 
@@ -4666,7 +4597,6 @@ a.miniCard:hover {
     );
   }
 }
-
 
 /* Zdjęcie na górze karty — wyciągnięte do krawędzi ponad padding karty. */
 .miniCardImg {
@@ -5325,10 +5255,6 @@ a.miniCard:hover {
   font-weight: 600;
 }
 
-
-
-
-
 @media (max-width: 700px) {
   .kalkulatorFolie {
     grid-template-columns: minmax(0, 1fr);
@@ -5949,14 +5875,12 @@ button.contactCard .contactCardValue {
     color: var(--text);
   }
 
-  .mobileMenuNavIcon,
-  .mobileMenuChevron {
+  .mobileMenuNavIcon {
     display: grid;
     place-items: center;
   }
 
-  .mobileMenuNavIcon svg,
-  .mobileMenuChevron svg {
+  .mobileMenuNavIcon svg {
     width: 24px;
     height: 24px;
     display: block;
@@ -6076,7 +6000,6 @@ button.contactCard .contactCardValue {
   .finalContactCard,
   .splitHero,
   .contactAreaCard,
-  .privacyLayout,
   .ownerBlock,
   .grid2 {
     grid-template-columns: 1fr;
@@ -6191,10 +6114,6 @@ button.contactCard .contactCardValue {
 
   .contactFormPanel {
     width: min(100%, 460px);
-  }
-
-  .reviewsIntro {
-    grid-template-columns: 1fr;
   }
 
   .sectionSplitHeader {
@@ -6342,10 +6261,6 @@ button.contactCard .contactCardValue {
     padding: 14px;
   }
 
-  .reviewsNote {
-    padding: 22px;
-  }
-
   .ownerPhoto,
   .ownerPhoto img {
     min-height: 260px;
@@ -6484,7 +6399,6 @@ button.contactCard .contactCardValue {
   .audienceSection .sectionLead {
     font-size: 1rem;
   }
-
 
   .buttonRow .btn,
   .btn {
