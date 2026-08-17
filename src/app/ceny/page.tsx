@@ -288,7 +288,7 @@ export default function PricesPage() {
         </div>
       </section>
 
-      <section className="section" id="kalkulator">
+      <section className="section" id="kalkulator" style={{ scrollMarginTop: 90 }}>
         <div className="container">
           <Kalkulator />
         </div>

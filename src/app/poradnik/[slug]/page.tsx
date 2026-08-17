@@ -139,10 +139,10 @@ export default async function ArtykulPage({ params }: PageProps) {
                       <div>
                         <p className="artykulCtaTitle">Chcesz dokładną wycenę?</p>
                         <p>Pomiar i dojazd są bezpłatne w promieniu do 100 km od Wrocławia.</p>
-                        {/* Jedyne wyjście z artykułu na cennik — stoi tam, gdzie
-                            czytelnik i tak myśli o pieniądzach. */}
-                        <Link className="inlineLink artykulCtaLink" href="/ceny">
-                          Zobacz cennik →
+                        {/* Prosto do kalkulatora, nie na sam cennik: czytelnik
+                            w tym miejscu myśli o swoim metrażu, a nie o tabeli. */}
+                        <Link className="inlineLink artykulCtaLink" href="/ceny#kalkulator">
+                          Policz koszt w kalkulatorze →
                         </Link>
                       </div>
                       <a className="btn btnPrimary" href={siteConfig.contacts.phoneHref}>
