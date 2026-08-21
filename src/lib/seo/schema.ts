@@ -1,9 +1,8 @@
 import { absoluteUrl, siteConfig, socialLinks } from "@/content/site";
 
-/* Firma dojeżdża do klienta i nie ma punktu obsługi, więc opisujemy ją jako
-   service-area business: bez PostalAddress i bez geo, a zasięg niesie
-   areaServed. Bez adresu Google nie pokaże wizytówki z tej rozmetki — od tego
-   jest profil firmy — ale wiąże stronę z marką i rozumie, gdzie pracujemy.
+/* Adres biura podajemy tylko tutaj, w JSON-LD — na widocznych stronach go nie
+   ma i mieć nie ma. Adres rejestracji firmy (Arbuzowa) żyje osobno, wyłącznie
+   w polityce prywatności, bo to wymóg RODO, a nie dane kontaktowe.
    Ocen (aggregateRating) tu nie ma celowo: opinie zbiera profil Google, a
    wystawianie ich we własnej rozmetce łamie wytyczne. */
 export function localBusinessSchema() {
@@ -16,6 +15,19 @@ export function localBusinessSchema() {
     telephone: siteConfig.contacts.phoneDisplay,
     email: siteConfig.contacts.email,
     image: absoluteUrl("/images/salon-22m2-photo.png"),
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "ul. Strzegomska 204",
+      postalCode: "53-611",
+      addressLocality: "Wrocław",
+      addressCountry: "PL"
+    },
+    /* Współrzędne budynku przy Strzegomskiej 204 (OpenStreetMap). */
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 51.1114551,
+      longitude: 16.9598691
+    },
     areaServed: {
       "@type": "AdministrativeArea",
       name: "Wrocław i miejscowości do 100 km",
