@@ -3449,23 +3449,43 @@ details.faqItem:not([open]) p {
   filter: brightness(0) invert(1);
 }
 
-.contactChipHours {
+/* WhatsApp obok telefonu: w spoczynku przygaszona zieleń, żeby nie krzyczała
+   na zdjęciu, a po najechaniu zalewa się ciemną zielenią z białym napisem —
+   tak samo jak telefon obok zalewa się złotem. */
+.contactChipWa {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   min-height: 60px;
   padding: 0 24px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid #51c85d;
   border-radius: 12px;
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 1rem;
+  background: rgba(81, 200, 93, 0.16);
+  color: #8ee89a;
+  font-size: 1.15rem;
+  font-weight: 700;
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
 }
 
-/* Zegar tej samej wielkości co ikona telefonu w chipie obok. */
-.contactChipHoursIcon {
+.contactChipWa svg {
   flex: 0 0 auto;
-  width: 18px;
-  height: 18px;
+  width: 22px;
+  height: 22px;
+}
+
+.contactChipWa:hover,
+.contactChipWa:focus-visible {
+  border-color: #1f7a2c;
+  background: #1f7a2c;
+  color: #fff;
+}
+
+/* Godziny i rok pod przyciskami — bez ramki i bez ikony zegara. */
+.contactHoursLine {
+  margin: 16px 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 .contactIconMask {
@@ -6781,6 +6801,37 @@ button.contactCard .contactCardValue {
   display: inline-block;
   margin-top: 10px;
   font-size: 1rem;
+}
+
+.artykulCtaPrzyciski {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* WhatsApp na jasnym tle planszy: przygaszona zieleń, po najechaniu zalewa
+   się ciemną zielenią — to samo zachowanie co w bloku kontaktowym. */
+.btn.btnWaSoft {
+  border-color: #51c85d;
+  background: rgba(81, 200, 93, 0.12);
+  color: #1f7a2c;
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+.btn.btnWaSoft svg {
+  color: #51c85d;
+}
+
+.btn.btnWaSoft:hover,
+.btn.btnWaSoft:focus-visible {
+  border-color: #1f7a2c;
+  background: #1f7a2c;
+  color: #fff;
+}
+
+.btn.btnWaSoft:hover svg,
+.btn.btnWaSoft:focus-visible svg {
+  color: #fff;
 }
 
 .artykulAuthor {

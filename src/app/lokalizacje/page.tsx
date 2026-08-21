@@ -98,7 +98,7 @@ export default function LocationsPage() {
             ["Cały region wokół Wrocławia", "Wrocław i miejscowości Dolnego Śląska w zasięgu dojazdu."],
             ["Pomiar gratis", "Pomiar jest bezpłatny w całym obsługiwanym obszarze."],
             ["Dojazd gratis", "Dojazd do 100 km od Wrocławia nie zwiększa ceny."],
-            ["Gwarancja", "15 lat na płótno, 5 lat montaż, 2 lata LED."]
+            ["Gwarancja", "15 lat na płótno, 5 lat na montaż i 2 lata na oświetlenie LED."]
           ].map(([title, copy]) => (
             <article className="card trustCard" key={title}>
               <div className="iconDot" aria-hidden="true" />

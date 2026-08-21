@@ -76,7 +76,7 @@ const details: Partial<Record<(typeof services)[number]["slug"], ServiceDetail>>
       },
       {
         title: "Czysty, trwały montaż",
-        desc: "Bez widocznych puszek i przewodów. Na oświetlenie LED dajemy 2 lata gwarancji, na membranę — 15 lat, a na montaż — 5 lat."
+        desc: "Bez widocznych puszek i przewodów. Gwarancja: 15 lat na płótno, 5 lat na montaż i 2 lata na oświetlenie LED."
       }
     ]
   },

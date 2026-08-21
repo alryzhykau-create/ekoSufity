@@ -10,7 +10,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { CtaIcon } from "@/components/ui/CtaIcon";
 import { StickyToc } from "@/components/ui/StickyToc";
 import { artykuly, znajdzArtykul } from "@/content/poradnik";
-import { siteConfig } from "@/content/site";
+import { siteConfig, whatsappUrl } from "@/content/site";
 import { parseArticle } from "@/lib/poradnik/markdown";
 import { seoMeta } from "@/lib/seo/metadata";
 import { articleSchema, breadcrumbSchema, faqSchema } from "@/lib/seo/schema";
@@ -145,10 +145,23 @@ export default async function ArtykulPage({ params }: PageProps) {
                           Policz koszt w kalkulatorze →
                         </Link>
                       </div>
-                      <a className="btn btnPrimary" href={siteConfig.contacts.phoneHref}>
-                        <CtaIcon name="phone" />
-                        {siteConfig.contacts.phoneDisplay}
-                      </a>
+                      {/* Czytelnik w środku artykułu częściej napisze, niż
+                          zadzwoni — stąd WhatsApp obok numeru. */}
+                      <div className="artykulCtaPrzyciski">
+                        <a className="btn btnPrimary" href={siteConfig.contacts.phoneHref}>
+                          <CtaIcon name="phone" />
+                          {siteConfig.contacts.phoneDisplay}
+                        </a>
+                        <a
+                          className="btn btnWaSoft"
+                          href={whatsappUrl(
+                            `Dzień dobry, czytam artykuł „${title}". Mam pytanie o sufit napinany.`
+                          )}
+                        >
+                          <CtaIcon name="whatsapp" />
+                          Napisz na WhatsApp
+                        </a>
+                      </div>
                     </aside>
                   ) : null}
                   {blok.node}

@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { FormEvent, useState } from "react";
-import { siteConfig } from "@/content/site";
+import { CtaIcon } from "@/components/ui/CtaIcon";
+import { siteConfig, whatsappUrl } from "@/content/site";
 
 type SubmitState = "idle" | "loading" | "success" | "error";
 
@@ -55,19 +56,25 @@ export function FinalContactSection({ alt = true }: { alt?: boolean }) {
             ma sens w Twoim wnętrzu. Wolisz bez formularza? Zadzwoń od razu.
           </p>
 
+          {/* Telefon i WhatsApp parą — kto nie chce dzwonić, pisze. Godziny i rok
+              schodzą do linii pod przyciskami, żeby rząd został jednym rzędem. */}
           <div className="contactChips">
             <a className="contactChipPhone" href={siteConfig.contacts.phoneHref}>
               <img src="/icon/contact-block/phone.svg" alt="" aria-hidden="true" />
               {siteConfig.contacts.phoneDisplay}
             </a>
-            <span className="contactChipHours">
-              <svg className="contactChipHoursIcon" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
-                <path d="M16,31A15,15,0,1,1,31,16,15,15,0,0,1,16,31ZM16,3A13,13,0,1,0,29,16,13,13,0,0,0,16,3Z" />
-                <path d="M20.24,21.66l-4.95-4.95A1,1,0,0,1,15,16V8h2v7.59l4.66,4.65Z" />
-              </svg>
-              Pon–Pt 9:00–20:00
-            </span>
+            <a
+              className="contactChipWa"
+              href={whatsappUrl("Dzień dobry, mam pytanie o sufit napinany.")}
+            >
+              <CtaIcon name="whatsapp" />
+              Napisz na WhatsApp
+            </a>
           </div>
+
+          <p className="contactHoursLine">
+            Pon–Pt 9:00–20:00 · montujemy sufity napinane od 2020 roku
+          </p>
         </div>
 
         <form className="contactFormPanel" onSubmit={handleSubmit}>
