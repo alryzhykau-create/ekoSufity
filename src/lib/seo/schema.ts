@@ -18,7 +18,7 @@ export function localBusinessSchema() {
     address: {
       "@type": "PostalAddress",
       streetAddress: "ul. Strzegomska 204",
-      postalCode: "53-611",
+      postalCode: "54-432",
       addressLocality: "Wrocław",
       addressCountry: "PL"
     },
