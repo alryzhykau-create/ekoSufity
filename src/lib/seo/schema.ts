@@ -1,17 +1,43 @@
-import { absoluteUrl, siteConfig } from "@/content/site";
+import { absoluteUrl, siteConfig, socialLinks } from "@/content/site";
 
+/* Firma dojeżdża do klienta i nie ma punktu obsługi, więc opisujemy ją jako
+   service-area business: bez PostalAddress i bez geo, a zasięg niesie
+   areaServed. Bez adresu Google nie pokaże wizytówki z tej rozmetki — od tego
+   jest profil firmy — ale wiąże stronę z marką i rozumie, gdzie pracujemy.
+   Ocen (aggregateRating) tu nie ma celowo: opinie zbiera profil Google, a
+   wystawianie ich we własnej rozmetce łamie wytyczne. */
 export function localBusinessSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
+    "@id": `${siteConfig.baseUrl}/#firma`,
     name: siteConfig.brand,
     url: siteConfig.baseUrl,
     telephone: siteConfig.contacts.phoneDisplay,
     email: siteConfig.contacts.email,
+    image: absoluteUrl("/images/salon-22m2-photo.png"),
     areaServed: {
       "@type": "AdministrativeArea",
-      name: "Wrocław i miejscowości do 100 km"
+      name: "Wrocław i miejscowości do 100 km",
+      containedInPlace: {
+        "@type": "AdministrativeArea",
+        name: siteConfig.region
+      }
     },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "09:00",
+        closes: "20:00"
+      }
+    ],
+    /* Profil w Google i konta społecznościowe — po nich Google łączy stronę
+       z tą samą firmą. */
+    sameAs: [
+      siteConfig.contacts.googleBusinessProfileHref,
+      ...socialLinks.map((item) => item.href)
+    ],
     knowsLanguage: siteConfig.languages,
     priceRange: "średnio ok. 120 zł/m²",
     description:
