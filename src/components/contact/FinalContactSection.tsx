@@ -97,8 +97,9 @@ export function FinalContactSection({ alt = true }: { alt?: boolean }) {
           <label className="rodoField">
             <input name="rodo" type="checkbox" required />
             <span>
-              Wyrażam zgodę na kontakt w sprawie pomiaru i wyceny sufitu napinanego.{" "}
-              <Link href="/polityka-prywatnosci">Polityka prywatności</Link>.
+              Wyrażam zgodę na przetwarzanie moich danych osobowych w celu kontaktu i
+              przygotowania wyceny zgodnie z{" "}
+              <Link href="/polityka-prywatnosci">Polityką Prywatności</Link>.
             </span>
           </label>
           <button className="contactSubmit" type="submit" disabled={state === "loading"}>
