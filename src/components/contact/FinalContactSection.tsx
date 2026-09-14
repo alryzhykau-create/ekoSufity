@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { CtaIcon } from "@/components/ui/CtaIcon";
 import { siteConfig, whatsappUrl } from "@/content/site";
 
@@ -15,6 +15,15 @@ const CZAS_NA_ODPOWIEDZ_MS = 15000;
    strona przekazuje false, gdy jej rytm kończy się na bieli. */
 export function FinalContactSection({ alt = true }: { alt?: boolean }) {
   const [state, setState] = useState<SubmitState>("idle");
+  const errorBoxRef = useRef<HTMLDivElement>(null);
+
+  /* Blok błędu pojawia się pod przyciskiem, czyli na telefonie często poza
+     ekranem — dosuwamy go do środka widoku w chwili, gdy się wyrenderuje. */
+  useEffect(() => {
+    if (state === "error") {
+      errorBoxRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [state]);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -115,7 +124,7 @@ export function FinalContactSection({ alt = true }: { alt?: boolean }) {
             <span className="buttonArrow contactIconMask contactIconArrow" aria-hidden="true" />
           </button>
           {state === "error" ? (
-            <div className="formErrorBox" role="alert">
+            <div className="formErrorBox" role="alert" ref={errorBoxRef}>
               <p className="formErrorTitle">Nie udało się wysłać formularza</p>
               <p className="formErrorText">
                 Przepraszamy, coś poszło nie tak. Zadzwoń lub napisz na WhatsApp — odpowiem od
