@@ -7,38 +7,46 @@ import { siteConfig, whatsappUrl } from "@/content/site";
 
 type SubmitState = "idle" | "loading" | "success" | "error";
 
+/* Po tylu sekundach bez odpowiedzi serwera uznajemy wysyłkę za nieudaną —
+   inaczej zawieszone połączenie trzymałoby klienta na „Wysyłanie..." bez końca. */
+const CZAS_NA_ODPOWIEDZ_MS = 15000;
+
 /* `alt` steruje tłem sekcji w naprzemiennej zebrze — domyślnie krem,
    strona przekazuje false, gdy jej rytm kończy się na bieli. */
 export function FinalContactSection({ alt = true }: { alt?: boolean }) {
   const [state, setState] = useState<SubmitState>("idle");
-  const [errorMessage, setErrorMessage] = useState("");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setState("loading");
-    setErrorMessage("");
 
     const form = event.currentTarget;
     const formData = new FormData(form);
+    const kontroler = new AbortController();
+    const zegar = setTimeout(() => kontroler.abort(), CZAS_NA_ODPOWIEDZ_MS);
 
+    /* Każde niepowodzenie — 503 bez kluczy, 500, brak sieci, przekroczony
+       czas — kończy się tym samym blokiem z telefonem i WhatsAppem. Pola
+       zostają wypełnione, a przycisk znów aktywny, żeby dało się spróbować
+       jeszcze raz. Szczegół techniczny błędu klientowi nic nie mówi. */
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
-        body: formData
+        body: formData,
+        signal: kontroler.signal
       });
-      const result = (await response.json()) as { ok?: boolean; error?: string };
+      const result = (await response.json()) as { ok?: boolean };
 
       if (!response.ok || !result.ok) {
-        throw new Error(result.error || "Nie udało się wysłać formularza.");
+        throw new Error("Wysyłka nieudana");
       }
 
       form.reset();
       setState("success");
-    } catch (error) {
+    } catch {
       setState("error");
-      setErrorMessage(
-        error instanceof Error ? error.message : "Nie udało się wysłać formularza. Spróbuj ponownie."
-      );
+    } finally {
+      clearTimeout(zegar);
     }
   }
 
@@ -106,7 +114,28 @@ export function FinalContactSection({ alt = true }: { alt?: boolean }) {
             {state === "loading" ? "Wysyłanie..." : "Poproś o kontakt"}
             <span className="buttonArrow contactIconMask contactIconArrow" aria-hidden="true" />
           </button>
-          {state === "error" ? <p className="formError">{errorMessage}</p> : null}
+          {state === "error" ? (
+            <div className="formErrorBox" role="alert">
+              <p className="formErrorTitle">Nie udało się wysłać formularza</p>
+              <p className="formErrorText">
+                Przepraszamy, coś poszło nie tak. Zadzwoń lub napisz na WhatsApp — odpowiem od
+                razu.
+              </p>
+              <div className="formErrorActions">
+                <a className="btn btnPrimary heroPrimaryCta" href={siteConfig.contacts.phoneHref}>
+                  <CtaIcon name="phone" />
+                  Zadzwoń: {siteConfig.contacts.phoneDisplay}
+                </a>
+                <a
+                  className="btn btnSecondary heroWhatsappCta waHoverFill"
+                  href={whatsappUrl("Dzień dobry, chcę zapytać o wycenę sufitu napinanego")}
+                >
+                  <CtaIcon name="whatsapp" />
+                  Napisz na WhatsApp
+                </a>
+              </div>
+            </div>
+          ) : null}
         </form>
       </div>
 

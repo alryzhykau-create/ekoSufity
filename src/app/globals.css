@@ -3657,10 +3657,39 @@ details.faqItem:not([open]) p {
   height: 18px;
 }
 
-.formError {
+/* Blok po nieudanej wysyłce: zamiast technicznego komunikatu — co zrobić
+   dalej. Kolor tytułu ten sam, którym formularz zgłaszał błędy do tej pory,
+   przyciski takie same jak w nagłówkach stron. */
+.formErrorBox {
+  display: grid;
+  gap: 10px;
+  margin-top: 4px;
+  border: 1px solid rgba(180, 35, 24, 0.28);
+  border-radius: 12px;
+  background: #fff7f6;
+  padding: 18px 20px;
+}
+
+.formErrorTitle {
   margin: 0;
   color: #b42318;
-  font-size: 0.88rem;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.formErrorText {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.formErrorActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 6px;
 }
 
 .successModalBackdrop {
