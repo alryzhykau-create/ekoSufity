@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   description: aboutDescription,
   ...aboutSeo,
   openGraph: { ...aboutSeo.openGraph, description: aboutDescription },
-  twitter: { description: aboutDescription }
+  twitter: { ...aboutSeo.twitter, description: aboutDescription }
 };
 
 const principles = [

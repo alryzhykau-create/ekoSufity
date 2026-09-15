@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { MobileStickyCta } from "@/components/layout/MobileStickyCta";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/content/site";
+import { ogSite, twitterSite } from "@/lib/seo/metadata";
 import { localBusinessSchema } from "@/lib/seo/schema";
 import "./globals.css";
 
@@ -41,10 +42,9 @@ export const metadata: Metadata = {
     description:
       "Montaż sufitów napinanych, LED i detali. Wrocław oraz miejscowości do 100 km.",
     url: siteConfig.baseUrl,
-    siteName: "EkoSufity",
-    locale: "pl_PL",
-    type: "website"
-  }
+    ...ogSite
+  },
+  twitter: { ...twitterSite }
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
