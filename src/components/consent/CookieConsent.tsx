@@ -106,11 +106,12 @@ export function CookieConsent() {
               (.cookieOnlyDesktop / .cookieOnlyMobile, próg 640px). */}
           <p className="cookieText cookieOnlyDesktop" id="cookie-banner-text">
             Używamy plików cookie, aby strona działała poprawnie oraz — za Twoją zgodą — do
-            analizy ruchu i reklam. Szczegóły znajdziesz w{" "}
+            analizy ruchu i reklam. Możesz zaakceptować wszystkie, odrzucić opcjonalne albo
+            wybrać własne ustawienia. Szczegóły znajdziesz w{" "}
             <Link className="inlineLink" href="/polityka-prywatnosci">
               Polityce Prywatności
             </Link>
-            . Możesz zaakceptować wszystkie, odrzucić opcjonalne albo wybrać własne ustawienia.
+            .
           </p>
           <p className="cookieText cookieOnlyMobile">
             Używamy plików cookie — do działania strony oraz, za Twoją zgodą, do analizy i
