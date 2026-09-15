@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { copyToClipboard } from "@/lib/copyToClipboard";
 
 type CopyEmailButtonProps = {
   email: string;
@@ -28,39 +29,9 @@ export function CopyEmailButton({ email }: CopyEmailButtonProps) {
     timeoutRef.current = setTimeout(() => setState("idle"), 2400);
   };
 
-  // Zapasowa ścieżka dla przeglądarek bez Clipboard API (albo gdy odmówi
-  // dostępu) — zaznaczenie w ukrytym polu i execCommand.
-  const legacyCopy = () => {
-    const field = document.createElement("textarea");
-    field.value = email;
-    field.setAttribute("readonly", "");
-    field.style.position = "fixed";
-    field.style.top = "-1000px";
-    field.style.opacity = "0";
-    document.body.appendChild(field);
-    field.select();
-
-    let ok = false;
-    try {
-      ok = document.execCommand("copy");
-    } catch {
-      ok = false;
-    }
-
-    document.body.removeChild(field);
-    return ok;
-  };
-
   const copy = async () => {
-    try {
-      await navigator.clipboard.writeText(email);
-      flash("copied");
-      return;
-    } catch {
-      // spróbuj jeszcze starszą metodą, zanim pokażemy błąd
-    }
-
-    flash(legacyCopy() ? "copied" : "error");
+    const ok = await copyToClipboard(email);
+    flash(ok ? "copied" : "error");
   };
 
   return (

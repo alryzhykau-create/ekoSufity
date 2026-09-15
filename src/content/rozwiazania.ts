@@ -1,8 +1,9 @@
 import { services } from "@/content/services";
 
+/* Opis obrazu w nagłówku rozwiązania. Ścieżki do zdjęć nie ma celowo —
+   wszystkie rozwiązania mają schemat SVG (SolutionDiagram), a pole `src`
+   wskazywało na pliki, których nigdy nie było. */
 export type ImageSlot = {
-  // Ścieżka placeholdera — realne zdjęcia podmieniamy tu, w danych.
-  src: string;
   alt: string;
   caption?: string;
 };
@@ -88,7 +89,6 @@ export const rozwiazania: Rozwiazanie[] = [
     heroSubtitle:
       "Wentylacja, której nie widać. Kanały chowamy nad membraną, a w pomieszczeniu zostaje czysta linia lub dyskretna kratka. Od premium liniowych dyfuzorów po niewidoczne kratki punktowe.",
     heroImage: {
-      src: "/images/rozwiazania/wentylacja/hero.jpg",
       alt: "Sufit napinany z ukrytą wentylacją"
     },
     whatIs:
@@ -177,7 +177,6 @@ export const rozwiazania: Rozwiazanie[] = [
     heroSubtitle:
       "Ukryta szyna wtopiona w sufit i lampy, które można dowolnie przestawiać. Jedna linia, w której łączymy światło punktowe, liniowe, wiszące, a nawet głośnik.",
     heroImage: {
-      src: "/images/rozwiazania/system-magnetyczny/hero.jpg",
       alt: "Magnetyczna szyna oświetlenia w suficie napinanym"
     },
     whatIs:
@@ -270,7 +269,6 @@ export const rozwiazania: Rozwiazanie[] = [
     heroSubtitle:
       "Efekt rozgwieżdżonego nieba nad głową. Setki świetlnych punktów wtopionych w sufit napinany — od delikatnej poświaty po migoczące konstelacje.",
     heroImage: {
-      src: "/images/rozwiazania/gwiazdziste-niebo/hero.jpg",
       alt: "Sufit napinany z efektem gwiaździstego nieba"
     },
     whatIs:
@@ -348,7 +346,6 @@ export const rozwiazania: Rozwiazanie[] = [
     heroSubtitle:
       "Sufit, który zyskuje głębię. Poziomy, uskoki i efekt „pływającego” sufitu z podświetleniem po obwodzie — pomieszczenie wygląda na wyższe i bardziej wykończone.",
     heroImage: {
-      src: "/images/rozwiazania/sufity-wielopoziomowe/hero.jpg",
       alt: "Sufit wielopoziomowy z podświetleniem obwodowym"
     },
     whatIs:
@@ -424,7 +421,6 @@ export const rozwiazania: Rozwiazanie[] = [
     heroSubtitle:
       "Zamiast listwy maskującej — wąska, cienista szczelina między sufitem a ścianą. Sufit wygląda, jakby „odrywał się” od ściany — czysto i nowocześnie.",
     heroImage: {
-      src: "/images/rozwiazania/szczelina-cienia/hero.jpg",
       alt: "Szczelina cienia między sufitem napinanym a ścianą"
     },
     whatIs:
@@ -508,7 +504,6 @@ export const rozwiazania: Rozwiazanie[] = [
     heroSubtitle:
       "Dowolna grafika na suficie — od nieba i motywów natury po wzory pod projekt wnętrza. Nadruk wykonujemy na membranie w wysokiej rozdzielczości.",
     heroImage: {
-      src: "/images/rozwiazania/sufit-z-nadrukiem/hero.jpg",
       alt: "Sufit napinany z nadrukiem wielkoformatowym"
     },
     whatIs:
@@ -587,7 +582,6 @@ export const rozwiazania: Rozwiazanie[] = [
     heroSubtitle:
       "Sufit, który świeci — miękko po obwodzie albo całą powierzchnią. Projektujemy i montujemy podświetlenie pod indywidualne wnętrze, we Wrocławiu i do 100 km od miasta.",
     heroImage: {
-      src: "/images/rozwiazania/sufit-podswietlany/hero.jpg",
       alt: "Podświetlany sufit napinany świecący równomiernie"
     },
     whatIs:
@@ -660,7 +654,7 @@ export function getRozwiazanie(slug: string) {
 }
 
 // Rekomendowana kolejność wszystkich rozwiązań (istniejące usługi + nowe).
-export const solutionCardOrder = [
+const solutionCardOrder = [
   "folie",
   "oswietlenie-led",
   "linie-swietlne",

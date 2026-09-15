@@ -515,7 +515,18 @@ export default function HomePage() {
           <SectionHeader eyebrow="Od czego zacząć?" title="Wybierz swoją ścieżkę" />
           <div className="pathGrid">
             <article className="pathCard pathCard--inspiration">
-              <img className="pathCardSketch" src="/images/inspiracja-lines.png" alt="" aria-hidden="true" />
+              {/* height:auto — atrybut height z next/image inaczej nadpisałby
+                  proporcje przy szerokości 340px z CSS. */}
+              <Image
+                className="pathCardSketch"
+                src="/images/inspiracja-lines.png"
+                alt=""
+                aria-hidden="true"
+                width={419}
+                height={348}
+                sizes="340px"
+                style={{ height: "auto" }}
+              />
               <div className="pathCardBody">
                 <h3>Szukasz inspiracji?</h3>
                 <p>Zobacz realizacje, poznaj możliwości i wybierz idealne rozwiązanie.</p>

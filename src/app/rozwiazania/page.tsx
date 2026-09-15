@@ -32,14 +32,19 @@ const largeTiles = new Set([
 // miejsce po prawej w ostatnim rzędzie mozaiki.
 const wideTiles = new Set(["karnisze-sufitowe"]);
 
-// Tła kafli: wizualizacja tam, gdzie mamy pasujące zdjęcie, dla reszty
-// gradient nawiązujący do tematu (zamiast jednego gradientu na 11 kaflach).
-const tileBackgrounds: Record<string, string> = {
-  folie: "url(/images/hero.png)",
-  "oswietlenie-led": "url(/images/lazienka-6m2-photo.png)",
-  "linie-swietlne": "url(/images/mieszkanie-45m2-led-photo.png)",
-  "system-magnetyczny": "url(/images/kuchnia-10m2-photo.png)",
-  "sufity-wielopoziomowe": "url(/images/salon-22m2-photo.png)",
+// Tła kafli: obraz tam, gdzie mamy pasujący, dla reszty gradient nawiązujący
+// do tematu (zamiast jednego gradientu na 11 kaflach). Obrazy idą przez
+// next/image, nie przez background-image — inaczej przeglądarka ciągnęła
+// pięć surowych PNG po 1–2 MB, bez skalowania i konwersji do AVIF.
+const tilePhotos: Record<string, string> = {
+  folie: "/images/hero.png",
+  "oswietlenie-led": "/images/lazienka-6m2-photo.png",
+  "linie-swietlne": "/images/mieszkanie-45m2-led-photo.png",
+  "system-magnetyczny": "/images/kuchnia-10m2-photo.png",
+  "sufity-wielopoziomowe": "/images/salon-22m2-photo.png"
+};
+
+const tileGradients: Record<string, string> = {
   "gwiazdziste-niebo": "linear-gradient(165deg, #26304a, #0b0e18)",
   "sufit-podswietlany": "radial-gradient(circle at 50% 8%, #a26f24, #2b2013 70%)",
   "szczelina-cienia": "linear-gradient(160deg, #4a4238, #191612)",
@@ -152,11 +157,23 @@ export default function SolutionsPage() {
                   wideTiles.has(card.slug) ? " mosaicTile--wide" : ""
                 }`}
                 style={
-                  tileBackgrounds[card.slug]
-                    ? { backgroundImage: tileBackgrounds[card.slug] }
+                  tileGradients[card.slug]
+                    ? { backgroundImage: tileGradients[card.slug] }
                     : undefined
                 }
               >
+                {tilePhotos[card.slug] ? (
+                  /* Kafel ma 308px szerokości na desktopie (632 dla szerokiego),
+                     na telefonie pełną szerokość — stąd rozmiary. Przyciemnienie
+                     ::after i tekst leżą nad obrazem, jak przy tle w CSS. */
+                  <Image
+                    src={tilePhotos[card.slug]}
+                    alt=""
+                    fill
+                    sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 320px"
+                    style={{ objectFit: "cover", objectPosition: "center" }}
+                  />
+                ) : null}
                 <div className="mosaicTileBody">
                   <h3>{card.title}</h3>
                   <p>{card.copy}</p>

@@ -22,6 +22,19 @@ const nextConfig: NextConfig = {
         source: "/rozwiazania/gwiazdne-niebo",
         destination: "/rozwiazania/gwiazdziste-niebo",
         statusCode: 301
+      },
+      // Pierwsza wersja serwisu miała usługi pod /uslugi — dziś to /rozwiazania
+      // z tymi samymi slugami. Wcześniej robiły to dwie strony z redirect()
+      // (kod 307); tu jest na stałe i bez osobnych plików.
+      {
+        source: "/uslugi",
+        destination: "/rozwiazania",
+        statusCode: 301
+      },
+      {
+        source: "/uslugi/:slug",
+        destination: "/rozwiazania/:slug",
+        statusCode: 301
       }
     ];
   }

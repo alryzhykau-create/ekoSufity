@@ -17,14 +17,10 @@
   --accent-hover: #b06a12;
   --accent-soft: #f8ebdd;
   --footer-bg: #faf7f2;
-  --footer-card-bg: #ffffff;
   --footer-border: #e8ddd0;
   --footer-text: #111111;
   --footer-muted: #5c554e;
   --footer-accent: #c9791c;
-  --footer-accent-hover: #b06a12;
-  --footer-accent-soft: #f8ebdd;
-  --footer-accent-border: rgba(201, 121, 28, 0.28);
   --footer-divider: rgba(92, 85, 78, 0.16);
   --contact-card-bg: #ffffff;
   --contact-text: #111111;
@@ -33,11 +29,8 @@
   --contact-field-border: #e6d8c7;
   --contact-accent: #c9791c;
   --contact-accent-hover: #b06a12;
-  --contact-accent-soft: #f8ebdd;
-  --contact-accent-border: rgba(201, 121, 28, 0.28);
   --black: #0e0f0f;
   --cream: #f4ecdd;
-  --success: #4f7a5a;
   --shadow: 0 22px 70px rgba(13, 13, 13, 0.075);
   --shadow-card: 0 14px 34px rgba(17, 17, 17, 0.06);
   --max: 1280px;
@@ -46,7 +39,6 @@
   --radius-card: 12px; /* karty treści, opinie */
   --radius-media: 14px; /* kafle ze zdjęciami */
   --radius-feature: 16px; /* karty korzyści */
-  --radius-panel: 22px; /* duże panele, sekcja kontaktu */
   /* Pionowy oddech sekcji — system 8px, jeden punkt zmiany.
      Progi niżej (1024px / 640px) nadpisują tylko tę zmienną. */
   --section-padding-y: 72px;

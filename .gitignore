@@ -16,3 +16,4 @@ tsconfig.tsbuildinfo
 .agents/
 claude/
 skills-lock.json
+next-env.d.ts
