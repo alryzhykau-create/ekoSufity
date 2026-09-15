@@ -7,9 +7,9 @@ export type VisualAsset = {
   title: string;
   meta: string;
   room: RoomKey;
-  // Faktura folii na wizualizacji — do filtrowania realizacji.
+  // Faktura folii na obrazie — do filtrowania galerii.
   finish: FinishKey;
-  label: "Wizualizacja przykładowego efektu";
+  label: "Tak może wyglądać Twój sufit";
 };
 
 export const visualAssets: VisualAsset[] = [
@@ -20,34 +20,34 @@ export const visualAssets: VisualAsset[] = [
     meta: "salon z kuchnią / LED / połysk",
     room: "salon",
     finish: "polysk",
-    label: "Wizualizacja przykładowego efektu"
+    label: "Tak może wyglądać Twój sufit"
   },
   {
     src: "/images/kuchnia-10m2-photo.png",
-    alt: "Wizualizacja kuchni z sufitem napinanym",
+    alt: "Kuchnia z sufitem napinanym",
     title: "Kuchnia z czystym wykończeniem",
     meta: "kuchnia / jasny efekt",
     room: "kuchnia",
     finish: "matowy",
-    label: "Wizualizacja przykładowego efektu"
+    label: "Tak może wyglądać Twój sufit"
   },
   {
     src: "/images/lazienka-6m2-photo.png",
-    alt: "Wizualizacja łazienki z sufitem napinanym",
+    alt: "Łazienka z sufitem napinanym",
     title: "Łazienka i strefa wilgotna",
     meta: "łazienka / pomieszczenie wilgotne",
     room: "łazienka",
     finish: "satynowy",
-    label: "Wizualizacja przykładowego efektu"
+    label: "Tak może wyglądać Twój sufit"
   },
   {
     src: "/images/mieszkanie-45m2-led-photo.png",
-    alt: "Wizualizacja mieszkania z sufitem napinanym i LED",
+    alt: "Mieszkanie z sufitem napinanym i LED",
     title: "Mieszkanie z linią LED",
     meta: "mieszkanie / LED / inspiracja",
     room: "mieszkanie",
     finish: "matowy",
-    label: "Wizualizacja przykładowego efektu"
+    label: "Tak może wyglądać Twój sufit"
   }
 ];
 

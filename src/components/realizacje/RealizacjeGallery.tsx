@@ -106,10 +106,8 @@ export function RealizacjeGallery({ initialRoom, initialFinish }: RealizacjeGall
                 loading={index === 0 ? "eager" : "lazy"}
                 sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 400px"
               />
-              {/* Uczciwe oznaczenie: to wizualizacja, nie zdjęcie z montażu. */}
-              <span className="galleryBadge" title={asset.label}>
-                Wizualizacja
-              </span>
+              {/* Uczciwe oznaczenie: to obraz pokazujący efekt, nie zdjęcie z montażu. */}
+              <span className="galleryBadge">{asset.label}</span>
               <span className="galleryScrim" aria-hidden="true" />
               <span className="galleryCaption">
                 <h3>{asset.title}</h3>

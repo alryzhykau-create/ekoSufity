@@ -197,8 +197,8 @@ export default async function CityPage({ params }: PageProps) {
         <div className="container">
           <SectionHeader
             eyebrow="Inspiracje"
-            title="Podobne efekty, które można omówić na pomiarze"
-            lead="Przykładowe wizualizacje efektów — dokładny wygląd ustalamy na pomiarze."
+            title="Zobacz, jaki efekt można uzyskać"
+            lead="Tak może wyglądać Twój sufit — dokładny wygląd ustalamy na pomiarze."
           />
           <div className="galleryGrid">
             {visualAssets.slice(0, 4).map((asset) => (

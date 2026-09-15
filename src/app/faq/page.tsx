@@ -19,7 +19,7 @@ import { breadcrumbSchema, faqSchema } from "@/lib/seo/schema";
 export const metadata: Metadata = {
   title: "Najczęstsze pytania o sufity napinane",
   description:
-    "FAQ EkoSufity: cena, pomiar, dojazd, gwarancja, LED, WhatsApp i status wizualizacji.",
+    "FAQ EkoSufity: cena, pomiar, dojazd, gwarancja, LED i kontakt przez WhatsApp.",
   ...seoMeta("/faq")
 };
 

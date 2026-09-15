@@ -45,9 +45,9 @@ export default async function ProjectsPage({ searchParams }: PageProps) {
             <span className="eyebrow">Galeria</span>
             <h1>Realizacje i inspiracje sufitów napinanych</h1>
             <p className="pageLead">
-              Pokazujemy przykładowe efekty, inspiracje i docelowo realne realizacje EkoSufity.
-              Wizualizacje oznaczamy oddzielnie, aby było jasne, czy oglądasz inspirację, czy
-              wykonany projekt.
+              Zobacz, jaki efekt można uzyskać w salonie, kuchni, łazience i całym mieszkaniu.
+              Zdjęcia wykonanych prac EkoSufity oznaczamy osobno, żeby było jasne, co jest
+              pomysłem, a co gotowym sufitem.
             </p>
             <div className="buttonRow">
               <Button className="heroPrimaryCta" href={siteConfig.contacts.phoneHref}>
@@ -93,8 +93,8 @@ export default async function ProjectsPage({ searchParams }: PageProps) {
         <div className="container">
           <SectionHeader
             eyebrow="Realizacje"
-            title="Inspiracje i przykładowe efekty"
-            lead="Materiały wizualne z obecnego archiwum traktujemy jako wizualizacje i inspiracje. Realne zdjęcia wykonanych prac będą oznaczone jako „Realizacja EkoSufity”."
+            title="Zobacz, jaki efekt można uzyskać"
+            lead="Tak może wyglądać Twój sufit — materiał, światło i detale dobieramy na pomiarze. Zdjęcia wykonanych prac będą podpisane „Realizacja: miasto, pomieszczenie, metraż”."
           />
           <RealizacjeGallery initialRoom={room} initialFinish={faktura} />
         </div>

@@ -14,7 +14,7 @@ export function PlaceholderImage({ slot, ratio = "4 / 3", className = "" }: Plac
 
   return (
     <div className={`rozPlaceholder ${className}`.trim()} role="img" aria-label={slot.alt} style={style}>
-      <span className="rozPlaceholderCaption">{slot.caption ?? "przykładowy efekt"}</span>
+      <span className="rozPlaceholderCaption">{slot.caption ?? "Tak może wyglądać Twój sufit"}</span>
     </div>
   );
 }

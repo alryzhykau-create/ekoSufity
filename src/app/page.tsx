@@ -488,7 +488,7 @@ export default function HomePage() {
             </div>
 
             <p className="heroPhotoCaption">
-              Wizualizacja — sufit dwupoziomowy z LED
+              Tak może wyglądać Twój sufit — dwupoziomowy z liniami LED
             </p>
           </div>
         </div>

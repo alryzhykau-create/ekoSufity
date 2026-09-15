@@ -89,7 +89,7 @@ export const rozwiazania: Rozwiazanie[] = [
       "Wentylacja, której nie widać. Kanały chowamy nad membraną, a w pomieszczeniu zostaje czysta linia lub dyskretna kratka. Od premium liniowych dyfuzorów po niewidoczne kratki punktowe.",
     heroImage: {
       src: "/images/rozwiazania/wentylacja/hero.jpg",
-      alt: "Sufit napinany z ukrytą wentylacją — przykładowy efekt"
+      alt: "Sufit napinany z ukrytą wentylacją"
     },
     whatIs:
       "Ukryta wentylacja pozwala zachować czystą linię sufitu — zamiast widocznych kratek stosujemy wąskie, liniowe nawiewy wtopione w membranę. Elementy takie jak Airpipe Pro (nawiew w suficie) i Airwall (na styku sufitu i ściany) znikają w powierzchni sufitu. To rozwiązanie premium, którego nie ma w standardowych montażach. Wentylację planujemy razem z sufitem, na etapie pomiaru.",
@@ -178,7 +178,7 @@ export const rozwiazania: Rozwiazanie[] = [
       "Ukryta szyna wtopiona w sufit i lampy, które można dowolnie przestawiać. Jedna linia, w której łączymy światło punktowe, liniowe, wiszące, a nawet głośnik.",
     heroImage: {
       src: "/images/rozwiazania/system-magnetyczny/hero.jpg",
-      alt: "Magnetyczna szyna oświetlenia w suficie napinanym — przykładowy efekt"
+      alt: "Magnetyczna szyna oświetlenia w suficie napinanym"
     },
     whatIs:
       "System magnetyczny to ukryta szyna 48 V wtopiona w sufit napinany, na której lampy trzymają się na magnes. Oprawy liniowe, spoty i lampy wiszące można dowolnie przestawiać, dokładać i zmieniać — nawet po montażu, bez ingerencji w sufit. To elastyczne, nowoczesne rozwiązanie zamiast wielu osobnych opraw z osobnymi wypustami. Cały układ działa na jednym zasilaniu, dobranym pod pomieszczenie.",
@@ -271,7 +271,7 @@ export const rozwiazania: Rozwiazanie[] = [
       "Efekt rozgwieżdżonego nieba nad głową. Setki świetlnych punktów wtopionych w sufit napinany — od delikatnej poświaty po migoczące konstelacje.",
     heroImage: {
       src: "/images/rozwiazania/gwiazdne-niebo/hero.jpg",
-      alt: "Sufit napinany z efektem gwiaździstego nieba — przykładowy efekt"
+      alt: "Sufit napinany z efektem gwiaździstego nieba"
     },
     whatIs:
       "Gwiazdne niebo to setki świetlnych punktów wtopionych w membranę sufitu — efekt rozgwieżdżonego nieba nad głową. Wykonujemy je na światłowodach albo na punktach LED, z możliwością migotania i zmiany jasności. Rozmieszczenie i gęstość gwiazd projektujemy indywidualnie — od delikatnych akcentów po gęste niebo. Sprawdza się w sypialni, pokoju dziecka, kinie domowym i strefie relaksu.",
@@ -349,7 +349,7 @@ export const rozwiazania: Rozwiazanie[] = [
       "Sufit, który zyskuje głębię. Poziomy, uskoki i efekt „pływającego” sufitu z podświetleniem po obwodzie — pomieszczenie wygląda na wyższe i bardziej wykończone.",
     heroImage: {
       src: "/images/rozwiazania/sufity-wielopoziomowe/hero.jpg",
-      alt: "Sufit wielopoziomowy z podświetleniem obwodowym — przykładowy efekt"
+      alt: "Sufit wielopoziomowy z podświetleniem obwodowym"
     },
     whatIs:
       "Sufit wielopoziomowy to konstrukcja z uskokami i różnymi wysokościami, która dodaje wnętrzu głębi i charakteru. Poziomy można podświetlić taśmą LED, uzyskując efekt „pływającego” sufitu oderwanego od reszty powierzchni. Wielopoziomowość pozwala też ukryć belki, instalacje i nierówności stropu. Formę i podświetlenie planujemy razem, żeby efekt był spójny.",
@@ -425,7 +425,7 @@ export const rozwiazania: Rozwiazanie[] = [
       "Zamiast listwy maskującej — wąska, cienista szczelina między sufitem a ścianą. Sufit wygląda, jakby „odrywał się” od ściany — czysto i nowocześnie.",
     heroImage: {
       src: "/images/rozwiazania/szczelina-cienia/hero.jpg",
-      alt: "Szczelina cienia między sufitem napinanym a ścianą — przykładowy efekt"
+      alt: "Szczelina cienia między sufitem napinanym a ścianą"
     },
     whatIs:
       "Szczelina cienia to wąska, cienista przerwa 5–10 mm między sufitem a ścianą, zamiast klasycznej listwy. Sufit wizualnie „odrywa się” od ściany — to bardzo nowoczesny, minimalistyczny detal, który wygląda drogo. Przejście sufit–ściana jest czyste, bez widocznych maskownic i profili. Efekt wymaga precyzyjnego pomiaru i równych ścian, dlatego ustalamy go przed montażem.",
@@ -509,7 +509,7 @@ export const rozwiazania: Rozwiazanie[] = [
       "Dowolna grafika na suficie — od nieba i motywów natury po wzory pod projekt wnętrza. Nadruk wykonujemy na membranie w wysokiej rozdzielczości.",
     heroImage: {
       src: "/images/rozwiazania/sufit-z-nadrukiem/hero.jpg",
-      alt: "Sufit napinany z nadrukiem wielkoformatowym — przykładowy efekt"
+      alt: "Sufit napinany z nadrukiem wielkoformatowym"
     },
     whatIs:
       "Sufit z nadrukiem to dowolna grafika — zdjęcie, wzór albo własny motyw — wydrukowana na membranie w wysokiej rozdzielczości. Stosujemy trwały druk UV odporny na blaknięcie, na macie, satynie albo połysku. W wariancie Double Vision nadruk wygląda inaczej przy świetle wyłączonym i włączonym. Sufit staje się wtedy elementem wystroju wnętrza, a nie tylko powierzchnią.",
@@ -588,7 +588,7 @@ export const rozwiazania: Rozwiazanie[] = [
       "Sufit, który świeci — miękko po obwodzie albo całą powierzchnią. Projektujemy i montujemy podświetlenie pod indywidualne wnętrze, we Wrocławiu i do 100 km od miasta.",
     heroImage: {
       src: "/images/rozwiazania/sufit-podswietlany/hero.jpg",
-      alt: "Podświetlany sufit napinany świecący równomiernie — przykładowy efekt"
+      alt: "Podświetlany sufit napinany świecący równomiernie"
     },
     whatIs:
       "Sufit podświetlany to gotowe rozwiązanie oparte na folii translucent i oświetleniu LED. Światło umieszczone nad membraną prześwituje przez nią, dając efekt świecącej płaszczyzny. To nie tylko dekoracja — taki sufit może pełnić funkcję głównego źródła światła w pomieszczeniu.",

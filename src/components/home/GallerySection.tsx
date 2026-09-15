@@ -31,8 +31,8 @@ export function GallerySection() {
             <span className="eyebrow">Inspiracje</span>
             <h2 className="sectionTitle">Zobacz, jaki efekt można uzyskać</h2>
             <p className="sectionLead">
-              Materiały pokazują przykładowe efekty i kierunki projektowe. Wizualizacje traktujemy
-              jako inspirację - realne realizacje oznaczamy oddzielnie.
+              Tak może wyglądać Twój sufit — materiał, światło i detale dobieramy na pomiarze.
+              Zdjęcia wykonanych prac oznaczamy osobno.
             </p>
           </div>
         </div>
