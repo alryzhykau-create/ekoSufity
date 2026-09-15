@@ -462,10 +462,16 @@ export default function HomePage() {
                 we Wrocławiu <span className="heroTitleAccent">i okolicach</span>
               </span>
             </h1>
-            <p className="heroLead">
+            {/* Na telefonie krótszy opis — dwie linie, żeby zdjęcie nad tekstem
+                dostało co najmniej połowę hero. Pełny zostaje na desktopie. */}
+            <p className="heroLead heroLead--full">
               Montujemy sufity napinane z oświetleniem LED w mieszkaniach, domach i lokalach
               usługowych — równy sufit w 1–2 dni, bez kurzu i remontu. Obsługujemy Wrocław oraz
               okolice do 100 km.
+            </p>
+            <p className="heroLead heroLead--short">
+              Sufity napinane z oświetleniem LED — równy sufit w 1–2 dni, bez kurzu i remontu.
+              Wrocław i okolice do 100 km.
             </p>
 
             <div className="buttonRow">

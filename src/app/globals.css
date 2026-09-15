@@ -1033,6 +1033,11 @@ main {
   color: var(--gold);
 }
 
+/* Krótka wersja opisu hero — tylko na telefonie (blok mobilny niżej). */
+.heroLead--short {
+  display: none;
+}
+
 .heroLead,
 .pageLead {
   margin: 16px 0 0;
@@ -7578,11 +7583,13 @@ button.contactCard .contactCardValue {
 
   /* Zdjęcie: nie tło absolutne, tylko pierwszy element kolumny — rośnie
      na wysokich ekranach, a tytuł nigdy na nie nie wjeżdża. */
+  /* Zdjęcie ma dominować: co najmniej połowa hero (45svh z 90svh); przy
+     dłuższym tekście hero rośnie, a nie zdjęcie maleje. */
   .heroBackdrop {
     position: relative;
     display: block;
     flex: 1 1 auto;
-    min-height: 170px;
+    min-height: 45svh;
     inset: auto;
   }
 
@@ -7623,12 +7630,24 @@ button.contactCard .contactCardValue {
   }
 
   .heroCopy {
-    gap: 18px;
+    gap: 12px;
   }
 
   .hero h1,
   .hero h1 > span:last-child {
     color: #fff;
+  }
+
+  /* Ciaśniej niż na desktopie: tytuł 32px, opis 15,5px — cała część
+     tekstowa mieści się w ~45svh, więc zdjęcie dostaje drugą połowę. */
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .heroLead {
+    margin-top: 0;
+    font-size: 0.97rem;
+    line-height: 1.45;
   }
 
   .hero h1 .heroTitleAccent {
@@ -7639,13 +7658,22 @@ button.contactCard .contactCardValue {
     color: rgba(255, 255, 255, 0.92);
   }
 
+  .heroLead--full {
+    display: none;
+  }
+
+  .heroLead--short {
+    display: block;
+  }
+
   .heroFeatureGrid--inHero {
     display: none;
   }
 
   .heroPhotoCaption {
     color: rgba(255, 255, 255, 0.78);
-    font-size: 0.8rem;
+    font-size: 0.78rem;
+    line-height: 1.3;
   }
 
   /* Atuty pod hero: jasne tło, dwie kolumny, karty jak w pasku zaufania. */

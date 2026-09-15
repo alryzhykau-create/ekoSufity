@@ -14,6 +14,7 @@ import {
   type OptionalCategory
 } from "@/lib/consent/consent";
 import { loadTrackingScripts } from "@/lib/consent/tracking";
+import { useHeroCtaOffscreen } from "@/lib/hooks/useHeroCtaOffscreen";
 
 type View = "hidden" | "banner" | "settings";
 
@@ -24,6 +25,21 @@ export function CookieConsent() {
   const [view, setView] = useState<View>("hidden");
   const [draft, setDraft] = useState<ConsentCategories>(consentNone);
   const firstControlRef = useRef<HTMLInputElement>(null);
+  const heroCtaOffscreen = useHeroCtaOffscreen();
+  const [isPhone, setIsPhone] = useState(false);
+
+  /* Na telefonie baner zasłaniał przyciski hero na pierwszym ekranie.
+     Tam pokazuje się tylko wtedy, gdy przyciski hero są poza ekranem — tym
+     samym sygnałem co pasek „Zadzwoń / WhatsApp", więc oba chowają się
+     i wracają razem. Do zgody żaden skrypt śledzący i tak się nie ładuje
+     (Consent Mode: denied). Na desktopie baner jest od razu. */
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 640px)");
+    const sync = () => setIsPhone(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
 
   useEffect(() => {
     const stored = readStoredConsent();
@@ -70,6 +86,8 @@ export function CookieConsent() {
   }
 
   if (view === "hidden") return null;
+
+  if (view === "banner" && isPhone && !heroCtaOffscreen) return null;
 
   if (view === "banner") {
     return (
