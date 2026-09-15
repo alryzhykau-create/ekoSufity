@@ -7052,3 +7052,203 @@ button.contactCard .contactCardValue {
     aspect-ratio: 16 / 10;
   }
 }
+
+/* ————— Baner cookies i okno ustawień ————— */
+
+/* Baner siedzi nad treścią przy dolnej krawędzi, nie blokuje przewijania.
+   Wygląd karty: te same tokeny co .card, tylko z mocniejszym cieniem,
+   bo leży na treści, a nie obok niej. */
+.cookieBanner {
+  position: fixed;
+  z-index: 80;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px 28px;
+  width: min(100% - 32px, var(--max));
+  margin: 0 auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  padding: 22px 28px;
+  box-shadow: var(--shadow);
+}
+
+.cookieBannerCopy {
+  flex: 1 1 420px;
+  min-width: 0;
+}
+
+.cookieTitle {
+  margin: 0;
+  font-family: var(--font-rubik), sans-serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--text);
+}
+
+.cookieText {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: var(--type-body-sm);
+  line-height: 1.55;
+}
+
+.cookieActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.cookieActions .btn {
+  white-space: nowrap;
+}
+
+.cookieModalBackdrop {
+  position: fixed;
+  z-index: 80;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(13, 13, 13, 0.5);
+  padding: 20px;
+}
+
+.cookieModal {
+  width: min(100%, 560px);
+  max-height: calc(100dvh - 40px);
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  padding: 28px;
+  box-shadow: var(--shadow);
+}
+
+.cookieCategoryList {
+  display: grid;
+  gap: 12px;
+  margin: 22px 0 24px;
+  padding: 0;
+  list-style: none;
+}
+
+.cookieCategory {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  padding: 14px 16px;
+}
+
+.cookieCategoryCopy label {
+  display: block;
+  font-weight: 700;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.cookieCategoryCopy p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+/* Przełącznik: szara szyna, po włączeniu złota — jak zaznaczenie
+   w checkboxie zgody pod formularzem. */
+.cookieSwitch {
+  appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+  flex: 0 0 auto;
+  width: 46px;
+  height: 26px;
+  margin: 0;
+  border: 1.5px solid #d8c6ad;
+  border-radius: 999px;
+  background: #fff;
+  cursor: pointer;
+  transition: background 150ms ease, border-color 150ms ease;
+}
+
+.cookieSwitch::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: #d8c6ad;
+  transition: transform 150ms ease, background 150ms ease;
+}
+
+.cookieSwitch:checked {
+  border-color: var(--gold);
+  background: var(--gold);
+}
+
+.cookieSwitch:checked::after {
+  background: #fff;
+  transform: translateX(20px);
+}
+
+.cookieSwitch:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.cookieSwitch:focus-visible {
+  outline: 2px solid var(--gold-dark);
+  outline-offset: 2px;
+}
+
+/* „Ustawienia cookies" w stopce — wygląda jak sąsiedni link. */
+.footerLinkButton {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--footer-muted);
+  font: inherit;
+  cursor: pointer;
+  transition: color 160ms ease;
+}
+
+.footerLinkButton:hover {
+  color: var(--footer-accent);
+}
+
+/* Na telefonie i tablecie nad banerem jest jeszcze pasek „Zadzwoń / WhatsApp"
+   (.mobileSticky, 72px + safe-area) — baner wjeżdża nad niego, żeby nie
+   zasłaniać telefonu. Przyciski w kolumnę, pełna szerokość. */
+@media (max-width: 980px) {
+  .cookieBanner {
+    bottom: calc(84px + env(safe-area-inset-bottom));
+    padding: 20px;
+  }
+
+  .cookieActions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .cookieActions .btn {
+    width: 100%;
+  }
+
+  .cookieModal {
+    padding: 22px 18px;
+  }
+
+  .cookieCategory {
+    align-items: flex-start;
+  }
+}

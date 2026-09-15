@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CookieSettingsLink } from "@/components/consent/CookieSettingsLink";
 import { cities } from "@/content/cities";
 import { siteConfig, socialLinks } from "@/content/site";
 
@@ -167,6 +168,7 @@ export function Footer() {
             <span>© {new Date().getFullYear()} ekoSufity. Wszystkie prawa zastrzeżone.</span>
             <div className="footerLegalLinks">
               <Link href="/polityka-prywatnosci">Polityka prywatności</Link>
+              <CookieSettingsLink />
             </div>
           </div>
         </div>

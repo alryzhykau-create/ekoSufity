@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Caveat, Inter, Rubik } from "next/font/google";
+import { CookieConsent } from "@/components/consent/CookieConsent";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { MobileStickyCta } from "@/components/layout/MobileStickyCta";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/content/site";
+import { consentDefaultsScript } from "@/lib/consent/consent";
 import { ogSite, twitterSite } from "@/lib/seo/metadata";
 import { localBusinessSchema } from "@/lib/seo/schema";
 import "./globals.css";
@@ -50,11 +52,17 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="pl" className={`${rubik.variable} ${inter.variable} ${caveat.variable}`}>
+      <head>
+        {/* Google Consent Mode v2 — domyślne „denied" musi wejść do <head>
+            przed jakimkolwiek skryptem zewnętrznym, dlatego inline, nie <Script>. */}
+        <script id="consent-defaults" dangerouslySetInnerHTML={{ __html: consentDefaultsScript }} />
+      </head>
       <body>
         <Header />
         <main>{children}</main>
         <Footer />
         <MobileStickyCta />
+        <CookieConsent />
         <JsonLd data={localBusinessSchema()} />
       </body>
     </html>
