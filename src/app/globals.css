@@ -7479,3 +7479,78 @@ button.contactCard .contactCardValue {
     font-size: 0.92rem;
   }
 }
+
+/* Główna na telefonie, ciąg dalszy: przykłady cen w dwóch kolumnach i
+   zwarty blok właściciela (zdjęcie 240px, mapa obok tekstu o zasięgu). */
+@media (max-width: 640px) {
+  .priceExampleGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .priceExampleBody p {
+    font-size: 0.875rem;
+  }
+
+  .ownerBlock {
+    row-gap: 14px;
+  }
+
+  /* Portret kadrowany od góry, żeby przy 240px twarz została w kadrze. */
+  .ownerPhoto,
+  .ownerPhoto img {
+    min-height: 0;
+    height: 240px;
+  }
+
+  .ownerPhoto img {
+    object-position: center 18%;
+  }
+
+  /* Tytuł bloku mniejszy niż tytuły sekcji — trzy linie po 32px zjadały
+     ćwierć ekranu. Podpis w jednym wierszu: imię i rola obok siebie. */
+  .ownerCopy .sectionTitle {
+    font-size: 1.6rem;
+    line-height: 1.2;
+  }
+
+  .ownerCopy > p {
+    margin-top: 10px;
+  }
+
+  .ownerSignature {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: baseline;
+    column-gap: 10px;
+    padding-top: 6px;
+  }
+
+  .ownerSignature strong {
+    font-size: 2rem;
+  }
+
+  .ownerAreaTitle {
+    font-size: 0.95rem;
+  }
+
+  /* Zasięg: tekst po lewej, mapa po prawej — zamiast mapy na całą szerokość. */
+  .ownerArea {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 118px;
+    column-gap: 14px;
+    align-items: center;
+    height: auto;
+    padding-top: 18px;
+  }
+
+  .ownerArea > p {
+    grid-column: 1;
+  }
+
+  .ownerArea img {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    width: 118px;
+    margin: 0;
+  }
+}
