@@ -488,7 +488,7 @@ export default function HomePage() {
             </div>
 
             <p className="heroPhotoCaption">
-              Sufit dwupoziomowy z LED — Wrocław. Realizacja: 2 dni.
+              Wizualizacja — sufit dwupoziomowy z LED
             </p>
           </div>
         </div>
