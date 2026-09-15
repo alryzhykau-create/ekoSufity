@@ -7108,6 +7108,20 @@ button.contactCard .contactCardValue {
   white-space: nowrap;
 }
 
+/* Przyciski banera: biały, złota ramka i napis — wszystkie trzy identyczne,
+   żeby żaden wybór nie był podsuwany. Hover wypełnia kremowym złotem. */
+.btnOutlineGold {
+  background: var(--surface);
+  color: var(--gold-dark);
+  border-color: var(--gold);
+}
+
+.btnOutlineGold:hover,
+.btnOutlineGold:focus-visible {
+  background: var(--accent-soft);
+  color: var(--gold-dark);
+}
+
 .cookieModalBackdrop {
   position: fixed;
   z-index: 80;

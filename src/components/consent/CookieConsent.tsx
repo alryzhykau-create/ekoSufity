@@ -88,15 +88,15 @@ export function CookieConsent() {
             wybrać własne ustawienia.
           </p>
         </div>
-        {/* Odmowa ma ten sam rozmiar i taką samą wagę wizualną co zgoda. */}
+        {/* Trzy identyczne przyciski — odmowa ma dokładnie tę samą wagę co zgoda. */}
         <div className="cookieActions">
-          <button className="btn btnPrimary" type="button" onClick={() => save(consentAll)}>
+          <button className="btn btnOutlineGold" type="button" onClick={() => save(consentAll)}>
             Akceptuj wszystkie
           </button>
-          <button className="btn btnDark" type="button" onClick={() => save(consentNone)}>
+          <button className="btn btnOutlineGold" type="button" onClick={() => save(consentNone)}>
             Odrzuć wszystkie
           </button>
-          <button className="btn btnSecondary" type="button" onClick={() => setView("settings")}>
+          <button className="btn btnOutlineGold" type="button" onClick={() => setView("settings")}>
             Ustawienia
           </button>
         </div>
@@ -150,10 +150,10 @@ export function CookieConsent() {
         </ul>
 
         <div className="cookieActions">
-          <button className="btn btnDark" type="button" onClick={() => save(draft)}>
+          <button className="btn btnOutlineGold" type="button" onClick={() => save(draft)}>
             Zapisz ustawienia
           </button>
-          <button className="btn btnPrimary" type="button" onClick={() => save(consentAll)}>
+          <button className="btn btnOutlineGold" type="button" onClick={() => save(consentAll)}>
             Akceptuj wszystkie
           </button>
         </div>
