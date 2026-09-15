@@ -904,6 +904,10 @@ main {
   .waRing {
     animation: none;
   }
+
+  .mobileSticky {
+    transition: none;
+  }
 }
 
 .phoneGlyph,
@@ -6490,6 +6494,18 @@ button.contactCard .contactCardValue {
     background: rgba(255, 255, 255, 0.96);
     box-shadow: 0 -12px 30px rgba(13, 13, 13, 0.08);
     backdrop-filter: blur(14px);
+    /* Schowany pod dolną krawędzią, dopóki przyciski hero są na ekranie —
+       wjeżdża płynnie, gdy znikną (klasa is-visible z MobileStickyCta). */
+    transform: translateY(110%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 240ms ease, opacity 200ms ease;
+  }
+
+  .mobileSticky.is-visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
   }
 }
 
