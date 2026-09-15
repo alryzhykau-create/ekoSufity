@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
   consentAll,
@@ -84,8 +85,11 @@ export function CookieConsent() {
           </p>
           <p className="cookieText" id="cookie-banner-text">
             Używamy plików cookie, aby strona działała poprawnie oraz — za Twoją zgodą — do
-            analizy ruchu i reklam. Możesz zaakceptować wszystkie, odrzucić opcjonalne albo
-            wybrać własne ustawienia.
+            analizy ruchu i reklam. Szczegóły znajdziesz w{" "}
+            <Link className="inlineLink" href="/polityka-prywatnosci">
+              Polityce Prywatności
+            </Link>
+            . Możesz zaakceptować wszystkie, odrzucić opcjonalne albo wybrać własne ustawienia.
           </p>
         </div>
         {/* Trzy identyczne przyciski — odmowa ma dokładnie tę samą wagę co zgoda. */}
@@ -148,6 +152,14 @@ export function CookieConsent() {
             );
           })}
         </ul>
+
+        <p className="cookieText cookieModalNote">
+          Szczegóły znajdziesz w{" "}
+          <Link className="inlineLink" href="/polityka-prywatnosci">
+            Polityce Prywatności
+          </Link>
+          .
+        </p>
 
         <div className="cookieActions">
           <button className="btn btnOutlineGold" type="button" onClick={() => save(draft)}>

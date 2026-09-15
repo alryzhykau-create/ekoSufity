@@ -7098,6 +7098,15 @@ button.contactCard .contactCardValue {
   line-height: 1.55;
 }
 
+.cookieText .inlineLink {
+  font-size: inherit;
+}
+
+/* Linia z polityką w oknie ustawień — między kategoriami a przyciskami. */
+.cookieModalNote {
+  margin: -8px 0 20px;
+}
+
 .cookieActions {
   display: flex;
   flex-wrap: wrap;
