@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 const largeTiles = new Set([
   "folie",
   "oswietlenie-led",
-  "gwiazdne-niebo",
+  "gwiazdziste-niebo",
   "sufit-podswietlany"
 ]);
 
@@ -40,7 +40,7 @@ const tileBackgrounds: Record<string, string> = {
   "linie-swietlne": "url(/images/mieszkanie-45m2-led-photo.png)",
   "system-magnetyczny": "url(/images/kuchnia-10m2-photo.png)",
   "sufity-wielopoziomowe": "url(/images/salon-22m2-photo.png)",
-  "gwiazdne-niebo": "linear-gradient(165deg, #26304a, #0b0e18)",
+  "gwiazdziste-niebo": "linear-gradient(165deg, #26304a, #0b0e18)",
   "sufit-podswietlany": "radial-gradient(circle at 50% 8%, #a26f24, #2b2013 70%)",
   "szczelina-cienia": "linear-gradient(160deg, #4a4238, #191612)",
   "sufit-z-nadrukiem": "linear-gradient(150deg, #6d5d4a, #2e261c)",

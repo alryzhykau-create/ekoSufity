@@ -15,6 +15,13 @@ const nextConfig: NextConfig = {
         destination: "/rozwiazania/folie/translucent",
         // 301, nie 308: klasyczny kod, który rozumie każdy crawler i narzędzie SEO.
         statusCode: 301
+      },
+      // Literówka w adresie: po polsku „gwiaździste", nie „gwiazdne". Stary
+      // adres zostaje na stałym przekierowaniu z tego samego powodu co wyżej.
+      {
+        source: "/rozwiazania/gwiazdne-niebo",
+        destination: "/rozwiazania/gwiazdziste-niebo",
+        statusCode: 301
       }
     ];
   }

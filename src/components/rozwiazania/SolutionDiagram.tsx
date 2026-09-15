@@ -218,7 +218,7 @@ function SufitPodswietlany() {
 const diagrams: Record<string, () => React.ReactElement> = {
   wentylacja: Wentylacja,
   "system-magnetyczny": SystemMagnetyczny,
-  "gwiazdne-niebo": GwiazdneNiebo,
+  "gwiazdziste-niebo": GwiazdneNiebo,
   "sufity-wielopoziomowe": SufityWielopoziomowe,
   "szczelina-cienia": SzczelinaCienia,
   "sufit-z-nadrukiem": SufitZNadrukiem,

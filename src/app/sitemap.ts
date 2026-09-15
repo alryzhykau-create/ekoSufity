@@ -17,7 +17,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/lokalizacje",
     "/faq",
     "/o-firmie",
-    "/poradnik"
+    "/poradnik",
+    "/polityka-prywatnosci"
   ];
   const cityRoutes = cities.map((city) => `/lokalizacje/${city.slug}`);
   const serviceRoutes = services.map((service) => service.href);

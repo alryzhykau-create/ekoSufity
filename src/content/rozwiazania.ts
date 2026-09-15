@@ -259,7 +259,7 @@ export const rozwiazania: Rozwiazanie[] = [
     related: ["wentylacja", "linie-swietlne", "oswietlenie-led"]
   },
   {
-    slug: "gwiazdne-niebo",
+    slug: "gwiazdziste-niebo",
     eyebrow: "Gwiazdne niebo",
     shortTitle: "Gwiazdne niebo",
     h1: "Sufit „gwiaździste niebo”",
@@ -270,7 +270,7 @@ export const rozwiazania: Rozwiazanie[] = [
     heroSubtitle:
       "Efekt rozgwieżdżonego nieba nad głową. Setki świetlnych punktów wtopionych w sufit napinany — od delikatnej poświaty po migoczące konstelacje.",
     heroImage: {
-      src: "/images/rozwiazania/gwiazdne-niebo/hero.jpg",
+      src: "/images/rozwiazania/gwiazdziste-niebo/hero.jpg",
       alt: "Sufit napinany z efektem gwiaździstego nieba"
     },
     whatIs:
@@ -573,7 +573,7 @@ export const rozwiazania: Rozwiazanie[] = [
         answer: "Tak, w połączeniu z membraną translucentną."
       }
     ],
-    related: ["sufit-podswietlany", "gwiazdne-niebo", "folie"]
+    related: ["sufit-podswietlany", "gwiazdziste-niebo", "folie"]
   },
   {
     slug: "sufit-podswietlany",
@@ -651,7 +651,7 @@ export const rozwiazania: Rozwiazanie[] = [
         answer: "W kuchni, łazience, gabinecie i wszędzie, gdzie brakuje światła dziennego."
       }
     ],
-    related: ["sufit-z-nadrukiem", "gwiazdne-niebo", "oswietlenie-led"]
+    related: ["sufit-z-nadrukiem", "gwiazdziste-niebo", "oswietlenie-led"]
   }
 ];
 
@@ -668,7 +668,7 @@ export const solutionCardOrder = [
   "sufity-wielopoziomowe",
   "szczelina-cienia",
   "sufit-podswietlany",
-  "gwiazdne-niebo",
+  "gwiazdziste-niebo",
   "sufit-z-nadrukiem",
   "wentylacja",
   "karnisze-sufitowe"
