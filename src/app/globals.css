@@ -7109,6 +7109,11 @@ button.contactCard .contactCardValue {
   white-space: nowrap;
 }
 
+/* Krótka wersja tekstu i etykiet — tylko na telefonie. */
+.cookieOnlyMobile {
+  display: none;
+}
+
 /* Przyciski banera: biały, złota ramka i napis — wszystkie trzy identyczne,
    żeby żaden wybór nie był podsuwany. Hover wypełnia kremowym złotem. */
 .btnOutlineGold {
@@ -7265,5 +7270,53 @@ button.contactCard .contactCardValue {
 
   .cookieCategory {
     align-items: flex-start;
+  }
+}
+
+/* Telefon: baner zajmował ponad połowę ekranu (3 linie + 3 przyciski w kolumnie).
+   Tu jedna–dwie linie tekstu i trzy równe przyciski w rzędzie — cały blok
+   mieści się w ~150px. Pasek „Zadzwoń / WhatsApp" zostaje pod banerem
+   i dalej jest klikalny. */
+@media (max-width: 640px) {
+  .cookieBanner {
+    left: 10px;
+    right: 10px;
+    bottom: calc(80px + env(safe-area-inset-bottom));
+    width: auto;
+    gap: 12px;
+    padding: 14px 14px 12px;
+  }
+
+  .cookieOnlyDesktop {
+    display: none;
+  }
+
+  .cookieOnlyMobile {
+    display: block;
+  }
+
+  .cookieBanner .cookieTitle {
+    font-size: 1rem;
+  }
+
+  .cookieBanner .cookieText {
+    margin-top: 4px;
+    font-size: 0.86rem;
+    line-height: 1.4;
+  }
+
+  .cookieBanner .cookieActions {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+
+  /* Trzy przyciski dokładnie tej samej szerokości — żaden nie jest większy. */
+  .cookieBanner .cookieActions .btn {
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 44px;
+    padding: 10px 6px;
+    font-size: 0.86rem;
   }
 }

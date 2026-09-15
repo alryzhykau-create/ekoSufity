@@ -83,7 +83,10 @@ export function CookieConsent() {
           <p className="cookieTitle" id="cookie-banner-title">
             Pliki cookie
           </p>
-          <p className="cookieText" id="cookie-banner-text">
+          {/* Na telefonie baner zajmował pół ekranu — tam idzie krótsza wersja
+              tekstu i etykiet. Obie wersje są w HTML, CSS pokazuje jedną
+              (.cookieOnlyDesktop / .cookieOnlyMobile, próg 640px). */}
+          <p className="cookieText cookieOnlyDesktop" id="cookie-banner-text">
             Używamy plików cookie, aby strona działała poprawnie oraz — za Twoją zgodą — do
             analizy ruchu i reklam. Szczegóły znajdziesz w{" "}
             <Link className="inlineLink" href="/polityka-prywatnosci">
@@ -91,14 +94,32 @@ export function CookieConsent() {
             </Link>
             . Możesz zaakceptować wszystkie, odrzucić opcjonalne albo wybrać własne ustawienia.
           </p>
+          <p className="cookieText cookieOnlyMobile">
+            Używamy plików cookie — do działania strony oraz, za Twoją zgodą, do analizy i
+            reklam. Szczegóły w{" "}
+            <Link className="inlineLink" href="/polityka-prywatnosci">
+              Polityce Prywatności
+            </Link>
+            .
+          </p>
         </div>
         {/* Trzy identyczne przyciski — odmowa ma dokładnie tę samą wagę co zgoda. */}
         <div className="cookieActions">
           <button className="btn btnOutlineGold" type="button" onClick={() => save(consentAll)}>
-            Akceptuj wszystkie
+            {/* Jeden element w przycisku (flex) — inaczej „wszystkie" stałoby się
+                osobnym elementem flex z odstępem 11px zamiast zwykłej spacji. */}
+            <span>
+              Akceptuj
+              <span className="cookieOnlyDesktop"> wszystkie</span>
+            </span>
           </button>
           <button className="btn btnOutlineGold" type="button" onClick={() => save(consentNone)}>
-            Odrzuć wszystkie
+            {/* Jeden element w przycisku (flex) — inaczej „wszystkie" stałoby się
+                osobnym elementem flex z odstępem 11px zamiast zwykłej spacji. */}
+            <span>
+              Odrzuć
+              <span className="cookieOnlyDesktop"> wszystkie</span>
+            </span>
           </button>
           <button className="btn btnOutlineGold" type="button" onClick={() => setView("settings")}>
             Ustawienia
