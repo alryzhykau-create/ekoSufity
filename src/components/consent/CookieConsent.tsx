@@ -105,7 +105,7 @@ export function CookieConsent() {
               tekstu i etykiet. Obie wersje są w HTML, CSS pokazuje jedną
               (.cookieOnlyDesktop / .cookieOnlyMobile, próg 640px). */}
           <p className="cookieText cookieOnlyDesktop" id="cookie-banner-text">
-            Używamy plików cookie, aby strona działała poprawnie oraz — za Twoją zgodą — do
+            Używamy plików cookie, aby strona działała poprawnie oraz, za Twoją zgodą, do
             analizy ruchu i reklam. Możesz zaakceptować wszystkie, odrzucić opcjonalne albo
             wybrać własne ustawienia. Szczegóły znajdziesz w{" "}
             <Link className="inlineLink" href="/polityka-prywatnosci">
