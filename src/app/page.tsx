@@ -424,6 +424,15 @@ function ProcessIllustration({ name }: { name: ProcessIconName }) {
 }
 
 export default function HomePage() {
+  const heroFeatureItems = heroFeatures.map((feature) => (
+    <div className="heroFeature" key={feature.label}>
+      <span className="heroFeatureIcon">
+        <Image src={feature.imageSrc} alt="" width={40} height={40} />
+      </span>
+      <span>{feature.label}</span>
+    </div>
+  ));
+
   return (
     <>
       <JsonLd data={serviceSchema("/")} />
@@ -476,15 +485,10 @@ export default function HomePage() {
               </Button>
             </div>
 
-            <div className="heroFeatureGrid" aria-label="Najważniejsze informacje">
-              {heroFeatures.map((feature) => (
-                <div className="heroFeature" key={feature.label}>
-                  <span className="heroFeatureIcon">
-                    <Image src={feature.imageSrc} alt="" width={40} height={40} />
-                  </span>
-                  <span>{feature.label}</span>
-                </div>
-              ))}
+            {/* Na telefonie atuty schodzą pod hero (blok niżej), więc ta kopia
+                jest tam ukryta przez CSS — a tamta na desktopie. */}
+            <div className="heroFeatureGrid heroFeatureGrid--inHero" aria-label="Najważniejsze informacje">
+              {heroFeatureItems}
             </div>
 
             <p className="heroPhotoCaption">
@@ -493,6 +497,10 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <div className="heroFeaturesBelow" aria-label="Najważniejsze informacje">
+        <div className="container heroFeatureGrid">{heroFeatureItems}</div>
+      </div>
 
       <section className="trustBar">
         <div className="container grid4">

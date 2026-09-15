@@ -1042,6 +1042,11 @@ main {
   line-height: 1.55;
 }
 
+/* Kopia atutów pod hero — widoczna tylko na telefonie (patrz blok mobilny). */
+.heroFeaturesBelow {
+  display: none;
+}
+
 .heroFeatureGrid {
   display: grid;
   width: 100%;
@@ -7552,5 +7557,113 @@ button.contactCard .contactCardValue {
     grid-row: 1 / span 3;
     width: 118px;
     margin: 0;
+  }
+}
+
+/* ————— Hero na telefonie: zdjęcie u góry, czarny panel z tekstem ————— */
+
+/* Wariant D z makiet: zdjęcie bez wuali zajmuje górę, miękko przechodzi
+   w czerń, na której leży tytuł, opis i przyciski. Hero ma ~90svh (svh,
+   nie vh — pasek adresu w przeglądarce nie psuje wysokości), pod nim od
+   razu widać atuty w dwóch kolumnach na jasnym tle. Tekst biały na
+   #0e0f0f — kontrast ~19:1, złote „i okolicach" 6,3:1. */
+@media (max-width: 640px) {
+  .hero {
+    display: flex;
+    min-height: 90svh;
+    flex-direction: column;
+    background: var(--black);
+    color: #fff;
+  }
+
+  /* Zdjęcie: nie tło absolutne, tylko pierwszy element kolumny — rośnie
+     na wysokich ekranach, a tytuł nigdy na nie nie wjeżdża. */
+  .heroBackdrop {
+    position: relative;
+    display: block;
+    flex: 1 1 auto;
+    min-height: 170px;
+    inset: auto;
+  }
+
+  /* Wysokość elementu flex nie jest „definite", więc height: 100% w środku
+     dałoby zero — dlatego wnętrze jest pozycjonowane absolutnie. */
+  .heroBackdropInner {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: auto;
+  }
+
+  .heroBackdropImage {
+    left: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  /* Kadr od góry — na telefonie ważniejszy jest sufit z liniami LED niż kanapa. */
+  .heroBackdropImage img {
+    object-position: center 22%;
+  }
+
+  .heroImageFade {
+    background: linear-gradient(
+      180deg,
+      rgba(14, 15, 15, 0) 0%,
+      rgba(14, 15, 15, 0) 52%,
+      rgba(14, 15, 15, 0.62) 78%,
+      var(--black) 100%
+    );
+  }
+
+  .heroShell {
+    display: block;
+    min-height: 0;
+    padding-top: 6px;
+    padding-bottom: 18px;
+  }
+
+  .heroCopy {
+    gap: 18px;
+  }
+
+  .hero h1,
+  .hero h1 > span:last-child {
+    color: #fff;
+  }
+
+  .hero h1 .heroTitleAccent {
+    white-space: nowrap;
+  }
+
+  .heroLead {
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  .heroFeatureGrid--inHero {
+    display: none;
+  }
+
+  .heroPhotoCaption {
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 0.8rem;
+  }
+
+  /* Atuty pod hero: jasne tło, dwie kolumny, karty jak w pasku zaufania. */
+  .heroFeaturesBelow {
+    display: block;
+    padding: 16px 0 4px;
+  }
+
+  .heroFeaturesBelow .heroFeatureGrid {
+    max-width: none;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .heroFeaturesBelow .heroFeature {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+    padding: 10px 12px;
   }
 }
