@@ -255,7 +255,7 @@ export default async function CityPage({ params }: PageProps) {
             </Link>
             <Link className="card miniCard" href="/rozwiazania">
               <h3>Zobacz rozwiązania</h3>
-              <p>LED, karnisze, gwiazdne niebo i inne</p>
+              <p>LED, karnisze, gwiaździste niebo i inne</p>
               <p className="cardArrowText">Zobacz →</p>
             </Link>
             <Link className="card miniCard" href="/sufity-napinane">

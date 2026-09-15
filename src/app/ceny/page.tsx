@@ -82,7 +82,7 @@ const addonPrices: Array<{ label: string; price: string; href?: string }> = [
     price: "od 120 zł/m²",
     href: "/rozwiazania/szczelina-cienia"
   },
-  { label: "Gwiazdne niebo", price: "od 550 zł/m²", href: "/rozwiazania/gwiazdziste-niebo" }
+  { label: "Gwiaździste niebo", price: "od 550 zł/m²", href: "/rozwiazania/gwiazdziste-niebo" }
 ];
 
 // Salon idzie na duże zdjęcie po lewej, reszta na wąskie wiersze obok.

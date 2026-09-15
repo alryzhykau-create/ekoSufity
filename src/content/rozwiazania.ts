@@ -260,8 +260,8 @@ export const rozwiazania: Rozwiazanie[] = [
   },
   {
     slug: "gwiazdziste-niebo",
-    eyebrow: "Gwiazdne niebo",
-    shortTitle: "Gwiazdne niebo",
+    eyebrow: "Gwiaździste niebo",
+    shortTitle: "Gwiaździste niebo",
     h1: "Sufit „gwiaździste niebo”",
     cardDescription: "Setki świetlnych punktów wtopionych w sufit napinany.",
     metaTitle: "Sufit „gwiaździste niebo” — Wrocław",
@@ -274,7 +274,7 @@ export const rozwiazania: Rozwiazanie[] = [
       alt: "Sufit napinany z efektem gwiaździstego nieba"
     },
     whatIs:
-      "Gwiazdne niebo to setki świetlnych punktów wtopionych w membranę sufitu — efekt rozgwieżdżonego nieba nad głową. Wykonujemy je na światłowodach albo na punktach LED, z możliwością migotania i zmiany jasności. Rozmieszczenie i gęstość gwiazd projektujemy indywidualnie — od delikatnych akcentów po gęste niebo. Sprawdza się w sypialni, pokoju dziecka, kinie domowym i strefie relaksu.",
+      "Gwiaździste niebo to setki świetlnych punktów wtopionych w membranę sufitu — efekt rozgwieżdżonego nieba nad głową. Wykonujemy je na światłowodach albo na punktach LED, z możliwością migotania i zmiany jasności. Rozmieszczenie i gęstość gwiazd projektujemy indywidualnie — od delikatnych akcentów po gęste niebo. Sprawdza się w sypialni, pokoju dziecka, kinie domowym i strefie relaksu.",
     planTitle: "Warianty i efekty",
     whereFits: [
       { title: "Sypialnia", desc: "Miękka poświata do zasypiania i wieczornego relaksu." },

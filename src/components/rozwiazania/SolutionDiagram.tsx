@@ -80,7 +80,7 @@ function SystemMagnetyczny() {
   );
 }
 
-function GwiazdneNiebo() {
+function GwiazdzisteNiebo() {
   const stars = [
     [70, 90, 2.4], [120, 70, 1.6], [165, 110, 2], [210, 82, 1.4], [255, 120, 2.6],
     [300, 78, 1.8], [345, 108, 1.5], [390, 84, 2.2], [95, 150, 1.7], [150, 185, 2.4],
@@ -218,7 +218,7 @@ function SufitPodswietlany() {
 const diagrams: Record<string, () => React.ReactElement> = {
   wentylacja: Wentylacja,
   "system-magnetyczny": SystemMagnetyczny,
-  "gwiazdziste-niebo": GwiazdneNiebo,
+  "gwiazdziste-niebo": GwiazdzisteNiebo,
   "sufity-wielopoziomowe": SufityWielopoziomowe,
   "szczelina-cienia": SzczelinaCienia,
   "sufit-z-nadrukiem": SufitZNadrukiem,
