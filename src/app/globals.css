@@ -7336,3 +7336,146 @@ button.contactCard .contactCardValue {
     font-size: 0.86rem;
   }
 }
+
+/* ————— Główna na telefonie: gęstsza układanka kart ————— */
+
+/* Strona miała ~16 400px (20 ekranów), bo każdy zestaw kart stał w jednej
+   kolumnie. Zestawy małych kart idą w dwie kolumny; teksty, kolejność
+   i odstępy sekcji (48px) bez zmian. Ikony nie schodzą poniżej 32px,
+   tekst poniżej 14px (0.875rem). */
+@media (max-width: 640px) {
+  /* Pasek zaufania: ikona nad tekstem, dwie karty w rzędzie. */
+  .trustBar .grid4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .trustBar .card {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    align-items: start;
+    padding: 16px 14px;
+  }
+
+  .trustIcon,
+  .trustIcon img {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+  }
+
+  .trustCard p {
+    font-size: 0.875rem;
+  }
+
+  /* „Dla kogo": sześć kafli ze zdjęciem w dwóch kolumnach. */
+  .dkacc {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .dkaccItem,
+  .dkacc:hover .dkaccItem:first-child {
+    min-height: 200px;
+  }
+
+  .dkaccFull {
+    padding: 14px;
+  }
+
+  .dkaccFull h3 {
+    font-size: 1.05rem;
+    white-space: normal;
+  }
+
+  .dkaccFull p {
+    margin-top: 6px;
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+
+  /* Kroki współpracy: dwie kolumny, piąty krok na całą szerokość. */
+  .processCards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 40px 12px;
+  }
+
+  .processCard {
+    padding: 30px 12px 20px;
+  }
+
+  .processCard:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  .processIllustration {
+    height: 104px;
+    margin: 6px 0 8px;
+  }
+
+  .processImage {
+    width: 104px;
+    height: 104px;
+    transform: translateY(-1px) scale(1.15);
+  }
+
+  .processCard h3 {
+    font-size: 1.05rem;
+  }
+
+  .processCard p {
+    max-width: none;
+    font-size: 0.875rem;
+  }
+
+  /* Usługi: szkic nad treścią, dwie karty w rzędzie. */
+  .servicesGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .servicesSection .serviceCard {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .serviceImage {
+    width: 100%;
+    height: 104px;
+  }
+
+  /* Ikona na styku szkicu i treści — teraz styk jest poziomy. */
+  .servicesSection .serviceIcon {
+    right: 12px;
+    top: auto;
+    bottom: -22px;
+    width: 46px;
+    height: 46px;
+    transform: none;
+  }
+
+  .serviceIconImage {
+    width: 34px;
+    height: 34px;
+  }
+
+  .servicesSection .serviceCardBody {
+    padding: 22px 14px 14px;
+  }
+
+  .servicesSection .serviceCard h3 {
+    padding-right: 44px;
+    font-size: 1.02rem;
+  }
+
+  .servicesSection .serviceCard p {
+    font-size: 0.875rem;
+    line-height: 1.45;
+  }
+
+  .servicesSection .serviceCard a {
+    padding-top: 10px;
+    font-size: 0.92rem;
+  }
+}
